@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 
 <body>
@@ -24,11 +24,19 @@
                     <a href="index.html#services">Uzmanlık</a>
                     <a href="index.html#process">Süreç</a>
                     <a href="index.html#results">Sonuçlar</a>
-                    <a href="index.html#safety">Güvenlik</a>
-                    <a href="index.html#stories">Hikayeler</a>
-                    <a href="index.html#video-stories">Videolar</a>
                     <a href="blog.html">Blog</a>
-                    <a href="index.html#faq">S.S.S.</a>
+                    <div class="nav-more" id="navMore">
+                        <button class="nav-more-trigger" type="button" aria-haspopup="true"
+                            aria-expanded="false">Daha Fazla<svg viewBox="0 0 24 24">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg></button>
+                        <div class="nav-more-menu">
+                            <a href="index.html#safety">Güvenlik</a>
+                            <a href="index.html#stories">Hikayeler</a>
+                            <a href="index.html#video-stories">Videolar</a>
+                            <a href="index.html#faq">S.S.S.</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="nav-right">
                     <a href="index.html#contact" class="btn btn-cta nav-cta"><span>Randevu Al</span><span
@@ -42,10 +50,11 @@
                 <a href="index.html#services">Uzmanlık</a>
                 <a href="index.html#process">Süreç</a>
                 <a href="index.html#results">Sonuçlar</a>
+                <a href="blog.html">Blog</a>
+                <span class="nav-divider">Daha Fazla</span>
                 <a href="index.html#safety">Güvenlik</a>
                 <a href="index.html#stories">Hikayeler</a>
                 <a href="index.html#video-stories">Videolar</a>
-                <a href="blog.html">Blog</a>
                 <a href="index.html#faq">S.S.S.</a>
             </div>
         </div>
@@ -122,6 +131,7 @@
         </div>
     </footer>
 
+    <script src="js/nav.js"></script>
     <script src="data/services.js"></script>
     <script src="js/services-detail.js"></script>
 </body>

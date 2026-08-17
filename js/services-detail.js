@@ -1,11 +1,6 @@
 // ---------------------------------------------------------------
-// Header scroll behavior
+// Mobil menü davranışı (header scroll/gizle-göster js/nav.js'de)
 // ---------------------------------------------------------------
-const header = document.getElementById('siteHeader');
-if (header) {
-  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
-}
-
 const navToggle = document.getElementById('navToggle');
 const mobileNav = document.getElementById('mobileNav');
 if (navToggle && mobileNav) {
@@ -130,7 +125,14 @@ function stepsHtml(service) {
 // "Nasıl Uygulanır" fotoğraf yığını — anasayfadaki Operasyon Süreci
 // bölümüyle birebir aynı davranış (scroll'a göre foto geçişi).
 // ---------------------------------------------------------------
+let _stepPhotoStackCleanup = null;
+
 function initStepPhotoStack(root) {
+  if (_stepPhotoStackCleanup) {
+    _stepPhotoStackCleanup();
+    _stepPhotoStackCleanup = null;
+  }
+
   const photosWrap = root.querySelector('#serviceProcessPhotos');
   if (!photosWrap) return;
   const steps = Array.from(root.querySelectorAll('.process-step[data-photo-group]'));
@@ -159,6 +161,42 @@ function initStepPhotoStack(root) {
   }, { threshold: 0.5, rootMargin: '-35% 0px -35% 0px' });
 
   steps.forEach(step => stepObserver.observe(step));
+
+  // Kart, section'ın yüksekliği boyunca scroll ile birlikte
+  // aşağı doğru kayarak hareket eder (sabit kalmaz).
+  const layout = photosWrap.closest('.process-layout') || photosWrap.parentElement;
+  const STICK_OFFSET = parseFloat(getComputedStyle(photosWrap).top) || 165;
+  let ticking = false;
+
+  function updateCardPosition() {
+    ticking = false;
+    const rect = layout.getBoundingClientRect();
+    const cardHeight = photosWrap.offsetHeight;
+    const travel = layout.offsetHeight - cardHeight;
+    if (travel <= 0) {
+      photosWrap.style.transform = '';
+      return;
+    }
+    let progress = (STICK_OFFSET - rect.top) / travel;
+    progress = Math.max(0, Math.min(1, progress));
+    photosWrap.style.transform = `translateY(${progress * travel}px)`;
+  }
+
+  function requestUpdate() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateCardPosition);
+    }
+  }
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+  updateCardPosition();
+
+  _stepPhotoStackCleanup = () => {
+    window.removeEventListener('scroll', requestUpdate);
+    window.removeEventListener('resize', requestUpdate);
+  };
 }
 
 function resultsHtml(results) {

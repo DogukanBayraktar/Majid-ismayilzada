@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 
 <body>
@@ -23,11 +23,19 @@
           <a href="#services">Uzmanlık</a>
           <a href="#process">Süreç</a>
           <a href="#results">Sonuçlar</a>
-          <a href="#safety">Güvenlik</a>
-          <a href="#stories">Hikayeler</a>
-          <a href="#video-stories">Videolar</a>
           <a href="blog.html">Blog</a>
-          <a href="#faq">S.S.S.</a>
+          <div class="nav-more" id="navMore">
+            <button class="nav-more-trigger" type="button" aria-haspopup="true" aria-expanded="false">Daha Fazla<svg
+                viewBox="0 0 24 24">
+                <path d="M6 9l6 6 6-6" />
+              </svg></button>
+            <div class="nav-more-menu">
+              <a href="#safety">Güvenlik</a>
+              <a href="#stories">Hikayeler</a>
+              <a href="#video-stories">Videolar</a>
+              <a href="#faq">S.S.S.</a>
+            </div>
+          </div>
         </div>
         <div class="nav-right">
           <a href="#contact" class="btn btn-cta nav-cta"><span>Randevu Al</span><span class="arrow">→</span></a>
@@ -40,10 +48,11 @@
         <a href="#services">Uzmanlık</a>
         <a href="#process">Süreç</a>
         <a href="#results">Sonuçlar</a>
+        <a href="blog.html">Blog</a>
+        <span class="nav-divider">Daha Fazla</span>
         <a href="#safety">Güvenlik</a>
         <a href="#stories">Hikayeler</a>
         <a href="#video-stories">Videolar</a>
-        <a href="blog.html">Blog</a>
         <a href="#faq">S.S.S.</a>
       </div>
     </div>
@@ -62,10 +71,6 @@
       <div class="hero-visual" id="heroVisual" data-video-id="VIDEO_ID_BURAYA"
         style="--photo:url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1200')">
         <button class="play-btn" id="heroPlayBtn" aria-label="Videoyu oynat"></button>
-        <div class="chip">
-          <small>Board Certified</small>
-          <p>Türk Plastik Cerrahlar Derneği Üyesi</p>
-        </div>
       </div>
     </div>
   </section>
@@ -571,6 +576,7 @@
       </div>
     </div>
   </footer>
+  <script src="js/nav.js"></script>
   <script src="data/blog-posts.js"></script>
   <script src="js/main.js"></script>
 </body>
