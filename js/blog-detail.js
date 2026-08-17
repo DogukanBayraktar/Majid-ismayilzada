@@ -1,6 +1,10 @@
 // ---------------------------------------------------------------
-// Ortak mobil menü davranışı (header scroll/gizle-göster js/nav.js'de)
+// Ortak header/mobil menü davranışı (index.html'deki main.js ile aynı mantık)
 // ---------------------------------------------------------------
+const header = document.getElementById('siteHeader');
+if (header) {
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+}
 const navToggle = document.getElementById('navToggle');
 const mobileNav = document.getElementById('mobileNav');
 if (navToggle && mobileNav) {

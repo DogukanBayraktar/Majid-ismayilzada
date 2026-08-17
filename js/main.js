@@ -1,3 +1,5 @@
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
 const heroVisual = document.getElementById('heroVisual');
 const heroPlayBtn = document.getElementById('heroPlayBtn');
 heroPlayBtn.addEventListener('click', () => {
