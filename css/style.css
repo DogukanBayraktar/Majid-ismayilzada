@@ -1018,11 +1018,11 @@ section {
 }
 
 .ba-nav-prev {
-   left: 0;
+   left: -22px;
 }
 
 .ba-nav-next {
-   right: 0;
+   right: -22px;
 }
 
 .ba-slider-wrap {
@@ -2783,11 +2783,11 @@ footer {
    }
 
    .ba-nav-prev {
-      left: 0;
+      left: 4px;
    }
 
    .ba-nav-next {
-      right: 0;
+      right: 4px;
    }
 
    #contact .box {
