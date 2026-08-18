@@ -1,18 +1,3 @@
-// ---------------------------------------------------------------
-// Ortak mobil menü davranışı (header scroll/gizle-göster js/nav.js'de)
-// ---------------------------------------------------------------
-const navToggle = document.getElementById('navToggle');
-const mobileNav = document.getElementById('mobileNav');
-if (navToggle && mobileNav) {
-    navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('open');
-        mobileNav.classList.toggle('open');
-    });
-    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        mobileNav.classList.remove('open');
-    }));
-}
 
 // Scroll reveal
 const revealObserver = new IntersectionObserver((entries) => {

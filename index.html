@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 
 <body>
@@ -54,6 +54,7 @@
         <a href="#stories">Hikayeler</a>
         <a href="#video-stories">Videolar</a>
         <a href="#faq">S.S.S.</a>
+        <a href="#contact" class="mobile-cta">Randevu Al</a>
       </div>
     </div>
   </header>
@@ -71,7 +72,6 @@
       <div class="hero-visual" id="heroVisual" data-video-id="VIDEO_ID_BURAYA"
         style="--photo:url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1200')">
         <button class="play-btn" id="heroPlayBtn" aria-label="Videoyu oynat"></button>
-        
       </div>
     </div>
   </section>
@@ -242,24 +242,21 @@
       <div class="section-head">
         <span class="label">Öncesi / Sonrası</span>
         <h2>Sonuçlar, kelimelerden daha net konuşur.</h2>
-        <p>Kaydırıcıyı hareket ettirerek dönüşümü keşfedin.</p>
+        <p>Vakaları tek satırda kaydırarak dönüşümü keşfedin.</p>
       </div>
-      <div class="ba-slider" id="baSlider">
-        <div class="side before"><small>Öncesi</small><strong id="baBeforeLabel">Vaka 01</strong></div>
-        <div class="side after" id="afterSide"><small>Sonrası</small><strong id="baAfterLabel">Vaka 01</strong></div>
-        <div class="ba-label-l">ÖNCESİ</div>
-        <div class="ba-label-r">SONRASI</div>
-        <div class="ba-handle" id="baHandle"></div>
+      <div class="ba-slider-wrap">
         <button class="slider-btn ba-nav ba-nav-prev" id="baPrev" aria-label="Önceki vaka">←</button>
-        <button class="slider-btn ba-nav ba-nav-next" id="baNext" aria-label="Sonraki vaka">→</button>
-      </div>
-      <div class="ba-thumbs-row">
-        <div class="ba-thumbs" id="baThumbs">
-          <div class="ba-thumb active" data-case="Genel · Vaka 01">Genel · Vaka 01</div>
-          <div class="ba-thumb" data-case="Rinoplasti · Vaka 02">Rinoplasti · Vaka 02</div>
-          <div class="ba-thumb" data-case="Meme Estetiği · Vaka 03">Meme Estetiği · Vaka 03</div>
-          <div class="ba-thumb" data-case="Yüz Germe · Vaka 04">Yüz Germe · Vaka 04</div>
+        <div class="ba-track" id="baTrack">
+          <article class="ba-card"
+            style="--photo:url('https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=900')"></article>
+          <article class="ba-card"
+            style="--photo:url('https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=900')"></article>
+          <article class="ba-card"
+            style="--photo:url('https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900')"></article>
+          <article class="ba-card"
+            style="--photo:url('https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900')"></article>
         </div>
+        <button class="slider-btn ba-nav ba-nav-next" id="baNext" aria-label="Sonraki vaka">→</button>
       </div>
     </div>
   </section>
@@ -577,7 +574,7 @@
       </div>
     </div>
   </footer>
-  <script src="js/nav.js"></script>
+  <script src="js/nav.js?v=3"></script>
   <script src="data/blog-posts.js"></script>
   <script src="js/main.js"></script>
 </body>

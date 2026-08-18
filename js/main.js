@@ -1,6 +1,6 @@
 const heroVisual = document.getElementById('heroVisual');
 const heroPlayBtn = document.getElementById('heroPlayBtn');
-heroPlayBtn.addEventListener('click', () => {
+heroPlayBtn?.addEventListener('click', () => {
     const videoId = heroVisual.dataset.videoId;
     heroVisual.classList.add('video-active');
     heroVisual.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" title="Tanıtım Videosu" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
@@ -15,34 +15,6 @@ document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
         card.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     });
 });
-const navToggle = document.getElementById('navToggle');
-const mobileNav = document.getElementById('mobileNav');
-navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('open');
-    mobileNav.classList.toggle('open');
-});
-mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navToggle.classList.remove('open');
-    mobileNav.classList.remove('open');
-}));
-const slider = document.getElementById('baSlider');
-const afterSide = document.getElementById('afterSide');
-const handle = document.getElementById('baHandle');
-let dragging = false;
-function setPosition(clientX) {
-    const rect = slider.getBoundingClientRect();
-    let pct = ((clientX - rect.left) / rect.width) * 100;
-    pct = Math.max(2, Math.min(98, pct));
-    afterSide.style.clipPath = `inset(0 0 0 ${pct}%)`;
-    handle.style.left = pct + '%';
-}
-handle.addEventListener('mousedown', () => dragging = true);
-window.addEventListener('mouseup', () => dragging = false);
-window.addEventListener('mousemove', (e) => { if (dragging) setPosition(e.clientX); });
-handle.addEventListener('touchstart', () => dragging = true, { passive: true });
-window.addEventListener('touchend', () => dragging = false);
-window.addEventListener('touchmove', (e) => { if (dragging) setPosition(e.touches[0].clientX); }, { passive: true });
-slider.addEventListener('click', (e) => { if (e.target.closest('.ba-nav')) return; setPosition(e.clientX); });
 document.querySelectorAll('.faq-item').forEach(item => {
     const q = item.querySelector('.faq-q');
     const a = item.querySelector('.faq-a');
@@ -52,22 +24,16 @@ document.querySelectorAll('.faq-item').forEach(item => {
         if (!isOpen) { item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
     });
 });
-const baThumbs = document.querySelectorAll('#baThumbs .ba-thumb');
-const baBeforeLabel = document.getElementById('baBeforeLabel');
-const baAfterLabel = document.getElementById('baAfterLabel');
 const baPrev = document.getElementById('baPrev');
 const baNext = document.getElementById('baNext');
-let baIndex = 0;
-function setCase(i) {
-    baIndex = (i + baThumbs.length) % baThumbs.length;
-    baThumbs.forEach((t, idx) => t.classList.toggle('active', idx === baIndex));
-    const label = baThumbs[baIndex].dataset.case;
-    baBeforeLabel.textContent = label;
-    baAfterLabel.textContent = label;
+const baTrack = document.getElementById('baTrack');
+function baStep() {
+    const card = baTrack?.querySelector('.ba-card');
+    const gap = baTrack ? (parseFloat(getComputedStyle(baTrack).gap) || 18) : 18;
+    return card ? card.getBoundingClientRect().width + gap : (baTrack?.clientWidth || 0);
 }
-baThumbs.forEach((t, idx) => t.addEventListener('click', () => setCase(idx)));
-baPrev.addEventListener('click', () => setCase(baIndex - 1));
-baNext.addEventListener('click', () => setCase(baIndex + 1));
+baPrev?.addEventListener('click', () => baTrack?.scrollBy({ left: -baStep(), behavior: 'smooth' }));
+baNext?.addEventListener('click', () => baTrack?.scrollBy({ left: baStep(), behavior: 'smooth' }));
 function makeSlider(trackId, prevId, nextId, cardSelector) {
     const track = document.getElementById(trackId);
     const prev = document.getElementById(prevId);
@@ -85,7 +51,7 @@ makeSlider('storyTrack', 'storiesPrev', 'storiesNext', '.story-card');
 makeSlider('videoGallery', 'videoPrev', 'videoNext', '.video-card');
 // Scroll reveal animations
 const revealTargets = document.querySelectorAll(
-    '.hero-copy, .hero-actions, .hero-visual, .hero-stats .stat, .section-head, .service-card, .cred-card, .process-step, .safety-photo, .safety-card, .cert-card, .story-card, .video-card, .blog-card, .faq-item, .ba-slider, #contact .box'
+    '.hero-copy, .hero-actions, .hero-visual, .hero-stats .stat, .section-head, .service-card, .cred-card, .process-step, .safety-photo, .safety-card, .cert-card, .story-card, .video-card, .blog-card, .faq-item, .ba-slider-wrap, .ba-card, #contact .box'
 );
 revealTargets.forEach((el, i) => {
     el.classList.add('reveal');
