@@ -2603,4 +2603,82 @@ footer {
    .section-head-row {
       align-items: flex-start;
    }
+/* ==== Responsive Design ==== */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  .hero h1 {font-size: clamp(32px, 6vw, 48px);}
+  .hero p.lead {max-width: 100%;}
+  .hero-actions {justify-content: center;}
+  .hero .hero-copy {text-align: center;}
+}
+
+@media (max-width: 768px) {
+  .wrap {padding: 0 16px;}
+  .nav-links {display: none;}
+  .nav-toggle {display: flex;}
+  .hero {padding-top: 120px; padding-bottom: 48px;}
+  .hero-visual {aspect-ratio: 1/1;}
+  .hero .hero-copy {text-align: center; margin-bottom: 24px;}
+  .mobile-nav {display: flex; flex-direction: column;}
+  .foot-grid {grid-template-columns: 1fr; gap: 24px;}
+  .foot-top {align-items: center; text-align: center;}
+}
+
+@media (max-width: 480px) {
+  .hero h1 {font-size: clamp(28px, 8vw, 38px);}
+  .btn {padding: 12px 20px; font-size: 13px;}
+  .section-head h2 {font-size: clamp(24px,5vw,32px);}
+}
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  .hero h1 {font-size: clamp(32px, 6vw, 48px);}
+  .hero p.lead {max-width: 100%;}
+  .hero-actions {justify-content: center;}
+}
+
+@media (max-width: 768px) {
+  .wrap {padding: 0 16px;}
+  .nav-links {display: none;}
+  .nav-toggle {display: flex;}
+  .hero {padding-top: 120px; padding-bottom: 48px;}
+  .hero-visual {aspect-ratio: 1/1;}
+}
+
+@media (max-width: 480px) {
+  .hero h1 {font-size: clamp(28px, 8vw, 38px);}
+  .btn {padding: 12px 20px; font-size: 13px;}
+  .section-head h2 {font-size: clamp(24px,5vw,32px);}
+}
+
+/* ==== Responsive ayarlar: hizmet kartları ve footer ==== */
+@media (max-width: 1024px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .foot-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .foot-top {
+    align-items: center;
+    text-align: center;
+  }
+}
+
 }
