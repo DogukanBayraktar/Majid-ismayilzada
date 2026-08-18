@@ -114,7 +114,7 @@ ${post.excerpt ? `<p>${post.excerpt}</p>` : ''}
 <div class="article-cover"${coverStyle}></div>
 </div>
 </section>
-<section style="padding-top:0;padding-bottom:0;">
+<section style="padding-top:16px;padding-bottom:0;">
 <div class="wrap">
 <div class="article-body">${contentHtml}</div>
 <div class="article-share">

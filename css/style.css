@@ -424,8 +424,8 @@ nav {
    padding-bottom: 64px;
    background-color: transparent;
    background-image:
-      radial-gradient(circle at 15% 10%, rgba(176, 141, 104, 0.08), transparent 24%),
-      radial-gradient(circle at 80% 20%, rgba(227, 192, 149, 0.06), transparent 22%),
+      radial-gradient(75% 60% at 12% 8%, rgba(199, 156, 105, 0.42), transparent 62%),
+      radial-gradient(70% 55% at 90% 100%, rgba(199, 156, 105, 0.38), transparent 62%),
       linear-gradient(180deg, rgba(20, 19, 16, 0.12), rgba(20, 19, 16, 0.0));
    background-repeat: no-repeat;
    background-size: cover;
@@ -1056,32 +1056,14 @@ section {
    background-position: center;
    background-clip: padding-box;
    -webkit-mask-image: -webkit-radial-gradient(white, black);
-   min-height: 330px;
+   min-height: 600px;
    transition: .35s;
-}
-
-.ba-card::before {
-   content: '';
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 3px;
-   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-   transform: scaleX(0);
-   transform-origin: left;
-   transition: transform .4s;
-   z-index: 2;
 }
 
 .ba-card:hover {
    border-color: var(--accent);
    transform: translateY(-6px);
    box-shadow: 0 14px 32px rgba(176, 141, 104, 0.22);
-}
-
-.ba-card:hover::before {
-   transform: scaleX(1);
 }
 
 /* CERTIFICATES */
@@ -1518,6 +1500,11 @@ section {
    text-align: center;
 }
 
+.section-head.center p {
+   margin-left: auto;
+   margin-right: auto;
+}
+
 #faq {
    text-align: center;
 }
@@ -1662,7 +1649,7 @@ footer {
 }
 
 .foot-brand img {
-   height: 184px;
+   height: 120px;
    width: auto;
    display: block;
    margin-bottom: 18px;
@@ -1784,8 +1771,8 @@ footer {
    Blog Detay sayfası (blog-detay.html)
    ===================================================== */
 .page-hero {
-   padding-top: 150px;
-   padding-bottom: 44px;
+   padding-top: 170px;
+   padding-bottom: 16px;
 }
 
 .page-hero .breadcrumb {
@@ -1893,8 +1880,8 @@ footer {
 
 /* ARTICLE (blog-detay.html) */
 .article-hero {
-   padding-top: 150px;
-   padding-bottom: 44px;
+   padding-top: 170px;
+   padding-bottom: 16px;
 }
 
 .article-hero .breadcrumb {
@@ -2199,7 +2186,7 @@ footer {
 }
 
 .result-photo {
-   aspect-ratio: 4/3;
+   height: 500px;
    background-size: cover;
    background-position: center;
    background-color: var(--panel-2);
@@ -2343,6 +2330,10 @@ footer {
       flex: 0 0 calc(50% - 10px);
    }
 
+   .result-photo {
+      height: 380px;
+   }
+
    .service-videos .videos-grid {
       grid-template-columns: 1fr;
    }
@@ -2359,6 +2350,10 @@ footer {
 @media (max-width: 560px) {
    .result-photo-card {
       flex: 0 0 calc(85% - 10px);
+   }
+
+   .result-photo {
+      height: 300px;
    }
 }
 
@@ -2800,7 +2795,7 @@ footer {
    }
 
    .foot-brand img {
-      height: 144px;
+      height: 100px;
    }
 
    .foot-bottom {
