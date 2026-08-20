@@ -248,13 +248,17 @@
         <button class="slider-btn ba-nav ba-nav-prev" id="baPrev" aria-label="Önceki vaka">←</button>
         <div class="ba-track" id="baTrack">
           <article class="ba-card"
-            style="--photo:url('https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=900')"></article>
+            style="--photo:url('https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=900')">
+          </article>
           <article class="ba-card"
-            style="--photo:url('https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=900')"></article>
+            style="--photo:url('https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=900')">
+          </article>
           <article class="ba-card"
-            style="--photo:url('https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900')"></article>
+            style="--photo:url('https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900')">
+          </article>
           <article class="ba-card"
-            style="--photo:url('https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900')"></article>
+            style="--photo:url('https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900')">
+          </article>
         </div>
         <button class="slider-btn ba-nav ba-nav-next" id="baNext" aria-label="Sonraki vaka">→</button>
       </div>
@@ -307,6 +311,117 @@
       </div>
     </div>
   </section>
+  <section id="hospital">
+    <!--
+      Hastane fotoğraf slider'ı: gerçek fotoğraf eklemek için ilgili
+      .hospital-slide div'inin --photo değerini değiştirin. Slayt
+      eklemek/çıkarmak için hem burada hem de .hospital-dots içine
+      yeni bir .hospital-dot eklemek yeterli (js/main.js otomatik uyum sağlar).
+    -->
+    <div class="wrap hospital-layout">
+      <div class="about-copy">
+        <span class="label">Hastanemiz</span>
+        <h3>Cerrahi kadar, tedavi ortamı da güven vermeli.</h3>
+        <p>Operasyonlarımız, tam donanımlı ameliyathaneler ve 7/24 yoğun bakım desteğine sahip özel bir hastanede
+          gerçekleştirilir. Uluslararası akreditasyon kriterlerine uygun hijyen protokolleri, sürecin her aşamasında
+          titizlikle uygulanır.</p>
+        <p>Hasta konforu da tıbbi süreç kadar önemlidir: özel hasta odaları, deneyimli hemşirelik ekibi ve çok dilli
+          uluslararası hasta birimi; hem yurt içinden hem yurt dışından gelen hastalarımız için sorunsuz bir deneyim
+          sağlar.</p>
+        <div class="credentials">
+          <div class="cred-card"><b>Tam Donanımlı Ameliyathane</b><span>İleri teknoloji cerrahi ekipman</span></div>
+          <div class="cred-card"><b>7/24 Yoğun Bakım</b><span>Uzman anestezi ve hemşirelik ekibi</span></div>
+          <div class="cred-card"><b>Özel Hasta Odaları</b><span>Konforlu, sessiz iyileşme ortamı</span></div>
+          <div class="cred-card"><b>Uluslararası Hasta Birimi</b><span>Çok dilli koordinasyon desteği</span></div>
+        </div>
+      </div>
+      <div class="hospital-slider-wrap" id="hospitalSliderWrap">
+        <div class="hospital-slider" id="hospitalSlider">
+          <div class="hospital-slide is-active"
+            style="--photo:url('https://images.pexels.com/photos/33812023/pexels-photo-33812023.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          </div>
+          <div class="hospital-slide"
+            style="--photo:url('https://images.pexels.com/photos/8459996/pexels-photo-8459996.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          </div>
+          <div class="hospital-slide"
+            style="--photo:url('https://images.pexels.com/photos/16571733/pexels-photo-16571733.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          </div>
+        </div>
+        <button class="slider-btn hospital-nav hospital-prev" id="hospitalPrev" aria-label="Önceki görsel">←</button>
+        <button class="slider-btn hospital-nav hospital-next" id="hospitalNext" aria-label="Sonraki görsel">→</button>
+        <div class="hospital-dots" id="hospitalDots">
+          <span class="hospital-dot is-active" data-index="0"></span>
+          <span class="hospital-dot" data-index="1"></span>
+          <span class="hospital-dot" data-index="2"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="istanbul">
+    <!--
+      İstanbul görsel slider'ı: gerçek fotoğraf eklemek için ilgili
+      .istanbul-slide div'inin --photo değerini değiştirin, slayt
+      eklemek/çıkarmak için hem burada hem de js/main.js içindeki
+      initIstanbulSlider fonksiyonunun otomatik uyum sağlaması yeterlidir.
+    -->
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">İstanbul</span>
+        <h2>Tedavi kadar, şehir de sürecin bir parçası.</h2>
+        <p>İki kıtayı birleştiren İstanbul; kolay ulaşım, konforlu konaklama ve iyileşme sürecinde huzur bulacağınız
+          bir atmosfer sunar.</p>
+      </div>
+      <div class="istanbul-slider-wrap" id="istanbulSliderWrap">
+        <div class="istanbul-slider" id="istanbulSlider">
+          <div class="istanbul-slide"
+            style="--photo:url('https://images.pexels.com/photos/30339388/pexels-photo-30339388.jpeg?auto=compress&cs=tinysrgb&w=1400')">
+          </div>
+          <div class="istanbul-slide"
+            style="--photo:url('https://images.pexels.com/photos/29069663/pexels-photo-29069663.jpeg?auto=compress&cs=tinysrgb&w=1400')">
+          </div>
+          <div class="istanbul-slide"
+            style="--photo:url('https://images.pexels.com/photos/10854694/pexels-photo-10854694.jpeg?auto=compress&cs=tinysrgb&w=1400')">
+          </div>
+        </div>
+        <button class="slider-btn istanbul-nav istanbul-prev" id="istanbulPrev" aria-label="Önceki görsel">←</button>
+        <button class="slider-btn istanbul-nav istanbul-next" id="istanbulNext" aria-label="Sonraki görsel">→</button>
+        <div class="istanbul-dots" id="istanbulDots">
+          <span class="istanbul-dot is-active" data-index="0"></span>
+          <span class="istanbul-dot" data-index="1"></span>
+          <span class="istanbul-dot" data-index="2"></span>
+        </div>
+      </div>
+      <div class="istanbul-features">
+        <div class="istanbul-feature">
+          <span class="num">01</span>
+          <h4>Kolay Ulaşım</h4>
+          <p>Onlarca ülkeden doğrudan uçuşlarla İstanbul Havalimanı'na kolayca ulaşılır; havalimanı-klinik transferi
+            sizin için organize edilir.</p>
+        </div>
+        <div class="istanbul-feature">
+          <span class="num">02</span>
+          <h4>Konforlu Konaklama</h4>
+          <p>Klinik yakınında, iyileşme sürecine uygun sessiz ve konforlu otel seçenekleriyle konaklama organizasyonu
+            yapılır.</p>
+        </div>
+        <div class="istanbul-feature">
+          <span class="num">03</span>
+          <h4>Tarihi & Kültürel Doku</h4>
+          <p>Ayasofya, Boğaz ve tarihi yarımada; iyileşme sürecinin dışında keşfedebileceğiniz zengin bir şehir
+            deneyimi sunar.</p>
+        </div>
+        <div class="istanbul-feature">
+          <span class="num">04</span>
+          <h4>Uygun Fiyat Avantajı</h4>
+          <p>Avrupa ve Amerika'daki aynı kalitedeki tedavilere kıyasla çok daha uygun maliyetli bir seçenek sunar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
   <section id="stories">
     <div class="wrap">
       <div class="section-head-row">

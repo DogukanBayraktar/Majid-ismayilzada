@@ -2156,6 +2156,271 @@ footer {
    max-width: 580px;
 }
 
+/* HASTANE — panel'li bölüm, çoklu fotoğraf kolajı ile */
+#hospital {
+   background: var(--panel);
+   border-radius: var(--r-lg);
+   margin: 0 20px;
+   padding: 110px 60px;
+}
+
+.hospital-layout {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 48px;
+   align-items: stretch;
+}
+
+.hospital-slider-wrap {
+   position: relative;
+   min-height: 420px;
+   border-radius: var(--r-md);
+   border: 1px solid var(--line);
+   overflow: hidden;
+}
+
+.hospital-slider {
+   position: relative;
+   width: 100%;
+   height: 100%;
+}
+
+.hospital-slide {
+   position: absolute;
+   inset: 0;
+   opacity: 0;
+   transition: opacity 1.1s ease;
+   background-image:
+      linear-gradient(180deg, rgba(10, 9, 7, 0.05) 0%, rgba(10, 9, 7, 0.4) 100%),
+      var(--photo, linear-gradient(160deg, #26221c, #181510));
+   background-size: cover;
+   background-position: center;
+}
+
+.hospital-slide.is-active {
+   opacity: 1;
+}
+
+.hospital-nav {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   z-index: 2;
+}
+
+.hospital-prev {
+   left: 16px;
+}
+
+.hospital-next {
+   right: 16px;
+}
+
+.hospital-dots {
+   position: absolute;
+   left: 50%;
+   bottom: 18px;
+   transform: translateX(-50%);
+   display: flex;
+   gap: 8px;
+   z-index: 2;
+}
+
+.hospital-dot {
+   width: 8px;
+   height: 8px;
+   border-radius: 50%;
+   background: rgba(238, 236, 229, 0.45);
+   cursor: pointer;
+   transition: .25s;
+   border: none;
+}
+
+.hospital-dot.is-active {
+   background: var(--accent-2);
+   width: 22px;
+   border-radius: 5px;
+}
+
+@media(max-width:920px) {
+   .hospital-layout {
+      grid-template-columns: 1fr;
+   }
+
+   .hospital-slider-wrap {
+      min-height: 0;
+      aspect-ratio: 16/10;
+   }
+}
+
+@media(max-width:640px) {
+   .hospital-slider-wrap {
+      aspect-ratio: 4/3;
+   }
+}
+
+/* İSTANBUL — üstte tam genişlik görsel slider, altta numaralı özellik şeridi */
+.istanbul-slider-wrap {
+   position: relative;
+   margin-bottom: 40px;
+}
+
+.istanbul-slider {
+   display: flex;
+   overflow-x: auto;
+   scroll-snap-type: x mandatory;
+   scrollbar-width: none;
+   border-radius: var(--r-md);
+   border: 1px solid var(--line);
+}
+
+.istanbul-slider::-webkit-scrollbar {
+   display: none;
+}
+
+.istanbul-slide {
+   flex: 0 0 100%;
+   scroll-snap-align: start;
+   aspect-ratio: 21/9;
+   min-height: 260px;
+   background-image:
+      radial-gradient(circle at 25% 20%, rgba(176, 141, 104, 0.15), transparent 55%),
+      linear-gradient(180deg, rgba(10, 9, 7, 0.05) 0%, rgba(10, 9, 7, 0.45) 100%),
+      var(--photo, linear-gradient(160deg, #26221c, #181510));
+   background-size: cover;
+   background-position: center;
+}
+
+.istanbul-nav {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   z-index: 2;
+}
+
+.istanbul-prev {
+   left: 16px;
+}
+
+.istanbul-next {
+   right: 16px;
+}
+
+.istanbul-dots {
+   position: absolute;
+   left: 50%;
+   bottom: 16px;
+   transform: translateX(-50%);
+   display: flex;
+   gap: 8px;
+   z-index: 2;
+}
+
+.istanbul-dot {
+   width: 8px;
+   height: 8px;
+   border-radius: 50%;
+   background: rgba(238, 236, 229, 0.4);
+   cursor: pointer;
+   transition: .25s;
+}
+
+.istanbul-dot.is-active {
+   background: var(--accent-2);
+   width: 22px;
+   border-radius: 5px;
+}
+
+.istanbul-features {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+}
+
+.istanbul-feature {
+   padding: 4px 24px;
+   border-left: 1px solid var(--line);
+}
+
+.istanbul-feature:first-child {
+   padding-left: 0;
+   border-left: none;
+}
+
+.istanbul-feature .num {
+   display: block;
+   font-size: 13px;
+   font-weight: 700;
+   letter-spacing: 0.08em;
+   color: var(--accent);
+   margin-bottom: 14px;
+}
+
+.istanbul-feature h4 {
+   font-size: 16px;
+   font-weight: 600;
+   margin-bottom: 10px;
+}
+
+.istanbul-feature p {
+   font-size: 13px;
+   color: var(--ink-dim);
+}
+
+@media(max-width:920px) {
+   .istanbul-features {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 24px;
+   }
+
+   .istanbul-feature:nth-child(2) {
+      border-left: 1px solid var(--line);
+   }
+
+   .istanbul-feature:nth-child(odd) {
+      padding-left: 0;
+      border-left: none;
+   }
+
+   .istanbul-feature:nth-child(even) {
+      padding-left: 24px;
+   }
+
+   .istanbul-slide {
+      aspect-ratio: 16/9;
+   }
+}
+
+@media(max-width:640px) {
+   .istanbul-features {
+      grid-template-columns: 1fr;
+   }
+
+   .istanbul-feature,
+   .istanbul-feature:nth-child(2),
+   .istanbul-feature:nth-child(odd),
+   .istanbul-feature:nth-child(even) {
+      padding-left: 0;
+      border-left: none;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+   }
+
+   .istanbul-feature:last-child {
+      border-bottom: none;
+   }
+
+   .istanbul-nav,
+   .hospital-nav {
+      width: 38px;
+      height: 38px;
+   }
+
+   .istanbul-slide {
+      aspect-ratio: 4/3;
+      min-height: 220px;
+   }
+}
+
 /* GÖRSEL SONUÇLAR — 3'lü slider */
 .results-slider-wrap {
    position: relative;
@@ -2521,8 +2786,9 @@ footer {
    #about,
    #process,
    #stories,
+   #hospital,
    .op-steps {
-      padding: var(--panel-section-y) 24px;
+      padding: var(--panel-section-y) 0;
       margin: 0 12px;
    }
 
@@ -2706,8 +2972,9 @@ footer {
    #about,
    #process,
    #stories,
+   #hospital,
    .op-steps {
-      padding: var(--panel-section-y) 18px;
+      padding: var(--panel-section-y) 0;
       margin: 0 8px;
       border-radius: var(--r-md);
    }

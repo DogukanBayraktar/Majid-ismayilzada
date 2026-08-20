@@ -49,9 +49,116 @@ function makeSlider(trackId, prevId, nextId, cardSelector) {
 }
 makeSlider('storyTrack', 'storiesPrev', 'storiesNext', '.story-card');
 makeSlider('videoGallery', 'videoPrev', 'videoNext', '.video-card');
+
+// ---------------------------------------------------------------
+// HASTANE: fotoğraf alanı — otomatik geçişli (fade) slider.
+// Fareyle üzerine gelindiğinde durur, noktalara tıklayarak manuel
+// geçiş de yapılabilir.
+// ---------------------------------------------------------------
+(function initHospitalSlider() {
+    const wrap = document.getElementById('hospitalSliderWrap');
+    const slider = document.getElementById('hospitalSlider');
+    const dotsWrap = document.getElementById('hospitalDots');
+    const prev = document.getElementById('hospitalPrev');
+    const next = document.getElementById('hospitalNext');
+    if (!wrap || !slider || !dotsWrap) return;
+    const slides = Array.from(slider.querySelectorAll('.hospital-slide'));
+    const dots = Array.from(dotsWrap.querySelectorAll('.hospital-dot'));
+    if (slides.length < 2) return;
+    let index = 0;
+    let timer = null;
+
+    function show(i) {
+        index = (i + slides.length) % slides.length;
+        slides.forEach((s, n) => s.classList.toggle('is-active', n === index));
+        dots.forEach((d, n) => d.classList.toggle('is-active', n === index));
+    }
+
+    function start() {
+        stop();
+        timer = setInterval(() => show(index + 1), 4500);
+    }
+
+    function stop() {
+        if (timer) clearInterval(timer);
+        timer = null;
+    }
+
+    dots.forEach(dot => dot.addEventListener('click', () => {
+        show(Number(dot.dataset.index));
+        start();
+    }));
+    prev?.addEventListener('click', () => {
+        show(index - 1);
+        start();
+    });
+    next?.addEventListener('click', () => {
+        show(index + 1);
+        start();
+    });
+    wrap.addEventListener('mouseenter', stop);
+    wrap.addEventListener('mouseleave', start);
+
+    start();
+})();
+
+// ---------------------------------------------------------------
+// İSTANBUL: tam genişlik görsel slider — ok butonları, nokta
+// göstergeleri ve kaydırma ile senkronize çalışır.
+// ---------------------------------------------------------------
+(function initIstanbulSlider() {
+    const wrap = document.getElementById('istanbulSliderWrap');
+    const slider = document.getElementById('istanbulSlider');
+    const prev = document.getElementById('istanbulPrev');
+    const next = document.getElementById('istanbulNext');
+    const dotsWrap = document.getElementById('istanbulDots');
+    if (!slider || !dotsWrap) return;
+    const slideCount = slider.querySelectorAll('.istanbul-slide').length;
+    const dots = Array.from(dotsWrap.querySelectorAll('.istanbul-dot'));
+    let timer = null;
+
+    function currentIndex() {
+        return Math.round(slider.scrollLeft / slider.clientWidth);
+    }
+
+    function setActiveDot(index) {
+        dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+    }
+
+    function goTo(index) {
+        const wrapped = (index + slideCount) % slideCount;
+        slider.scrollTo({ left: wrapped * slider.clientWidth, behavior: 'smooth' });
+    }
+
+    function start() {
+        stop();
+        if (slideCount < 2) return;
+        timer = setInterval(() => goTo(currentIndex() + 1), 4500);
+    }
+
+    function stop() {
+        if (timer) clearInterval(timer);
+        timer = null;
+    }
+
+    prev?.addEventListener('click', () => { goTo(currentIndex() - 1); start(); });
+    next?.addEventListener('click', () => { goTo(currentIndex() + 1); start(); });
+    dots.forEach(dot => dot.addEventListener('click', () => { goTo(Number(dot.dataset.index)); start(); }));
+
+    let scrollTimer;
+    slider.addEventListener('scroll', () => {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => setActiveDot(currentIndex()), 80);
+    });
+
+    wrap?.addEventListener('mouseenter', stop);
+    wrap?.addEventListener('mouseleave', start);
+
+    start();
+})();
 // Scroll reveal animations
 const revealTargets = document.querySelectorAll(
-    '.hero-copy, .hero-actions, .hero-visual, .hero-stats .stat, .section-head, .service-card, .cred-card, .process-step, .safety-photo, .safety-card, .cert-card, .story-card, .video-card, .blog-card, .faq-item, .ba-slider-wrap, .ba-card, #contact .box'
+    '.hero-copy, .hero-actions, .hero-visual, .hero-stats .stat, .section-head, .service-card, .cred-card, .process-step, .safety-photo, .safety-card, .cert-card, .story-card, .video-card, .blog-card, .faq-item, .ba-slider-wrap, .ba-card, #contact .box, .hospital-slider-wrap, .istanbul-slider-wrap, .istanbul-feature'
 );
 revealTargets.forEach((el, i) => {
     el.classList.add('reveal');
