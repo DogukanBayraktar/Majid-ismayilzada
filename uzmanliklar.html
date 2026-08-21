@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Hizmet — Doç. Dr. Majid İsmayilzada</title>
-    <meta name="description" id="pageDescription" content="Plastik, rekonstrüktif ve estetik cerrahi hizmetleri.">
+    <title>Uzmanlık Alanları — Doç. Dr. Majid İsmayilzada</title>
+    <meta name="description"
+        content="Plastik, rekonstrüktif ve estetik cerrahide uzmanlık alanları: meme rekonstrüksiyonu, liposuction, annelik estetiği, yağ transferi ve endoskopik alın germe.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -21,7 +22,7 @@
                         style="height:100px;width:auto;display:block;"></a>
                 <div class="nav-links">
                     <a href="index.html#about">Hakkımda</a>
-                    <a href="index.html#services">Uzmanlık</a>
+                    <a href="uzmanliklar.html" style="color:var(--ink);">Uzmanlık</a>
                     <a href="blog.html">Blog</a>
                     <a href="iletisim.html">İletişim</a>
                 </div>
@@ -34,7 +35,7 @@
             </nav>
             <div class="mobile-nav" id="mobileNav">
                 <a href="index.html#about">Hakkımda</a>
-                <a href="index.html#services">Uzmanlık</a>
+                <a href="uzmanliklar.html">Uzmanlık</a>
                 <a href="blog.html">Blog</a>
                 <a href="iletisim.html">İletişim</a>
                 <a href="iletisim.html" class="mobile-cta">Randevu Al</a>
@@ -42,7 +43,23 @@
         </div>
     </header>
 
-    <div id="serviceRoot"></div>
+    <section class="page-hero">
+        <div class="wrap">
+            <div class="breadcrumb"><a href="index.html">Ana Sayfa</a><span>→</span><span>Uzmanlık</span></div>
+            <div class="section-head">
+                <span class="label">Uzmanlık Alanları</span>
+                <h2>Her operasyon, kişiye özel bir plandır.</h2>
+                <p>Yüz, burun ve vücut estetiğinde, konsültasyondan iyileşme sürecine kadar bütünsel bir yaklaşım.
+                    Tüm uzmanlık alanlarımızı aşağıda inceleyebilirsiniz.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top:0;">
+        <div class="wrap">
+            <div class="service-grid" id="servicesAllTrack"></div>
+        </div>
+    </section>
 
     <section id="contact">
         <div class="wrap">
@@ -78,7 +95,7 @@
                             <div class="foot-column">
                                 <h5>Menü</h5>
                                 <a href="index.html#about">Hakkımda</a>
-                                <a href="index.html#services">Uzmanlık</a>
+                                <a href="uzmanliklar.html">Uzmanlık</a>
                                 <a href="index.html#process">Süreç</a>
                                 <a href="index.html#results">Sonuçlar</a>
                                 <a href="blog.html">Blog</a>
@@ -107,12 +124,10 @@
                     </div>
                 </div>
             </div>
-        </div>
     </footer>
-
     <script src="js/nav.js"></script>
     <script src="data/services.js"></script>
-    <script src="js/services-detail.js"></script>
+    <script src="js/services-list.js"></script>
 </body>
 
 </html>
