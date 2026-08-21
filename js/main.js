@@ -1,10 +1,183 @@
-const heroVisual = document.getElementById('heroVisual');
-const heroPlayBtn = document.getElementById('heroPlayBtn');
-heroPlayBtn?.addEventListener('click', () => {
-    const videoId = heroVisual.dataset.videoId;
-    heroVisual.classList.add('video-active');
-    heroVisual.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" title="Tanıtım Videosu" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-});
+// Hero iletişim formu — doğrulama + FormSubmit.co ile doğrudan e-postaya gönderim
+const heroForm = document.getElementById('heroForm');
+if (heroForm) {
+    const adSoyadInput = document.getElementById('adSoyad');
+    const alanKoduSelect = document.getElementById('alanKodu'); // gizli input: seçili alan kodunu tutar
+    const telefonInput = document.getElementById('telefon');
+    const epostaInput = document.getElementById('eposta');
+    const islemSelect = document.getElementById('islem');
+
+    // Özel alan kodu dropdown'ı (bayrak ikonları flagcdn.com üzerinden — native select'te bayrak emojisi Windows'ta render olmuyor)
+    const phoneCodeDropdown = document.getElementById('phoneCodeDropdown');
+    const phoneCodeBtn = document.getElementById('phoneCodeBtn');
+    const phoneCodeList = document.getElementById('phoneCodeList');
+    const phoneCodeFlag = document.getElementById('phoneCodeFlag');
+    const phoneCodeText = document.getElementById('phoneCodeText');
+
+    const closePhoneCodeList = () => {
+        phoneCodeList.hidden = true;
+        phoneCodeDropdown.classList.remove('open');
+        phoneCodeBtn.setAttribute('aria-expanded', 'false');
+    };
+    const openPhoneCodeList = () => {
+        phoneCodeList.hidden = false;
+        phoneCodeDropdown.classList.add('open');
+        phoneCodeBtn.setAttribute('aria-expanded', 'true');
+    };
+
+    phoneCodeBtn.addEventListener('click', () => {
+        phoneCodeList.hidden ? openPhoneCodeList() : closePhoneCodeList();
+    });
+
+    phoneCodeList.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', () => {
+            phoneCodeList.querySelector('li.active')?.classList.remove('active');
+            li.classList.add('active');
+            const code = li.dataset.code;
+            const country = li.dataset.country;
+            alanKoduSelect.value = code;
+            phoneCodeFlag.src = `https://flagcdn.com/w20/${country}.png`;
+            phoneCodeText.textContent = code;
+            closePhoneCodeList();
+            telefonInput.value = '';
+            telefonInput.placeholder = code === '+90' ? '5XX XXX XX XX' : 'Telefon numarası';
+            clearError(telefonInput);
+            telefonInput.focus();
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!phoneCodeDropdown.contains(e.target)) closePhoneCodeList();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePhoneCodeList();
+    });
+
+    const showError = (input, message) => {
+        const row = input.closest('.form-row');
+        const errorEl = row.querySelector('.field-error');
+        row.classList.add('has-error');
+        errorEl.textContent = message;
+    };
+    const clearError = (input) => {
+        const row = input.closest('.form-row');
+        row.classList.remove('has-error');
+        row.querySelector('.field-error').textContent = '';
+    };
+
+    // Telefon: sadece rakam. +90 seçiliyken "5XX XXX XX XX" formatı, diğer kodlarda serbest gruplama
+    telefonInput.addEventListener('input', () => {
+        const isTurkey = alanKoduSelect.value === '+90';
+        let digits = telefonInput.value.replace(/\D/g, '').slice(0, isTurkey ? 10 : 14);
+        let formatted = digits;
+        if (isTurkey) {
+            if (digits.length > 3 && digits.length <= 6) {
+                formatted = `${digits.slice(0, 3)} ${digits.slice(3)}`;
+            } else if (digits.length > 6 && digits.length <= 8) {
+                formatted = `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
+            } else if (digits.length > 8) {
+                formatted = `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6, 8)} ${digits.slice(8)}`;
+            }
+        } else {
+            formatted = digits.replace(/(\d{3})(?=\d)/g, '$1 ');
+        }
+        telefonInput.value = formatted;
+    });
+
+    const validateAdSoyad = () => {
+        const value = adSoyadInput.value.trim();
+        if (value.length < 3) {
+            showError(adSoyadInput, 'Lütfen adınızı ve soyadınızı girin.');
+            return false;
+        }
+        if (!/^[A-Za-zÇĞİıÖŞÜçğıöşü\s]+$/.test(value)) {
+            showError(adSoyadInput, 'İsim yalnızca harflerden oluşmalıdır.');
+            return false;
+        }
+        clearError(adSoyadInput);
+        return true;
+    };
+
+    const validateTelefon = () => {
+        const isTurkey = alanKoduSelect.value === '+90';
+        const digits = telefonInput.value.replace(/\D/g, '');
+        if (isTurkey) {
+            if (digits.length !== 10) {
+                showError(telefonInput, 'Telefon numarası 10 haneli olmalıdır (5XX XXX XX XX).');
+                return false;
+            }
+            if (digits[0] !== '5') {
+                showError(telefonInput, 'Lütfen 5 ile başlayan bir cep telefonu numarası girin.');
+                return false;
+            }
+        } else {
+            if (digits.length < 6 || digits.length > 14) {
+                showError(telefonInput, 'Lütfen geçerli bir telefon numarası girin.');
+                return false;
+            }
+        }
+        clearError(telefonInput);
+        return true;
+    };
+
+    const validateEposta = () => {
+        const value = epostaInput.value.trim();
+        if (value === '') { clearError(epostaInput); return true; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            showError(epostaInput, 'Geçerli bir e-posta adresi girin.');
+            return false;
+        }
+        clearError(epostaInput);
+        return true;
+    };
+
+    const validateIslem = () => {
+        if (!islemSelect.value) {
+            showError(islemSelect, 'Lütfen ilgilendiğiniz işlemi seçin.');
+            return false;
+        }
+        clearError(islemSelect);
+        return true;
+    };
+
+    adSoyadInput.addEventListener('blur', validateAdSoyad);
+    telefonInput.addEventListener('blur', validateTelefon);
+    epostaInput.addEventListener('blur', validateEposta);
+    islemSelect.addEventListener('change', validateIslem);
+
+    heroForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const validations = [validateAdSoyad(), validateTelefon(), validateEposta(), validateIslem()];
+        if (validations.includes(false)) {
+            heroForm.querySelector('.form-row.has-error input, .form-row.has-error select')?.focus();
+            return;
+        }
+        const submitBtn = heroForm.querySelector('.form-submit');
+        const submitLabel = submitBtn.querySelector('span:first-child');
+        const originalText = submitLabel.textContent;
+        submitBtn.disabled = true;
+        submitLabel.textContent = 'Gönderiliyor...';
+        try {
+            const formData = new FormData(heroForm);
+            formData.set('telefon', `${alanKoduSelect.value} ${telefonInput.value}`);
+            const response = await fetch(heroForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+            if (!response.ok) throw new Error('Gönderim başarısız');
+            submitLabel.textContent = 'Gönderildi ✓';
+            heroForm.reset();
+        } catch (err) {
+            submitLabel.textContent = 'Bir hata oluştu, tekrar deneyin';
+        } finally {
+            setTimeout(() => {
+                submitLabel.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 3000);
+        }
+    });
+}
 // Hasta video yorumları galerisi — her kart kendi YouTube videosunu oynatır
 document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
     card.addEventListener('click', () => {
@@ -158,7 +331,7 @@ makeSlider('videoGallery', 'videoPrev', 'videoNext', '.video-card');
 })();
 // Scroll reveal animations
 const revealTargets = document.querySelectorAll(
-    '.hero-copy, .hero-actions, .hero-visual, .hero-stats .stat, .section-head, .service-card, .cred-card, .process-step, .safety-photo, .safety-card, .cert-card, .story-card, .video-card, .blog-card, .faq-item, .ba-slider-wrap, .ba-card, #contact .box, .hospital-slider-wrap, .istanbul-slider-wrap, .istanbul-feature'
+    '.hero-copy, .hero-actions, .hero-form-wrap, .hero-stats .stat, .section-head, .service-card, .cred-card, .process-step, .safety-photo, .safety-card, .cert-card, .story-card, .video-card, .blog-card, .faq-item, .ba-slider-wrap, .ba-card, #contact .box, .hospital-slider-wrap, .istanbul-slider-wrap, .istanbul-feature'
 );
 revealTargets.forEach((el, i) => {
     el.classList.add('reveal');

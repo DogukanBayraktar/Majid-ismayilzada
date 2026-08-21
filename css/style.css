@@ -85,14 +85,13 @@ header {
    right: 0;
    z-index: 100;
    padding: 16px 0;
-   border-bottom: 1px solid transparent;
-   transition: background .35s, backdrop-filter .35s, border-color .35s, transform .35s ease;
+   background: linear-gradient(180deg, rgba(14, 13, 11, 0.55) 0%, rgba(14, 13, 11, 0) 100%);
+   transition: background .35s, backdrop-filter .35s, transform .35s ease;
 }
 
 header.scrolled {
    background: rgba(20, 19, 16, 0.85);
    backdrop-filter: blur(14px);
-   border-bottom-color: var(--line);
 }
 
 header.hide {
@@ -417,21 +416,45 @@ nav {
 
 /* HERO */
 .hero {
+   position: relative;
    min-height: 100vh;
    display: flex;
    align-items: center;
    padding-top: 172px;
    padding-bottom: 64px;
-   background-color: transparent;
+   overflow: hidden;
+   isolation: isolate;
+}
+
+.hero-bg {
+   position: absolute;
+   inset: 0;
+   z-index: -2;
+}
+
+.hero-bg-video {
+   position: relative;
+   z-index: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+   display: block;
+}
+
+.hero-overlay {
+   position: absolute;
+   inset: 0;
+   z-index: 1;
    background-image:
-      radial-gradient(75% 60% at 12% 8%, rgba(199, 156, 105, 0.42), transparent 62%),
-      radial-gradient(70% 55% at 90% 100%, rgba(199, 156, 105, 0.38), transparent 62%),
-      linear-gradient(180deg, rgba(20, 19, 16, 0.12), rgba(20, 19, 16, 0.0));
-   background-repeat: no-repeat;
-   background-size: cover;
+      radial-gradient(75% 60% at 12% 8%, rgba(199, 156, 105, 0.22), transparent 62%),
+      radial-gradient(70% 55% at 90% 100%, rgba(199, 156, 105, 0.18), transparent 62%),
+      linear-gradient(180deg, rgba(10, 9, 7, 0.82) 0%, rgba(10, 9, 7, 0.68) 45%, rgba(10, 9, 7, 0.92) 100%);
 }
 
 .hero-grid {
+   position: relative;
+   z-index: 1;
    display: grid;
    grid-template-columns: 1fr 0.92fr;
    gap: 64px;
@@ -490,34 +513,17 @@ nav {
    color: var(--ink-dim);
 }
 
-.hero-visual {
-   aspect-ratio: 1/1.08;
+.hero-form-wrap {
    border-radius: var(--r-lg);
-   background-image:
-      radial-gradient(circle at 30% 25%, rgba(176, 141, 104, 0.18), transparent 55%),
-      linear-gradient(180deg, rgba(10, 9, 7, 0.1) 0%, rgba(10, 9, 7, 0.55) 100%),
-      var(--photo, linear-gradient(160deg, #201d18, #161410 65%));
-   background-size: cover;
-   background-position: center;
-   background-clip: padding-box;
-   -webkit-mask-image: -webkit-radial-gradient(white, black);
-   border: 1px solid var(--line);
-   position: relative;
-   overflow: hidden;
-   display: flex;
-   align-items: flex-end;
-}
-
-.hero-visual .chip {
-   margin: 24px;
-   padding: 16px 20px;
-   border-radius: var(--r-sm);
    background: rgba(20, 19, 16, 0.55);
-   backdrop-filter: blur(8px);
-   border: 1px solid var(--line);
+   backdrop-filter: blur(14px);
+   -webkit-backdrop-filter: blur(14px);
+   border: 1px solid rgba(238, 236, 229, 0.14);
+   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+   padding: 36px;
 }
 
-.hero-visual .chip small {
+.hero-form .label {
    color: var(--accent);
    font-size: 11px;
    letter-spacing: .08em;
@@ -525,61 +531,240 @@ nav {
    font-weight: 600;
 }
 
-.hero-visual .chip p {
-   font-size: 15px;
-   margin-top: 4px;
-   font-weight: 500;
+.hero-form h3 {
+   font-size: 22px;
+   font-weight: 700;
+   margin-top: 8px;
+   margin-bottom: 22px;
+   color: var(--ink);
 }
 
-.hero-visual .play-btn {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   width: 78px;
-   height: 78px;
-   border-radius: 50%;
-   background: rgba(20, 19, 16, 0.5);
-   backdrop-filter: blur(8px);
-   border: 1px solid rgba(238, 236, 229, 0.28);
+.hero-form .form-row {
+   margin-bottom: 14px;
+}
+
+.hero-form input,
+.hero-form select,
+.hero-form textarea {
+   width: 100%;
+   padding: 14px 16px;
+   border-radius: var(--r-sm);
+   background: rgba(238, 236, 229, 0.06);
+   border: 1px solid rgba(238, 236, 229, 0.14);
+   color: var(--ink);
+   font-family: inherit;
+   font-size: 14px;
+   transition: .25s;
+}
+
+.hero-form input:hover,
+.hero-form select:hover {
+   border-color: rgba(238, 236, 229, 0.26);
+}
+
+.hero-form select {
+   appearance: none;
+   -webkit-appearance: none;
+   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23948d7f' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+   background-repeat: no-repeat;
+   background-position: right 14px center;
+   background-size: 18px;
+   padding-right: 42px;
+   cursor: pointer;
+}
+
+.hero-form select:focus {
+   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b08d68' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+.hero-form select option {
+   background: var(--bg);
+   color: var(--ink);
+}
+
+.hero-form input::placeholder,
+.hero-form textarea::placeholder {
+   color: var(--ink-dim);
+}
+
+.hero-form input:focus,
+.hero-form select:focus,
+.hero-form textarea:focus {
+   outline: none;
+   border-color: var(--accent);
+   background: rgba(238, 236, 229, 0.1);
+   box-shadow: 0 0 0 3px rgba(176, 141, 104, 0.16);
+}
+
+.hero-form .phone-input-group {
+   display: flex;
+   align-items: stretch;
+   border-radius: var(--r-sm);
+   background: rgba(238, 236, 229, 0.06);
+   border: 1px solid rgba(238, 236, 229, 0.14);
+   transition: .25s;
+}
+
+.hero-form .phone-input-group:hover {
+   border-color: rgba(238, 236, 229, 0.26);
+}
+
+.hero-form .phone-input-group:focus-within {
+   border-color: var(--accent);
+   background: rgba(238, 236, 229, 0.1);
+   box-shadow: 0 0 0 3px rgba(176, 141, 104, 0.16);
+}
+
+.hero-form .phone-code-dropdown {
+   position: relative;
+   flex-shrink: 0;
+}
+
+.hero-form .phone-code-btn {
    display: flex;
    align-items: center;
-   justify-content: center;
-   cursor: pointer;
-   transition: .3s;
-   z-index: 2;
-}
-
-.hero-visual .play-btn::before {
-   content: '';
-   width: 0;
-   height: 0;
-   margin-left: 5px;
-   border-top: 13px solid transparent;
-   border-bottom: 13px solid transparent;
-   border-left: 20px solid var(--ink);
-}
-
-.hero-visual .play-btn:hover {
-   background: var(--accent);
-   border-color: var(--accent);
-   transform: translate(-50%, -50%) scale(1.08);
-}
-
-.hero-visual .play-btn:hover::before {
-   border-left-color: #141310;
-}
-
-.hero-visual.video-active {
-   padding: 0;
-}
-
-.hero-visual iframe {
-   position: absolute;
-   inset: 0;
-   width: 100%;
+   gap: 7px;
    height: 100%;
+   padding: 14px 12px 14px 16px;
    border: 0;
+   border-right: 1px solid rgba(238, 236, 229, 0.14);
+   background: transparent;
+   color: var(--ink);
+   font-family: inherit;
+   font-size: 13.5px;
+   font-weight: 600;
+   cursor: pointer;
+}
+
+.hero-form .phone-code-btn .flag-icon {
+   width: 20px;
+   height: 14px;
+   object-fit: cover;
+   border-radius: 2px;
+   flex-shrink: 0;
+   display: block;
+}
+
+.hero-form .phone-code-chevron {
+   color: var(--ink-dim);
+   flex-shrink: 0;
+   transition: transform .2s;
+}
+
+.hero-form .phone-code-dropdown.open .phone-code-chevron {
+   transform: rotate(180deg);
+}
+
+.hero-form .phone-code-list {
+   position: absolute;
+   top: calc(100% + 8px);
+   left: 0;
+   width: 240px;
+   max-height: 260px;
+   overflow-y: auto;
+   list-style: none;
+   margin: 0;
+   padding: 6px;
+   background: #1a1815;
+   border: 1px solid rgba(238, 236, 229, 0.14);
+   border-radius: var(--r-sm);
+   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+   z-index: 20;
+}
+
+.hero-form .phone-code-list[hidden] {
+   display: none;
+}
+
+.hero-form .phone-code-list li {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   padding: 9px 10px;
+   border-radius: 7px;
+   font-size: 13.5px;
+   color: var(--ink);
+   cursor: pointer;
+   transition: background .15s;
+}
+
+.hero-form .phone-code-list li img {
+   width: 20px;
+   height: 14px;
+   object-fit: cover;
+   border-radius: 2px;
+   flex-shrink: 0;
+}
+
+.hero-form .phone-code-list li span {
+   flex: 1;
+   color: var(--ink-dim);
+}
+
+.hero-form .phone-code-list li b {
+   font-weight: 600;
+   color: var(--ink);
+}
+
+.hero-form .phone-code-list li:hover {
+   background: rgba(238, 236, 229, 0.07);
+}
+
+.hero-form .phone-code-list li.active {
+   background: rgba(176, 141, 104, 0.14);
+}
+
+.hero-form .phone-code-list li.active span {
+   color: var(--ink);
+}
+
+.hero-form .phone-input-group input {
+   border: 0;
+   background: transparent;
+   border-radius: 0;
+   box-shadow: none !important;
+}
+
+.hero-form .form-row.has-error .phone-input-group,
+.hero-form .form-row.has-error input,
+.hero-form .form-row.has-error select {
+   border-color: #d16b63;
+}
+
+.hero-form .field-error {
+   display: block;
+   min-height: 0;
+   max-height: 0;
+   overflow: hidden;
+   color: #e2837b;
+   font-size: 12px;
+   margin-top: 0;
+   transition: .2s;
+}
+
+.hero-form .form-row.has-error .field-error {
+   max-height: 30px;
+   margin-top: 6px;
+}
+
+.hero-form .form-submit {
+   width: 100%;
+   justify-content: center;
+   margin-top: 6px;
+}
+
+.hero-form .form-submit:disabled {
+   opacity: .7;
+   cursor: not-allowed;
+   transform: none !important;
+}
+
+.hero-form .form-note {
+   margin-top: 16px;
+   font-size: 11.5px;
+   color: var(--ink-dim);
+   text-align: center;
+   line-height: 1.5;
 }
 
 section {
@@ -1535,7 +1720,7 @@ section {
 
 .faq-q .plus {
    color: var(--accent);
-   font-size: 18px;
+   font-size: 32px;
    transition: .3s;
 }
 
@@ -2362,7 +2547,7 @@ footer {
 }
 
 .istanbul-feature p {
-   font-size: 13px;
+   font-size: 15px;
    color: var(--ink-dim);
 }
 
@@ -2451,7 +2636,7 @@ footer {
 }
 
 .result-photo {
-   height: 500px;
+   height: 600px;
    background-size: cover;
    background-position: center;
    background-color: var(--panel-2);
@@ -2768,8 +2953,8 @@ footer {
    }
 
    .hero {
-      min-height: auto;
-      padding-top: 136px;
+      min-height: 88vh;
+      padding-top: 152px;
       padding-bottom: 54px;
    }
 
@@ -2944,7 +3129,7 @@ footer {
    }
 
    .hero {
-      padding-top: 110px;
+      padding-top: 126px;
    }
 
    .page-hero,
@@ -2965,8 +3150,14 @@ footer {
       width: 100%;
    }
 
-   .hero-visual {
+   .hero-form-wrap {
       border-radius: var(--r-md);
+      padding: 26px;
+   }
+
+   .hero-form .phone-code-list {
+      width: 220px;
+      max-width: calc(100vw - 90px);
    }
 
    #about,

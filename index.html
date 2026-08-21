@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -59,6 +59,13 @@
     </div>
   </header>
   <section class="hero">
+    <div class="hero-bg">
+      <video class="hero-bg-video" autoplay muted loop playsinline
+        poster="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1600">
+        <source src="https://videos.pexels.com/video-files/8313353/8313353-hd_1920_1080_30fps.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <h1>Doğal görünen,<br><span>güvenle planlanan</span> sonuçlar.</h1>
@@ -69,9 +76,99 @@
           <a href="#results" class="btn">Sonuçları İncele</a>
         </div>
       </div>
-      <div class="hero-visual" id="heroVisual" data-video-id="VIDEO_ID_BURAYA"
-        style="--photo:url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-        <button class="play-btn" id="heroPlayBtn" aria-label="Videoyu oynat"></button>
+      <div class="hero-form-wrap">
+        <form class="hero-form" id="heroForm" action="https://formsubmit.co/EMAIL_ADRESINIZ_BURAYA" method="POST">
+          <input type="hidden" name="_subject" value="Web Sitesi — Yeni Ön Görüşme Talebi">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <span class="label">Ücretsiz Ön Görüşme</span>
+          <h3>Bilgilerinizi bırakın, size dönelim.</h3>
+          <div class="form-row">
+            <input type="text" id="adSoyad" name="ad_soyad" placeholder="Ad Soyad" autocomplete="name" required>
+            <span class="field-error" id="adSoyadError"></span>
+          </div>
+          <div class="form-row">
+            <div class="phone-input-group">
+              <div class="phone-code-dropdown" id="phoneCodeDropdown">
+                <button type="button" class="phone-code-btn" id="phoneCodeBtn" aria-haspopup="listbox"
+                  aria-expanded="false">
+                  <img class="flag-icon" src="https://flagcdn.com/w20/tr.png" alt="" id="phoneCodeFlag">
+                  <span id="phoneCodeText">+90</span>
+                  <svg class="phone-code-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                    <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <ul class="phone-code-list" id="phoneCodeList" role="listbox" hidden>
+                  <li role="option" data-code="+90" data-country="tr" class="active">
+                    <img src="https://flagcdn.com/w20/tr.png" alt=""><span>Türkiye</span><b>+90</b>
+                  </li>
+                  <li role="option" data-code="+49" data-country="de">
+                    <img src="https://flagcdn.com/w20/de.png" alt=""><span>Almanya</span><b>+49</b>
+                  </li>
+                  <li role="option" data-code="+44" data-country="gb">
+                    <img src="https://flagcdn.com/w20/gb.png" alt=""><span>Birleşik Krallık</span><b>+44</b>
+                  </li>
+                  <li role="option" data-code="+1" data-country="us">
+                    <img src="https://flagcdn.com/w20/us.png" alt=""><span>ABD</span><b>+1</b>
+                  </li>
+                  <li role="option" data-code="+33" data-country="fr">
+                    <img src="https://flagcdn.com/w20/fr.png" alt=""><span>Fransa</span><b>+33</b>
+                  </li>
+                  <li role="option" data-code="+31" data-country="nl">
+                    <img src="https://flagcdn.com/w20/nl.png" alt=""><span>Hollanda</span><b>+31</b>
+                  </li>
+                  <li role="option" data-code="+7" data-country="ru">
+                    <img src="https://flagcdn.com/w20/ru.png" alt=""><span>Rusya</span><b>+7</b>
+                  </li>
+                  <li role="option" data-code="+39" data-country="it">
+                    <img src="https://flagcdn.com/w20/it.png" alt=""><span>İtalya</span><b>+39</b>
+                  </li>
+                  <li role="option" data-code="+34" data-country="es">
+                    <img src="https://flagcdn.com/w20/es.png" alt=""><span>İspanya</span><b>+34</b>
+                  </li>
+                  <li role="option" data-code="+971" data-country="ae">
+                    <img src="https://flagcdn.com/w20/ae.png" alt=""><span>BAE</span><b>+971</b>
+                  </li>
+                  <li role="option" data-code="+966" data-country="sa">
+                    <img src="https://flagcdn.com/w20/sa.png" alt=""><span>Suudi Arabistan</span><b>+966</b>
+                  </li>
+                  <li role="option" data-code="+974" data-country="qa">
+                    <img src="https://flagcdn.com/w20/qa.png" alt=""><span>Katar</span><b>+974</b>
+                  </li>
+                  <li role="option" data-code="+994" data-country="az">
+                    <img src="https://flagcdn.com/w20/az.png" alt=""><span>Azerbaycan</span><b>+994</b>
+                  </li>
+                </ul>
+              </div>
+              <input type="hidden" id="alanKodu" name="alan_kodu" value="+90">
+              <input type="tel" id="telefon" name="telefon" placeholder="5XX XXX XX XX" autocomplete="tel"
+                inputmode="numeric" maxlength="14" required>
+            </div>
+            <span class="field-error" id="telefonError"></span>
+          </div>
+          <div class="form-row">
+            <input type="email" id="eposta" name="eposta" placeholder="E-posta" autocomplete="email">
+            <span class="field-error" id="epostaError"></span>
+          </div>
+          <div class="form-row">
+            <select id="islem" name="islem" required>
+              <option value="" disabled selected>İlgilendiğiniz İşlem</option>
+              <option>İmplant ile Meme Rekonstrüksiyonu</option>
+              <option>Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)</option>
+              <option>Liposuction (Yağ Aldırma)</option>
+              <option>Annelik Estetiği (Mommy Makeover)</option>
+              <option>Yüze Yağ Enjeksiyonu (Yağ Transferi)</option>
+              <option>Endoskopik Alın Germe</option>
+              <option>Diğer</option>
+            </select>
+            <span class="field-error" id="islemError"></span>
+          </div>
+          <button type="submit" class="btn btn-cta form-submit"><span>Bilgi Talep Et</span><span
+              class="arrow">→</span></button>
+          <p class="form-note">Bilgileriniz KVKK kapsamında gizli tutulur, üçüncü taraflarla paylaşılmaz.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -107,40 +204,40 @@
         <p>Yüz, burun ve vücut estetiğinde, konsültasyondan iyileşme sürecine kadar bütünsel bir yaklaşım.</p>
       </div>
       <div class="service-grid">
-        <a class="service-card" href="services-detay.html?id=meme-cene-rekonstruksiyonu"
-          style="--photo:url('https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-          <h4>Meme & Çene Rekonstrüksiyonu</h4>
-          <p>Kanser veya travma sonrası kaybedilen doku ve uzuvların kişiye özel yeniden yapılandırılması.</p>
-          <span class="more">Detaylı Bilgi <span class="a">→</span></span>
-        </a>
-        <a class="service-card" href="services-detay.html?id=rinoplasti"
-          style="--photo:url('https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-          <h4>Rinoplasti</h4>
-          <p>Yüz hatlarınızla uyumlu, doğal ve nefes fonksiyonunu önceleyen burun estetiği.</p>
-          <span class="more">Detaylı Bilgi <span class="a">→</span></span>
-        </a>
-        <a class="service-card" href="services-detay.html?id=yuz-germe"
-          style="--photo:url('https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-          <h4>Yüz Germe</h4>
-          <p>Yaşla oluşan sarkma ve kırışıklıkları gideren, doğal görünüme odaklı ritidektomi.</p>
-          <span class="more">Detaylı Bilgi <span class="a">→</span></span>
-        </a>
-        <a class="service-card" href="services-detay.html?id=kraniyofasiyal-yanik"
-          style="--photo:url('https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-          <h4>Kraniyofasiyal & Yanık Rekonstrüksiyonu</h4>
-          <p>Travma sonrası yüz ve kafatası bölgesinde ileri düzey rekonstrüktif cerrahi.</p>
-          <span class="more">Detaylı Bilgi <span class="a">→</span></span>
-        </a>
-        <a class="service-card" href="services-detay.html?id=mikrocerrahi"
-          style="--photo:url('https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-          <h4>Mikrocerrahi</h4>
-          <p>Parmak ucu replantasyonu ve doku aktarımı gerektiren hassas cerrahi işlemler.</p>
-          <span class="more">Detaylı Bilgi <span class="a">→</span></span>
-        </a>
-        <a class="service-card" href="services-detay.html?id=meme-estetigi"
+        <a class="service-card" href="services-detay.html?id=implant-ile-meme-rekonstruksiyonu"
           style="--photo:url('https://images.pexels.com/photos/13007292/pexels-photo-13007292.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-          <h4>Meme Estetiği</h4>
-          <p>Büyütme, küçültme ve dikleştirme (mastopeksi) operasyonlarında kişiye özel teknik seçimi.</p>
+          <h4>İmplant ile Meme Rekonstrüksiyonu</h4>
+          <p>Mastektomi sonrası kaybedilen meme şeklinin silikon implant kullanılarak yeniden oluşturulduğu, en sık uygulanan rekonstrüksiyon yöntemi.</p>
+          <span class="more">Detaylı Bilgi <span class="a">→</span></span>
+        </a>
+        <a class="service-card" href="services-detay.html?id=otolog-doku-ile-meme-rekonstruksiyonu"
+          style="--photo:url('https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          <h4>Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)</h4>
+          <p>Meme kanseri cerrahisi sonrası kaybedilen meme dokusunun hastanın kendi vücudundan alınan doku ile yeniden oluşturulduğu ileri düzey yöntem.</p>
+          <span class="more">Detaylı Bilgi <span class="a">→</span></span>
+        </a>
+        <a class="service-card" href="services-detay.html?id=liposuction-yag-aldirma"
+          style="--photo:url('https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          <h4>Liposuction (Yağ Aldırma)</h4>
+          <p>Diyet ve egzersizle giderilemeyen inatçı bölgesel yağ birikimlerini uzaklaştıran, vücudu yeniden şekillendiren estetik cerrahi.</p>
+          <span class="more">Detaylı Bilgi <span class="a">→</span></span>
+        </a>
+        <a class="service-card" href="services-detay.html?id=annelik-estetigi-mommy-makeover"
+          style="--photo:url('https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          <h4>Annelik Estetiği (Mommy Makeover)</h4>
+          <p>Doğum ve emzirme sürecinin ardından oluşan vücut değişimlerini tek bir cerrahi programda ele alan bütüncül estetik yaklaşım.</p>
+          <span class="more">Detaylı Bilgi <span class="a">→</span></span>
+        </a>
+        <a class="service-card" href="services-detay.html?id=yuze-yag-enjeksiyonu-yag-transferi"
+          style="--photo:url('https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          <h4>Yüze Yağ Enjeksiyonu (Yağ Transferi)</h4>
+          <p>Kişinin kendi yağ hücreleriyle yüzün hacim kaybetmiş bölgelerinin doldurulduğu doğal ve uzun ömürlü gençleştirme yöntemi.</p>
+          <span class="more">Detaylı Bilgi <span class="a">→</span></span>
+        </a>
+        <a class="service-card" href="services-detay.html?id=endoskopik-alin-germe"
+          style="--photo:url('https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          <h4>Endoskopik Alın Germe</h4>
+          <p>Alın çizgilerini, kaş düşüklüğünü ve üst yüz sarkmasını küçük kesiler ve endoskop yardımıyla düzelten minimal invaziv yöntem.</p>
           <span class="more">Detaylı Bilgi <span class="a">→</span></span>
         </a>
       </div>
@@ -689,7 +786,7 @@
       </div>
     </div>
   </footer>
-  <script src="js/nav.js?v=3"></script>
+  <script src="js/nav.js"></script>
   <script src="data/blog-posts.js"></script>
   <script src="js/main.js"></script>
 </body>
