@@ -425,6 +425,9 @@ renderBlogPosts();
 // Hero arka plan videosu — mobil tarayıcılarda otomatik oynatmayı garanti altına al
 const heroVideo = document.getElementById('heroVideo');
 if (heroVideo) {
+    // iOS'in eski sürümleri attribute yerine JS mute'u gerektiriyor
+    heroVideo.muted = true;
+
     const tryPlay = () => {
         if (!heroVideo.paused) return;
         const p = heroVideo.play();
@@ -433,9 +436,10 @@ if (heroVideo) {
 
     tryPlay();
 
-    // Video yüklenince tekrar dene
-    heroVideo.addEventListener('loadeddata', tryPlay);
-    heroVideo.addEventListener('canplay', tryPlay);
+    // Video yüklendikçe tekrar dene
+    ['loadeddata', 'loadedmetadata', 'canplay', 'canplaythrough'].forEach(ev => {
+        heroVideo.addEventListener(ev, tryPlay);
+    });
 
     // Sekmeye/uygulamaya geri dönüldüğünde veya bfcache'ten gelindiğinde devam ettir
     document.addEventListener('visibilitychange', () => {
@@ -444,8 +448,16 @@ if (heroVideo) {
     window.addEventListener('pageshow', tryPlay);
     window.addEventListener('focus', tryPlay);
 
-    // Mobilde ilk dokunuşta sessize alınmış videoyu başlatmayı garantile
-    const unlockVideo = () => { tryPlay(); };
-    document.addEventListener('touchstart', unlockVideo, { once: true, passive: true });
-    document.addEventListener('click', unlockVideo, { once: true, passive: true });
+    // Mobil ağlarda video geç yüklenirse periyodik yeniden dene (maks ~15 sn)
+    let retries = 0;
+    const retryTimer = setInterval(() => {
+        if (!heroVideo.paused || retries++ > 20) clearInterval(retryTimer);
+        else tryPlay();
+    }, 700);
+
+    // Düşük güç modu vb. engelleyici varsa ilk kullanıcı etkileşiminde başlat
+    const unlockVideo = () => { heroVideo.muted = true; tryPlay(); };
+    ['touchstart', 'touchend', 'click', 'keydown'].forEach(ev => {
+        document.addEventListener(ev, unlockVideo, { once: true, passive: true });
+    });
 }
