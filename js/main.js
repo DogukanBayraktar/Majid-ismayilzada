@@ -421,3 +421,31 @@ ${meta ? `<span class="blog-meta">${meta}</span>` : ''}
     });
 }
 renderBlogPosts();
+
+// Hero arka plan videosu — mobil tarayıcılarda otomatik oynatmayı garanti altına al
+const heroVideo = document.getElementById('heroVideo');
+if (heroVideo) {
+    const tryPlay = () => {
+        if (!heroVideo.paused) return;
+        const p = heroVideo.play();
+        if (p && typeof p.catch === 'function') p.catch(() => { });
+    };
+
+    tryPlay();
+
+    // Video yüklenince tekrar dene
+    heroVideo.addEventListener('loadeddata', tryPlay);
+    heroVideo.addEventListener('canplay', tryPlay);
+
+    // Sekmeye/uygulamaya geri dönüldüğünde veya bfcache'ten gelindiğinde devam ettir
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') tryPlay();
+    });
+    window.addEventListener('pageshow', tryPlay);
+    window.addEventListener('focus', tryPlay);
+
+    // Mobilde ilk dokunuşta sessize alınmış videoyu başlatmayı garantile
+    const unlockVideo = () => { tryPlay(); };
+    document.addEventListener('touchstart', unlockVideo, { once: true, passive: true });
+    document.addEventListener('click', unlockVideo, { once: true, passive: true });
+}

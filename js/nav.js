@@ -44,18 +44,36 @@
   const navToggle = document.getElementById('navToggle');
   const mobileNav = document.getElementById('mobileNav');
   if (navToggle && mobileNav) {
+    // Tam ekran menü overlay'ini body'ye taşı — header içindeki
+    // backdrop-filter/transform fixed konumlandırmayı bozmaması için.
+    if (mobileNav.parentElement !== document.body) {
+      document.body.appendChild(mobileNav);
+    }
+
+    const setMenu = (open) => {
+      navToggle.classList.toggle('open', open);
+      mobileNav.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('menu-open', open);
+    };
+
     navToggle.addEventListener('click', () => {
-      const isOpen = navToggle.classList.toggle('open');
-      mobileNav.classList.toggle('open', isOpen);
-      navToggle.setAttribute('aria-expanded', String(isOpen));
+      setMenu(!mobileNav.classList.contains('open'));
     });
 
     mobileNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        navToggle.classList.remove('open');
-        mobileNav.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', () => setMenu(false));
     });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setMenu(false);
+    });
+
+    // Masaüstü genişliğine geçilince menüyü sıfırla
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 920 && mobileNav.classList.contains('open')) {
+        setMenu(false);
+      }
+    }, { passive: true });
   }
 })();

@@ -60,8 +60,6 @@ function stepsHtml(service) {
   if (!steps || steps.length === 0) return '';
 
   const photos = stepPhotosFor(service);
-  const groupLabels = ['Hazırlık Fotoğrafı', 'Operasyon Fotoğrafı', 'İyileşme Fotoğrafı'];
-  const cameraIcon = `<svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" /><circle cx="12" cy="13" r="3.2" /></svg>`;
 
   const stepsMarkup = steps.map((step, i) => {
     const group = photos.length ? Math.min(photos.length - 1, Math.floor((i * photos.length) / steps.length)) : 0;
@@ -79,9 +77,7 @@ function stepsHtml(service) {
   }).join('');
 
   const photosMarkup = photos.map((src, i) => `
-    <div class="process-photo" data-photo-index="${i}" style="--photo:url('${src}')">
-      <span class="ph-label">${cameraIcon}${groupLabels[i] || ''}</span>
-    </div>
+    <div class="process-photo" data-photo-index="${i}" style="--photo:url('${src}')"></div>
   `).join('');
 
   return `
