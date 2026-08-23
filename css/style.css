@@ -1006,13 +1006,6 @@ section {
    height: 560px;
 }
 
-/* Uzmanlık detayı ("Nasıl Uygulanır"): görsel kart sabitlenmez,
-   sayfayla birlikte normal şekilde scroll olur. */
-.op-steps .process-photos {
-   position: relative;
-   top: 0;
-}
-
 .process-photo {
    position: absolute;
    inset: 0;
@@ -1030,34 +1023,49 @@ section {
    background-clip: padding-box;
    -webkit-mask-image: -webkit-radial-gradient(white, black);
    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
-   transition: transform .6s cubic-bezier(.22, 1, .36, 1), opacity .6s ease, filter .6s ease;
+   transition: transform .55s cubic-bezier(.22, 1, .36, 1), opacity .5s ease, filter .5s ease;
+   will-change: transform;
 }
 
+/* Kart destesi: her kart × her durum için NET AYRIK konumlar.
+   Hangi adım aktif olursa olsun 3 kart daima ayrı ayrı görünür. */
 .process-photo.placeholder {
    border-style: dashed;
    border-color: var(--ink-faint);
 }
 
 .process-photo.is-active {
-   transform: translateY(0) scale(1) rotate(0deg);
    opacity: 1;
    z-index: 3;
    filter: grayscale(0);
+   transition-delay: 0s;
 }
 
 .process-photo.is-prev {
-   transform: translateY(-26px) scale(.9) rotate(-5deg);
-   opacity: .55;
+   opacity: .5;
    z-index: 2;
    filter: grayscale(.3);
+   transition-delay: .06s;
 }
 
 .process-photo.is-next {
-   transform: translateY(26px) scale(.9) rotate(5deg);
-   opacity: .55;
+   opacity: .5;
    z-index: 1;
    filter: grayscale(.3);
+   transition-delay: .06s;
 }
+
+.process-photo:nth-child(1).is-active { transform: translateX(-6px) rotate(-2deg); }
+.process-photo:nth-child(2).is-active { transform: none; }
+.process-photo:nth-child(3).is-active { transform: translateX(6px) rotate(2deg); }
+
+.process-photo:nth-child(1).is-prev { transform: translateY(-44px) translateX(-9px) rotate(-7deg) scale(.87); opacity: .38; }
+.process-photo:nth-child(2).is-prev { transform: translateY(-22px) rotate(-3.5deg) scale(.93); }
+.process-photo:nth-child(3).is-prev { transform: translateY(-34px) translateX(9px) rotate(-1deg) scale(.9); opacity: .44; }
+
+.process-photo:nth-child(1).is-next { transform: translateY(34px) translateX(-9px) rotate(1deg) scale(.9); opacity: .44; }
+.process-photo:nth-child(2).is-next { transform: translateY(22px) rotate(3.5deg) scale(.93); }
+.process-photo:nth-child(3).is-next { transform: translateY(44px) translateX(9px) rotate(7deg) scale(.87); opacity: .38; }
 
 .process-step {
    display: grid;
@@ -3036,11 +3044,6 @@ footer {
 
    .process-photos::-webkit-scrollbar {
       display: none;
-   }
-
-   .op-steps .process-photos {
-      position: relative;
-      top: 0;
    }
 
    .process-photo {

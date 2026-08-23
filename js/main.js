@@ -351,6 +351,9 @@ revealTargets.forEach(el => revealObserver.observe(el));
 // SÜREÇ (PROCESS): scroll edilirken 3 fotoğraf kartını, hangi
 // adımın görünümde olduğuna göre üst üste yığılmış şekilde
 // animasyonla öne/arkaya alır.
+// Aktif grup: üst kenarı ekran ortasını EN SON geçen adımın grubudur.
+// Adımlar yukarıdan aşağıya tarandığı için gruplar daima sırayla
+// ilerler (0 -> 1 -> 2), atlama imkansızdır.
 // ---------------------------------------------------------------
 (function initProcessStack() {
     const photosWrap = document.getElementById('processPhotos');
@@ -359,29 +362,36 @@ revealTargets.forEach(el => revealObserver.observe(el));
     const photos = Array.from(photosWrap.querySelectorAll('.process-photo'));
     if (!steps.length || !photos.length) return;
 
+    let currentGroup = -1;
+
     function setActiveGroup(activeIndex) {
+        if (activeIndex === currentGroup) return;
+        currentGroup = activeIndex;
         photos.forEach(photo => {
             const idx = Number(photo.dataset.photoIndex);
-            photo.classList.remove('is-active', 'is-prev', 'is-next');
-            if (idx === activeIndex) photo.classList.add('is-active');
-            else if (idx < activeIndex) photo.classList.add('is-prev');
-            else photo.classList.add('is-next');
+            photo.classList.toggle('is-active', idx === activeIndex);
+            photo.classList.toggle('is-prev', idx < activeIndex);
+            photo.classList.toggle('is-next', idx > activeIndex);
         });
     }
 
-    // Başlangıçta ilk grup aktif
-    setActiveGroup(0);
+    const computeActive = () => {
+        const mid = window.innerHeight / 2;
+        let best = Number(steps[0].dataset.photoGroup);
+        for (const el of steps) {
+            const r = el.getBoundingClientRect();
+            if (r.top <= mid) best = Number(el.dataset.photoGroup);
+        }
+        setActiveGroup(best);
+    };
 
-    const stepObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const group = Number(entry.target.dataset.photoGroup);
-                setActiveGroup(group);
-            }
-        });
-    }, { threshold: 0.5, rootMargin: '-35% 0px -35% 0px' });
-
+    const stepObserver = new IntersectionObserver(computeActive, { rootMargin: '-15% 0px -15% 0px', threshold: 0 });
     steps.forEach(step => stepObserver.observe(step));
+
+    // Başlangıçta ve düzen oturduğunda mevcut konuma göre hizala
+    const syncInitial = () => { currentGroup = -1; computeActive(); };
+    syncInitial();
+    window.addEventListener('load', () => setTimeout(syncInitial, 60));
 })();
 
 // ---------------------------------------------------------------
