@@ -139,6 +139,14 @@ function initStepPhotoStack(root) {
   const stepObserver = new IntersectionObserver(computeActive, { rootMargin: '-15% 0px -15% 0px', threshold: 0 });
   steps.forEach(step => stepObserver.observe(step));
 
+  // IO olayları bazen gecikmeli gelir; scroll'da her karede garantili hesapla
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { computeActive(); ticking = false; });
+  }, { passive: true });
+
   const syncInitial = () => { currentGroup = -1; computeActive(); };
   syncInitial();
   window.addEventListener('load', () => setTimeout(syncInitial, 60));

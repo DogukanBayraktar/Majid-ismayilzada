@@ -1000,6 +1000,16 @@ section {
    background: var(--line);
 }
 
+/* Uzmanlık detayı ("Nasıl Uygulanır"): adım sütunu kısa olabilen
+   hizmetlerde bile fotoğraf destesi ekranda yeterli süre yapışık
+   kalıp tüm geçişleri gösterebilsin diye sütuna asgari seyir yüksekliği */
+.op-steps .process-vertical {
+   min-height: 1200px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
 .process-photos {
    position: sticky;
    top: 165px;
