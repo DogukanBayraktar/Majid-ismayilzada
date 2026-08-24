@@ -60,8 +60,6 @@ function stepsHtml(service) {
   if (!steps || steps.length === 0) return '';
 
   const photos = stepPhotosFor(service);
-  const groupLabels = ['Hazırlık Fotoğrafı', 'Operasyon Fotoğrafı', 'İyileşme Fotoğrafı'];
-  const cameraIcon = `<svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z" /><circle cx="12" cy="13" r="3.2" /></svg>`;
 
   const stepsMarkup = steps.map((step, i) => {
     const group = photos.length ? Math.min(photos.length - 1, Math.floor((i * photos.length) / steps.length)) : 0;
@@ -79,9 +77,7 @@ function stepsHtml(service) {
   }).join('');
 
   const photosMarkup = photos.map((src, i) => `
-    <div class="process-photo" data-photo-index="${i}" style="--photo:url('${src}')">
-      <span class="ph-label">${cameraIcon}${groupLabels[i] || ''}</span>
-    </div>
+    <div class="process-photo" data-photo-index="${i}" style="--photo:url('${src}')"></div>
   `).join('');
 
   return `
@@ -117,28 +113,43 @@ function initStepPhotoStack(root) {
   const photos = Array.from(photosWrap.querySelectorAll('.process-photo'));
   if (!steps.length || !photos.length) return;
 
+  let currentGroup = -1;
+
   function setActiveGroup(activeIndex) {
+    if (activeIndex === currentGroup) return;
+    currentGroup = activeIndex;
     photos.forEach(photo => {
       const idx = Number(photo.dataset.photoIndex);
-      photo.classList.remove('is-active', 'is-prev', 'is-next');
-      if (idx === activeIndex) photo.classList.add('is-active');
-      else if (idx < activeIndex) photo.classList.add('is-prev');
-      else photo.classList.add('is-next');
+      photo.classList.toggle('is-active', idx === activeIndex);
+      photo.classList.toggle('is-prev', idx < activeIndex);
+      photo.classList.toggle('is-next', idx > activeIndex);
     });
   }
 
-  setActiveGroup(0);
+  const computeActive = () => {
+    const mid = window.innerHeight / 2;
+    let best = Number(steps[0].dataset.photoGroup);
+    for (const el of steps) {
+      const r = el.getBoundingClientRect();
+      if (r.top <= mid) best = Number(el.dataset.photoGroup);
+    }
+    setActiveGroup(best);
+  };
 
-  const stepObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const group = Number(entry.target.dataset.photoGroup);
-        setActiveGroup(group);
-      }
-    });
-  }, { threshold: 0.5, rootMargin: '-35% 0px -35% 0px' });
-
+  const stepObserver = new IntersectionObserver(computeActive, { rootMargin: '-15% 0px -15% 0px', threshold: 0 });
   steps.forEach(step => stepObserver.observe(step));
+
+  // IO olayları bazen gecikmeli gelir; scroll'da her karede garantili hesapla
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { computeActive(); ticking = false; });
+  }, { passive: true });
+
+  const syncInitial = () => { currentGroup = -1; computeActive(); };
+  syncInitial();
+  window.addEventListener('load', () => setTimeout(syncInitial, 60));
 }
 
 function resultsHtml(results) {

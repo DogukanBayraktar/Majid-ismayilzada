@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=12">
 </head>
 
 <body>
@@ -41,8 +41,7 @@
   </header>
   <section class="hero">
     <div class="hero-bg">
-      <video class="hero-bg-video" autoplay muted loop playsinline
-        poster="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1600">
+      <video class="hero-bg-video" autoplay muted loop playsinline preload="auto" id="heroVideo">
         <source src="https://videos.pexels.com/video-files/8313353/8313353-hd_1920_1080_30fps.mp4" type="video/mp4">
       </video>
       <div class="hero-overlay"></div>
@@ -268,7 +267,7 @@
                 gerçekleştirilir; süreç yakınlarınıza düzenli olarak bildirilir.</p>
             </div>
           </div>
-          <div class="process-step" data-photo-group="2">
+          <div class="process-step" data-photo-group="1">
             <div class="marker">
               <div class="circle">04</div>
             </div>
@@ -297,24 +296,12 @@
         <div class="process-photos" id="processPhotos">
           <div class="process-photo" data-photo-index="0"
             style="--photo:url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-            <span class="ph-label"><svg viewBox="0 0 24 24">
-                <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
-                <circle cx="12" cy="13" r="3.2" />
-              </svg>Konsültasyon Fotoğrafı</span>
           </div>
           <div class="process-photo" data-photo-index="1"
             style="--photo:url('https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-            <span class="ph-label"><svg viewBox="0 0 24 24">
-                <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
-                <circle cx="12" cy="13" r="3.2" />
-              </svg>Operasyon Fotoğrafı</span>
           </div>
           <div class="process-photo" data-photo-index="2"
             style="--photo:url('https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-            <span class="ph-label"><svg viewBox="0 0 24 24">
-                <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
-                <circle cx="12" cy="13" r="3.2" />
-              </svg>İyileşme Fotoğrafı</span>
           </div>
         </div>
       </div>
@@ -769,9 +756,9 @@
       </div>
     </div>
   </footer>
-  <script src="js/nav.js"></script>
+  <script src="js/nav.js?v=4"></script>
   <script src="data/blog-posts.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=5"></script>
 </body>
 
 </html>

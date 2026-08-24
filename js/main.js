@@ -351,6 +351,9 @@ revealTargets.forEach(el => revealObserver.observe(el));
 // SÜREÇ (PROCESS): scroll edilirken 3 fotoğraf kartını, hangi
 // adımın görünümde olduğuna göre üst üste yığılmış şekilde
 // animasyonla öne/arkaya alır.
+// Aktif grup: üst kenarı ekran ortasını EN SON geçen adımın grubudur.
+// Adımlar yukarıdan aşağıya tarandığı için gruplar daima sırayla
+// ilerler (0 -> 1 -> 2), atlama imkansızdır.
 // ---------------------------------------------------------------
 (function initProcessStack() {
     const photosWrap = document.getElementById('processPhotos');
@@ -359,29 +362,44 @@ revealTargets.forEach(el => revealObserver.observe(el));
     const photos = Array.from(photosWrap.querySelectorAll('.process-photo'));
     if (!steps.length || !photos.length) return;
 
+    let currentGroup = -1;
+
     function setActiveGroup(activeIndex) {
+        if (activeIndex === currentGroup) return;
+        currentGroup = activeIndex;
         photos.forEach(photo => {
             const idx = Number(photo.dataset.photoIndex);
-            photo.classList.remove('is-active', 'is-prev', 'is-next');
-            if (idx === activeIndex) photo.classList.add('is-active');
-            else if (idx < activeIndex) photo.classList.add('is-prev');
-            else photo.classList.add('is-next');
+            photo.classList.toggle('is-active', idx === activeIndex);
+            photo.classList.toggle('is-prev', idx < activeIndex);
+            photo.classList.toggle('is-next', idx > activeIndex);
         });
     }
 
-    // Başlangıçta ilk grup aktif
-    setActiveGroup(0);
+    const computeActive = () => {
+        const mid = window.innerHeight / 2;
+        let best = Number(steps[0].dataset.photoGroup);
+        for (const el of steps) {
+            const r = el.getBoundingClientRect();
+            if (r.top <= mid) best = Number(el.dataset.photoGroup);
+        }
+        setActiveGroup(best);
+    };
 
-    const stepObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const group = Number(entry.target.dataset.photoGroup);
-                setActiveGroup(group);
-            }
-        });
-    }, { threshold: 0.5, rootMargin: '-35% 0px -35% 0px' });
-
+    const stepObserver = new IntersectionObserver(computeActive, { rootMargin: '-15% 0px -15% 0px', threshold: 0 });
     steps.forEach(step => stepObserver.observe(step));
+
+    // IO olayları bazen gecikmeli gelir; scroll'da her karede garantili hesapla
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { computeActive(); ticking = false; });
+    }, { passive: true });
+
+    // Başlangıçta ve düzen oturduğunda mevcut konuma göre hizala
+    const syncInitial = () => { currentGroup = -1; computeActive(); };
+    syncInitial();
+    window.addEventListener('load', () => setTimeout(syncInitial, 60));
 })();
 
 // ---------------------------------------------------------------
@@ -421,3 +439,43 @@ ${meta ? `<span class="blog-meta">${meta}</span>` : ''}
     });
 }
 renderBlogPosts();
+
+// Hero arka plan videosu — mobil tarayıcılarda otomatik oynatmayı garanti altına al
+const heroVideo = document.getElementById('heroVideo');
+if (heroVideo) {
+    // iOS'in eski sürümleri attribute yerine JS mute'u gerektiriyor
+    heroVideo.muted = true;
+
+    const tryPlay = () => {
+        if (!heroVideo.paused) return;
+        const p = heroVideo.play();
+        if (p && typeof p.catch === 'function') p.catch(() => { });
+    };
+
+    tryPlay();
+
+    // Video yüklendikçe tekrar dene
+    ['loadeddata', 'loadedmetadata', 'canplay', 'canplaythrough'].forEach(ev => {
+        heroVideo.addEventListener(ev, tryPlay);
+    });
+
+    // Sekmeye/uygulamaya geri dönüldüğünde veya bfcache'ten gelindiğinde devam ettir
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') tryPlay();
+    });
+    window.addEventListener('pageshow', tryPlay);
+    window.addEventListener('focus', tryPlay);
+
+    // Mobil ağlarda video geç yüklenirse periyodik yeniden dene (maks ~15 sn)
+    let retries = 0;
+    const retryTimer = setInterval(() => {
+        if (!heroVideo.paused || retries++ > 20) clearInterval(retryTimer);
+        else tryPlay();
+    }, 700);
+
+    // Düşük güç modu vb. engelleyici varsa ilk kullanıcı etkileşiminde başlat
+    const unlockVideo = () => { heroVideo.muted = true; tryPlay(); };
+    ['touchstart', 'touchend', 'click', 'keydown'].forEach(ev => {
+        document.addEventListener(ev, unlockVideo, { once: true, passive: true });
+    });
+}
