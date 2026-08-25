@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=13">
+  <link rel="stylesheet" href="css/style.css?v=15">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
@@ -133,16 +134,24 @@
             <span class="field-error" id="epostaError"></span>
           </div>
           <div class="form-row">
-            <select id="islem" name="islem" required>
-              <option value="" disabled selected>İlgilendiğiniz İşlem</option>
-              <option>İmplant ile Meme Rekonstrüksiyonu</option>
-              <option>Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)</option>
-              <option>Liposuction (Yağ Aldırma)</option>
-              <option>Annelik Estetiği (Mommy Makeover)</option>
-              <option>Yüze Yağ Enjeksiyonu (Yağ Transferi)</option>
-              <option>Endoskopik Alın Germe</option>
-              <option>Diğer</option>
-            </select>
+            <div class="custom-select" id="islemDropdown">
+              <button type="button" class="custom-select-btn" id="islemBtn" aria-haspopup="listbox" aria-expanded="false">
+                <span id="islemText" class="custom-select-placeholder">İlgilendiğiniz İşlem</span>
+                <svg class="custom-select-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                  <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <ul class="custom-select-list" id="islemList" role="listbox" hidden>
+                <li role="option" data-value="İmplant ile Meme Rekonstrüksiyonu">İmplant ile Meme Rekonstrüksiyonu</li>
+                <li role="option" data-value="Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)">Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)</li>
+                <li role="option" data-value="Liposuction (Yağ Aldırma)">Liposuction (Yağ Aldırma)</li>
+                <li role="option" data-value="Annelik Estetiği (Mommy Makeover)">Annelik Estetiği (Mommy Makeover)</li>
+                <li role="option" data-value="Yüze Yağ Enjeksiyonu (Yağ Transferi)">Yüze Yağ Enjeksiyonu (Yağ Transferi)</li>
+                <li role="option" data-value="Endoskopik Alın Germe">Endoskopik Alın Germe</li>
+                <li role="option" data-value="Diğer">Diğer</li>
+              </ul>
+            </div>
+            <input type="hidden" id="islem" name="islem" required>
             <span class="field-error" id="islemError"></span>
           </div>
           <button type="submit" class="btn btn-cta form-submit"><span>Bilgi Talep Et</span><span
@@ -159,19 +168,19 @@
       </div>
       <div class="about-copy">
         <span class="label">Hakkımda</span>
-        <h3>Her hasta, kendine özgü bir anatomi ve hikaye taşır.</h3>
-        <p>Deneyim, akademik yayın ve hastamızı merkeze alan yaklaşımla fark yaratıyoruz.</p>
-        <p>2015 yılında Necmettin Erbakan Üniversitesi Tıp Fakültesi'nden mezun olduktan sonra Plastik, Rekonstrüktif ve
-          Estetik Cerrahi alanında uzmanlığımı tamamladım. Roma Sapienza Üniversitesi'nde uluslararası bir stajla
-          akademik deneyimimi genişlettim.</p>
-        <p>15'in üzerinde hakemli bilimsel yayınım; skar önleme, mikrocerrahi ve rekonstrüktif tekniklere odaklanıyor.
-          Amacım; her hastamın "yaptırılmış" değil, "kendi en iyi hali" izlenimini bırakmak. Her süreç, uzun bir dinleme
-          ve detaylı bir planlamayla başlar.</p>
+        <h3>Doç. Dr. Majid İsmayilzada</h3>
+        <p>Plastik, Rekonstrüktif ve Estetik Cerrahi uzmanı olarak International Baku Medical Academy'den 2015 yılında
+          mezun oldum. Necmettin Erbakan Üniversitesi Tıp Fakültesi'nde uzmanlık eğitimimi tamamladıktan sonra,
+          Sapienza Üniversitesi (Roma) Uluslararası Staj Programı'nda cerrahi becerilerimi ileri düzeye taşıdım.</p>
+        <p>Yurt içi ve yurt dışı hastanelerde edindiğim klinik deneyim; meme rekonstrüksiyonu, mikrocerrahi,
+          yüzde yeniden yapılandırma ve ileri düzey estetik uygulamalar alanında uzmanlaşmamı sağladı.
+          Her vakaya kişiye özel, minimal invaziv ve doğal sonuç odaklı yaklaşımla yaklaşıyorum.</p>
+        <p>Her hasta, kendine özgü bir anatomi ve hikaye taşır; amacım her hastamın "kendi en iyi hali" izlenimini bırakmaktır.</p>
         <div class="credentials">
-          <div class="cred-card"><b>Necmettin Erbakan Ü.</b><span>Tıp Fakültesi, 2015</span></div>
-          <div class="cred-card"><b>Sapienza Ü., Roma</b><span>Uluslararası Staj</span></div>
-          <div class="cred-card"><b>İstinye Ü.</b><span>Öğretim Üyesi</span></div>
-          <div class="cred-card"><b>TPCD</b><span>Üye</span></div>
+          <div class="cred-card"><b>Doçentlik Unvanı</b><span>Plastik, Rekonstrüktif ve Estetik Cerrahi</span></div>
+          <div class="cred-card"><b>Sapienza Ü., Roma</b><span>Uluslararası İleri Cerrahi Stajı</span></div>
+          <div class="cred-card"><b>Tıbbi Mikrocerrahi</b><span>İleri Düzey Rekonstrüktif Teknikler</span></div>
+          <div class="cred-card"><b>TPCD Üyeliği</b><span>Türk Plastik Cerrahlar Derneği</span></div>
         </div>
       </div>
     </div>
@@ -225,6 +234,137 @@
           <p>Alın çizgilerini, kaş düşüklüğünü ve üst yüz sarkmasını küçük kesiler ve endoskop yardımıyla düzelten minimal invaziv yöntem.</p>
           <span class="more">Detaylı Bilgi <span class="a">→</span></span>
         </a>
+      </div>
+    </div>
+  </section>
+  <section id="results">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Öncesi / Sonrası</span>
+        <h2>Sonuçlar, kelimelerden daha net konuşur.</h2>
+        <p>Vakaları tek satırda kaydırarak dönüşümü keşfedin.</p>
+      </div>
+      <div class="ba-slider-wrap">
+        <button class="slider-btn ba-nav ba-nav-prev" id="baPrev" aria-label="Önceki vaka">←</button>
+        <div class="ba-track" id="baTrack">
+          <article class="ba-card"
+            style="--photo:url('https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=900')">
+          </article>
+          <article class="ba-card"
+            style="--photo:url('https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=900')">
+          </article>
+          <article class="ba-card"
+            style="--photo:url('https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900')">
+          </article>
+          <article class="ba-card"
+            style="--photo:url('https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900')">
+          </article>
+        </div>
+        <button class="slider-btn ba-nav ba-nav-next" id="baNext" aria-label="Sonraki vaka">→</button>
+      </div>
+    </div>
+  </section>
+  <section id="video-stories">
+    <div class="wrap">
+      <div class="section-head-row">
+        <div class="section-head">
+          <span class="label">Video Yorumlar</span>
+          <h2>Hastalarımızın kendi sesinden.</h2>
+          <p>Kısa video paylaşımlarla deneyimlerini anlatan hastalarımız.</p>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" id="videoPrev" aria-label="Önceki">←</button>
+          <button class="slider-btn" id="videoNext" aria-label="Sonraki">→</button>
+        </div>
+      </div>
+      <div class="video-gallery" id="videoGallery">
+        <div class="video-card" data-video-id="VIDEO_ID_BURAYA"
+          style="--photo:url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800')">
+          <button class="video-play" aria-label="Videoyu oynat"></button>
+          <div class="video-info"><b>M. Yılmaz</b><span>Rinoplasti</span></div>
+        </div>
+        <div class="video-card" data-video-id="VIDEO_ID_BURAYA"
+          style="--photo:url('https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800')">
+          <button class="video-play" aria-label="Videoyu oynat"></button>
+          <div class="video-info"><b>S. Demir</b><span>Meme Estetiği</span></div>
+        </div>
+        <div class="video-card" data-video-id="VIDEO_ID_BURAYA"
+          style="--photo:url('https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=800')">
+          <button class="video-play" aria-label="Videoyu oynat"></button>
+          <div class="video-info"><b>A. Kara</b><span>Yüz Germe</span></div>
+        </div>
+        <div class="video-card" data-video-id="VIDEO_ID_BURAYA"
+          style="--photo:url('https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800')">
+          <button class="video-play" aria-label="Videoyu oynat"></button>
+          <div class="video-info"><b>E. Şahin</b><span>Meme Rekonstrüksiyonu</span></div>
+        </div>
+        <div class="video-card" data-video-id="VIDEO_ID_BURAYA"
+          style="--photo:url('https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800')">
+          <button class="video-play" aria-label="Videoyu oynat"></button>
+          <div class="video-info"><b>C. Öztürk</b><span>Kraniyofasiyal</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="stories">
+    <div class="wrap">
+      <div class="section-head-row">
+        <div class="section-head">
+          <span class="label">Hasta Hikayeleri</span>
+          <h2>Onların sesinden dinleyin.</h2>
+          <p>Hastalarımızın kendi deneyimlerinden ve sonuçlarından okuyun.</p>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" id="storiesPrev" aria-label="Önceki">←</button>
+          <button class="slider-btn" id="storiesNext" aria-label="Sonraki">→</button>
+        </div>
+      </div>
+      <div class="story-track" id="storyTrack">
+        <div class="story-card">
+          <span class="story-quote-mark">&ldquo;</span>
+          <div class="story-stars">★★★★★</div>
+          <p>Yıllardır ertelediğim bir kararı, sabırlı ve dürüst anlatım sayesinde güvenle verdim.</p>
+          <div class="story-foot">
+            <div class="story-avatar">MY</div>
+            <div class="story-who"><b>M. Yılmaz</b><span>Rinoplasti</span></div>
+          </div>
+        </div>
+        <div class="story-card">
+          <span class="story-quote-mark">&ldquo;</span>
+          <div class="story-stars">★★★★★</div>
+          <p>Konsültasyondan iyileşmeye kadar her adımda kendimi bilgilendirilmiş hissettim.</p>
+          <div class="story-foot">
+            <div class="story-avatar">SD</div>
+            <div class="story-who"><b>S. Demir</b><span>Meme Estetiği</span></div>
+          </div>
+        </div>
+        <div class="story-card">
+          <span class="story-quote-mark">&ldquo;</span>
+          <div class="story-stars">★★★★★</div>
+          <p>Beklentilerimi çok iyi dinledi, abartıya kaçmayan bir sonuç önerdi.</p>
+          <div class="story-foot">
+            <div class="story-avatar">AK</div>
+            <div class="story-who"><b>A. Kara</b><span>Yüz Germe</span></div>
+          </div>
+        </div>
+        <div class="story-card">
+          <span class="story-quote-mark">&ldquo;</span>
+          <div class="story-stars">★★★★★</div>
+          <p>Rekonstrüksiyon sürecinde hem tıbbi hem duygusal olarak yanımda hissettim kendisini.</p>
+          <div class="story-foot">
+            <div class="story-avatar">EŞ</div>
+            <div class="story-who"><b>E. Şahin</b><span>Meme Rekonstrüksiyonu</span></div>
+          </div>
+        </div>
+        <div class="story-card">
+          <span class="story-quote-mark">&ldquo;</span>
+          <div class="story-stars">★★★★★</div>
+          <p>Sorularımın hiçbirini yanıtsız bırakmadı, süreç boyunca güven verdi.</p>
+          <div class="story-foot">
+            <div class="story-avatar">BA</div>
+            <div class="story-who"><b>B. Aydın</b><span>Mikrocerrahi</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -288,11 +428,6 @@
             </div>
           </div>
         </div>
-        <!--
-  Fotoğraf kartları: gerçek fotoğraf eklemek için ilgili div'e
-  style="--photo:url('assets/images/process/fotograf1.jpg')" ekleyin
-  ve "placeholder" class'ını kaldırın.
--->
         <div class="process-photos" id="processPhotos">
           <div class="process-photo" data-photo-index="0"
             style="--photo:url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1200')">
@@ -307,87 +442,41 @@
       </div>
     </div>
   </section>
-  <section id="results">
+  <section id="safety">
     <div class="wrap">
       <div class="section-head">
-        <span class="label">Öncesi / Sonrası</span>
-        <h2>Sonuçlar, kelimelerden daha net konuşur.</h2>
-        <p>Vakaları tek satırda kaydırarak dönüşümü keşfedin.</p>
+        <span class="label">Güvenlik & Şeffaflık</span>
+        <h2>Güzellik kadar güvenlik de önceliğimiz.</h2>
+        <p>Estetik cerrahi bir risk taşır; bunu gizlemek yerine sizinle açıkça konuşmayı tercih ediyoruz.</p>
       </div>
-      <div class="ba-slider-wrap">
-        <button class="slider-btn ba-nav ba-nav-prev" id="baPrev" aria-label="Önceki vaka">←</button>
-        <div class="ba-track" id="baTrack">
-          <article class="ba-card"
-            style="--photo:url('https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=900')">
-          </article>
-          <article class="ba-card"
-            style="--photo:url('https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=900')">
-          </article>
-          <article class="ba-card"
-            style="--photo:url('https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900')">
-          </article>
-          <article class="ba-card"
-            style="--photo:url('https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900')">
-          </article>
+      <div class="safety-bento">
+        <div class="safety-photo"
+          style="--photo:url('https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=1200')">
         </div>
-        <button class="slider-btn ba-nav ba-nav-next" id="baNext" aria-label="Sonraki vaka">→</button>
-      </div>
-    </div>
-  </section>
-  <section id="certificates">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="label">Sertifikalar & Üyelikler</span>
-        <h2>Uluslararası standartlarda güvence.</h2>
-        <p>Ulusal ve uluslararası akademik ve profesyonel kuruluşlarla sağlanan güvence.</p>
-      </div>
-      <div class="cert-grid">
-        <div class="cert-card">
-          <div class="cert-photo"
-            style="--photo:url('https://images.pexels.com/photos/6098037/pexels-photo-6098037.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-          </div>
-          <div class="cert-body">
-            <div class="mark">TPCD</div>
-            <p>Türk Plastik Cerrahlar Derneği Üyesi</p>
-          </div>
+        <div class="safety-card">
+          <div class="icon">✓</div>
+          <h4>Aydınlatılmış Onam</h4>
+          <p>Operasyonun faydaları kadar olası riskleri de konsültasyonda detaylıca anlatılır.</p>
         </div>
-        <div class="cert-card">
-          <div class="cert-photo"
-            style="--photo:url('https://images.pexels.com/photos/207684/pexels-photo-207684.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-          </div>
-          <div class="cert-body">
-            <div class="mark">Necmettin Erbakan Ü.</div>
-            <p>Tıp Fakültesi, 2015 Mezunu</p>
-          </div>
+        <div class="safety-card">
+          <div class="icon">✓</div>
+          <h4>Anestezi Güvenliği</h4>
+          <p>Tüm operasyonlar uzman anestezi ekibi ve tam donanımlı yoğun bakım desteğiyle yürütülür.</p>
         </div>
-        <div class="cert-card">
-          <div class="cert-photo"
-            style="--photo:url('https://images.pexels.com/photos/8837745/pexels-photo-8837745.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-          </div>
-          <div class="cert-body">
-            <div class="mark">Sapienza Ü.</div>
-            <p>Roma, Uluslararası Staj</p>
-          </div>
+        <div class="safety-card">
+          <div class="icon">✓</div>
+          <h4>Hijyen Standartları</h4>
+          <p>Ameliyathanelerimiz uluslararası akreditasyon kriterlerine uygun olarak denetlenir.</p>
         </div>
-        <div class="cert-card">
-          <div class="cert-photo"
-            style="--photo:url('https://images.pexels.com/photos/159490/yale-university-landscape-universities-schools-159490.jpeg?auto=compress&cs=tinysrgb&w=1200')">
-          </div>
-          <div class="cert-body">
-            <div class="mark">[Ek Sertifika]</div>
-            <p>[Doldurulacak — diploma/kurum belgesi]</p>
-          </div>
+        <div class="safety-card">
+          <div class="icon">✓</div>
+          <h4>7/24 Takip Hattı</h4>
+          <p>Operasyon sonrası acil bir durumda doğrudan ekibimize ulaşabilirsiniz.</p>
         </div>
       </div>
     </div>
   </section>
   <section id="hospital">
-    <!--
-      Hastane fotoğraf slider'ı: gerçek fotoğraf eklemek için ilgili
-      .hospital-slide div'inin --photo değerini değiştirin. Slayt
-      eklemek/çıkarmak için hem burada hem de .hospital-dots içine
-      yeni bir .hospital-dot eklemek yeterli (js/main.js otomatik uyum sağlar).
-    -->
     <div class="wrap hospital-layout">
       <div class="about-copy">
         <span class="label">Hastanemiz</span>
@@ -427,14 +516,51 @@
       </div>
     </div>
   </section>
-
+  <section id="patient-access">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Hasta Ulaşım Desteği</span>
+        <h2>Tedavi yolculuğunuzun her aşamasında yanınızdayız.</h2>
+        <p>Yurt dışından gelen hastalarımız için konaklamadan eve dönüşe kadar kapsamlı destek hizmetleri sunuyoruz.</p>
+      </div>
+      <div class="patient-access-grid">
+        <div class="patient-access-card">
+          <div class="pa-icon"><i class="ri-flight-takeoff-line"></i></div>
+          <h4>Havalimanı Transferi</h4>
+          <p>İstanbul Havalimanı veya Sabiha Gökçen'den kliniğimize ve konaklama noktanıza özel araç transferi organize edilir. Uçuş bilgilerinizi paylaşmanız yeterlidir.</p>
+        </div>
+        <div class="patient-access-card">
+          <div class="pa-icon"><i class="ri-hotel-bed-line"></i></div>
+          <h4>Konaklama Organizasyonu</h4>
+          <p>Klinik yakınında, iyileşme sürecine uygun otel ve konut seçenekleri arasından bütçenize en uygun olanı birlikte belirleriz. İyileşme döneminizde konfor önceliğimizdir.</p>
+        </div>
+        <div class="patient-access-card">
+          <div class="pa-icon"><i class="ri-translate-2"></i></div>
+          <h4>Çok Dilli Koordinasyon</h4>
+          <p>İngilizce, Arapça, Rusça ve Azerice konuşan hasta koordinatörlerimiz; tüm sürecinizi sıfırdan organize eder ve her aşamada yanınızda olur.</p>
+        </div>
+        <div class="patient-access-card">
+          <div class="pa-icon"><i class="ri-stethoscope-line"></i></div>
+          <h4>Ön Konsültasyon</h4>
+          <p>Görüntülü görüşme ile operasyon öncesi detaylı değerlendirme yapılır. Tedavi planınız, beklentileriniz ve sorularınız uzaktan görüşülerek netleştirilir.</p>
+        </div>
+        <div class="patient-access-card">
+          <div class="pa-icon"><i class="ri-heart-pulse-line"></i></div>
+          <h4>Ameliyat Sonrası Takip</h4>
+          <p>Taburculuk sonrası pansuman ve kontrol randevularınız planlanır. 7/24 ulaşılabilir destek hattımız ile sürecin her anında güvende olursunuz.</p>
+        </div>
+        <div class="patient-access-card">
+          <div class="pa-icon"><i class="ri-video-chat-line"></i></div>
+          <h4>Uzaktan Sonrası Takip</h4>
+          <p>Ülkenize döndükten sonra görüntülü kontrol görüşmeleri ile iyileşmeniz uzaktan takip edilir. Gerekli durumlarda ek kontrol planlanır.</p>
+        </div>
+      </div>
+      <div class="patient-access-cta">
+        <a href="#contact" class="btn btn-cta"><span>Detaylı Bilgi Al</span><span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
   <section id="istanbul">
-    <!--
-      İstanbul görsel slider'ı: gerçek fotoğraf eklemek için ilgili
-      .istanbul-slide div'inin --photo değerini değiştirin, slayt
-      eklemek/çıkarmak için hem burada hem de js/main.js içindeki
-      initIstanbulSlider fonksiyonunun otomatik uyum sağlaması yeterlidir.
-    -->
     <div class="wrap">
       <div class="section-head">
         <span class="label">İstanbul</span>
@@ -489,143 +615,49 @@
       </div>
     </div>
   </section>
-
-
-
-  <section id="stories">
-    <div class="wrap">
-      <div class="section-head-row">
-        <div class="section-head">
-          <span class="label">Hasta Hikayeleri</span>
-          <h2>Onların sesinden dinleyin.</h2>
-          <p>Hastalarımızın kendi deneyimlerinden ve sonuçlarından okuyun.</p>
-        </div>
-        <div class="slider-controls">
-          <button class="slider-btn" id="storiesPrev" aria-label="Önceki">←</button>
-          <button class="slider-btn" id="storiesNext" aria-label="Sonraki">→</button>
-        </div>
-      </div>
-      <div class="story-track" id="storyTrack">
-        <div class="story-card">
-          <span class="story-quote-mark">&ldquo;</span>
-          <div class="story-stars">★★★★★</div>
-          <p>Yıllardır ertelediğim bir kararı, sabırlı ve dürüst anlatım sayesinde güvenle verdim.</p>
-          <div class="story-foot">
-            <div class="story-avatar">MY</div>
-            <div class="story-who"><b>M. Yılmaz</b><span>Rinoplasti</span></div>
-          </div>
-        </div>
-        <div class="story-card">
-          <span class="story-quote-mark">&ldquo;</span>
-          <div class="story-stars">★★★★★</div>
-          <p>Konsültasyondan iyileşmeye kadar her adımda kendimi bilgilendirilmiş hissettim.</p>
-          <div class="story-foot">
-            <div class="story-avatar">SD</div>
-            <div class="story-who"><b>S. Demir</b><span>Meme Estetiği</span></div>
-          </div>
-        </div>
-        <div class="story-card">
-          <span class="story-quote-mark">&ldquo;</span>
-          <div class="story-stars">★★★★★</div>
-          <p>Beklentilerimi çok iyi dinledi, abartıya kaçmayan bir sonuç önerdi.</p>
-          <div class="story-foot">
-            <div class="story-avatar">AK</div>
-            <div class="story-who"><b>A. Kara</b><span>Yüz Germe</span></div>
-          </div>
-        </div>
-        <div class="story-card">
-          <span class="story-quote-mark">&ldquo;</span>
-          <div class="story-stars">★★★★★</div>
-          <p>Rekonstrüksiyon sürecinde hem tıbbi hem duygusal olarak yanımda hissettim kendisini.</p>
-          <div class="story-foot">
-            <div class="story-avatar">EŞ</div>
-            <div class="story-who"><b>E. Şahin</b><span>Meme Rekonstrüksiyonu</span></div>
-          </div>
-        </div>
-        <div class="story-card">
-          <span class="story-quote-mark">&ldquo;</span>
-          <div class="story-stars">★★★★★</div>
-          <p>Sorularımın hiçbirini yanıtsız bırakmadı, süreç boyunca güven verdi.</p>
-          <div class="story-foot">
-            <div class="story-avatar">BA</div>
-            <div class="story-who"><b>B. Aydın</b><span>Mikrocerrahi</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="video-stories">
-    <div class="wrap">
-      <div class="section-head-row">
-        <div class="section-head">
-          <span class="label">Video Yorumlar</span>
-          <h2>Hastalarımızın kendi sesinden.</h2>
-          <p>Kısa video paylaşımlarla deneyimlerini anlatan hastalarımız.</p>
-        </div>
-        <div class="slider-controls">
-          <button class="slider-btn" id="videoPrev" aria-label="Önceki">←</button>
-          <button class="slider-btn" id="videoNext" aria-label="Sonraki">→</button>
-        </div>
-      </div>
-      <div class="video-gallery" id="videoGallery">
-        <div class="video-card" data-video-id="VIDEO_ID_BURAYA"
-          style="--photo:url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800')">
-          <button class="video-play" aria-label="Videoyu oynat"></button>
-          <div class="video-info"><b>M. Yılmaz</b><span>Rinoplasti</span></div>
-        </div>
-        <div class="video-card" data-video-id="VIDEO_ID_BURAYA"
-          style="--photo:url('https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800')">
-          <button class="video-play" aria-label="Videoyu oynat"></button>
-          <div class="video-info"><b>S. Demir</b><span>Meme Estetiği</span></div>
-        </div>
-        <div class="video-card" data-video-id="VIDEO_ID_BURAYA"
-          style="--photo:url('https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=800')">
-          <button class="video-play" aria-label="Videoyu oynat"></button>
-          <div class="video-info"><b>A. Kara</b><span>Yüz Germe</span></div>
-        </div>
-        <div class="video-card" data-video-id="VIDEO_ID_BURAYA"
-          style="--photo:url('https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800')">
-          <button class="video-play" aria-label="Videoyu oynat"></button>
-          <div class="video-info"><b>E. Şahin</b><span>Meme Rekonstrüksiyonu</span></div>
-        </div>
-        <div class="video-card" data-video-id="VIDEO_ID_BURAYA"
-          style="--photo:url('https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800')">
-          <button class="video-play" aria-label="Videoyu oynat"></button>
-          <div class="video-info"><b>C. Öztürk</b><span>Kraniyofasiyal</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="safety">
+  <section id="certificates">
     <div class="wrap">
       <div class="section-head">
-        <span class="label">Güvenlik & Şeffaflık</span>
-        <h2>Güzellik kadar güvenlik de önceliğimiz.</h2>
-        <p>Estetik cerrahi bir risk taşır; bunu gizlemek yerine sizinle açıkça konuşmayı tercih ediyoruz.</p>
+        <span class="label">Sertifikalar & Üyelikler</span>
+        <h2>Uluslararası standartlarda güvence.</h2>
+        <p>Ulusal ve uluslararası akademik ve profesyonel kuruluşlarla sağlanan güvence.</p>
       </div>
-      <div class="safety-bento">
-        <div class="safety-photo"
-          style="--photo:url('https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-photo"
+            style="--photo:url('https://images.pexels.com/photos/6098037/pexels-photo-6098037.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          </div>
+          <div class="cert-body">
+            <div class="mark">TPCD</div>
+            <p>Türk Plastik Cerrahlar Derneği Üyesi</p>
+          </div>
         </div>
-        <div class="safety-card">
-          <div class="icon">✓</div>
-          <h4>Aydınlatılmış Onam</h4>
-          <p>Operasyonun faydaları kadar olası riskleri de konsültasyonda detaylıca anlatılır.</p>
+        <div class="cert-card">
+          <div class="cert-photo"
+            style="--photo:url('https://images.pexels.com/photos/207684/pexels-photo-207684.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          </div>
+          <div class="cert-body">
+            <div class="mark">Necmettin Erbakan Ü.</div>
+            <p>Tıp Fakültesi, 2015 Mezunu</p>
+          </div>
         </div>
-        <div class="safety-card">
-          <div class="icon">✓</div>
-          <h4>Anestezi Güvenliği</h4>
-          <p>Tüm operasyonlar uzman anestezi ekibi ve tam donanımlı yoğun bakım desteğiyle yürütülür.</p>
+        <div class="cert-card">
+          <div class="cert-photo"
+            style="--photo:url('https://images.pexels.com/photos/8837745/pexels-photo-8837745.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          </div>
+          <div class="cert-body">
+            <div class="mark">Sapienza Ü.</div>
+            <p>Roma, Uluslararası Staj</p>
+          </div>
         </div>
-        <div class="safety-card">
-          <div class="icon">✓</div>
-          <h4>Hijyen Standartları</h4>
-          <p>Ameliyathanelerimiz uluslararası akreditasyon kriterlerine uygun olarak denetlenir.</p>
-        </div>
-        <div class="safety-card">
-          <div class="icon">✓</div>
-          <h4>7/24 Takip Hattı</h4>
-          <p>Operasyon sonrası acil bir durumda doğrudan ekibimize ulaşabilirsiniz.</p>
+        <div class="cert-card">
+          <div class="cert-photo"
+            style="--photo:url('https://images.pexels.com/photos/159490/yale-university-landscape-universities-schools-159490.jpeg?auto=compress&cs=tinysrgb&w=1200')">
+          </div>
+          <div class="cert-body">
+            <div class="mark">[Ek Sertifika]</div>
+            <p>[Doldurulacak — diploma/kurum belgesi]</p>
+          </div>
         </div>
       </div>
     </div>
@@ -737,9 +769,9 @@
               </div>
               <div class="foot-column">
                 <h5>Kurumsal</h5>
-                <a href="#">KVKK Aydınlatma Metni</a>
-                <a href="#">Hasta Hakları</a>
-                <a href="#">Gizlilik Politikası</a>
+                <a href="kvkk.html">KVKK Aydınlatma Metni</a>
+                <a href="hasta-haklari.html">Hasta Hakları</a>
+                <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
               </div>
               <div class="foot-column">
                 <h5>İletişim</h5>

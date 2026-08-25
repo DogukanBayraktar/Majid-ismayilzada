@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=13">
+  <link rel="stylesheet" href="css/style.css?v=15">
 </head>
 
 <body>
@@ -139,16 +139,24 @@
                             <span class="field-error" id="epostaError"></span>
                         </div>
                         <div class="form-row">
-                            <select id="islem" name="islem" required>
-                                <option value="" disabled selected>İlgilendiğiniz İşlem</option>
-                                <option>İmplant ile Meme Rekonstrüksiyonu</option>
-                                <option>Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)</option>
-                                <option>Liposuction (Yağ Aldırma)</option>
-                                <option>Annelik Estetiği (Mommy Makeover)</option>
-                                <option>Yüze Yağ Enjeksiyonu (Yağ Transferi)</option>
-                                <option>Endoskopik Alın Germe</option>
-                                <option>Diğer</option>
-                            </select>
+                            <div class="custom-select" id="islemDropdown">
+                                <button type="button" class="custom-select-btn" id="islemBtn" aria-haspopup="listbox" aria-expanded="false">
+                                    <span id="islemText" class="custom-select-placeholder">İlgilendiğiniz İşlem</span>
+                                    <svg class="custom-select-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <ul class="custom-select-list" id="islemList" role="listbox" hidden>
+                                    <li role="option" data-value="İmplant ile Meme Rekonstrüksiyonu">İmplant ile Meme Rekonstrüksiyonu</li>
+                                    <li role="option" data-value="Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)">Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)</li>
+                                    <li role="option" data-value="Liposuction (Yağ Aldırma)">Liposuction (Yağ Aldırma)</li>
+                                    <li role="option" data-value="Annelik Estetiği (Mommy Makeover)">Annelik Estetiği (Mommy Makeover)</li>
+                                    <li role="option" data-value="Yüze Yağ Enjeksiyonu (Yağ Transferi)">Yüze Yağ Enjeksiyonu (Yağ Transferi)</li>
+                                    <li role="option" data-value="Endoskopik Alın Germe">Endoskopik Alın Germe</li>
+                                    <li role="option" data-value="Diğer">Diğer</li>
+                                </ul>
+                            </div>
+                            <input type="hidden" id="islem" name="islem" required>
                             <span class="field-error" id="islemError"></span>
                         </div>
                         <button type="submit" class="btn btn-cta form-submit"><span>Bilgi Talep Et</span><span
@@ -218,9 +226,9 @@
                             </div>
                             <div class="foot-column">
                                 <h5>Kurumsal</h5>
-                                <a href="#">KVKK Aydınlatma Metni</a>
-                                <a href="#">Hasta Hakları</a>
-                                <a href="#">Gizlilik Politikası</a>
+                                <a href="kvkk.html">KVKK Aydınlatma Metni</a>
+                                <a href="hasta-haklari.html">Hasta Hakları</a>
+                                <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
                             </div>
                             <div class="foot-column">
                                 <h5>İletişim</h5>

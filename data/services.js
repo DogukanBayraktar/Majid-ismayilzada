@@ -12,8 +12,8 @@ const services = [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "S. Demir", duration: "İmplant ile Rekonstrüksiyon" }
     ],
     results: [
-      { before: "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { before: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { image: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
     ],
     content: [
       { type: "p", text: "İmplant ile meme rekonstrüksiyonu, mastektomi (meme dokusunun alınması) sonrasında kaybedilen meme şeklinin silikon implant kullanılarak yeniden oluşturulduğu, günümüzde en sık uygulanan meme rekonstrüksiyon yöntemidir. Kendi vücudundan doku alınmadan gerçekleştirilen bu yaklaşım; daha kısa ameliyat süresi, daha hızlı iyileşme ve minimal donor saha morbiditesi avantajları nedeniyle pek çok hasta için uygun ve tercih edilir bir seçenektir." },
@@ -72,8 +72,8 @@ const services = [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=800", name: "N. Aydın", duration: "DIEP Flap Rekonstrüksiyon" }
     ],
     results: [
-      { before: "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { before: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" }
     ],
     content: [
       { type: "p", text: "Otolog doku ile meme rekonstrüksiyonu, meme kanseri cerrahisi sonrası kaybedilen meme dokusunun hastanın kendi vücudundan alınan cilt, yağ ve gerektiğinde kas dokusu kullanılarak yeniden oluşturulduğu ileri düzey bir rekonstrüktif cerrahi yöntemidir. Kendi dokusuyla yapılan bu onarım; implanta kıyasla çok daha doğal bir his, sıcaklık ve kıvam sunar. Yabancı madde içermediğinden alerjik reaksiyon riski sıfırdır ve doku zamanla vücutla tam anlamıyla bütünleşir." },
@@ -136,9 +136,9 @@ const services = [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800", name: "M. Yıldız", duration: "Vücut Konturu" }
     ],
     results: [
-      { before: "https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { before: "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { before: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { image: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { image: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
     ],
     content: [
       { type: "p", text: "Liposuction (yağ aldırma) ameliyatı, diyet ve egzersizle giderilemeyen inatçı bölgesel yağ birikimlerini cerrahi yolla uzaklaştıran ve vücudu yeniden şekillendiren estetik cerrahi prosedürüdür. Dünya genelinde en sık uygulanan estetik operasyonlardan biri olan liposuction (yağ aldırma); karın, bel, kalça, uyluk ve daha pek çok bölgede oranları dengelemek, hatları inceltmek ve vücuda daha zarif bir siluet kazandırmak amacıyla tercih edilmektedir." },
@@ -215,8 +215,8 @@ const services = [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Z. Arslan", duration: "Annelik Estetiği" }
     ],
     results: [
-      { before: "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { before: "https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" }
     ],
     content: [
       { type: "p", text: "Annelik estetiği (mommy makeover), doğum ve emzirme sürecinin ardından kadın vücudunda meydana gelen çok yönlü değişimleri tek bir cerrahi program çerçevesinde ele alan bütüncül bir estetik yaklaşımdır. Karın germe, meme dikleştirme ya da büyütme, liposuction ve gerektiğinde vajinal estetik gibi birden fazla operasyonun tek seansta planlandığı bu program; annelere hem fiziksel hem duygusal bir yenilenme sunmayı hedefler." },
@@ -277,8 +277,8 @@ const services = [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=800", name: "A. Kara", duration: "Yüz Gençleştirme" }
     ],
     results: [
-      { before: "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { before: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { image: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
     ],
     content: [
       { type: "p", text: "Yüze yağ enjeksiyonu (lipofilling veya yağ transferi), kişinin kendi vücudundan alınan yağ hücrelerinin arıtılarak yüzün hacim kaybetmiş veya çökmüş bölgelerine enjekte edilmesiyle gerçekleştirilen doğal ve uzun ömürlü bir gençleştirme yöntemidir. Kendi dokusu kullanıldığından alerjik reaksiyon riski sıfıra yakındır; dolgu maddelerine kıyasla çok daha kalıcı ve biyolojik açıdan uyumlu sonuçlar verir." },
@@ -342,7 +342,7 @@ const services = [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=800", name: "C. Öztürk", duration: "Endoskopik Alın Germe" }
     ],
     results: [
-      { before: "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=900" }
     ],
     content: [
       { type: "p", text: "Endoskopik alın germe, alın bölgesindeki derin kırışıklıkları, kaş düşüklüğünü ve üst yüz sarkmasını küçük kesiler ve endoskop (kameralı sistemle) yardımıyla düzelten, minimal invaziv modern bir estetik cerrahi yöntemidir. Klasik alın germe operasyonlarında kulağa kadar uzanan geniş kesiler kullanılırken, endoskopik teknikte saç içine gizlenen yalnızca 3–5 küçük delik yeterlidir. Bu yaklaşım; daha az iz, daha hızlı iyileşme ve yüzün doğal mimiklerini koruyan sonuçlar sunar." },

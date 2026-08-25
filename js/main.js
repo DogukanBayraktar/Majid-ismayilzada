@@ -5,7 +5,12 @@ if (heroForm) {
     const alanKoduSelect = document.getElementById('alanKodu'); // gizli input: seçili alan kodunu tutar
     const telefonInput = document.getElementById('telefon');
     const epostaInput = document.getElementById('eposta');
-    const islemSelect = document.getElementById('islem');
+    const islemInput = document.getElementById('islem');
+
+    const islemDropdown = document.getElementById('islemDropdown');
+    const islemBtn = document.getElementById('islemBtn');
+    const islemList = document.getElementById('islemList');
+    const islemText = document.getElementById('islemText');
 
     // Özel alan kodu dropdown'ı (bayrak ikonları flagcdn.com üzerinden — native select'te bayrak emojisi Windows'ta render olmuyor)
     const phoneCodeDropdown = document.getElementById('phoneCodeDropdown');
@@ -46,11 +51,40 @@ if (heroForm) {
         });
     });
 
+    const closeIslemList = () => {
+        islemList.hidden = true;
+        islemDropdown.classList.remove('open');
+        islemBtn.setAttribute('aria-expanded', 'false');
+    };
+    const openIslemList = () => {
+        islemList.hidden = false;
+        islemDropdown.classList.add('open');
+        islemBtn.setAttribute('aria-expanded', 'true');
+    };
+
+    islemBtn.addEventListener('click', () => {
+        islemList.hidden ? openIslemList() : closeIslemList();
+    });
+
+    islemList.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', () => {
+            islemList.querySelector('li.active')?.classList.remove('active');
+            li.classList.add('active');
+            const value = li.dataset.value;
+            islemInput.value = value;
+            islemText.textContent = value;
+            islemText.classList.remove('custom-select-placeholder');
+            closeIslemList();
+            clearError(islemInput);
+        });
+    });
+
     document.addEventListener('click', (e) => {
         if (!phoneCodeDropdown.contains(e.target)) closePhoneCodeList();
+        if (!islemDropdown.contains(e.target)) closeIslemList();
     });
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closePhoneCodeList();
+        if (e.key === 'Escape') { closePhoneCodeList(); closeIslemList(); }
     });
 
     const showError = (input, message) => {
@@ -132,24 +166,23 @@ if (heroForm) {
     };
 
     const validateIslem = () => {
-        if (!islemSelect.value) {
-            showError(islemSelect, 'Lütfen ilgilendiğiniz işlemi seçin.');
+        if (!islemInput.value) {
+            showError(islemInput, 'Lütfen ilgilendiğiniz işlemi seçin.');
             return false;
         }
-        clearError(islemSelect);
+        clearError(islemInput);
         return true;
     };
 
     adSoyadInput.addEventListener('blur', validateAdSoyad);
     telefonInput.addEventListener('blur', validateTelefon);
     epostaInput.addEventListener('blur', validateEposta);
-    islemSelect.addEventListener('change', validateIslem);
 
     heroForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const validations = [validateAdSoyad(), validateTelefon(), validateEposta(), validateIslem()];
         if (validations.includes(false)) {
-            heroForm.querySelector('.form-row.has-error input, .form-row.has-error select')?.focus();
+            heroForm.querySelector('.form-row.has-error input, .form-row.has-error .custom-select-btn')?.focus();
             return;
         }
         const submitBtn = heroForm.querySelector('.form-submit');
@@ -168,6 +201,10 @@ if (heroForm) {
             if (!response.ok) throw new Error('Gönderim başarısız');
             submitLabel.textContent = 'Gönderildi ✓';
             heroForm.reset();
+            islemInput.value = '';
+            islemText.textContent = 'İlgilendiğiniz İşlem';
+            islemText.classList.add('custom-select-placeholder');
+            islemList.querySelector('li.active')?.classList.remove('active');
         } catch (err) {
             submitLabel.textContent = 'Bir hata oluştu, tekrar deneyin';
         } finally {

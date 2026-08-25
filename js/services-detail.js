@@ -72,8 +72,10 @@ function heroHtml(service) {
   ];
   const matchedProcedure = procedureOptions.find(p => p === service.title);
   const procedureOptionsHtml = procedureOptions.map(p =>
-    `<option${p === matchedProcedure ? ' selected' : ''}>${p}</option>`
+    `<li role="option" data-value="${p}"${p === matchedProcedure ? ' class="active"' : ''}>${p}</li>`
   ).join('');
+
+  const selectedProcedure = matchedProcedure || '';
 
   return `
     <section class="hero service-hero">
@@ -168,10 +170,18 @@ function heroHtml(service) {
               <span class="field-error" id="svcEpostaError"></span>
             </div>
             <div class="form-row">
-              <select id="svcIslem" name="islem" required>
-                <option value="" disabled${matchedProcedure ? '' : ' selected'}>İlgilendiğiniz İşlem</option>
-                ${procedureOptionsHtml}
-              </select>
+              <div class="custom-select" id="svcIslemDropdown">
+                <button type="button" class="custom-select-btn" id="svcIslemBtn" aria-haspopup="listbox" aria-expanded="false">
+                  <span id="svcIslemText" class="${selectedProcedure ? '' : 'custom-select-placeholder'}">${selectedProcedure || 'İlgilendiğiniz İşlem'}</span>
+                  <svg class="custom-select-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                    <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <ul class="custom-select-list" id="svcIslemList" role="listbox" hidden>
+                  ${procedureOptionsHtml}
+                </ul>
+              </div>
+              <input type="hidden" id="svcIslem" name="islem" value="${selectedProcedure}" required>
               <span class="field-error" id="svcIslemError"></span>
             </div>
             <button type="submit" class="btn btn-cta form-submit"><span>Bilgi Talep Et</span><span class="arrow">→</span></button>
@@ -191,7 +201,12 @@ function initHeroForm(root) {
   const alanKoduSelect = root.querySelector('#svcAlanKodu');
   const telefonInput = root.querySelector('#svcTelefon');
   const epostaInput = root.querySelector('#svcEposta');
-  const islemSelect = root.querySelector('#svcIslem');
+  const islemInput = root.querySelector('#svcIslem');
+
+  const islemDropdown = root.querySelector('#svcIslemDropdown');
+  const islemBtn = root.querySelector('#svcIslemBtn');
+  const islemList = root.querySelector('#svcIslemList');
+  const islemText = root.querySelector('#svcIslemText');
 
   const phoneCodeDropdown = root.querySelector('#svcPhoneCodeDropdown');
   const phoneCodeBtn = root.querySelector('#svcPhoneCodeBtn');
@@ -231,11 +246,40 @@ function initHeroForm(root) {
     });
   });
 
+  const closeIslemList = () => {
+    islemList.hidden = true;
+    islemDropdown.classList.remove('open');
+    islemBtn.setAttribute('aria-expanded', 'false');
+  };
+  const openIslemList = () => {
+    islemList.hidden = false;
+    islemDropdown.classList.add('open');
+    islemBtn.setAttribute('aria-expanded', 'true');
+  };
+
+  islemBtn.addEventListener('click', () => {
+    islemList.hidden ? openIslemList() : closeIslemList();
+  });
+
+  islemList.querySelectorAll('li').forEach(li => {
+    li.addEventListener('click', () => {
+      islemList.querySelector('li.active')?.classList.remove('active');
+      li.classList.add('active');
+      const value = li.dataset.value;
+      islemInput.value = value;
+      islemText.textContent = value;
+      islemText.classList.remove('custom-select-placeholder');
+      closeIslemList();
+      clearError(islemInput);
+    });
+  });
+
   document.addEventListener('click', (e) => {
     if (!phoneCodeDropdown.contains(e.target)) closePhoneCodeList();
+    if (!islemDropdown.contains(e.target)) closeIslemList();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closePhoneCodeList();
+    if (e.key === 'Escape') { closePhoneCodeList(); closeIslemList(); }
   });
 
   const showError = (input, message) => {
@@ -316,24 +360,23 @@ function initHeroForm(root) {
   };
 
   const validateIslem = () => {
-    if (!islemSelect.value) {
-      showError(islemSelect, 'Lütfen ilgilendiğiniz işlemi seçin.');
+    if (!islemInput.value) {
+      showError(islemInput, 'Lütfen ilgilendiğiniz işlemi seçin.');
       return false;
     }
-    clearError(islemSelect);
+    clearError(islemInput);
     return true;
   };
 
   adSoyadInput.addEventListener('blur', validateAdSoyad);
   telefonInput.addEventListener('blur', validateTelefon);
   epostaInput.addEventListener('blur', validateEposta);
-  islemSelect.addEventListener('change', validateIslem);
 
   heroForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const validations = [validateAdSoyad(), validateTelefon(), validateEposta(), validateIslem()];
     if (validations.includes(false)) {
-      heroForm.querySelector('.form-row.has-error input, .form-row.has-error select')?.focus();
+      heroForm.querySelector('.form-row.has-error input, .form-row.has-error .custom-select-btn')?.focus();
       return;
     }
     const submitBtn = heroForm.querySelector('.form-submit');
@@ -352,6 +395,16 @@ function initHeroForm(root) {
       if (!response.ok) throw new Error('Gönderim başarısız');
       submitLabel.textContent = 'Gönderildi ✓';
       heroForm.reset();
+      islemInput.value = matchedProcedure || '';
+      islemText.textContent = matchedProcedure || 'İlgilendiğiniz İşlem';
+      if (matchedProcedure) {
+        islemText.classList.remove('custom-select-placeholder');
+        islemList.querySelector('li.active')?.classList.remove('active');
+        islemList.querySelector(`li[data-value="${matchedProcedure}"]`)?.classList.add('active');
+      } else {
+        islemText.classList.add('custom-select-placeholder');
+        islemList.querySelector('li.active')?.classList.remove('active');
+      }
     } catch (err) {
       submitLabel.textContent = 'Bir hata oluştu, tekrar deneyin';
     } finally {
@@ -386,7 +439,7 @@ function videoGalleryHtml(videos) {
 }
 
 function resultsGalleryHtml(results) {
-  const photos = results.map(r => r.after || r.before);
+  const photos = results.map(r => r.image);
   return photos.map((src, i) => `
     <div class="result-photo-card reveal" style="transition-delay:${(i % 6) * 70}ms;">
       <div class="result-photo" style="background-image:url('${src}');"></div>
@@ -553,7 +606,11 @@ function candidacyHtml(service) {
     ? 'Bu işlem için adaylık kriterleri, kişisel sağlık geçmişiniz ve beklentileriniz doğrultusunda muayenede belirlenir.'
     : (parsed.notes[0] || '');
 
-  const hasCaution = parsed.notSuitable.length > 0;
+  const cautionList = parsed.notSuitable.length > 0 ? parsed.notSuitable : [
+    'Kontrol altında olmayan kronik hastalıklar',
+    'Aktif sigara kullanımı (en az 4 hafta önce bırakılması önerilir)',
+    'Gerçekçi olmayan beklentiler'
+  ];
 
   return `
     <section class="candidacy-section" id="candidacy">
@@ -563,7 +620,7 @@ function candidacyHtml(service) {
           <h2>Kimler Uygundur?</h2>
           ${introNote ? `<p>${introNote}</p>` : ''}
         </div>
-        <div class="candidacy-grid${hasCaution ? ' two-col' : ' one-col'}">
+        <div class="candidacy-grid two-col">
           <div class="candidacy-card is-suitable reveal">
             <div class="candidacy-card-head">
               <span class="icon-circle">${ICON_CHECK}</span>
@@ -571,14 +628,13 @@ function candidacyHtml(service) {
             </div>
             <ul>${suitableList.map(i => `<li>${i}</li>`).join('')}</ul>
           </div>
-          ${hasCaution ? `
           <div class="candidacy-card is-caution reveal">
             <div class="candidacy-card-head">
               <span class="icon-circle">${ICON_INFO}</span>
               <h3>Değerlendirilmesi Gereken Durumlar</h3>
             </div>
-            <ul>${parsed.notSuitable.map(i => `<li>${i}</li>`).join('')}</ul>
-          </div>` : ''}
+            <ul>${cautionList.map(i => `<li>${i}</li>`).join('')}</ul>
+          </div>
         </div>
         <div class="candidacy-cta">
           <p>Adaylığınızdan emin değil misiniz? Doç. Dr. Majid İsmayilzada'nın klinik ekibi ücretsiz ön görüşmede sizi kişisel olarak değerlendirsin.</p>
@@ -598,7 +654,7 @@ function stepPhotosFor(service) {
     if (src && !candidates.includes(src)) candidates.push(src);
   };
   addUnique(service.image);
-  (service.results || []).forEach(r => addUnique(r.after || r.before));
+  (service.results || []).forEach(r => addUnique(r.image));
   (service.videos || []).forEach(v => addUnique(v.image));
 
   while (candidates.length > 0 && candidates.length < 3) {
