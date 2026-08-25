@@ -7,6 +7,14 @@ const services = [
     image: "https://images.pexels.com/photos/13007292/pexels-photo-13007292.jpeg?auto=compress&cs=tinysrgb&w=1200",
     duration: "Tek veya iki aşamalı",
     recovery: "2-3 hafta",
+    videos: [
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800", name: "E. Şahin", duration: "Meme Rekonstrüksiyonu" },
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "S. Demir", duration: "İmplant ile Rekonstrüksiyon" }
+    ],
+    results: [
+      { before: "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { before: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
+    ],
     content: [
       { type: "p", text: "İmplant ile meme rekonstrüksiyonu, mastektomi (meme dokusunun alınması) sonrasında kaybedilen meme şeklinin silikon implant kullanılarak yeniden oluşturulduğu, günümüzde en sık uygulanan meme rekonstrüksiyon yöntemidir. Kendi vücudundan doku alınmadan gerçekleştirilen bu yaklaşım; daha kısa ameliyat süresi, daha hızlı iyileşme ve minimal donor saha morbiditesi avantajları nedeniyle pek çok hasta için uygun ve tercih edilir bir seçenektir." },
       { type: "p", text: "Şişli'de Doç. Dr. Majid İsmayilzada kliniğinde implant temelli meme rekonstrüksiyonu; tek aşamalı veya iki aşamalı (doku genişletici + implant) protokollerle, her hastanın onkolojik durumu, radyoterapi planı ve beklentileri dikkate alınarak kişiselleştirilmiş biçimde uygulanmaktadır." },
@@ -60,6 +68,13 @@ const services = [
     image: "https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=1200",
     duration: "6-10 saat",
     recovery: "6-8 hafta",
+    videos: [
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=800", name: "N. Aydın", duration: "DIEP Flap Rekonstrüksiyon" }
+    ],
+    results: [
+      { before: "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { before: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" }
+    ],
     content: [
       { type: "p", text: "Otolog doku ile meme rekonstrüksiyonu, meme kanseri cerrahisi sonrası kaybedilen meme dokusunun hastanın kendi vücudundan alınan cilt, yağ ve gerektiğinde kas dokusu kullanılarak yeniden oluşturulduğu ileri düzey bir rekonstrüktif cerrahi yöntemidir. Kendi dokusuyla yapılan bu onarım; implanta kıyasla çok daha doğal bir his, sıcaklık ve kıvam sunar. Yabancı madde içermediğinden alerjik reaksiyon riski sıfırdır ve doku zamanla vücutla tam anlamıyla bütünleşir." },
       { type: "p", text: "Şişli'de Doç. Dr. Majid İsmayilzada kliniğinde uygulanan otolog meme rekonstrüksiyonu; DIEP, TRAM ve diğer perforatör flep teknikleri konusundaki mikrocerrahi deneyimiyle, her hastanın onkolojik sürecini ve vücut yapısını bütüncül biçimde değerlendiren kişiselleştirilmiş bir yaklaşımla planlanmaktadır." },
@@ -116,6 +131,15 @@ const services = [
     image: "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=1200",
     duration: "1-3 saat",
     recovery: "4-6 hafta",
+    videos: [
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800", name: "B. Koç", duration: "Liposuction" },
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800", name: "M. Yıldız", duration: "Vücut Konturu" }
+    ],
+    results: [
+      { before: "https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { before: "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { before: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
+    ],
     content: [
       { type: "p", text: "Liposuction (yağ aldırma) ameliyatı, diyet ve egzersizle giderilemeyen inatçı bölgesel yağ birikimlerini cerrahi yolla uzaklaştıran ve vücudu yeniden şekillendiren estetik cerrahi prosedürüdür. Dünya genelinde en sık uygulanan estetik operasyonlardan biri olan liposuction (yağ aldırma); karın, bel, kalça, uyluk ve daha pek çok bölgede oranları dengelemek, hatları inceltmek ve vücuda daha zarif bir siluet kazandırmak amacıyla tercih edilmektedir." },
       { type: "p", text: "Liposuction (yağ aldırma) bir zayıflama yöntemi değildir. Hedef kilo aralığına yakın olmasına karşın genetik yatkınlık, hormonal değişimler veya yaşam tarzı nedeniyle belirli bölgelerde kalıcılaşmış yağ dokusunu hedef alan bir şekillendirme operasyonudur. Doğru aday seçimi ve doğru teknikle gerçekleştirilen bir liposuction, hem estetik hem de uzun vadeli kalıcı sonuçlar sunar." },
@@ -187,6 +211,13 @@ const services = [
     image: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=1200",
     duration: "4-6 saat",
     recovery: "6-8 hafta",
+    videos: [
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Z. Arslan", duration: "Annelik Estetiği" }
+    ],
+    results: [
+      { before: "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { before: "https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" }
+    ],
     content: [
       { type: "p", text: "Annelik estetiği (mommy makeover), doğum ve emzirme sürecinin ardından kadın vücudunda meydana gelen çok yönlü değişimleri tek bir cerrahi program çerçevesinde ele alan bütüncül bir estetik yaklaşımdır. Karın germe, meme dikleştirme ya da büyütme, liposuction ve gerektiğinde vajinal estetik gibi birden fazla operasyonun tek seansta planlandığı bu program; annelere hem fiziksel hem duygusal bir yenilenme sunmayı hedefler." },
       { type: "p", text: "Hamilelik sürecinde karın derisi gerilir, karın kasları birbirinden uzaklaşır (diastaz rekti), göğüsler hacim kaybeder ve vücutta inatçı yağ birikintileri oluşabilir. Bu değişimlerin büyük bölümü diyet ve egzersizle tam anlamıyla geri döndürülemez. Şişli'de Doç. Dr. Majid İsmayilzada kliniğinde, her hastanın vücut yapısı ve beklentilerine göre özelleştirilen mommy makeover programları uygulanmaktadır." },
@@ -242,6 +273,13 @@ const services = [
     category: "Yüz Gençleştirme",
     image: "https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=1200",
     recovery: "1-2 hafta",
+    videos: [
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=800", name: "A. Kara", duration: "Yüz Gençleştirme" }
+    ],
+    results: [
+      { before: "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=900" },
+      { before: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
+    ],
     content: [
       { type: "p", text: "Yüze yağ enjeksiyonu (lipofilling veya yağ transferi), kişinin kendi vücudundan alınan yağ hücrelerinin arıtılarak yüzün hacim kaybetmiş veya çökmüş bölgelerine enjekte edilmesiyle gerçekleştirilen doğal ve uzun ömürlü bir gençleştirme yöntemidir. Kendi dokusu kullanıldığından alerjik reaksiyon riski sıfıra yakındır; dolgu maddelerine kıyasla çok daha kalıcı ve biyolojik açıdan uyumlu sonuçlar verir." },
       { type: "p", text: "Yaşla birlikte yüzdeki yağ dokuları azalır, kemik yapısı erir, cilt altı destekler zayıflar ve yüz hatları belirginliğini yitirir. Bu değişimler yorgun, içe çökmüş ve olduğundan yaşlı bir ifadeye yol açabilir. Şişli'de Doç. Dr. Majid İsmayilzada tarafından uygulanan yüze yağ transferi; bu hacim kaybını yalnızca doldurmakla kalmaz, içerdiği kök hücreler sayesinde cilt kalitesini de iyileştiren bütüncül bir gençleştirme yöntemi sunar." },
@@ -300,6 +338,12 @@ const services = [
     image: "https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=1200",
     duration: "1-2 saat",
     recovery: "1-2 hafta",
+    videos: [
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=800", name: "C. Öztürk", duration: "Endoskopik Alın Germe" }
+    ],
+    results: [
+      { before: "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=900", after: "https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=900" }
+    ],
     content: [
       { type: "p", text: "Endoskopik alın germe, alın bölgesindeki derin kırışıklıkları, kaş düşüklüğünü ve üst yüz sarkmasını küçük kesiler ve endoskop (kameralı sistemle) yardımıyla düzelten, minimal invaziv modern bir estetik cerrahi yöntemidir. Klasik alın germe operasyonlarında kulağa kadar uzanan geniş kesiler kullanılırken, endoskopik teknikte saç içine gizlenen yalnızca 3–5 küçük delik yeterlidir. Bu yaklaşım; daha az iz, daha hızlı iyileşme ve yüzün doğal mimiklerini koruyan sonuçlar sunar." },
       { type: "p", text: "Şişli'de Doç. Dr. Majid İsmayilzada kliniğinde uygulanan endoskopik alın germe ameliyatı, yüzün üst bölümünü ele alan kapsamlı bir gençleştirme programının temel taşlarından biridir. Alın çizgileri, kaşlar ve göz çevresi aynı anda değerlendirilerek bütünleşik bir cerrahi plan oluşturulur." },
