@@ -762,8 +762,8 @@ function relatedCardHtml(service) {
   // → Cerrahi Adımlar (süreç) → Orijinal yazı (SSS dahil) → İlgili Hizmetler
   root.innerHTML = `
     ${heroHtml(service)}
-    ${videosHtml(service)}
     ${resultsHtml(service)}
+    ${videosHtml(service)}
     ${candidacyHtml(service)}
     ${stepsHtml(service)}
     <section class="article-original">
