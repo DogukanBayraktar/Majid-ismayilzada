@@ -58,7 +58,7 @@ function heroHtml(service) {
   if (service.recovery) metaParts.push(`<span>${iconRecovery}İyileşme süresi: <b>${service.recovery}</b></span>`);
   const metaHtml = metaParts.length ? `<div class="service-meta">${metaParts.join('')}</div>` : '';
 
-  const bgStyle = service.image ? ` style="--photo:url('${service.image}');"` : '';
+  const bgStyle = service.image ? ` style="background-image:url('${service.image}');"` : '';
 
   // "İlgilendiğiniz İşlem" seçeneklerinde mevcut hizmet önceden seçili gelir.
   const procedureOptions = [

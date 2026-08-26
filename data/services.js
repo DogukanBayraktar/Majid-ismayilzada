@@ -4,7 +4,7 @@ const services = [
     title: "İmplant ile Meme Rekonstrüksiyonu",
     excerpt: "Mastektomi sonrası kaybedilen meme şeklinin silikon implant kullanılarak yeniden oluşturulduğu, en sık uygulanan rekonstrüksiyon yöntemi.",
     category: "Rekonstrüktif Cerrahi",
-    image: "https://images.pexels.com/photos/13007292/pexels-photo-13007292.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "assets/images/implant-meme.png",
     duration: "Tek veya iki aşamalı",
     recovery: "2-3 hafta",
     videos: [
@@ -65,7 +65,7 @@ const services = [
     title: "Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)",
     excerpt: "Meme kanseri cerrahisi sonrası kaybedilen meme dokusunun hastanın kendi vücudundan alınan cilt, yağ ve gerektiğinde kas dokusuyla yeniden oluşturulduğu ileri düzey rekonstrüktif yöntem.",
     category: "Rekonstrüktif Cerrahi",
-    image: "https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "assets/images/doku-meme.png",
     duration: "6-10 saat",
     recovery: "6-8 hafta",
     videos: [
@@ -128,7 +128,7 @@ const services = [
     title: "Liposuction (Yağ Aldırma)",
     excerpt: "Diyet ve egzersizle giderilemeyen inatçı bölgesel yağ birikimlerini cerrahi yolla uzaklaştıran ve vücudu yeniden şekillendiren estetik cerrahi prosedürü.",
     category: "Vücut Estetiği",
-    image: "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "assets/images/yag-aldirma.png",
     duration: "1-3 saat",
     recovery: "4-6 hafta",
     videos: [
@@ -208,7 +208,7 @@ const services = [
     title: "Annelik Estetiği (Mommy Makeover)",
     excerpt: "Doğum ve emzirme sürecinin ardından kadın vücudunda meydana gelen çok yönlü değişimleri tek bir cerrahi program çerçevesinde ele alan bütüncül estetik yaklaşım.",
     category: "Vücut Estetiği",
-    image: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "assets/images/annelik.png",
     duration: "4-6 saat",
     recovery: "6-8 hafta",
     videos: [
@@ -271,7 +271,7 @@ const services = [
     title: "Yüze Yağ Enjeksiyonu (Yağ Transferi)",
     excerpt: "Kişinin kendi vücudundan alınan yağ hücrelerinin arıtılarak yüzün hacim kaybetmiş bölgelerine enjekte edildiği doğal ve uzun ömürlü gençleştirme yöntemi.",
     category: "Yüz Gençleştirme",
-    image: "https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "assets/images/yuz-germe.png",
     recovery: "1-2 hafta",
     videos: [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=800", name: "A. Kara", duration: "Yüz Gençleştirme" }
@@ -335,7 +335,7 @@ const services = [
     title: "Endoskopik Alın Germe",
     excerpt: "Alın bölgesindeki derin kırışıklıkları, kaş düşüklüğünü ve üst yüz sarkmasını küçük kesiler ve endoskop yardımıyla düzelten minimal invaziv modern estetik cerrahi yöntemi.",
     category: "Yüz Gençleştirme",
-    image: "https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "assets/images/alin-germe.png",
     duration: "1-2 saat",
     recovery: "1-2 hafta",
     videos: [
