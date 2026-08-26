@@ -102,90 +102,98 @@ function heroHtml(service) {
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="hizmet_sayfasi" value="${service.title}">
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-            <span class="label">Ücretsiz Ön Görüşme</span>
-            <h3>Bilgilerinizi bırakın, size dönelim.</h3>
-            <div class="form-row">
-              <input type="text" id="svcAdSoyad" name="ad_soyad" placeholder="Ad Soyad" autocomplete="name" required>
-              <span class="field-error" id="svcAdSoyadError"></span>
+            <div class="form-success">
+              <div class="form-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="32" height="32"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="form-success-title">Mesajınız Başarıyla İletildi!</div>
+              <div class="form-success-desc">En kısa sürede sizinle iletişime geçeceğiz.</div>
+              <button type="button" class="form-retry">Tekrar Gönder</button>
             </div>
-            <div class="form-row">
-              <div class="phone-input-group">
-                <div class="phone-code-dropdown" id="svcPhoneCodeDropdown">
-                  <button type="button" class="phone-code-btn" id="svcPhoneCodeBtn" aria-haspopup="listbox" aria-expanded="false">
-                    <img class="flag-icon" src="https://flagcdn.com/w20/tr.png" alt="" id="svcPhoneCodeFlag">
-                    <span id="svcPhoneCodeText">+90</span>
-                    <svg class="phone-code-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+            <div class="form-fields">
+              <span class="label">Ücretsiz Ön Görüşme</span>
+              <h3>Bilgilerinizi bırakın, size dönelim.</h3>
+              <div class="form-row">
+                <input type="text" id="svcAdSoyad" name="ad_soyad" placeholder="Ad Soyad" autocomplete="name" required>
+                <span class="field-error" id="svcAdSoyadError"></span>
+              </div>
+              <div class="form-row">
+                <div class="phone-input-group">
+                  <div class="phone-code-dropdown" id="svcPhoneCodeDropdown">
+                    <button type="button" class="phone-code-btn" id="svcPhoneCodeBtn" aria-haspopup="listbox" aria-expanded="false">
+                      <img class="flag-icon" src="https://flagcdn.com/w20/tr.png" alt="" id="svcPhoneCodeFlag">
+                      <span id="svcPhoneCodeText">+90</span>
+                      <svg class="phone-code-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </button>
+                    <ul class="phone-code-list" id="svcPhoneCodeList" role="listbox" hidden>
+                      <li role="option" data-code="+90" data-country="tr" class="active">
+                        <img src="https://flagcdn.com/w20/tr.png" alt=""><span>Türkiye</span><b>+90</b>
+                      </li>
+                      <li role="option" data-code="+49" data-country="de">
+                        <img src="https://flagcdn.com/w20/de.png" alt=""><span>Almanya</span><b>+49</b>
+                      </li>
+                      <li role="option" data-code="+44" data-country="gb">
+                        <img src="https://flagcdn.com/w20/gb.png" alt=""><span>Birleşik Krallık</span><b>+44</b>
+                      </li>
+                      <li role="option" data-code="+1" data-country="us">
+                        <img src="https://flagcdn.com/w20/us.png" alt=""><span>ABD</span><b>+1</b>
+                      </li>
+                      <li role="option" data-code="+33" data-country="fr">
+                        <img src="https://flagcdn.com/w20/fr.png" alt=""><span>Fransa</span><b>+33</b>
+                      </li>
+                      <li role="option" data-code="+31" data-country="nl">
+                        <img src="https://flagcdn.com/w20/nl.png" alt=""><span>Hollanda</span><b>+31</b>
+                      </li>
+                      <li role="option" data-code="+7" data-country="ru">
+                        <img src="https://flagcdn.com/w20/ru.png" alt=""><span>Rusya</span><b>+7</b>
+                      </li>
+                      <li role="option" data-code="+39" data-country="it">
+                        <img src="https://flagcdn.com/w20/it.png" alt=""><span>İtalya</span><b>+39</b>
+                      </li>
+                      <li role="option" data-code="+34" data-country="es">
+                        <img src="https://flagcdn.com/w20/es.png" alt=""><span>İspanya</span><b>+34</b>
+                      </li>
+                      <li role="option" data-code="+971" data-country="ae">
+                        <img src="https://flagcdn.com/w20/ae.png" alt=""><span>BAE</span><b>+971</b>
+                      </li>
+                      <li role="option" data-code="+966" data-country="sa">
+                        <img src="https://flagcdn.com/w20/sa.png" alt=""><span>Suudi Arabistan</span><b>+966</b>
+                      </li>
+                      <li role="option" data-code="+974" data-country="qa">
+                        <img src="https://flagcdn.com/w20/qa.png" alt=""><span>Katar</span><b>+974</b>
+                      </li>
+                      <li role="option" data-code="+994" data-country="az">
+                        <img src="https://flagcdn.com/w20/az.png" alt=""><span>Azerbaycan</span><b>+994</b>
+                      </li>
+                    </ul>
+                  </div>
+                  <input type="hidden" id="svcAlanKodu" name="alan_kodu" value="+90">
+                  <input type="tel" id="svcTelefon" name="telefon" placeholder="5XX XXX XX XX" autocomplete="tel" inputmode="numeric" maxlength="14" required>
+                </div>
+                <span class="field-error" id="svcTelefonError"></span>
+              </div>
+              <div class="form-row">
+                <input type="email" id="svcEposta" name="eposta" placeholder="E-posta" autocomplete="email">
+                <span class="field-error" id="svcEpostaError"></span>
+              </div>
+              <div class="form-row">
+                <div class="custom-select" id="svcIslemDropdown">
+                  <button type="button" class="custom-select-btn" id="svcIslemBtn" aria-haspopup="listbox" aria-expanded="false">
+                    <span id="svcIslemText" class="${selectedProcedure ? '' : 'custom-select-placeholder'}">${selectedProcedure || 'İlgilendiğiniz İşlem'}</span>
+                    <svg class="custom-select-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
                       <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </button>
-                  <ul class="phone-code-list" id="svcPhoneCodeList" role="listbox" hidden>
-                    <li role="option" data-code="+90" data-country="tr" class="active">
-                      <img src="https://flagcdn.com/w20/tr.png" alt=""><span>Türkiye</span><b>+90</b>
-                    </li>
-                    <li role="option" data-code="+49" data-country="de">
-                      <img src="https://flagcdn.com/w20/de.png" alt=""><span>Almanya</span><b>+49</b>
-                    </li>
-                    <li role="option" data-code="+44" data-country="gb">
-                      <img src="https://flagcdn.com/w20/gb.png" alt=""><span>Birleşik Krallık</span><b>+44</b>
-                    </li>
-                    <li role="option" data-code="+1" data-country="us">
-                      <img src="https://flagcdn.com/w20/us.png" alt=""><span>ABD</span><b>+1</b>
-                    </li>
-                    <li role="option" data-code="+33" data-country="fr">
-                      <img src="https://flagcdn.com/w20/fr.png" alt=""><span>Fransa</span><b>+33</b>
-                    </li>
-                    <li role="option" data-code="+31" data-country="nl">
-                      <img src="https://flagcdn.com/w20/nl.png" alt=""><span>Hollanda</span><b>+31</b>
-                    </li>
-                    <li role="option" data-code="+7" data-country="ru">
-                      <img src="https://flagcdn.com/w20/ru.png" alt=""><span>Rusya</span><b>+7</b>
-                    </li>
-                    <li role="option" data-code="+39" data-country="it">
-                      <img src="https://flagcdn.com/w20/it.png" alt=""><span>İtalya</span><b>+39</b>
-                    </li>
-                    <li role="option" data-code="+34" data-country="es">
-                      <img src="https://flagcdn.com/w20/es.png" alt=""><span>İspanya</span><b>+34</b>
-                    </li>
-                    <li role="option" data-code="+971" data-country="ae">
-                      <img src="https://flagcdn.com/w20/ae.png" alt=""><span>BAE</span><b>+971</b>
-                    </li>
-                    <li role="option" data-code="+966" data-country="sa">
-                      <img src="https://flagcdn.com/w20/sa.png" alt=""><span>Suudi Arabistan</span><b>+966</b>
-                    </li>
-                    <li role="option" data-code="+974" data-country="qa">
-                      <img src="https://flagcdn.com/w20/qa.png" alt=""><span>Katar</span><b>+974</b>
-                    </li>
-                    <li role="option" data-code="+994" data-country="az">
-                      <img src="https://flagcdn.com/w20/az.png" alt=""><span>Azerbaycan</span><b>+994</b>
-                    </li>
+                  <ul class="custom-select-list" id="svcIslemList" role="listbox" hidden>
+                    ${procedureOptionsHtml}
                   </ul>
                 </div>
-                <input type="hidden" id="svcAlanKodu" name="alan_kodu" value="+90">
-                <input type="tel" id="svcTelefon" name="telefon" placeholder="5XX XXX XX XX" autocomplete="tel" inputmode="numeric" maxlength="14" required>
+                <input type="hidden" id="svcIslem" name="islem" value="${selectedProcedure}" required>
+                <span class="field-error" id="svcIslemError"></span>
               </div>
-              <span class="field-error" id="svcTelefonError"></span>
+              <button type="submit" class="btn btn-cta form-submit"><span>Bilgi Talep Et</span><span class="arrow">→</span></button>
+              <p class="form-note">Bilgileriniz KVKK kapsamında gizli tutulur, üçüncü taraflarla paylaşılmaz.</p>
             </div>
-            <div class="form-row">
-              <input type="email" id="svcEposta" name="eposta" placeholder="E-posta" autocomplete="email">
-              <span class="field-error" id="svcEpostaError"></span>
-            </div>
-            <div class="form-row">
-              <div class="custom-select" id="svcIslemDropdown">
-                <button type="button" class="custom-select-btn" id="svcIslemBtn" aria-haspopup="listbox" aria-expanded="false">
-                  <span id="svcIslemText" class="${selectedProcedure ? '' : 'custom-select-placeholder'}">${selectedProcedure || 'İlgilendiğiniz İşlem'}</span>
-                  <svg class="custom-select-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                    <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </button>
-                <ul class="custom-select-list" id="svcIslemList" role="listbox" hidden>
-                  ${procedureOptionsHtml}
-                </ul>
-              </div>
-              <input type="hidden" id="svcIslem" name="islem" value="${selectedProcedure}" required>
-              <span class="field-error" id="svcIslemError"></span>
-            </div>
-            <button type="submit" class="btn btn-cta form-submit"><span>Bilgi Talep Et</span><span class="arrow">→</span></button>
-            <p class="form-note">Bilgileriniz KVKK kapsamında gizli tutulur, üçüncü taraflarla paylaşılmaz.</p>
           </form>
         </div>
       </div>
@@ -372,6 +380,29 @@ function initHeroForm(root) {
   telefonInput.addEventListener('blur', validateTelefon);
   epostaInput.addEventListener('blur', validateEposta);
 
+  const formSuccess = heroForm.querySelector('.form-success');
+  const formFields = heroForm.querySelector('.form-fields');
+  const formRetry = heroForm.querySelector('.form-retry');
+
+  formRetry?.addEventListener('click', () => {
+    heroForm.reset();
+    islemInput.value = matchedProcedure || '';
+    islemText.textContent = matchedProcedure || 'İlgilendiğiniz İşlem';
+    if (matchedProcedure) {
+      islemText.classList.remove('custom-select-placeholder');
+      islemList.querySelector('li.active')?.classList.remove('active');
+      islemList.querySelector(`li[data-value="${matchedProcedure}"]`)?.classList.add('active');
+    } else {
+      islemText.classList.add('custom-select-placeholder');
+      islemList.querySelector('li.active')?.classList.remove('active');
+    }
+    phoneCodeFlag.src = 'https://flagcdn.com/w20/tr.png';
+    phoneCodeText.textContent = '+90';
+    alanKoduSelect.value = '+90';
+    formSuccess.classList.remove('visible');
+    formFields.classList.remove('hidden');
+  });
+
   heroForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const validations = [validateAdSoyad(), validateTelefon(), validateEposta(), validateIslem()];
@@ -381,7 +412,6 @@ function initHeroForm(root) {
     }
     const submitBtn = heroForm.querySelector('.form-submit');
     const submitLabel = submitBtn.querySelector('span:first-child');
-    const originalText = submitLabel.textContent;
     submitBtn.disabled = true;
     submitLabel.textContent = 'Gönderiliyor...';
     try {
@@ -393,7 +423,6 @@ function initHeroForm(root) {
         headers: { 'Accept': 'application/json' }
       });
       if (!response.ok) throw new Error('Gönderim başarısız');
-      submitLabel.textContent = 'Gönderildi ✓';
       heroForm.reset();
       islemInput.value = matchedProcedure || '';
       islemText.textContent = matchedProcedure || 'İlgilendiğiniz İşlem';
@@ -405,11 +434,17 @@ function initHeroForm(root) {
         islemText.classList.add('custom-select-placeholder');
         islemList.querySelector('li.active')?.classList.remove('active');
       }
+      phoneCodeFlag.src = 'https://flagcdn.com/w20/tr.png';
+      phoneCodeText.textContent = '+90';
+      alanKoduSelect.value = '+90';
+      formFields.classList.add('hidden');
+      formSuccess.classList.add('visible');
+      submitBtn.disabled = false;
+      submitLabel.textContent = 'Bilgi Talep Et';
     } catch (err) {
       submitLabel.textContent = 'Bir hata oluştu, tekrar deneyin';
-    } finally {
       setTimeout(() => {
-        submitLabel.textContent = originalText;
+        submitLabel.textContent = 'Bilgi Talep Et';
         submitBtn.disabled = false;
       }, 3000);
     }

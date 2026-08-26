@@ -178,6 +178,23 @@ if (heroForm) {
     telefonInput.addEventListener('blur', validateTelefon);
     epostaInput.addEventListener('blur', validateEposta);
 
+    const formSuccess = heroForm.querySelector('.form-success');
+    const formFields = heroForm.querySelector('.form-fields');
+    const formRetry = heroForm.querySelector('.form-retry');
+
+    formRetry?.addEventListener('click', () => {
+        heroForm.reset();
+        islemInput.value = '';
+        islemText.textContent = 'İlgilendiğiniz İşlem';
+        islemText.classList.add('custom-select-placeholder');
+        islemList.querySelector('li.active')?.classList.remove('active');
+        phoneCodeFlag.src = 'https://flagcdn.com/w20/tr.png';
+        phoneCodeText.textContent = '+90';
+        alanKoduSelect.value = '+90';
+        formSuccess.classList.remove('visible');
+        formFields.classList.remove('hidden');
+    });
+
     heroForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const validations = [validateAdSoyad(), validateTelefon(), validateEposta(), validateIslem()];
@@ -187,7 +204,6 @@ if (heroForm) {
         }
         const submitBtn = heroForm.querySelector('.form-submit');
         const submitLabel = submitBtn.querySelector('span:first-child');
-        const originalText = submitLabel.textContent;
         submitBtn.disabled = true;
         submitLabel.textContent = 'Gönderiliyor...';
         try {
@@ -199,17 +215,22 @@ if (heroForm) {
                 headers: { 'Accept': 'application/json' }
             });
             if (!response.ok) throw new Error('Gönderim başarısız');
-            submitLabel.textContent = 'Gönderildi ✓';
             heroForm.reset();
             islemInput.value = '';
             islemText.textContent = 'İlgilendiğiniz İşlem';
             islemText.classList.add('custom-select-placeholder');
             islemList.querySelector('li.active')?.classList.remove('active');
+            phoneCodeFlag.src = 'https://flagcdn.com/w20/tr.png';
+            phoneCodeText.textContent = '+90';
+            alanKoduSelect.value = '+90';
+            formFields.classList.add('hidden');
+            formSuccess.classList.add('visible');
+            submitBtn.disabled = false;
+            submitLabel.textContent = 'Bilgi Talep Et';
         } catch (err) {
             submitLabel.textContent = 'Bir hata oluştu, tekrar deneyin';
-        } finally {
             setTimeout(() => {
-                submitLabel.textContent = originalText;
+                submitLabel.textContent = 'Bilgi Talep Et';
                 submitBtn.disabled = false;
             }, 3000);
         }

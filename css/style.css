@@ -791,6 +791,69 @@ body.menu-open {
    line-height: 1.5;
 }
 
+/* Form başarı mesajı */
+.form-success {
+   display: none;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   padding: 48px 24px;
+   gap: 18px;
+}
+.form-success.visible {
+   display: flex;
+}
+.hero-form .form-fields.hidden {
+   display: none;
+}
+.form-success-icon {
+   width: 64px;
+   height: 64px;
+   border-radius: var(--r-md);
+   background: var(--accent-soft);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 6px;
+   color: var(--accent);
+   font-size: 32px;
+   animation: successPop .45s ease;
+}
+@keyframes successPop {
+   0% { transform: scale(0); opacity: 0; }
+   60% { transform: scale(1.15); }
+   100% { transform: scale(1); opacity: 1; }
+}
+.form-success-title {
+   font-size: 22px;
+   font-weight: 700;
+   color: var(--ink);
+}
+.form-success-desc {
+   font-size: 14px;
+   color: var(--ink-dim);
+   max-width: 280px;
+   line-height: 1.6;
+}
+.form-retry {
+   margin-top: 10px;
+   padding: 12px 28px;
+   border-radius: var(--r-sm);
+   background: rgba(238, 236, 229, 0.08);
+   border: 1px solid rgba(238, 236, 229, 0.2);
+   color: var(--ink);
+   font-family: inherit;
+   font-size: 14px;
+   font-weight: 500;
+   cursor: pointer;
+   transition: .25s;
+}
+.form-retry:hover {
+   background: rgba(238, 236, 229, 0.14);
+   border-color: var(--accent);
+}
+
 section {
    padding: var(--section-y) 0;
 }

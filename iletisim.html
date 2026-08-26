@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=15">
+  <link rel="stylesheet" href="css/style.css?v=16">
 </head>
 
 <body>
@@ -65,104 +65,112 @@
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-                        <span class="label">Ücretsiz Ön Görüşme</span>
-                        <h3>Bilgilerinizi bırakın, size dönelim.</h3>
-                        <div class="form-row">
-                            <input type="text" id="adSoyad" name="ad_soyad" placeholder="Ad Soyad" autocomplete="name"
-                                required>
-                            <span class="field-error" id="adSoyadError"></span>
+                        <div class="form-success">
+                            <div class="form-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="32" height="32"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="form-success-title">Mesajınız Başarıyla İletildi!</div>
+                            <div class="form-success-desc">En kısa sürede sizinle iletişime geçeceğiz.</div>
+                            <button type="button" class="form-retry">Tekrar Gönder</button>
                         </div>
-                        <div class="form-row">
-                            <div class="phone-input-group">
-                                <div class="phone-code-dropdown" id="phoneCodeDropdown">
-                                    <button type="button" class="phone-code-btn" id="phoneCodeBtn"
-                                        aria-haspopup="listbox" aria-expanded="false">
-                                        <img class="flag-icon" src="https://flagcdn.com/w20/tr.png" alt=""
-                                            id="phoneCodeFlag">
-                                        <span id="phoneCodeText">+90</span>
-                                        <svg class="phone-code-chevron" width="10" height="6" viewBox="0 0 10 6"
-                                            fill="none">
-                                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                        <div class="form-fields">
+                            <span class="label">Ücretsiz Ön Görüşme</span>
+                            <h3>Bilgilerinizi bırakın, size dönelim.</h3>
+                            <div class="form-row">
+                                <input type="text" id="adSoyad" name="ad_soyad" placeholder="Ad Soyad" autocomplete="name"
+                                    required>
+                                <span class="field-error" id="adSoyadError"></span>
+                            </div>
+                            <div class="form-row">
+                                <div class="phone-input-group">
+                                    <div class="phone-code-dropdown" id="phoneCodeDropdown">
+                                        <button type="button" class="phone-code-btn" id="phoneCodeBtn"
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <img class="flag-icon" src="https://flagcdn.com/w20/tr.png" alt=""
+                                                id="phoneCodeFlag">
+                                            <span id="phoneCodeText">+90</span>
+                                            <svg class="phone-code-chevron" width="10" height="6" viewBox="0 0 10 6"
+                                                fill="none">
+                                                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <ul class="phone-code-list" id="phoneCodeList" role="listbox" hidden>
+                                            <li role="option" data-code="+90" data-country="tr" class="active">
+                                                <img src="https://flagcdn.com/w20/tr.png" alt=""><span>Türkiye</span><b>+90</b>
+                                            </li>
+                                            <li role="option" data-code="+49" data-country="de">
+                                                <img src="https://flagcdn.com/w20/de.png" alt=""><span>Almanya</span><b>+49</b>
+                                            </li>
+                                            <li role="option" data-code="+44" data-country="gb">
+                                                <img src="https://flagcdn.com/w20/gb.png" alt=""><span>Birleşik Krallık</span><b>+44</b>
+                                            </li>
+                                            <li role="option" data-code="+1" data-country="us">
+                                                <img src="https://flagcdn.com/w20/us.png" alt=""><span>ABD</span><b>+1</b>
+                                            </li>
+                                            <li role="option" data-code="+33" data-country="fr">
+                                                <img src="https://flagcdn.com/w20/fr.png" alt=""><span>Fransa</span><b>+33</b>
+                                            </li>
+                                            <li role="option" data-code="+31" data-country="nl">
+                                                <img src="https://flagcdn.com/w20/nl.png" alt=""><span>Hollanda</span><b>+31</b>
+                                            </li>
+                                            <li role="option" data-code="+7" data-country="ru">
+                                                <img src="https://flagcdn.com/w20/ru.png" alt=""><span>Rusya</span><b>+7</b>
+                                            </li>
+                                            <li role="option" data-code="+39" data-country="it">
+                                                <img src="https://flagcdn.com/w20/it.png" alt=""><span>İtalya</span><b>+39</b>
+                                            </li>
+                                            <li role="option" data-code="+34" data-country="es">
+                                                <img src="https://flagcdn.com/w20/es.png" alt=""><span>İspanya</span><b>+34</b>
+                                            </li>
+                                            <li role="option" data-code="+971" data-country="ae">
+                                                <img src="https://flagcdn.com/w20/ae.png" alt=""><span>BAE</span><b>+971</b>
+                                            </li>
+                                            <li role="option" data-code="+966" data-country="sa">
+                                                <img src="https://flagcdn.com/w20/sa.png" alt=""><span>Suudi Arabistan</span><b>+966</b>
+                                            </li>
+                                            <li role="option" data-code="+974" data-country="qa">
+                                                <img src="https://flagcdn.com/w20/qa.png" alt=""><span>Katar</span><b>+974</b>
+                                            </li>
+                                            <li role="option" data-code="+994" data-country="az">
+                                                <img src="https://flagcdn.com/w20/az.png" alt=""><span>Azerbaycan</span><b>+994</b>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <input type="hidden" id="alanKodu" name="alan_kodu" value="+90">
+                                    <input type="tel" id="telefon" name="telefon" placeholder="5XX XXX XX XX"
+                                        autocomplete="tel" inputmode="numeric" maxlength="14" required>
+                                </div>
+                                <span class="field-error" id="telefonError"></span>
+                            </div>
+                            <div class="form-row">
+                                <input type="email" id="eposta" name="eposta" placeholder="E-posta" autocomplete="email">
+                                <span class="field-error" id="epostaError"></span>
+                            </div>
+                            <div class="form-row">
+                                <div class="custom-select" id="islemDropdown">
+                                    <button type="button" class="custom-select-btn" id="islemBtn" aria-haspopup="listbox" aria-expanded="false">
+                                        <span id="islemText" class="custom-select-placeholder">İlgilendiğiniz İşlem</span>
+                                        <svg class="custom-select-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </button>
-                                    <ul class="phone-code-list" id="phoneCodeList" role="listbox" hidden>
-                                        <li role="option" data-code="+90" data-country="tr" class="active">
-                                            <img src="https://flagcdn.com/w20/tr.png" alt=""><span>Türkiye</span><b>+90</b>
-                                        </li>
-                                        <li role="option" data-code="+49" data-country="de">
-                                            <img src="https://flagcdn.com/w20/de.png" alt=""><span>Almanya</span><b>+49</b>
-                                        </li>
-                                        <li role="option" data-code="+44" data-country="gb">
-                                            <img src="https://flagcdn.com/w20/gb.png" alt=""><span>Birleşik Krallık</span><b>+44</b>
-                                        </li>
-                                        <li role="option" data-code="+1" data-country="us">
-                                            <img src="https://flagcdn.com/w20/us.png" alt=""><span>ABD</span><b>+1</b>
-                                        </li>
-                                        <li role="option" data-code="+33" data-country="fr">
-                                            <img src="https://flagcdn.com/w20/fr.png" alt=""><span>Fransa</span><b>+33</b>
-                                        </li>
-                                        <li role="option" data-code="+31" data-country="nl">
-                                            <img src="https://flagcdn.com/w20/nl.png" alt=""><span>Hollanda</span><b>+31</b>
-                                        </li>
-                                        <li role="option" data-code="+7" data-country="ru">
-                                            <img src="https://flagcdn.com/w20/ru.png" alt=""><span>Rusya</span><b>+7</b>
-                                        </li>
-                                        <li role="option" data-code="+39" data-country="it">
-                                            <img src="https://flagcdn.com/w20/it.png" alt=""><span>İtalya</span><b>+39</b>
-                                        </li>
-                                        <li role="option" data-code="+34" data-country="es">
-                                            <img src="https://flagcdn.com/w20/es.png" alt=""><span>İspanya</span><b>+34</b>
-                                        </li>
-                                        <li role="option" data-code="+971" data-country="ae">
-                                            <img src="https://flagcdn.com/w20/ae.png" alt=""><span>BAE</span><b>+971</b>
-                                        </li>
-                                        <li role="option" data-code="+966" data-country="sa">
-                                            <img src="https://flagcdn.com/w20/sa.png" alt=""><span>Suudi Arabistan</span><b>+966</b>
-                                        </li>
-                                        <li role="option" data-code="+974" data-country="qa">
-                                            <img src="https://flagcdn.com/w20/qa.png" alt=""><span>Katar</span><b>+974</b>
-                                        </li>
-                                        <li role="option" data-code="+994" data-country="az">
-                                            <img src="https://flagcdn.com/w20/az.png" alt=""><span>Azerbaycan</span><b>+994</b>
-                                        </li>
+                                    <ul class="custom-select-list" id="islemList" role="listbox" hidden>
+                                        <li role="option" data-value="İmplant ile Meme Rekonstrüksiyonu">İmplant ile Meme Rekonstrüksiyonu</li>
+                                        <li role="option" data-value="Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)">Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)</li>
+                                        <li role="option" data-value="Liposuction (Yağ Aldırma)">Liposuction (Yağ Aldırma)</li>
+                                        <li role="option" data-value="Annelik Estetiği (Mommy Makeover)">Annelik Estetiği (Mommy Makeover)</li>
+                                        <li role="option" data-value="Yüze Yağ Enjeksiyonu (Yağ Transferi)">Yüze Yağ Enjeksiyonu (Yağ Transferi)</li>
+                                        <li role="option" data-value="Endoskopik Alın Germe">Endoskopik Alın Germe</li>
+                                        <li role="option" data-value="Diğer">Diğer</li>
                                     </ul>
                                 </div>
-                                <input type="hidden" id="alanKodu" name="alan_kodu" value="+90">
-                                <input type="tel" id="telefon" name="telefon" placeholder="5XX XXX XX XX"
-                                    autocomplete="tel" inputmode="numeric" maxlength="14" required>
+                                <input type="hidden" id="islem" name="islem" required>
+                                <span class="field-error" id="islemError"></span>
                             </div>
-                            <span class="field-error" id="telefonError"></span>
+                            <button type="submit" class="btn btn-cta form-submit"><span>Bilgi Talep Et</span><span
+                                    class="arrow">→</span></button>
+                            <p class="form-note">Bilgileriniz KVKK kapsamında gizli tutulur, üçüncü taraflarla
+                                paylaşılmaz.</p>
                         </div>
-                        <div class="form-row">
-                            <input type="email" id="eposta" name="eposta" placeholder="E-posta" autocomplete="email">
-                            <span class="field-error" id="epostaError"></span>
-                        </div>
-                        <div class="form-row">
-                            <div class="custom-select" id="islemDropdown">
-                                <button type="button" class="custom-select-btn" id="islemBtn" aria-haspopup="listbox" aria-expanded="false">
-                                    <span id="islemText" class="custom-select-placeholder">İlgilendiğiniz İşlem</span>
-                                    <svg class="custom-select-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                                <ul class="custom-select-list" id="islemList" role="listbox" hidden>
-                                    <li role="option" data-value="İmplant ile Meme Rekonstrüksiyonu">İmplant ile Meme Rekonstrüksiyonu</li>
-                                    <li role="option" data-value="Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)">Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)</li>
-                                    <li role="option" data-value="Liposuction (Yağ Aldırma)">Liposuction (Yağ Aldırma)</li>
-                                    <li role="option" data-value="Annelik Estetiği (Mommy Makeover)">Annelik Estetiği (Mommy Makeover)</li>
-                                    <li role="option" data-value="Yüze Yağ Enjeksiyonu (Yağ Transferi)">Yüze Yağ Enjeksiyonu (Yağ Transferi)</li>
-                                    <li role="option" data-value="Endoskopik Alın Germe">Endoskopik Alın Germe</li>
-                                    <li role="option" data-value="Diğer">Diğer</li>
-                                </ul>
-                            </div>
-                            <input type="hidden" id="islem" name="islem" required>
-                            <span class="field-error" id="islemError"></span>
-                        </div>
-                        <button type="submit" class="btn btn-cta form-submit"><span>Bilgi Talep Et</span><span
-                                class="arrow">→</span></button>
-                        <p class="form-note">Bilgileriniz KVKK kapsamında gizli tutulur, üçüncü taraflarla
-                            paylaşılmaz.</p>
                     </form>
                 </div>
                 <div>
@@ -246,7 +254,7 @@
         </div>
     </footer>
     <script src="js/nav.js?v=4"></script>
-    <script src="js/main.js?v=5"></script>
+    <script src="js/main.js?v=6"></script>
 </body>
 
 </html>
