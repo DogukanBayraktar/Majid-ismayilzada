@@ -96,7 +96,7 @@ function heroHtml(service) {
           </div>
         </div>
         <div class="hero-form-wrap" id="service-hero-form">
-          <form class="hero-form" id="serviceHeroForm" action="https://formsubmit.co/dogukan.bayraktar11@gmail.com" method="POST">
+          <form class="hero-form" id="serviceHeroForm" action="https://formsubmit.co/ajax/dogukan.bayraktar11@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="Web Sitesi — Hizmet Sayfası Ön Görüşme Talebi (${service.title})">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
