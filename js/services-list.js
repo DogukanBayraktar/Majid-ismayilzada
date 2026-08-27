@@ -25,7 +25,8 @@ function applyServiceReveal(el, i) {
     if (!track || typeof services === 'undefined') return;
 
     track.innerHTML = services.map(s => `
-<a class="service-card" href="services-detay.html?id=${encodeURIComponent(s.id)}" style="--photo:url('${s.image}')">
+<a class="service-card" href="services-detay.html?id=${encodeURIComponent(s.id)}">
+<img src="${s.cardImage || s.image}" alt="${s.title}">
 <h4>${s.title}</h4>
 <p>${s.excerpt}</p>
 <span class="more">Detaylı Bilgi <span class="a">→</span></span>

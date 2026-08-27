@@ -66,6 +66,15 @@ if (heroForm) {
         islemList.hidden ? openIslemList() : closeIslemList();
     });
 
+    // "İlgilendiğiniz İşlem" seçeneklerini data/services.js içindeki güncel
+    // hizmet başlıklarından otomatik üretir (liste güncellendiğinde form da otomatik güncellenir).
+    if (typeof services !== 'undefined' && Array.isArray(services) && services.length) {
+        const titles = [...services.map(s => s.title), 'Diğer'];
+        islemList.innerHTML = titles.map(t =>
+            `<li role="option" data-value="${t}">${t}</li>`
+        ).join('');
+    }
+
     islemList.querySelectorAll('li').forEach(li => {
         li.addEventListener('click', () => {
             islemList.querySelector('li.active')?.classList.remove('active');

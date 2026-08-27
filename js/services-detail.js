@@ -61,15 +61,11 @@ function heroHtml(service) {
   const bgStyle = service.image ? ` style="background-image:url('${service.image}');"` : '';
 
   // "İlgilendiğiniz İşlem" seçeneklerinde mevcut hizmet önceden seçili gelir.
-  const procedureOptions = [
-    "İmplant ile Meme Rekonstrüksiyonu",
-    "Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)",
-    "Liposuction (Yağ Aldırma)",
-    "Annelik Estetiği (Mommy Makeover)",
-    "Yüze Yağ Enjeksiyonu (Yağ Transferi)",
-    "Endoskopik Alın Germe",
-    "Diğer"
-  ];
+  // Seçenekler data/services.js içindeki güncel hizmet başlıklarından üretilir.
+  const procedureBase = (typeof services !== 'undefined' && Array.isArray(services))
+    ? services.map(s => s.title)
+    : [];
+  const procedureOptions = [...procedureBase, "Diğer"];
   const matchedProcedure = procedureOptions.find(p => p === service.title);
   const procedureOptionsHtml = procedureOptions.map(p =>
     `<li role="option" data-value="${p}"${p === matchedProcedure ? ' class="active"' : ''}>${p}</li>`

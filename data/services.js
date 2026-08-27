@@ -1,134 +1,178 @@
 const services = [
   {
-    id: "implant-ile-meme-rekonstruksiyonu",
-    title: "İmplant ile Meme Rekonstrüksiyonu",
-    excerpt: "Mastektomi sonrası kaybedilen meme şeklinin silikon implant kullanılarak yeniden oluşturulduğu, en sık uygulanan rekonstrüksiyon yöntemi.",
-    category: "Rekonstrüktif Cerrahi",
-    image: "assets/images/implant-meme.png",
-    duration: "Tek veya iki aşamalı",
-    recovery: "2-3 hafta",
+    id: "meme-diklestirme-ve-buyutme",
+    title: "Meme Dikleştirme ve Büyütme",
+    excerpt: "Meme dikleştirme ve büyütme ameliyatı (augmentasyon mastopeksi), hem sarkmış hem de hacim kaybına uğramış memelere aynı seansta yeniden form, dik görünüm ve dolgunluk kazandıran kombine bir estetik cerrahi işlemdir.",
+    category: "Estetik Cerrahi",
+    image: "assets/images/Breast.jpg",
+    cardImage: "assets/images/Uzmanlıklar/Breast.jpg",
+    duration: "2-3 saat",
+    recovery: "6-8 hafta (nihai sonuç 3-6 ay)",
     videos: [
-      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800", name: "E. Şahin", duration: "Meme Rekonstrüksiyonu" },
-      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "S. Demir", duration: "İmplant ile Rekonstrüksiyon" }
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 1", duration: "Augmentasyon Mastopeksi" },
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 2", duration: "Meme Dikleştirme ve Büyütme" }
     ],
     results: [
-      { image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { image: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "assets/images/Breast/Breast-1.png" }
     ],
     content: [
-      { type: "p", text: "İmplant ile meme rekonstrüksiyonu, mastektomi (meme dokusunun alınması) sonrasında kaybedilen meme şeklinin silikon implant kullanılarak yeniden oluşturulduğu, günümüzde en sık uygulanan meme rekonstrüksiyon yöntemidir. Kendi vücudundan doku alınmadan gerçekleştirilen bu yaklaşım; daha kısa ameliyat süresi, daha hızlı iyileşme ve minimal donor saha morbiditesi avantajları nedeniyle pek çok hasta için uygun ve tercih edilir bir seçenektir." },
-      { type: "p", text: "Şişli'de Doç. Dr. Majid İsmayilzada kliniğinde implant temelli meme rekonstrüksiyonu; tek aşamalı veya iki aşamalı (doku genişletici + implant) protokollerle, her hastanın onkolojik durumu, radyoterapi planı ve beklentileri dikkate alınarak kişiselleştirilmiş biçimde uygulanmaktadır." },
-      { type: "h3", text: "Mastektomi Sonrası Meme Rekonstrüksiyonunun Önemi" },
-      { type: "p", text: "Meme kaybı, çoğu kadın için yalnızca fiziksel değil; kimlik, kadınlık ve özgüven boyutlarında derin bir etki bırakır. Mastektomi sonrası rekonstrüksiyon; yaşam kalitesini yeniden kazandırmak, beden bütünlüğü hissini onarmak ve psikolojik iyileşmeyi desteklemek amacıyla tedavinin tamamlayıcı bir parçası olarak planlanır." },
-      { type: "quote", text: "Rekonstrüksiyonun bir süreç olduğu ve sabırla ilerledikçe mükemmele yakın sonuçlara ulaşılabileceği bilinmelidir." },
-      { type: "h3", text: "İmplant ile Meme Rekonstrüksiyonu Nasıl Yapılır?" },
-      { type: "p", text: "İki temel yaklaşım mevcuttur." },
-      { type: "h3", text: "Tek Aşamalı Rekonstrüksiyon (Direkt İmplant)" },
-      { type: "p", text: "Mastektomi ile eş zamanlı olarak kalıcı silikon implant pektoral kas önüne ya da altına yerleştirilir. Kalan mastektomi deri zarfının kalitesi ve canlılığı yeterli olduğunda, bir de radyoterapi planı yoksa tercih edilen en pratik yaklaşımdır. Ameliyattan uyanıldığında meme şekli zaten oluşmuş olur." },
-      { type: "h3", text: "İki Aşamalı Rekonstrüksiyon (Ekspander + İmplant)" },
-      { type: "p", text: "İlk aşamada geçici bir doku genişletici (ekspander) yerleştirilir; bu balon benzeri cihaz poliklinik seanslarında serum fizyolojik ile kademeli olarak şişirilir. Deri yavaşça gerilir ve meme cebine uygun hacim oluşturulur. Radyoterapi planı olan hastalarda ekspander bu süreçte geçici olarak yarı dolu tutularak ışın hasarından korunur. Radyoterapi tamamlandıktan sonra ekspander kalıcı implantla değiştirilir. İkinci bir ameliyat gerektirmesi dezavantaj olmakla birlikte, ışınlama dönemini güvenle yönetme bakımından avantaj sağlar." },
-      { type: "h3", text: "İmplant Türleri ve Seçim Kriterleri" },
-      { type: "p", text: "Günümüzde yüksek koheziviteli silikon jel dolgulu implantlar en yaygın tercih olmaya devam etmektedir. Bu implantlar hem doğal meme dokusuna en yakın hissi verir hem de içerikleri nedeniyle vücutla etkileşime girmez. İmplant seçiminde dikkate alınan faktörler:<br>• Vücut yapısı ve mastektomi sonrası kalan deri zarfının kalitesi<br>• Karşı memenin boyutu ve formu<br>• Radyoterapi öyküsü veya planı<br>• Hastanın beklentileri ve yaşam tarzı<br>• İmplant şekli (anatomik ya da yuvarlak), yüzeyi (pürüzlü ya da pürüzsüz) ve hacmi" },
-      { type: "h3", text: "İmplant ile Meme Rekonstrüksiyonu Kimler İçin Uygundur?" },
-      { type: "p", text: "İmplant temelli rekonstrüksiyon aşağıdaki hasta profilinde güçlü bir seçenek oluşturur:<br>• Radyoterapi görmemiş ya da radyoterapi planı henüz netleşmemiş hastalar<br>• Yeterli vücut dokusu bulunmayan (zayıf yapılı) hastalar<br>• İki taraflı mastektomi geçirenler: Simetri sağlamak daha öngörülebilirdir.<br>• Daha kısa ameliyat ve iyileşme süresi tercih eden hastalar" },
-      { type: "p", text: "Radyoterapi görmüş hastalarda kapsül kontraktürü ve implant komplikasyon riski artar. Bu durumda otolog doku ile rekonstrüksiyon ya da LD flap + implant kombinasyonu daha güvenli alternatifler olarak değerlendirilebilir." },
-      { type: "h3", text: "İmplant ile Meme Rekonstrüksiyonu Avantajları" },
-      { type: "p", text: "• Daha kısa ameliyat süresi ve hızlı iyileşme<br>• Donor saha morbiditesi yok: Başka bir bölgeden doku alınmaz.<br>• İki taraflı mastektomilerde daha kolay simetri sağlanır.<br>• Modern yeni nesil implantlar son derece doğal his ve form sunar." },
+      { type: "p", text: "Meme dikleştirme ve büyütme ameliyatı (augmentasyon mastopeksi), hem sarkmış hem de hacim kaybına uğramış memelere aynı seansta yeniden form, dik görünüm ve dolgunluk kazandıran kombine bir estetik cerrahi işlemdir. Yaşlanma, yerçekimi, doğum, emzirme veya önemli kilo değişimleri gibi faktörler zamanla meme dokusunu etkiler; sarkma (ptoz) ve hacim kaybı çoğunlukla birlikte görülür." },
+
+      { type: "h3", text: "Meme Dikleştirme ve Büyütme İstanbul" },
+      { type: "p", text: "Sarkma ile birlikte hacim kaybı olan vakalarda yalnızca meme dikleştirme (mastopeksi) istenen dolgunluğu sağlayamaz; yalnızca meme büyütme implantı (augmentasyon) ise sarkmayı gidermez. Bu iki gereksinimin tek seansta karşılanması augmentasyon mastopeksiyi doğru bir seçenek haline getirir. Şişli'de Doç. Dr. Majid İsmayilzada kliniğinde bu kombine operasyon, meme estetiğinin görece kompleks işlemlerinden biri olmasına karşın titiz cerrahi planlama ve kişiselleştirilmiş tekniklerle uygulanmaktadır." },
+
+      { type: "h3", text: "Augmentasyon Mastopeksi Kimler İçin Uygundur?" },
+      { type: "p", text: "Bu kombinasyon, aşağıdaki durumları bir arada yaşayan kadınlara yönelik ideal bir çözümdür:<br>• Emzirme ya da kilo kaybı sonrasında memelerinde hem sarkma hem de hacim kaybı yaşayanlar<br>• Yalnızca implantın göğüslerine form kazandırmaya yetmeyeceği, aynı zamanda dikleştirmeye de ihtiyaç duyanlar<br>• Doğal hacmiyle yetinmek istemeyip hem dik hem dolgun bir görünüm hedefleyenler<br>• Meme başının areola altına indiği ve belirgin ptoz yaşandığı vakalar" },
+      { type: "p", text: "Sadece hacim kaybı olan ya da sarkma minimal düzeyde olan hastalarda yalnızca augmentasyon yeterli olabilir. Sadece sarkma olan ancak hacim değişikliği istemeyenlerde ise implant olmaksızın mastopeksi uygulanır. Hangi yöntemin uygun olduğuna muayenede karar verilir." },
+
+      { type: "h3", text: "Augmentasyon Mastopeksi Nasıl Yapılır?" },
+      { type: "p", text: "Ameliyat genel anestezi altında gerçekleştirilir ve yaklaşık 2–3 saat sürer. Deri zarfını küçültürken meme hacmini artırmayı hedeflediğinden cerrahi açıdan kompleks bir planlama gerektirir." },
+      { type: "p", text: "Süreç şu adımlardan oluşur:<br>• Sarkan meme dokusu yeniden şekillendirilir ve fazla deri uzaklaştırılır.<br>• Meme başı ve areola estetik açıdan daha yukarı ve uygun bir konuma taşınır.<br>• Aynı seansta vücut oranlarına uygun büyüklükte silikon implant meme dokusu veya kas altına yerleştirilir.<br>• Kesi yerleri; meme altı kıvrımı ve areola çevresi üzerinden planlanarak gizlenebilir konumda tasarlanır." },
+      { type: "p", text: "Ameliyat doğası gereği kompromizler içerir: deri zarfının küçültülmesi ile implant boyutunun artırılması arasındaki denge cerrahın deneyimiyle yönetilir. Bu nedenle bireysel cerrahi planlama olası komplikasyonları minimize etmede belirleyici rol oynar." },
+
+      { type: "h3", text: "Augmentasyon Mastopeksi Sonrası İyileşme Süreci" },
+      { type: "p", text: "İyileşme süreci, tek başına augmentasyon ya da mastopeksiye kıyasla biraz daha kapsamlıdır; hem implant hem de doku iyileşmesi bir arada ilerler." },
+      { type: "p", text: "İlk 4–5 gün: Hafif ağrı, gerginlik ve ödem beklenir. Dinlenme ve hareketin kısıtlanması önerilir.<br>1–2 hafta: Günlük yaşam aktivitelerine kademeli dönüş başlar.<br>4–6 hafta: Ağır yük taşıma ve spor kısıtlaması devam eder.<br>6–8 hafta: Spor dahil tam aktiviteye dönüş.<br>3–6 ay: Memelerin nihai formunu alması ve implantların tamamen oturması için gereken süre." },
+      { type: "p", text: "Özel meme korsesi veya sporcu sütyeni kullanımı implantların yerinde sabit kalmasını ve ödemin azalmasını destekler. Doktor takip randevuları iyileşme sürecinin düzenli takibi için önemlidir." },
+
+      { type: "h3", text: "Meme Dikleştirme ve Büyütme Avantajları" },
+      { type: "p", text: "• Tek seansta hem dikleştirme hem hacim kazandırma sağlanır; iki ayrı ameliyatın yükünden kaçınılır.<br>• Vücut hatlarıyla uyumlu doğal meme formu elde edilir.<br>• Gövde oranları dengelenir; iç çamaşırı ve kıyafet seçimi kolaylaşır.<br>• Özgüven ve vücut algısı olumlu yönde değişir." },
+
       { type: "h3", text: "Olası Riskler ve Komplikasyonlar" },
-      { type: "p", text: "İmplant temelli rekonstrüksiyonun başlıca riskleri:<br>• Kapsül kontraktürü: Radyoterapi sonrası sıklığı artar.<br>• İmplant yer değiştirmesi veya rüptür: Modern implantlarda oldukça nadir.<br>• Deri zarfı nekrozu: Mastektomi deri kalitesinin yetersiz olduğu vakalarda risk artar.<br>• Enfeksiyon: Ağız hijyeni, sigara bırakma ve antibiyotik profilaksisi riskini düşürür." },
-      { type: "p", text: "Cilt kalitesi yetersiz olan ya da radyoterapi geçmişi olan hastalarda implant üstüne LD kas flebi eklenmesi hem komplikasyon riskini azaltır hem de daha doğal bir meme formu sağlar." },
-      { type: "h3", text: "İyileşme Süreci" },
-      { type: "p", text: "Ameliyat sonrası 1–2 günlük hastane takibi yeterlidir. Drenlar genellikle 1–2 hafta kullanılır; bu konuda hastalar önceden bilgilendirilmelidir. Sosyal yaşama dönüş genellikle 2–3 haftada gerçekleşir. Ödem çözüldükçe implant doğal formuna oturur; nihai görünüm 3–6 ayda belirginleşir." },
-      { type: "h3", text: "Meme kanseri ameliyatından hemen sonra rekonstrüksiyon yapılabilir mi?" },
-      { type: "p", text: "Evet, mastektomiyle eş zamanlı \"anlık rekonstrüksiyon\" ya da daha sonra yapılan \"gecikmeli rekonstrüksiyon\" seçenekleri mevcuttur. Anlık rekonstrüksiyon hastalara ameliyattan uyanırken meme şeklinde bir görünüm sağlar. Radyoterapi planı, zamanlama kararını etkileyen en önemli faktördür." },
-      { type: "h3", text: "Radyoterapi görmüş hastalarda implant rekonstrüksiyonu mümkün mü?" },
-      { type: "p", text: "Radyoterapi doku kalitesini olumsuz etkilediğinden implant rekonstrüksiyonunu zorlaştırır ve kapsül kontraktürü riskini artırır. Bu durumlarda kendi dokuyla rekonstrüksiyon (otolog yöntem) daha güvenli ve kalıcı sonuç verebilir. Karar onkoloji ekibiyle birlikte alınır." },
-      { type: "h3", text: "Meme rekonstrüksiyonu estetik sonuç verir mi?" },
-      { type: "p", text: "Modern rekonstrüksiyon teknikleri ile karşı memeye yakın doğal görünümlü sonuçlar elde edilebilir. Areola ve meme başı rekonstrüksiyonu da sonraki seanslarda tamamlanabilir. Amaç; simetrik, doğal bir görünümle hastanın yaşam kalitesini yeniden kazanmasını sağlamaktır." },
-      { type: "h3", text: "Tek taraflı rekonstrüksiyonda karşı meme düzeltilir mi?" },
-      { type: "p", text: "Evet, simetri sağlamak için karşı memede büyütme, küçültme veya dikleştirme yapılabilir. Bu işlem rekonstrüksiyon sürecinin ayrılmaz bir parçası olarak planlanır ve hastalara bu seçenek sunulur." },
-      { type: "h3", text: "İmplant rekonstrüksiyonunda doku genişletici ne kadar süre kalır?" },
-      { type: "p", text: "Ekspander cepleri hedef hacme ulaşıncaya kadar genellikle 3–6 ay kullanılır. Radyoterapi gerekiyorsa ışınlama tamamlanana kadar beklenilir; ardından kalıcı implantla değiştirilir. İkinci ameliyat çoğunlukla daha kısa ve komplikasyonsuz bir süreçtir." },
-      { type: "h3", text: "Silikon implant güvenli midir?" },
-      { type: "p", text: "Günümüzde kullanılan yüksek koheziviteli silikon jel implantlar kapsamlı klinik verilerle güvenilirliği kanıtlanmış medikal cihazlardır. Rüptür durumunda bile jel yayılmaz; rutin değişim gerektirmez. Düzenli görüntüleme takibi önerilir." }
+      { type: "p", text: "Augmentasyon mastopeksi, meme estetiğinin görece kompleks operasyonlarından biridir. Her cerrahi girişimde olduğu gibi belirli riskler taşır:<br>• Asimetri: Genellikle minörüdür ve iyileşme sürecinde düzelebilir.<br>• Kapsül kontraktürü: İmplant çevresinde sertlik oluşumu; nadir görülür, gerektiğinde tedavi edilir.<br>• Yara iyileşmesinde gecikme: Sigara kullanımı bu riski artırır.<br>• İmplant pozisyon değişikliği: Uygun protez seçimi ve cerrahi teknikle minimize edilir." },
+      { type: "p", text: "Deneyimli bir cerrahın elinde ve önerilen protokoller doğrultusunda gerçekleştirilen operasyonlarda riskler minimal düzeyde tutulur." },
+
+      { type: "h3", text: "Meme Dikleştirme ve Büyütme Sonuçları Kalıcı mı?" },
+      { type: "p", text: "Augmentasyon mastopeksi kalıcı bir işlemdir. Hamilelik, emzirme veya önemli kilo değişimleri olmadığı sürece sonuçlar uzun yıllar boyunca estetik görünümünü korur." },
+      { type: "p", text: "Kullanılan silikon implantlar uzun ömürlüdür; gerekli görüldüğünde yıllar sonra değiştirilebilir." },
+      { type: "p", text: "Yalnızca sarkmanın giderilmesi, hacim eklenmeden yapılacaksa Meme Dikleştirme sayfasına bakabilirsiniz." },
+
+      { type: "h3", text: "Dikleştirme ve büyütme neden iki ayrı ameliyat olarak yapılabilir?" },
+      { type: "p", text: "Bazı vakalarda sarkıklık derecesi ve istenen protez boyutu, aynı anda yapıldığında doku gerginliğini artırabilir; bu durumda güvenlik için önce dikleştirme, 3–6 ay sonra protez yerleştirme planlanır. Cerrah her vakayı bireysel olarak değerlendirerek karar verir." },
+
+      { type: "h3", text: "Augmentasyon mastopeksi sonuçları ne kadar kalıcıdır?" },
+      { type: "p", text: "Hamilelik, emzirme ve önemli kilo değişimleri olmadığı sürece sonuçlar uzun yıllar korunabilir. İmplantlar ömür boyu kullanılabilir; ancak yaşlanma süreciyle hafif değişimler yaşanabilir. Stabil kiloda kalmak kalıcılığı destekler." },
+
+      { type: "h3", text: "Bu kombinasyon daha uzun iyileşme süreci gerektiriyor mu?" },
+      { type: "p", text: "Tek başına meme büyütmeye kıyasla iyileşme süresi biraz daha uzundur çünkü hem implant hem de doku iyileşmesi bir arada gerçekleşir. Genel olarak 6–8 hafta kompresyon desteği, 4–6 hafta ağır aktivite kısıtlaması uygulanır." },
+
+      { type: "h3", text: "Hangi durumlarda sadece dikleştirme yeterlidir?" },
+      { type: "p", text: "Meme hacminden memnun olup yalnızca sarkıklık sorunu yaşayan kişiler için implant olmaksızın mastopeksi yeterlidir. Hacim kaybı yoksa ya da hasta implant istemiyorsa sadece dikleştirme ile doğal ve yetkin bir görünüm elde edilir." },
+
+      { type: "h3", text: "Ameliyat sonrası emzirme etkilenir mi?" },
+      { type: "p", text: "Modern tekniklerle yapılan augmentasyon mastopeksilerinde süt bezlerine zarar verilmemeye özen gösterilir ve emzirme kapasitesi çoğu vakada korunur. Gelecekte emzirme planı olan hastalar bu konuyu muayenede cerrahla ayrıntılı görüşmelidir." },
+
+      { type: "h3", text: "Hangi meme implant tipi ve boyutu benim için uygun?" },
+      { type: "p", text: "İmplant seçimi; vücut ölçüleri, mevcut doku miktarı, cilt elastikiyeti ve hasta beklentilerine göre belirlenir. Anatomik (damlacık) veya yuvarlak implant seçimi; yerleştirme planı (kas altı veya meme dokusu altı) da bu değerlendirmenin bir parçasıdır." }
     ],
     steps: [
-      { number: "01", title: "Değerlendirme ve Planlama", description: "Hastanın onkolojik durumu, radyoterapi planı ve beklentileri değerlendirilerek tek aşamalı veya iki aşamalı protokol belirlenir." },
-      { number: "02", title: "Tek Aşamalı Yerleşim", description: "Deri zarfı yeterli ve radyoterapi planı yoksa, kalıcı implant mastektomi ile eş zamanlı olarak pektoral kas önüne veya altına doğrudan yerleştirilir." },
-      { number: "03", title: "Doku Genişletici Yerleştirilmesi", description: "İki aşamalı protokolde önce geçici ekspander yerleştirilir ve poliklinik seanslarında serum fizyolojik ile kademeli olarak şişirilir." },
-      { number: "04", title: "Radyoterapi Sürecinin Yönetimi", description: "Radyoterapi gereken hastalarda ekspander, ışınlama döneminde yarı dolu tutularak doku ışın hasarından korunur." },
-      { number: "05", title: "Kalıcı İmplant ile Değişim", description: "Radyoterapi tamamlandıktan sonra ekspander çıkarılır ve kalıcı silikon implant yerleştirilerek meme şekli tamamlanır." }
+      { number: "01", title: "Değerlendirme ve Planlama", description: "Sarkma derecesi, mevcut hacim ve hasta beklentileri değerlendirilerek dikleştirme ve büyütmenin tek seansta mı yoksa iki aşamalı mı yapılacağına karar verilir." },
+      { number: "02", title: "Meme Dokusunun Yeniden Şekillendirilmesi", description: "Sarkan meme dokusu yeniden şekillendirilir, fazla deri uzaklaştırılır ve meme başı-areola daha yukarı, uygun bir konuma taşınır." },
+      { number: "03", title: "İmplant Yerleştirme", description: "Vücut oranlarına uygun büyüklükte silikon implant, aynı seansta meme dokusu veya kas altına yerleştirilir." },
+      { number: "04", title: "Kesi Planlaması", description: "Kesi yerleri meme altı kıvrımı ve areola çevresi üzerinden planlanarak mümkün olduğunca gizlenebilir konumda tasarlanır." },
+      { number: "05", title: "İyileşme Takibi", description: "Meme korsesi/sporcu sütyeni ve düzenli doktor kontrolleriyle 6-8 hafta süren iyileşme süreci desteklenir; nihai form 3-6 ayda oturur." }
     ]
   },
   {
-    id: "otolog-doku-ile-meme-rekonstruksiyonu",
-    title: "Otolog Doku ile Meme Rekonstrüksiyonu (DIEP Flap)",
-    excerpt: "Meme kanseri cerrahisi sonrası kaybedilen meme dokusunun hastanın kendi vücudundan alınan cilt, yağ ve gerektiğinde kas dokusuyla yeniden oluşturulduğu ileri düzey rekonstrüktif yöntem.",
-    category: "Rekonstrüktif Cerrahi",
-    image: "assets/images/doku-meme.png",
-    duration: "6-10 saat",
-    recovery: "6-8 hafta",
+    id: "popo-estetigi-bbl",
+    title: "Popo Estetiği (BBL)",
+    excerpt: "Yağ transferi yöntemiyle kalça ve bel bölgelerinin şekillendirildiği estetik cerrahi.",
+    category: "Estetik Cerrahi",
+    image: "assets/images/bbl.png",
+    cardImage: "assets/images/Uzmanlıklar/BBL.jpg",
+    duration: "3-5 saat",
+    recovery: "6-8 hafta (nihai sonuç 2-3 ay)",
     videos: [
-      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=800", name: "N. Aydın", duration: "DIEP Flap Rekonstrüksiyon" }
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 1", duration: "BBL" },
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 2", duration: "Popo Estetiği" }
     ],
     results: [
-      { image: "https://images.pexels.com/photos/5206923/pexels-photo-5206923.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "assets/images/BBL/BBL-1.png" },
+      { image: "assets/images/BBL/BBL-2.png" }
     ],
     content: [
-      { type: "p", text: "Otolog doku ile meme rekonstrüksiyonu, meme kanseri cerrahisi sonrası kaybedilen meme dokusunun hastanın kendi vücudundan alınan cilt, yağ ve gerektiğinde kas dokusu kullanılarak yeniden oluşturulduğu ileri düzey bir rekonstrüktif cerrahi yöntemidir. Kendi dokusuyla yapılan bu onarım; implanta kıyasla çok daha doğal bir his, sıcaklık ve kıvam sunar. Yabancı madde içermediğinden alerjik reaksiyon riski sıfırdır ve doku zamanla vücutla tam anlamıyla bütünleşir." },
-      { type: "p", text: "Şişli'de Doç. Dr. Majid İsmayilzada kliniğinde uygulanan otolog meme rekonstrüksiyonu; DIEP, TRAM ve diğer perforatör flep teknikleri konusundaki mikrocerrahi deneyimiyle, her hastanın onkolojik sürecini ve vücut yapısını bütüncül biçimde değerlendiren kişiselleştirilmiş bir yaklaşımla planlanmaktadır." },
-      { type: "h3", text: "Meme Rekonstrüksiyonu Neden Önemlidir?" },
-      { type: "p", text: "Meme kanseri tedavisi sürecinde mastektomi hayat kurtarıcı bir adımdır; ancak sonrasında pek çok kadın için beden bütünlüğü hissi ve psikolojik iyileşme, cerrahi tedavi kadar kritik hale gelir. Meme, yalnızca fiziksel bir organ olmanın ötesinde kadın kimliğiyle, özsaygıyla ve beden algısıyla derinden ilişkilidir. Meme rekonstrüksiyonu bu nedenle yalnızca bir estetik müdahale değil; kişinin yaşam kalitesini, özgüvenini ve psikolojik iyileşmesini doğrudan destekleyen bir süreçtir." },
-      { type: "quote", text: "Otolog doku ile yapılan rekonstrüksiyonlar; dokunun sıcaklığı, kıvamı ve doğallığı bakımından implant tabanlı yöntemlere kıyasla çok daha canlı ve gerçekçi bir sonuç sunar." },
-      { type: "p", text: "Ayrıca radyoterapi alan hastalarda yeni ve sağlıklı kanlanan doku transferi, hasarlı bölgenin iyileşmesini destekler." },
-      { type: "h3", text: "Doku Hangi Bölgeden Alınır?" },
-      { type: "p", text: "Otolog doku ile meme rekonstrüksiyonunda kullanılan başlıca donor bölgeler ve teknikler şunlardır." },
-      { type: "h3", text: "DIEP Flebi (Deep Inferior Epigastric Perforator)" },
-      { type: "p", text: "Günümüzün altın standart yöntemi olan DIEP flap, karın bölgesinin cilt ve yağ dokusunu karın kaslarına dokunmadan alır. Perforatör damarlar korunarak hazırlanan bu flep, mikrocerrahi tekniklerle meme bölgesine taşınır. Karın kasını koruyarak uzun vadede abdominal güçsüzlük ve herni riskini minimize eder. Aynı zamanda karın bölgesinde doğal bir incelme etkisi de sağlar — mastektomi hastasında abdominoplasti ile eş değer bir yan yarar." },
-      { type: "h3", text: "TRAM Flebi (Transverse Rectus Abdominis Myocutaneous)" },
-      { type: "p", text: "Karın bölgesinden cilt, yağ ve karın kasını birlikte kullanan köklü bir tekniktir. Pedikülü korunarak ya da serbest flep olarak uygulanabilir. DIEP'e kıyasla kas hasarı daha fazladır; ancak bazı vakalarda damar anatomisi nedeniyle tercih edilir." },
-      { type: "h3", text: "PAP / TMG Flebi (Uyluk Bölgesi)" },
-      { type: "p", text: "Uyluk iç veya arka yüzeyinden alınan bu fleplerde yağ ve deri dokusu kullanılır, kas hasarı minimumdur. Karın bölgesinde yeterli doku olmayan hastalarda güçlü bir alternatif oluşturur." },
-      { type: "h3", text: "SGAP / IGAP Flebi (Kalça Bölgesi)" },
-      { type: "p", text: "Kalça üst veya alt bölgesinden alınan perforatör flepler, karın ve uylukta yeterli doku bulunmayan hastalarda değerli bir seçenektir. Mikrocerrahi deneyim gerektiren teknik detayları nedeniyle daha az yaygındır." },
-      { type: "h3", text: "Ameliyat Nasıl Gerçekleşir?" },
-      { type: "p", text: "Ameliyat genel anestezi altında uygulanır ve seçilen tekniğe göre ortalama 6–10 saat sürer. Süreç iki aşamayı kapsar: önce donor bölgeden doku hazırlanır, ardından meme bölgesine taşınan dokunun beslenmesi için mikroskop altında ince damar anastomozları gerçekleştirilir. Bu aşama, flebin uzun vadeli canlılığını ve estetik başarıyı doğrudan belirleyen en kritik adımdır." },
-      { type: "p", text: "Doku meme bölgesine yerleştirildikten sonra biçimlendirme yapılır; gerektiğinde simetri için karşı memede de düzeltme işlemi planlanır. İlk aşamanın amacı dokunun canlılığını sağlamak ve mümkün olan en iyi simetriyi elde etmektir. Bununla birlikte özellikle radyoterapi görmüş hastalarda takip sürecinde yağ enjeksiyonu, meme başı rekonstrüksiyonu ve areola dövmesi gibi tamamlayıcı seanslar planlanabilir." },
-      { type: "h3", text: "Ameliyat Sonrası İyileşme Süreci" },
-      { type: "p", text: "Flep canlılığının yoğun takibi nedeniyle ameliyat sonrası ilk 5–7 gün hastanede kalış gereklidir. Dolaşım bozukluğunun erken tespiti için bu süreç çok önemlidir. Sonraki izlem takvimi genel hatlarıyla şöyledir:<br>• 2–4 hafta: Günlük aktivitelere kademeli dönüş başlar. DIEP sonrası karın bölgesi için 6 haftaya kadar korse kullanımı önerilir.<br>• 6–8 hafta: Hafif egzersiz ve işe dönüş. Ağır karın egzersizleri daha uzun süre ertelenir.<br>• 3–6 ay: Ödem tamamen çözülür, memenin nihai şekli belirginleşir." },
-      { type: "p", text: "Sigara kullanımının ameliyat öncesi ve sonrasında kesinlikle bırakılması, mikrocerrahi anastomoz başarısı ve yara iyileşmesi açısından hayati önem taşır." },
-      { type: "h3", text: "Kimin İçin Uygundur?" },
-      { type: "p", text: "Otolog doku ile meme rekonstrüksiyonu öncelikle şu durumlarda değerlendirilir:<br>• Radyoterapi görmüş hastalarda: Hasarlı deriye implant tatmin edici sonuç vermez; canlı doku transferi hem görünüm hem doku kalitesi açısından üstündür.<br>• İmplant başarısızlığı yaşayan hastalar: Önceki implant rekonstrüksiyonu komplikasyonla sonuçlanmış vakalarda otolog onarım güvenli alternatiftir.<br>• Karın bölgesinde fazla doku olan ve mastektomi adayı hastalar: DIEP flap aynı anda hem meme onarımı hem abdominal incelme sağlar.<br>• Yabancı cisim taşımak istemeyen hastalar: Tamamen doğal ve kalıcı bir sonuç arayanlar için ideal seçenektir." },
-      { type: "h3", text: "Otolog Rekonstrüksiyonun Avantajları" },
-      { type: "p", text: "• Uzun vadede implant kayması, kapsül kontraktürü gibi riskler yoktur.<br>• Tamamen doğal his ve görünüm; implant hissi yoktur.<br>• Kalıcı sonuçlar: Doku vücutla bütünleşir, kilo değişimine uyum sağlar.<br>• Radyoterapi görmüş alanlarda daha iyi iyileşme: Yeni kanlanan sağlıklı doku transferi.<br>• Donor bölgede estetik kazanım: DIEP flepde karında doğal incelme." },
-      { type: "h3", text: "DIEP flap nedir, neden tercih edilir?" },
-      { type: "p", text: "DIEP (Deep Inferior Epigastric Perforator) flap; karın derisinden ve yağından oluşan, kas korunarak alınan bir doku flebidir. Kasa zarar verilmediğinden bağırsaklar ve abdominal duvar fonksiyonu korunur. Sonuçlar son derece doğal his ve görünüm sunar; implanta kıyasla uzun vadede daha stabil kalır." },
-      { type: "h3", text: "Otolog rekonstrüksiyon sonrası karın bölgesinde sorun yaşanır mı?" },
-      { type: "p", text: "DIEP flap tekniğinde kas korunduğundan uzun vadeli karın güçsüzlüğü görülmez. Donor sahada geçici hassasiyet ve iyileşme süreci yaşanır. Bu süreç karın germeyle benzerlik taşır ve 6–8 haftada büyük ölçüde tamamlanır." },
-      { type: "h3", text: "Otolog rekonstrüksiyon ne kadar sürer?" },
-      { type: "p", text: "Mikrocerrahi içerdiğinden 6–10 saatlik bir ameliyat süresi beklenir. Hastanede 3–5 gün yatış gereklidir. Flep canlılığı ilk 48–72 saatte yoğun takip gerektirir. Tam iyileşme 6–8 haftada tamamlanır." },
-      { type: "h3", text: "Kimin için otolog, kimin için implant rekonstrüksiyonu uygundur?" },
-      { type: "p", text: "Radyoterapi gören, implant başarısızlığı yaşayan veya daha doğal his isteyen hastalar için otolog tercih edilir. İmplant rekonstrüksiyonu daha kısa ameliyat ve daha hızlı iyileşme sunar; yeterli vücut dokusu olmayan zayıf hastalarda da uygulanabilir. Karar bireysel değerlendirmeyle alınır." },
-      { type: "h3", text: "Meme başı ve areola rekonstrüksiyonu ne zaman yapılır?" },
-      { type: "p", text: "Meme formu oturup simetri sağlandıktan sonra genellikle 3–6 ay içinde ayrı bir seansta meme başı rekonstrüksiyonu ve areola dövmesi planlanır. Bu tamamlayıcı adımlar estetik bütünlüğü güçlendirir." },
-      { type: "h3", text: "Tek taraflı mastektomide karşı meme de ameliyat edilir mi?" },
-      { type: "p", text: "Simetri sağlamak amacıyla karşı memede büyütme, küçültme veya dikleştirme planlanabilir. Bu işlem rekonstrüksiyon sürecinin ayrılmaz bir parçası olarak kabul edilir ve hastalara bu seçenek sunulur." }
+      { type: "p", text: "Popo estetiği; Brazilian Butt Lift yani BBL olarak da bilinen, kişinin kendi vücudundaki yağ dokusunun alınıp işlendikten sonra kalça bölgesine enjekte edildiği vücut şekillendirme operasyonudur. Yapay bir malzeme ya da silikon implant içermeyen bu yöntemde kullanılan tek kaynak kişinin kendi yağıdır. Bu özellik BBL'yi hem doğal hissettiren hem de vücutla tam biyolojik uyum içinde sonuçlar sunan özgün bir prosedür haline getirir." },
+      { type: "p", text: "BBL'nin amacı yalnızca kalçayı büyütmek değildir. Vücuttan alınan yağın kalçaya aktarılmasıyla eş zamanlı olarak bel, karın, sırt veya uyluk gibi bölgeler inceltilir. Bu ikili etki; bel kıvrımını belirginleştirirken kalça konturunu daha dolgun ve feminen bir forma kavuşturur. Sonuç; \"kum saati\" olarak bilinen dengeli ve kadınsı vücut oranının cerrahi olarak yakalanmasıdır." },
+
+      { type: "h3", text: "Popo Estetiği Kimlere Uygundur?" },
+      { type: "p", text: "BBL; kalçalarının düz, sarkık veya şekilsiz olduğunu düşünen ve vücudunun belirli bölgelerinde yeterli miktarda yağ dokusu bulunan bireyler için tasarlanmış bir prosedürdür." },
+      { type: "p", text: "Şu durumlar BBL başvurusunu anlamlı kılar:<br>• Kalçanın genetik olarak düz, sarkık ya da orantısız görünmesi<br>• Kilo kaybı sonrası kalça formunun ve hacminin yitirilmesi<br>• Doğum ve emzirme sürecinin ardından kalça bölgesindeki değişimler<br>• Bel-kalça oranının bozulması ve kum saati formunun kaybolması<br>• Silikon implant yerine doğal ve kalıcı bir alternatif arayışı" },
+      { type: "p", text: "Uygun aday kriterleri şunlardır:<br>• Yağ enjeksiyonu yapılabilecek yeterli miktarda donör yağ dokusu bulunması; çok zayıf bireylerde yeterli yağ toplanamayabileceğinden BBL mümkün olmayabilir<br>• Cilt elastikiyetinin yeterli düzeyde olması<br>• Genel sağlık durumunun ameliyata elverişli olması<br>• Sigara kullanımının bırakılmış ya da minimuma indirilmiş olması; sigara yağ hücrelerinin yaşayabilirliğini doğrudan olumsuz etkiler<br>• Gerçekçi beklentilere sahip olmak" },
+
+      { type: "h3", text: "BBL Ameliyatı (Popo Estetiği) Nasıl Yapılır?" },
+      { type: "p", text: "Brazilian Butt Lift; iki ana aşamadan oluşan ve titiz teknik planlama gerektiren bir prosedürdür." },
+      { type: "h3", text: "1. Aşama: Yağ Toplama (Liposuction)" },
+      { type: "p", text: "Ameliyat; bel, karın, sırt, uyluk veya iç bacak gibi yağ fazlalığının bulunduğu bölgelerden liposuction yöntemiyle yağ alınmasıyla başlar. Bu aşama yalnızca BBL için ham madde temin etmekle kalmaz; aynı zamanda vücuda şekil kazandıran konturlama etkisini de üretir." },
+      { type: "p", text: "Yağın hangi bölgelerden alınacağı; hem donör bölgedeki yağ varlığına hem de vücudun genel estetik dengesine göre planlanır. Bel bölgesinden alınan yağ; bel kıvrımını belirginleştirirken kalçayı büyütme etkisini görsel olarak ikiye katlar." },
+      { type: "h3", text: "2. Aşama: Yağ İşleme ve Saflaştırma" },
+      { type: "p", text: "Toplanan yağ ham haliyle kullanılamaz. Santrifüj veya filtrasyon yöntemiyle işlenen yağ; kan, yağ asitleri ve cansız hücrelerden arındırılır. Bu işlem sonunda yalnızca canlı ve sağlıklı yağ hücreleri enjeksiyon için hazır hale getirilir. Yağın kalitesi; tutunma oranını ve uzun vadeli sonucu doğrudan etkiler." },
+      { type: "h3", text: "3. Aşama: Kalçaya Yağ Enjeksiyonu" },
+      { type: "p", text: "Saflaştırılmış yağ; kalçanın farklı katmanlarına ve bölgelerine çok sayıda küçük enjeksiyonla yerleştirilir. Yağın hangi derinliğe ve hangi bölgeye verileceği hem estetik dengeyi hem de güvenliği belirler. Çok küçük miktarlarda ve çok sayıda noktadan yapılan bu enjeksiyonlar; hem daha doğal sonuç sağlar hem de yağın tutunma olasılığını artırır." },
+      { type: "p", text: "Ameliyat genel anestezi altında gerçekleştirilir ve ortalama 3-5 saat sürer." },
+
+      { type: "h3", text: "Popo Estetiği (BBL) Sonrası İyileşme Süreci" },
+      { type: "p", text: "BBL'nin iyileşme süreci; diğer vücut şekillendirme operasyonlarından farklı ve özel dikkat gerektiren bir protokol içerir. Bu süreçteki temel prensip şudur: enjekte edilen yağ hücrelerinin yaşayabilmesi için üzerlerine doğrudan baskı uygulanmamalıdır." },
+      { type: "p", text: "İlk 2 hafta: Bu dönemde doğrudan oturmak önerilmez. Yemek yerken, arabada ya da zorunlu durumlarda BBL yastığı veya dizler üzerine kısmen yük aktarımı yapılarak oturulur. Yüzüstü ya da yan yatış pozisyonu tercih edilir. Kompresyon korsesi bu günden itibaren giyilmeye başlanır." },
+      { type: "p", text: "2-6. haftalar: Kısa süreli oturma izni kademeli olarak başlar; BBL yastığı kullanımı sürdürülür. Şişlik ve morluklar belirgin biçimde azalır. Günlük yaşama dönüş genellikle 7-10 gün içinde mümkündür; ancak masa başı çalışmada bile BBL yastığı kullanımı önerilir." },
+      { type: "p", text: "6. hafta ve sonrası: Oturma kısıtlaması büyük ölçüde kalkar. Hafif egzersizlere hekim onayıyla başlanabilir. Kalça konturunun gerçek şekli belirginleşmeye başlar." },
+      { type: "p", text: "2-3. aylar: Nihai sonuç bu dönemde oturur. Enjekte edilen yağın tutunma süreci tamamlanmış, vücut yeni formuna tam uyum sağlamıştır." },
+
+      { type: "h3", text: "BBL Sonrası Oturma Yasağı: Neden Bu Kadar Kritik?" },
+      { type: "p", text: "Bu soruyu sıkça soran hastaların haklı bir merakı vardır. Kalçaya enjekte edilen yağ hücreleri; ilk haftalarda henüz yeni yerleşim bölgesine tutunmamıştır. Doğrudan baskı bu hücrelerin kanlanmasını bozar ve tutunma oranını düşürür." },
+      { type: "p", text: "Oturma yasağına uyum; uzun vadeli sonucun kalitesini doğrudan belirler. Bu kısıtlamaya titizlikle uyan hastalar çok daha yüksek yağ tutunma oranlarıyla sonuçlanır. Bu nedenle BBL; yalnızca ameliyat değil, iyileşme sürecine de aktif katılım gerektiren bir prosedürdür." },
+
+      { type: "h3", text: "Popo Estetiği (BBL) Sonuçları Kalıcı mı?" },
+      { type: "p", text: "BBL sonuçları büyük ölçüde kalıcıdır. Enjekte edilen yağ hücrelerinin yaklaşık yüzde altmışı yeni bölgesine tutunur ve uzun yıllar varlığını sürdürür. Tutunan bu hücreler vücudun geri kalanıyla birlikte yaşlanır; bu özellik BBL sonuçlarını silikon implanttan ayıran en doğal yönüdür." },
+      { type: "p", text: "Kalıcılığı etkileyen başlıca faktörler şunlardır:<br>• Kilo stabilitesi: Kilo alımında tutunan yağ hücreleri büyür; kilo verildiğinde küçülür. Stabil bir kiloda kalmak sonucun korunmasında en belirleyici faktördür<br>• Sigara: Sigara yağ hücrelerinin yaşayabilirliğini azaltır; bırakmak hem iyileşmeyi hem de tutunma oranını destekler<br>• Oturma protokolüne uyum: İlk haftalar boyunca baskı uygulanmaması yağ tutunma oranını doğrudan artırır<br>• İkinci seans ihtiyacı: Yağ doku rezervi sınırlı ya da istenen hacim büyük olan vakalarda; ilk seans sonrasında belirli bir süre beklendikten sonra ek seans planlanabilir" },
+
+      { type: "h3", text: "BBL ile Silikon Kalça İmplantı Arasındaki Fark" },
+      { type: "p", text: "Bu iki prosedür sıkça karşılaştırılır. Temel farklar şu şekilde özetlenebilir:" },
+      { type: "p", text: "BBL kişinin kendi yağını kullandığından yabancı madde içermez. Sonuç doğal hissedilir ve görünür. Kalça dışında vücudun liposuction yapılan bölgelerinde de şekillendirme etkisi sağlar. Ancak yeterli donör yağ dokusu gerektirdiğinden çok zayıf bireylerde uygulanamaz." },
+      { type: "p", text: "Silikon kalça implantı ise vücutta yeterli yağ olmayan bireylerde bir alternatif olabilir. Ancak yabancı cisim komplikasyonu, implant yer değişimi ve doğallık açısından BBL'nin gerisinde kalır. Bu nedenle uygun adaylarda BBL tercih edilen birinci seçenek olarak öne çıkar." },
+
+      { type: "h3", text: "BBL ile Kombine Edilebilen Prosedürler" },
+      { type: "p", text: "BBL; vücut şekillendirme stratejisinin bir parçası olarak pek çok prosedürle birlikte uygulanabilir." },
+      { type: "p", text: "360 derece liposuction + BBL: En sık tercih edilen kombinasyondur. Bel, karın ve sırtın tamamından alınan yağ; hem vücudu her açıdan inceltir hem de kalçaya aktarılacak ham maddeyi zenginleştirir." },
+      { type: "p", text: "Meme estetiği + BBL: Üst ve alt vücut oranlarını bir arada dengelemeyi hedefleyen bütüncül bir yaklaşımdır." },
+      { type: "p", text: "Karın germe + BBL: Özellikle doğum sonrası dönemde hem karın bölgesini hem de kalça formunu bir seansta ele alır." },
+      { type: "p", text: "Kombine operasyonlar; tek bir anestezi ve tek bir iyileşme süreciyle birden fazla bölgede sonuç almanın avantajını sunar. Ancak ameliyat süresinin uzaması nedeniyle güvenlik sınırları içinde titizlikle planlanmalıdır." },
+
+      { type: "h3", text: "Neden Cerrah Seçimi BBL'de Bu Kadar Belirleyicidir?" },
+      { type: "p", text: "BBL; teknik açıdan estetik cerrahinin en dikkat gerektiren prosedürlerinden biridir. Yağın hangi derinliğe enjekte edildiği hem güvenlik hem de estetik sonuç açısından kritik öneme sahiptir. Güvenli uygulama protokolleri; yağın yüzeyel doku planlarına verilmesini, derin kas altı enjeksiyondan kaçınılmasını ve cerrahın anatomi bilgisini ön plana çıkarır." },
+      { type: "p", text: "Estetik açıdan ise yağın hangi bölgelere, hangi oranlarda ve hangi formda dağıtıldığı; nihai kalça şeklini belirler. Aşırı hacim ya da asimetrik dağılım; doğal görünümden uzak sonuçlara yol açar. Bu dengeyi kurmak; cerrahın hem teknik deneyimini hem de estetik bakışını zorunlu kılar." },
+      { type: "p", text: "Ameliyat öncesi konsültasyonda vücut analizi yapılması, hedeflenen formun net belirlenmesi ve uygulanabilir beklentilerin ortaklaşa oluşturulması; başarılı bir BBL sonucunun ilk adımıdır." },
+
+      { type: "h3", text: "BBL sonrası ne zaman oturabilir, oturmak yasak mı?" },
+      { type: "p", text: "İlk 6–8 hafta kalça üzerine direkt oturmak önerilmez; bu sürede transfer edilen yağın yeni bölgeye tutunması sağlanır. Özel BBL yastıkları kullanılarak uyluk üzerine oturmak bu dönemde mümkündür. 8 haftanın ardından normal oturma pozisyonuna kademeli geçiş yapılır." },
+
+      { type: "h3", text: "BBL sonuçları kalıcı mıdır?" },
+      { type: "p", text: "Transfer edilen yağın yaklaşık %60–70'i kalıcı olarak tutunur. Kilo kaybı sonuçları doğrudan etkileyebileceğinden stabil kiloda kalmak önerilir. Tutunma oranı yaşam tarzı, kompresyon kullanımı ve bölgenin üzerine baskı yapılmamasıyla artırılabilir." },
+
+      { type: "h3", text: "BBL için yeterli yağım var mı nasıl anlarım?" },
+      { type: "p", text: "BBL yaptırabilmek için karın, bel, kalça veya uyluklarda yeterli bölgesel yağ birikimi olması gerekir. Çok zayıf kişilerde kilo alımı önerilebilir ya da yeterli yağ olmadığında kalça implantı alternatif olarak değerlendirilebilir. Uygunluk muayenede belirlenir." },
+
+      { type: "h3", text: "BBL ile kalça implantı arasındaki fark nedir?" },
+      { type: "p", text: "BBL kişinin kendi yağını kullanır; bu nedenle daha doğal his ve görünüm sağlar. Kalça implantı ise sentetik silikon protez yerleştirilmesi yöntemidir. BBL ek avantaj olarak donor bölgede şekillendirme (liposuction) da yapar. Yeterli yağ dokusu olmayan hastalarda implant gerekebilir." },
+
+      { type: "h3", text: "BBL iyileşme süreci nasıldır?" },
+      { type: "p", text: "İlk hafta belirgin şişlik ve hassasiyet beklenir. 2–3 haftada hafif aktivitelere dönülebilir. 6–8 hafta kompresyon korse ve BBL yastığı kullanılır. Spora 6–8 haftada, tam aktiviteye 3 ayda dönüş mümkündür. Nihai şekil 6 ayda netleşir." }
     ],
     steps: [
-      { number: "01", title: "Donör Bölge Değerlendirmesi", description: "Karın, uyluk veya kalça bölgesindeki doku miktarı ve damar anatomisi değerlendirilerek en uygun flep tekniği (DIEP, TRAM, PAP/TMG, SGAP/IGAP) belirlenir." },
-      { number: "02", title: "Flebin Hazırlanması", description: "DIEP tekniğinde karın kaslarına dokunulmadan, perforatör damarlar korunarak cilt ve yağ dokusu hazırlanır." },
-      { number: "03", title: "Mikrocerrahi Damar Anastomozu", description: "Taşınan doku, mikroskop altında meme bölgesindeki damarlara ince anastomozlarla bağlanarak kanlanması sağlanır." },
-      { number: "04", title: "Meme Formunun Şekillendirilmesi", description: "Doku meme bölgesine yerleştirildikten sonra biçimlendirilir; gerekirse simetri için karşı memede düzeltme planlanır." },
-      { number: "05", title: "Tamamlayıcı Seanslar", description: "Takip sürecinde yağ enjeksiyonu, meme başı rekonstrüksiyonu ve areola dövmesi gibi tamamlayıcı işlemler planlanır." }
+      { number: "01", title: "Değerlendirme ve Vücut Analizi", description: "Donör bölgelerdeki yağ dokusu ve kalça hedef formu değerlendirilerek kişiye özel BBL planı oluşturulur." },
+      { number: "02", title: "Yağ Toplama (Liposuction)", description: "Bel, karın, sırt, uyluk veya iç bacak gibi bölgelerden liposuction yöntemiyle yağ toplanır ve vücut aynı anda konturlanır." },
+      { number: "03", title: "Yağın İşlenmesi ve Saflaştırılması", description: "Toplanan yağ santrifüj veya filtrasyon yöntemiyle kan, yağ asitleri ve cansız hücrelerden arındırılarak enjeksiyona hazır hale getirilir." },
+      { number: "04", title: "Kalçaya Yağ Enjeksiyonu", description: "Saflaştırılmış yağ, kalçanın farklı katman ve bölgelerine çok sayıda küçük enjeksiyonla yerleştirilerek doğal bir form oluşturulur." },
+      { number: "05", title: "İyileşme ve Oturma Protokolü", description: "İlk 2 hafta doğrudan oturma yasaktır; BBL yastığı ve kompresyon korsesiyle 6-8 hafta boyunca yağ tutunma süreci desteklenir." }
     ]
   },
   {
     id: "liposuction-yag-aldirma",
     title: "Liposuction (Yağ Aldırma)",
-    excerpt: "Diyet ve egzersizle giderilemeyen inatçı bölgesel yağ birikimlerini cerrahi yolla uzaklaştıran ve vücudu yeniden şekillendiren estetik cerrahi prosedürü.",
+    excerpt: "Diyet ve egzersizle giderilemeyen inatçı bölgesel yağ birikimlerini uzaklaştıran, vücudu yeniden şekillendiren estetik cerrahi.",
     category: "Vücut Estetiği",
     image: "assets/images/yag-aldirma.png",
+    cardImage: "assets/images/Uzmanlıklar/Liposuction.jpg",
+    cardImage: "assets/images/Uzmanlıklar/Liposuction.jpg",
     duration: "1-3 saat",
     recovery: "4-6 hafta",
     videos: [
@@ -136,9 +180,9 @@ const services = [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800", name: "M. Yıldız", duration: "Vücut Konturu" }
     ],
     results: [
-      { image: "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { image: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { image: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "assets/images/Liposuction/Liposuction-1.png" },
+      { image: "assets/images/Liposuction/Liposuction-2.png" },
+      { image: "assets/images/Liposuction/Liposuction-3.png" }
     ],
     content: [
       { type: "p", text: "Liposuction (yağ aldırma) ameliyatı, diyet ve egzersizle giderilemeyen inatçı bölgesel yağ birikimlerini cerrahi yolla uzaklaştıran ve vücudu yeniden şekillendiren estetik cerrahi prosedürüdür. Dünya genelinde en sık uygulanan estetik operasyonlardan biri olan liposuction (yağ aldırma); karın, bel, kalça, uyluk ve daha pek çok bölgede oranları dengelemek, hatları inceltmek ve vücuda daha zarif bir siluet kazandırmak amacıyla tercih edilmektedir." },
@@ -206,17 +250,20 @@ const services = [
   {
     id: "annelik-estetigi-mommy-makeover",
     title: "Annelik Estetiği (Mommy Makeover)",
-    excerpt: "Doğum ve emzirme sürecinin ardından kadın vücudunda meydana gelen çok yönlü değişimleri tek bir cerrahi program çerçevesinde ele alan bütüncül estetik yaklaşım.",
+    excerpt: "Doğum ve emzirme sürecinin ardından oluşan vücut değişimlerini tek bir cerrahi programda ele alan bütüncül estetik yaklaşım.",
     category: "Vücut Estetiği",
     image: "assets/images/annelik.png",
+    cardImage: "assets/images/Uzmanlıklar/Mommy-Makeover.jpg",
+    cardImage: "assets/images/Uzmanlıklar/Mommy-Makeover.jpg",
     duration: "4-6 saat",
     recovery: "6-8 hafta",
     videos: [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Z. Arslan", duration: "Annelik Estetiği" }
     ],
     results: [
-      { image: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "assets/images/Mommy-Makeover/mommy-1.png" },
+      { image: "assets/images/Mommy-Makeover/mommy-2.png" },
+      { image: "assets/images/Mommy-Makeover/mommy-3.png" }
     ],
     content: [
       { type: "p", text: "Annelik estetiği (mommy makeover), doğum ve emzirme sürecinin ardından kadın vücudunda meydana gelen çok yönlü değişimleri tek bir cerrahi program çerçevesinde ele alan bütüncül bir estetik yaklaşımdır. Karın germe, meme dikleştirme ya da büyütme, liposuction ve gerektiğinde vajinal estetik gibi birden fazla operasyonun tek seansta planlandığı bu program; annelere hem fiziksel hem duygusal bir yenilenme sunmayı hedefler." },
@@ -267,128 +314,195 @@ const services = [
     ]
   },
   {
-    id: "yuze-yag-enjeksiyonu-yag-transferi",
-    title: "Yüze Yağ Enjeksiyonu (Yağ Transferi)",
-    excerpt: "Kişinin kendi vücudundan alınan yağ hücrelerinin arıtılarak yüzün hacim kaybetmiş bölgelerine enjekte edildiği doğal ve uzun ömürlü gençleştirme yöntemi.",
-    category: "Yüz Gençleştirme",
-    image: "assets/images/yuz-germe.png",
-    recovery: "1-2 hafta",
+    id: "burun-estetigi",
+    title: "Burun Estetiği (Rinoplasti)",
+    excerpt: "Burun sırtındaki kambur, ucundaki düşüklük veya aks eğriliğini düzelten; gerektiğinde nefes fonksiyonunu da iyileştiren, yüz dengesine özel planlanan estetik cerrahi.",
+    category: "Estetik Cerrahi",
+    image: "assets/images/burun-estetigi.png",
+    cardImage: "assets/images/Uzmanlıklar/Rhinoplasty.jpg",
+    duration: "2-3 saat",
+    recovery: "10-14 gün (nihai sonuç 12 ay)",
     videos: [
-      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=800", name: "A. Kara", duration: "Yüz Gençleştirme" }
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 1", duration: "Rinoplasti" },
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 2", duration: "Burun Estetiği" }
     ],
     results: [
-      { image: "https://images.pexels.com/photos/17136717/pexels-photo-17136717.jpeg?auto=compress&cs=tinysrgb&w=900" },
-      { image: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "assets/images/Rhinoplasty/Rhinoplasty-1.png" },
+      { image: "assets/images/Rhinoplasty/Rhinoplasty-2.png" },
+      { image: "assets/images/Rhinoplasty/Rhinoplasty-3.png" },
+      { image: "assets/images/Rhinoplasty/Rhinoplasty-4.png" },
+      { image: "assets/images/Rhinoplasty/Rhinoplasty-5.png" },
+      { image: "assets/images/Rhinoplasty/Rhinoplasty-6.png" }
     ],
     content: [
-      { type: "p", text: "Yüze yağ enjeksiyonu (lipofilling veya yağ transferi), kişinin kendi vücudundan alınan yağ hücrelerinin arıtılarak yüzün hacim kaybetmiş veya çökmüş bölgelerine enjekte edilmesiyle gerçekleştirilen doğal ve uzun ömürlü bir gençleştirme yöntemidir. Kendi dokusu kullanıldığından alerjik reaksiyon riski sıfıra yakındır; dolgu maddelerine kıyasla çok daha kalıcı ve biyolojik açıdan uyumlu sonuçlar verir." },
-      { type: "p", text: "Yaşla birlikte yüzdeki yağ dokuları azalır, kemik yapısı erir, cilt altı destekler zayıflar ve yüz hatları belirginliğini yitirir. Bu değişimler yorgun, içe çökmüş ve olduğundan yaşlı bir ifadeye yol açabilir. Şişli'de Doç. Dr. Majid İsmayilzada tarafından uygulanan yüze yağ transferi; bu hacim kaybını yalnızca doldurmakla kalmaz, içerdiği kök hücreler sayesinde cilt kalitesini de iyileştiren bütüncül bir gençleştirme yöntemi sunar." },
-      { type: "h3", text: "Yüze Yağ Enjeksiyonu Hangi Durumlarda Tercih Edilir?" },
-      { type: "p", text: "Bu işlem, yaşla ilişkili hacim kaybı ve yüz kontur bozukluklarında güçlü bir çözüm sunar:<br>• Elmacık kemiklerinde hacim azalması ve yanak çökmesi<br>• Nazolabial oluklar (burun kenarından dudak köşesine uzanan derin çizgiler)<br>• Göz altı çukurluğu ve yatık görünüm<br>• Şakak bölgesinde içe çöküntü<br>• Dudak çevresi ve dudak dolgunluğu kaybı<br>• Çene hattı düzensizliği ve alt yüz konturunda belirsizleşme<br>• Yüzde genel \"yorgun\" veya \"çökmüş\" ifade" },
-      { type: "quote", text: "Yüze yağ transferi yalnızca şekillendirme amaçlı değil; aynı zamanda cilt kalitesini artıran, canlılık kazandıran ve doku yenilenmesini destekleyen bir rejeneratif (yenileyici) işlemdir." },
-      { type: "p", text: "Biyolojik açıdan aktif olan bu enjeksiyonlar cildi hem içeriden besler hem de dışarıdan gençleştirir." },
-      { type: "h3", text: "İşlem Nasıl Uygulanır?" },
-      { type: "p", text: "Yüze yağ transferi üç temel adımdan oluşur." },
-      { type: "h3", text: "1. Yağın Alınması (Donor Bölge)" },
-      { type: "p", text: "Hastanın karın, bel veya uyluk bölgesinden mini liposuction yöntemiyle ince kanüller aracılığıyla az miktarda yağ dokusu alınır. Bu aşamada hem yüze hazırlanan yağ elde edilir hem de donor bölgede hafif bir kontür iyileşmesi sağlanabilir." },
-      { type: "h3", text: "2. Yağın Arıtılması (Santrifügasyon)" },
-      { type: "p", text: "Alınan yağ, özel yöntemle işlenerek canlı yağ hücreleri ayrıştırılır; kan, sıvı ve hasar görmüş hücreler uzaklaştırılır. Bu süreç, transfer edilecek yağın biyolojik kalitesini ve tutunma oranını doğrudan belirler." },
-      { type: "h3", text: "3. Yağın Enjeksiyonu (Hedef Bölge)" },
-      { type: "p", text: "Arıtılan yağ, yüzün ihtiyaç duyulan bölgelerine ince uçlu kanüller aracılığıyla çok sayıda küçük enjeksiyon ile yerleştirilir. Her bölgeye uygun miktarda ve anatomik doğrulukla yapılan transferle doğal, dengeli ve canlı bir yüz ifadesi elde edilmesi hedeflenir." },
-      { type: "p", text: "İşlem sıklıkla yüz germe, göz kapağı estetiği veya endoskopik alın germe gibi cerrahi işlemlerle aynı seansta kombine edilerek kapsamlı bir gençleştirme programı çerçevesinde uygulanır." },
-      { type: "h3", text: "Transfer Edilen Yağın Tutunma Oranı" },
-      { type: "p", text: "Transfer edilen yağın yaklaşık %40–60'ı ilk 3–6 ayda kalıcı olarak tutunur; geri kalanı vücut tarafından absorbe edilir. Bu emilim oranı cerrah tarafından önceden hesaplanır ve yeterli miktarda yağ transfer edilir. PRP ile kombine teknikler tutunma oranını artırmayı hedefler. Kalıcı hale gelen yağ hücreleri uzun yıllar boyunca formunu korur." },
-      { type: "h3", text: "Yüze Yağ Transferinin Avantajları" },
-      { type: "p", text: "• Kendi dokusu kullanıldığından alerjik reaksiyon riski yoktur; hipoallerjenik bir yöntemdir.<br>• Hyalüronik asit dolgulara kıyasla çok daha uzun süre kalıcıdır; sonuçlar yıllarca devam edebilir.<br>• Kök hücre içeriği sayesinde cilt kalitesini artırır; canlılık ve parlaklık kazandırır.<br>• Doğal görünüm ve his: Kendi dokusu olduğundan yabancı cisim hissi oluşmaz.<br>• Donor bölgede de hafif kontür iyileşmesi sağlanabilir.<br>• Kanüller çok ince olduğundan iz oluşmaz." },
-      { type: "h3", text: "Yüze Yağ Enjeksiyonu Sonrası İyileşme" },
-      { type: "p", text: "İşlem sonrası iyileşme süreci genellikle konforu yüksek bir seyir izler. İlk birkaç günde ödem ve hafif morluk görülebilir; bu süreç 1–2 hafta içinde büyük ölçüde geriler. Donor bölgede de benzer geçici belirtiler yaşanabilir. Sosyal hayata dönüş genellikle 1–2 haftada gerçekleşir." },
-      { type: "p", text: "Nihai sonuç 3–6 ayda netleşir; bu süreçte transfer edilen yağın tutunması tamamlanır. Sağlıklı yaşam alışkanlıkları, dengeli beslenme ve özellikle sigaranın bırakılması yağ hücrelerinin tutunma oranını ve cilt kalitesini destekler." },
-      { type: "h3", text: "Yüze Yağ Transferi ile Hyalüronik Asit Dolgu Karşılaştırması" },
-      { type: "p", text: "Her iki yöntemin de kendine özgü avantajları vardır. Hyalüronik asit dolgu hızlı, pratik ve geri döndürülebilir bir seçenektir; etkisi 6–18 ay sürer. Yüze yağ transferi ise daha kapsamlı bir hacim restorasyonu gerektiren durumlarda, uzun ömürlü ve biyolojik açıdan en uyumlu çözümü sunar. Küçük ama rafine iyileştirmeler için dolgu yeterli olabilirken, belirgin kontur kaybı ya da çok bölgeli gençleştirme gerektiren hastalarda yağ transferi üstün sonuçlar verir." },
-      { type: "h3", text: "Yağ enjeksiyonu ağrılı bir işlem midir?" },
-      { type: "p", text: "Hayır, genel veya lokal anestezi altında yapılır; işlem sonrası rahatsızlık minimaldir." },
-      { type: "h3", text: "Yağ enjeksiyonu ile hyalüronik asit dolgu arasındaki fark nedir?" },
-      { type: "p", text: "Yağ transferi kişinin kendi dokusunu kullandığından alerjik reaksiyon riski yoktur ve sonuçlar çok daha uzun süreli, hatta kalıcı olabilir. Hyalüronik asit dolgu 6–18 ay etkili olur, uygulaması daha kolay ve hızlıdır. Yağ transferi daha kapsamlı bir hacim restorasyonu için idealdir." },
-      { type: "h3", text: "Yüze transfer edilen yağın ne kadarı kalıcı olur?" },
-      { type: "p", text: "Transfer edilen yağın yaklaşık %40–60'ı ilk 3–6 ayda tutunur; geri kalanı vücut tarafından emilir. Tutunma oranını artırmak için PRP ile kombine teknikler kullanılabilir. Cerrah bu emilimi önceden hesaplayarak yeterli miktarda yağ transfer eder." },
-      { type: "h3", text: "Sonuçlar ne kadar sürer?" },
-      { type: "p", text: "Hayat tarzı değişikliklerine bağlı olarak kalıcı yağ hücreleri uzun yıllar boyunca formunu koruma eğilimindedir." },
-      { type: "h3", text: "İz kalır mı?" },
-      { type: "p", text: "Hayır, kanüller çok ince olduğu için iz oluşmaz." },
-      { type: "h3", text: "Yüze yağ enjeksiyonu hangi bölgelere yapılır?" },
-      { type: "p", text: "En çok tercih edilen bölgeler: yanak dolgunluğu, göz altı çukuru, burun kenarı çizgileri (nazolabial), dudak çevresi, çene ve yüz kontur iyileştirme. Hem gençleştirme hem de hacim kazandırma amaçlı kullanılır." },
-      { type: "h3", text: "Yağ transferi sonrası iyileşme ne kadar sürer?" },
-      { type: "p", text: "Hem yağın alındığı donor bölgede hem de yüzde şişlik ve morarma yaşanır. Sosyal yaşama dönüş genellikle 1–2 haftada olur. Nihai görünüm 3–6 ayda netleşir; bu sürede transfer edilen yağın tutunma süreci tamamlanır." },
-      { type: "h3", text: "Yüze yağ enjeksiyonu doğal görünür mü?" },
-      { type: "p", text: "Evet, kendi dokunuz kullanıldığı için sonuç son derece doğaldır." }
+      { type: "p", text: "Burun estetiği İstanbul'da en sık tercih edilen estetik cerrahi operasyonların başında gelmektedir. Rinoplasti olarak da bilinen bu ameliyat; burnun yalnızca görünümünü değil, kişinin yüz dengesi ve özgüveniyle kurduğu ilişkiyi de kökten dönüştürebilir. Doç. Dr. Majid İsmayilzada, Şişli'deki kliniğinde burun estetiği ameliyatlarını her hastanın yüz anatomisine ve beklentilerine özel yaklaşımla gerçekleştirmektedir." },
+      { type: "p", text: "Burun sırtındaki yükseklik, burun ucundaki düşüklük ya da belirgin bir burun aksı eğriliği; hem estetik kaygılara hem de nefes alma güçlüğüne yol açabilir. Bu iki sorun çoğu zaman iç içe geçer ve tek bir ameliyatta eş zamanlı olarak çözüme kavuşturulabilir." },
+
+      { type: "h3", text: "Rinoplasti Kimlere Uygulanır?" },
+      { type: "p", text: "Burun estetiği ameliyatı için başvuran hastaların büyük çoğunluğu şu şikayetlerden en az birini taşımaktadır:<br>• Burun sırtında belirgin kemik çıkıntısı (kambur burun)<br>• Burun ucunda sarkma veya düşüklük<br>• Burun aksında eğrilik ya da asimetri<br>• Geniş veya yayvan burun ucu<br>• Nefes almayı zorlaştıran septum sapması<br>• Daha önce geçirilmiş ameliyat sonrası elde edilemeyen sonuç (revizyon rinoplasti)" },
+      { type: "p", text: "Rinoplastiye uygunluk değerlendirmesi için burun gelişiminin tamamlanmış olması gerekir. Bu genellikle kadınlarda 17, erkeklerde 18 yaş olarak kabul edilir. Genel sağlık durumu, beklentilerin gerçekçiliği ve anatomik yapı, ameliyat öncesi konsültasyonda ayrıntılı biçimde değerlendirilir." },
+
+      { type: "h3", text: "Açık Rinoplasti mi, Kapalı Rinoplasti mi?" },
+      { type: "p", text: "Burun estetiği ameliyatında iki temel cerrahi yaklaşım kullanılır: açık rinoplasti ve kapalı rinoplasti. İki teknik arasındaki seçim, cerrahın deneyimine ve hastanın anatomik ihtiyaçlarına göre şekillenir. Hangisinin daha iyi olduğuna dair kesin bir yanıt yoktur; önemli olan cerrahın hangi yaklaşımda daha etkin sonuç alabildiğidir." },
+      { type: "p", text: "Açık rinoplastide burun tabanında küçük bir kesi yapılır ve burun dokusu tamamen görünür hale getirilir. Bu yaklaşım özellikle karmaşık anatomilerde ve revizyon rinoplastilerinde cerrahın manevra alanını genişletir." },
+      { type: "p", text: "Kapalı rinoplastide tüm kesiler burun deliklerinin içinden yapılır; dışarıda görünür iz kalmaz. İyileşme süreci görece daha hızlı olabilir. Ancak her vaka kapalı tekniğe uygun değildir." },
+      { type: "p", text: "Her iki teknikte de asıl hedef aynıdır: yüz hatlarıyla uyumlu, doğal görünümlü ve kalıcı bir sonuç elde etmek." },
+
+      { type: "h3", text: "Burun Estetiği ve Septoplasti: Eş Zamanlı Müdahale" },
+      { type: "p", text: "Nefes almada güçlük yaşayan hastalarda burun içi yapılar da estetik düzeltmeyle birlikte ele alınabilir. Septum sapması olarak bilinen bu durumda burun ara duvarı eğridir ve hava akışını engeller. Aynı seansta hem estetik hem fonksiyonel müdahale yapılması; hem iyileşme sürecini tekleştirir hem de hastaya iki ayrı ameliyat yükünden kurtarır." },
+      { type: "p", text: "Burun etleri olarak bilinen konkaların büyümesi de nefes sorununa katkıda bulunabilir. Bu durum bazen alerjik kökenlidir ve ameliyat sonrası dönemde alerji uzmanı desteğiyle yönetilmesi gerekebilir." },
+
+      { type: "h3", text: "Rinoplasti Ameliyatı Nasıl Gerçekleşir?" },
+      { type: "p", text: "Burun ameliyatı genel anestezi altında yapılır ve ortalama 2 ila 3 saat sürer. Ameliyat günü hastanede 1 gece konaklama önerilir; ertesi sabah taburculuk sağlanır." },
+      { type: "p", text: "İşlem sırasında burun kıkırdakları ve kemik yapısı yeniden şekillendirilir. Burnun dış görüntüsüyle birlikte nefes yolu da düzeltilecekse ilgili iç yapılara da müdahale edilir. Ameliyat sonunda burun içine silikon tamponlar, dışına ise koruyucu bir atel yerleştirilir." },
+
+      { type: "h3", text: "Rinoplasti Sonrası İyileşme Süreci" },
+      { type: "p", text: "Burun estetiği ameliyatı sonrası iyileşme süreci hakkında doğru bilgiye sahip olmak, hem sürprizleri ortadan kaldırır hem de hastanın sürece daha hazırlıklı girmesini sağlar." },
+      { type: "p", text: "İlk hafta: Burun içindeki silikon tamponlar ve dıştaki atel bu süreçte yerli yerinde kalır. Tamponlar nedeniyle burundan nefes almak güçtür; hastalar geceleri ağızdan nefes alarak uyur. İlk 48 saat içinde morluk ve şişlik artış gösterebilir; bu tamamen normaldir." },
+      { type: "p", text: "1. haftadan sonra: Atel çıkarılır ve bir hafta daha burun bantlarıyla takip edilir. Morluklar büyük ölçüde geçmiştir; günlük yaşama dönüş başlar." },
+      { type: "p", text: "1,5 – 2. aylar: Bu dönemde burun içi ödem nedeniyle zaman zaman nefes tıkanıklığı hissedilebilir. Günde 2-3 kez uygulanan tuzlu su burun yıkama solüsyonları bu süreci önemli ölçüde rahatlatır." },
+      { type: "p", text: "6. ay ve sonrası: Burun dokusundaki ödem büyük ölçüde çekilir ve nihai şekil belirginleşmeye başlar. Tam iyileşme ve son görünümün oturması 12 aya kadar sürebilir." },
+
+      { type: "h3", text: "Rinoplasti Sonrasında Nelere Dikkat Etmeli?" },
+      { type: "p", text: "Ameliyat sonrası dönem, sonucun kalıcılığı açısından en az ameliyatın kendisi kadar önemlidir. Bu dönemde dikkat edilmesi gereken başlıca noktalar şunlardır:<br>• Gözlük kullanımı: Ameliyattan sonraki 5-6 ay boyunca optik veya güneş gözlüğü kullanılmamalıdır. Gözlük kullanan hastalar ameliyat öncesinde lens kullanımına geçiş yapmalıdır.<br>• Spordan korunma: Halı saha, basketbol, voleybol ve dövüş sporları gibi burna ani darbe alma riski taşıyan aktivitelerden en az 6 ay uzak durulmalıdır.<br>• Ani darbelerden kaçınma: Evde küçük çocukları olan aileler, yakın mesafede ani hareketlere karşı önlem almalıdır.<br>• Masaj uygulamaları: Burun aksında eğrilik olan hastalarda cerrah gerekli gördüğünde iyileşme sürecinde yönlendirici masaj önerebilir." },
+
+      { type: "h3", text: "Revizyon Rinoplasti: İkinci Bir Şans Mümkün mü?" },
+      { type: "p", text: "Her burun ameliyatı istenilen sonuçla tamamlanmayabilir. Bunun nedeni bazen hastanın beklentisinin yeterince aktarılamaması, bazen kıkırdak yapısının beklenmedik tepkiler vermesi, bazen de daha önceki bir ameliyatın izlerini taşıyan karmaşık bir anatomidir." },
+      { type: "p", text: "Revizyon rinoplasti bu noktada devreye girer. Ancak bilinmesi gereken kritik bir gerçek vardır: her revizyon ameliyatı, bir öncekine kıyasla teknik olarak daha güçtür. Yara dokusu, değişmiş kıkırdak yapısı ve daralmış manevra alanı cerrahın işini zorlaştırır. Bu nedenle ilk rinoplastinin deneyimli ve donanımlı ellerde yapılması, olası revizyon ihtiyacını büyük ölçüde azaltır." },
+      { type: "p", text: "Revizyon için en erken uygun zaman, ilk ameliyatın üzerinden en az 12 ayın geçmesidir. Bu süre zarfında herhangi bir cerrahi ya da estetik müdahale yapılmamış olması gerekir. 12 aylık bekleme süresi hem dokunun stabilize olması hem de sonucun gerçekçi biçimde değerlendirilebilmesi açısından zorunludur." },
+
+      { type: "h3", text: "Neden Doç. Dr. Majid İsmayilzada?" },
+      { type: "p", text: "Burun estetiği ameliyatında sonucu belirleyen en kritik faktör, cerrahın deneyimi ve yaklaşımıdır. Doç. Dr. Majid İsmayilzada, plastik ve rekonstrüktif cerrahi alanındaki akademik birikimini her vakaya taşıyarak yalnızca estetik değil fonksiyonel sonuçları da hedefleyen bir anlayışla çalışmaktadır." },
+      { type: "p", text: "Ameliyat öncesi konsültasyonda yüz analizi yapılır, olası sonuç hastaya görselleştirilerek aktarılır ve tüm süreç şeffaf biçimde paylaşılır. Beklentilerin net olarak belirlenmesi, hem hasta memnuniyeti hem de başarılı bir ameliyat sonucu için temel koşuldur." },
+      { type: "p", text: "Her hasta farklı bir anatomiye, farklı bir beklentiye ve farklı bir hikayeye sahiptir. Bu gerçekten hareketle hazırlanan bireysel ameliyat planlaması, standart bir yaklaşımın ötesine geçen sonuçlar elde etmeyi mümkün kılar." },
+
+      { type: "h3", text: "Burun estetiği ameliyatı ne kadar sürer?" },
+      { type: "p", text: "Rinoplasti ameliyatı ortalama 2–3 saat sürer. Septum düzeltmesi, burun ucu şekillendirme veya revizyon gibi ek işlemler gerekiyorsa süre 4 saate kadar uzayabilir. Açık teknik kapalı tekniğe kıyasla genellikle biraz daha uzun sürer." },
+
+      { type: "h3", text: "Burun estetiği sonrası iyileşme süreci nasıl ilerler?" },
+      { type: "p", text: "Ameliyattan sonra 7–10 gün atel kullanılır. İlk 3 günde şişlik ve morarma en yoğun düzeydedir. 10–14 günde sosyal hayata dönüş mümkündür. Şişliğin büyük bölümü ilk 3 ayda iner, nihai sonuç ise 12 ayda tam olarak ortaya çıkar." },
+
+      { type: "h3", text: "Açık rinoplasti mi kapalı rinoplasti mi daha iyi?" },
+      { type: "p", text: "Her iki tekniğin de avantajları vardır. Kapalı rinoplastide dışarıdan görünür iz kalmaz ve iyileşme biraz daha hızlıdır. Açık rinoplastide cerrah burun yapısını daha iyi görür; karmaşık şekil bozukluklarında ve revizyon vakalarında tercih edilir. Doğru teknik seçimi kişinin burun yapısına ve hedefe göre belirlenir." },
+
+      { type: "h3", text: "Burun estetiği sonrası nefes alma düzelir mi?" },
+      { type: "p", text: "Evet, septum eğriliği veya burun eti büyümesi varsa rinoplastiyle eş zamanlı olarak düzeltilebilir. Bu sayede hem estetik hem fonksiyonel iyileşme tek seansta sağlanır. Ameliyat sonrası geçici tıkanıklık yaşanabilir; bu birkaç haftada geçer." },
+
+      { type: "h3", text: "Burun estetiği kalıcı mıdır?" },
+      { type: "p", text: "Evet, rinoplasti sonuçları kalıcıdır. Doğal yaşlanma süreci zamanla hafif değişimlere yol açabilir; ancak yapılan cerrahi düzeltme kalıcılığını korur. Ameliyat sonrası ilk 2 yılda travmadan kaçınmak, sonucun korunması için önemlidir." },
+
+      { type: "h3", text: "Burun estetiği için en uygun yaş nedir?" },
+      { type: "p", text: "Burun ve yüz gelişiminin tamamlandığı dönem olan kızlarda 16, erkeklerde 17 yaşından itibaren rinoplasti uygulanabilir. Üst yaş sınırı yoktur; genel sağlık durumu uygun olan yetişkinler her yaşta ameliyat olabilir." }
     ],
     steps: [
-      { number: "01", title: "Donör Bölgenin Belirlenmesi", description: "Karın, bel veya uyluktan mini liposuction yöntemiyle ince kanüllerle az miktarda yağ dokusu alınır." },
-      { number: "02", title: "Santrifügasyon (Arıtma)", description: "Alınan yağ özel yöntemle işlenerek canlı yağ hücreleri ayrıştırılır; kan ve hasar görmüş hücreler uzaklaştırılır." },
-      { number: "03", title: "Hedef Bölgelerin Planlanması", description: "Elmacık kemiği, göz altı, nazolabial oluk, dudak ve çene gibi hacim kaybı yaşanan bölgeler anatomik olarak belirlenir." },
-      { number: "04", title: "Enjeksiyon", description: "Arıtılan yağ ince uçlu kanüllerle çok sayıda küçük enjeksiyon halinde hedef bölgelere yerleştirilir." },
-      { number: "05", title: "Kombinasyon (İsteğe Bağlı)", description: "İşlem sıklıkla yüz germe, göz kapağı estetiği veya endoskopik alın germe ile aynı seansta uygulanır." }
+      { number: "01", title: "Değerlendirme ve Yüz Analizi", description: "Hastanın burun anatomisi, nefes fonksiyonu ve beklentileri değerlendirilerek açık ya da kapalı rinoplasti tekniğine karar verilir." },
+      { number: "02", title: "Anestezi ve Hazırlık", description: "Ameliyat genel anestezi altında yapılır; ortalama 2-3 saat sürer, gerektiğinde septoplasti gibi fonksiyonel müdahaleler eş zamanlı planlanır." },
+      { number: "03", title: "Kıkırdak ve Kemik Yapının Yeniden Şekillendirilmesi", description: "Burun kıkırdakları ve kemik yapısı, açık veya kapalı teknikle yapılan kesiler üzerinden yeniden şekillendirilir." },
+      { number: "04", title: "Tampon ve Atel Uygulaması", description: "Ameliyat sonunda burun içine silikon tamponlar, dışına ise koruyucu bir atel yerleştirilir; hasta 1 gece hastanede takip edilir." },
+      { number: "05", title: "İyileşme Takibi", description: "1. haftada atel çıkarılır, burun yıkama solüsyonlarıyla ödem yönetilir; nihai sonuç 12 aya kadar sürede tam olarak oturur." }
     ]
   },
   {
-    id: "endoskopik-alin-germe",
-    title: "Endoskopik Alın Germe",
-    excerpt: "Alın bölgesindeki derin kırışıklıkları, kaş düşüklüğünü ve üst yüz sarkmasını küçük kesiler ve endoskop yardımıyla düzelten minimal invaziv modern estetik cerrahi yöntemi.",
-    category: "Yüz Gençleştirme",
-    image: "assets/images/alin-germe.png",
-    duration: "1-2 saat",
-    recovery: "1-2 hafta",
+    id: "karin-germe",
+    title: "Karın Germe",
+    excerpt: "Doğum, kilo değişimleri veya yaşlanmayla gevşeyen karın bölgesini, fazla deri ve yağ dokusunun alınması ile ayrışmış kasların sıkılaştırılmasıyla yeniden şekillendiren kapsamlı bir estetik cerrahi yöntemi.",
+    category: "Estetik Cerrahi",
+    image: "assets/images/karin-germe.png",
+    cardImage: "assets/images/Uzmanlıklar/Abdominoplasty.jpg",
+    cardImage: "assets/images/Uzmanlıklar/Abdominoplasty.jpg",
+    duration: "Tam veya Mini Teknik",
+    recovery: "6-8 hafta (nihai sonuç 3-6 ay)",
     videos: [
-      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=800", name: "C. Öztürk", duration: "Endoskopik Alın Germe" }
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 1", duration: "Karın Germe" },
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 2", duration: "Abdominoplasti" }
     ],
     results: [
-      { image: "https://images.pexels.com/photos/30964696/pexels-photo-30964696.jpeg?auto=compress&cs=tinysrgb&w=900" }
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-1.png" },
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-2.png" },
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-3.png" },
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-4.png" },
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-5.png" },
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-6.png" }
     ],
     content: [
-      { type: "p", text: "Endoskopik alın germe, alın bölgesindeki derin kırışıklıkları, kaş düşüklüğünü ve üst yüz sarkmasını küçük kesiler ve endoskop (kameralı sistemle) yardımıyla düzelten, minimal invaziv modern bir estetik cerrahi yöntemidir. Klasik alın germe operasyonlarında kulağa kadar uzanan geniş kesiler kullanılırken, endoskopik teknikte saç içine gizlenen yalnızca 3–5 küçük delik yeterlidir. Bu yaklaşım; daha az iz, daha hızlı iyileşme ve yüzün doğal mimiklerini koruyan sonuçlar sunar." },
-      { type: "p", text: "Şişli'de Doç. Dr. Majid İsmayilzada kliniğinde uygulanan endoskopik alın germe ameliyatı, yüzün üst bölümünü ele alan kapsamlı bir gençleştirme programının temel taşlarından biridir. Alın çizgileri, kaşlar ve göz çevresi aynı anda değerlendirilerek bütünleşik bir cerrahi plan oluşturulur." },
-      { type: "h3", text: "Endoskopik Alın Germe Kimler İçin Uygundur?" },
-      { type: "p", text: "Bu operasyon özellikle şu durumları yaşayan bireylerde güçlü sonuçlar verir:<br>• Alın ve kaşlar arasındaki bölgede belirgin yatay alın çizgileri ve kaşlar arası dikey frown çizgileri<br>• Yaşlanmaya bağlı kaş ptözü (düşüklüğü) ve bunun neden olduğu yorgun, sinirli yüz ifadesi<br>• Üst göz kapağında kaş düşüklüğünden kaynaklanan sahte deri fazlalığı görünümü<br>• Alın bölgesinde belirgin deri yığılması olmaksızın elastikiyet kaybı ve gevşeme<br>• Genellikle 30 yaş ve üzeri, cilt elastikiyeti henüz korunmuş bireyler" },
-      { type: "p", text: "Alın bölgesinde ciddi deri yığılması olan kişilerde klasik (açık) alın germe daha uygun olabilir. Hangi tekniğin seçileceğine muayenede karar verilir." },
-      { type: "h3", text: "Endoskopik Alın Germe Nasıl Yapılır?" },
-      { type: "p", text: "Ameliyat genel anestezi altında yaklaşık 1–2 saat sürer. Saçlı derinin içinde, görünmeyecek konumlara açılan 3–5 küçük kesi aracılığıyla ince kameralı bir endoskop yerleştirilir. Endoskop; alın, kaş ve glabella (kaşlar arası) bölgesindeki kas ve doku katmanlarını yüksek çözünürlüklü görüntülemesiyle cerrahın son derece hassas bir şekilde çalışmasına olanak tanır." },
-      { type: "p", text: "Süreç şu adımlardan oluşur:<br>• Alın derisi ve alttaki periost (kemik zarı) arasında endoskopik kesi aracılığıyla diseksiyon gerçekleştirilir.<br>• Kaş düşüklüğüne neden olan kaslar (frontal, korugator, proserus) gerektiği ölçüde zayıflatılır veya yeniden konumlandırılır.<br>• Serbestlenen dokular yukarı doğru kaldırılarak tespit sütürleri ya da absorbable fixation sistemleri ile yeni konumlarına sabitlenir.<br>• Kesi yerleri saç arasına gizlenerek kapatılır; dışarıdan iz fark edilmez." },
-      { type: "p", text: "Aynı seansta kaş kaldırma, temporal lift veya blefaroplasti ile kombine edilebilir." },
-      { type: "h3", text: "Endoskopik Alın Germe ile Klasik Alın Germe Farkı" },
-      { type: "p", text: "Günümüzde en çok tercih edilen standart yöntem endoskopik tekniktir. İki yöntem arasındaki temel farklar:<br>• Kesi boyutu: Endoskopik yöntemde saçta birkaç küçük delik; klasik yöntemde kulaktan kulağa uzanan geniş kesi.<br>• İz: Endoskopik yöntemde iz neredeyse sıfır; klasik yöntemde uzun iz.<br>• İyileşme süresi: Endoskopik yöntemde daha kısa; sosyal hayata dönüş 1–2 haftada mümkündür.<br>• Uyuşma riski: Endoskopik yöntemde belirgin ölçüde daha düşük.<br>• Uygulanabilirlik: Alın bölgesinde ciddi deri yığılması olmayan vakalarda endoskopik yöntem yeterlidir; ciddi sarkmalarda klasik teknik tercih edilebilir." },
-      { type: "h3", text: "Endoskopik Alın Germe Sonrası İyileşme Süreci" },
-      { type: "p", text: "Endoskopik tekniğin en önemli avantajlarından biri, klasik alın germeye kıyasla çok daha konforlu bir iyileşme sürecidir.<br>• İlk 1–3 gün: Hafif ödem, morluk ve alın bölgesinde gerginlik hissi yaşanır. Bu dönemde baş kaldırık pozisyonda tutmak şişliğin azalmasını hızlandırır.<br>• 5–7 gün: Sosyal hayata dönmek büyük çoğunluk için mümkündür.<br>• 2 haftada: Yüz mimiklerini zorlamadan günlük aktivitelere tam dönüş yapılabilir.<br>• 2–3 ay: Alın bölgesi nihai şeklini alır; sonuçlar tam belirginliğine kavuşur." },
-      { type: "p", text: "Kesi bölgesinde geçici ve birkaç ay içinde düzelen saç incelmesi görülebilir. Alın kaslarında geçici his değişikliği de erken dönemde yaşanabilir; bu da zamanla normale döner." },
-      { type: "h3", text: "Endoskopik Alın Germenin Avantajları" },
-      { type: "p", text: "• Saç içinde gizlenen küçük kesilerle minimal iz<br>• Klasik teknikten çok daha hızlı iyileşme ve daha kısa iş dönüşü<br>• Frontal ve korugator kasların kontrolü sayesinde hem yatay alın çizgileri hem de dikey frown hatları azaltılır<br>• Kaş pozisyonu doğal anatomik oranlar dikkate alınarak kişiselleştirilir; sürpriz veya gergin ifade riski minimumdur<br>• 5–10 yıl kalıcı, uzun ömürlü gençleştirme etkisi" },
-      { type: "h3", text: "Endoskopik Alın Germeyle Kombine Edilebilecek Operasyonlar" },
-      { type: "p", text: "Endoskopik alın germe; yüzün tüm üst bölümünü bütünleşik biçimde gençleştirmek için sıklıkla aşağıdaki işlemlerle kombine edilir:<br>• Temporal lift (şakak germe): Dış kaş ucunu aynı anda kaldırarak kapsamlı bir kaş-alın gençleştirmesi sağlar.<br>• Üst göz kapağı estetiği (blefaroplasti): Kaş kaldırma sonrası gerçek deri fazlalığı varsa aynı seansta uygulanır.<br>• Yüz ve boyun germe: Tüm yüzü kapsayan kapsamlı bir gençleştirme programında birlikte planlanır.<br>• Botoks ve dolgu uygulamaları: Cerrahi sonuçları destekler, alın çizgilerinin yeniden derinleşmesini geciktirir." },
-      { type: "quote", text: "Doğru planlama ile kaşlar doğal pozisyonlarına getirilir; hedef, gergin ya da sürpriz ifadeli değil, dinlenmiş ve canlı bir yüz görünümü elde etmektir." },
-      { type: "h3", text: "Endoskopik Alın Germe Sonuçları Ne Kadar Kalıcıdır?" },
-      { type: "p", text: "Endoskopik alın germenin etkisi 5–10 yıl kalıcı olarak değerlendirilir. Yaşlanma süreci devam etse de başlangıç noktasına kıyasla görünüm çok daha taze ve canlı kalır. Cilt bakımı, güneşten korunma, sigara kullanmamak ve kilo istikrarı sonuçların ömrünü uzatan başlıca faktörlerdir." },
-      { type: "h3", text: "Ameliyat izleri görünür mü?" },
-      { type: "p", text: "Kesiler saçlı deri içinde gizlendiği için dışarıdan fark edilmez." },
-      { type: "h3", text: "Kaşlar ne kadar kalkar?" },
-      { type: "p", text: "Doğru planlama ile kaşlar doğal pozisyonlarına getirilir; aşırı kaldırma yapılmaz. Hedef, gergin ya da sürpriz ifadeli değil; dinlenmiş ve canlı bir yüz görünümü elde etmektir. Ameliyat öncesinde hasta ile kaş pozisyonu detaylıca planlanır." },
-      { type: "h3", text: "Endoskopik alın germe ağrılı mıdır?" },
-      { type: "p", text: "Genellikle hafif rahatsızlık hissiyle atlatılır; ciddi ağrı beklenmez." },
-      { type: "h3", text: "Endoskopik alın germe ile klasik alın germe arasındaki fark nedir?" },
-      { type: "p", text: "Klasik alın germede kulaktan kulağa uzanan geniş bir kesi yapılırken, endoskopik teknikte saç içinde birkaç küçük delik açılır. Endoskopik yöntem daha az iz, daha hızlı iyileşme ve daha az uyuşma riski sunar. Günümüzde tercih edilen standart yöntem endoskopik tekniktir." },
-      { type: "h3", text: "Endoskopik alın germe ne kadar süre etkili kalır?" },
-      { type: "p", text: "Endoskopik alın germenin etkisi 5–10 yıl kalıcıdır. Yaşlanma süreci devam etse de başlangıç noktasına kıyasla görünüm çok daha taze ve dinç kalır. Cilt bakımı ve güneş koruma etki süresini uzatır." },
-      { type: "h3", text: "Endoskopik alın germe iyileşme süreci nasıldır?" },
-      { type: "p", text: "İlk 1–2 haftada şişlik ve morarma beklenir; bu süre çoğu yüz germe prosedüründen daha kısadır. 2 haftada sosyal aktivitelere dönmek mümkündür. Saç dökülmesi kesi bölgesinde geçici olarak görülebilir; birkaç ayda düzelir." },
-      { type: "h3", text: "Endoskopik alın germe sadece kaş kaldırma için mi yapılır?" },
-      { type: "p", text: "Hayır. Alın germe aynı zamanda yatay alın çizgilerini ve kaşlar arası dikey frown çizgilerini de azaltır; korugator ve proserus kaslarını diseke ederek çizgilerin kaynağını doğrudan hedefler. Bu yönüyle botoks takviyesiyle iyi bir sinerji oluşturur." },
-      { type: "h3", text: "Alın germe ile kaş kaldırma aynı şey midir?" },
-      { type: "p", text: "Her ikisi birbirine yakın ama farklı kavramlardır. Endoskopik alın germe, alın derisi ve kaslarının tümünü etkileyen kapsamlı bir işlemdir; kaş kaldırma da bunun bir sonucudur. Temporal lift ise kaşların yalnızca dış ucuna odaklanır ve alın kaslarına doğrudan müdahale etmez. Sık kombinasyonlarda her iki işlem bir arada planlanır." }
+      { type: "p", text: "Karın germe ameliyatı; doğum, ani kilo değişimleri veya yaşlanma süreciyle gevşeyen karın bölgesini cerrahi olarak yeniden şekillendiren, estetik cerrahinin en kapsamlı ve en dönüştürücü prosedürlerinden biridir. Yalnızca fazla deri ve yağ dokusunu ortadan kaldırmakla kalmaz; aynı zamanda ayrışmış karın kaslarını orta hatta bir araya getirerek vücuda hem estetik hem de işlevsel bir toparlanma sağlar." },
+      { type: "p", text: "Abdominoplasti olarak da bilinen bu operasyon; spor ve diyetin karın bölgesindeki sarkma, gevşeme ve kas ayrışmasına çözüm üretemediği noktalarda devreye girer. Bu bölgedeki sorunlar yalnızca estetik bir kaygı değildir; postür bozuklukları, bel ağrısı ve günlük yaşam konforunu etkileyen fonksiyonel sorunlara da zemin hazırlayabilir. Karın germe ameliyatı bu tabloyu köklü biçimde değiştirebilir." },
+
+      { type: "h3", text: "Karın Germe Ameliyatı Kimlere Uygulanır?" },
+      { type: "p", text: "Karın germe ameliyatı için başvuran hastalar çoğunlukla benzer bir noktada buluşur: yeterince uğraştılar, ama karın bölgesi yanıt vermedi. Bu durumu yaratan birden fazla neden olabilir." },
+      { type: "p", text: "Şu koşullar abdominoplastiyi anlamlı kılar:<br>• Bir veya birden fazla doğum sonrası karın derisinde gevşeme ve sarkma<br>• Doğuma bağlı diastaz rekti yani karın kaslarının orta hattan ayrışması<br>• Hızlı kilo kaybı sonrası karın bölgesinde kalan fazla deri<br>• Sık kilo alıp verme döngüsünün yarattığı deri elastikiyet kaybı<br>• Diyet ve egzersize rağmen düzelmeyen karın bölgesi görünümü<br>• Önceki ameliyat izlerinin bölge estetiğini olumsuz etkilemesi" },
+      { type: "p", text: "Uygun aday olabilmek için şu kriterler de gözetilir:<br>• Genel sağlık durumunun ameliyata elverişli olması<br>• Kontrol altında olmayan kronik hastalık bulunmaması<br>• Hedef kiloya yakın veya stabil bir ağırlıkta olmak<br>• Ameliyattan sonra hamilelik planlanmıyorsa operasyon zamanlamasının buna göre yapılması; hamilelik, elde edilen sonuçları tersine çevirebilir<br>• Gerçekçi beklentilere sahip olmak" },
+
+      { type: "h3", text: "Karın Germe mi, Mini Karın Germe mi?" },
+      { type: "p", text: "Bu iki prosedür arasındaki farkı anlamak; hangi operasyonun daha uygun olduğunu belirlemede kritik bir adımdır." },
+      { type: "p", text: "Tam karın germe (abdominoplasti): Karın bölgesinin tamamına müdahale eder. Göbek yeniden konumlandırılır, karın kasları orta hatta sıkılaştırılır, fazla deri ve yağ dokusu uzaklaştırılır. Kesi bikini çizgisi hizasında planlanır. Deri sarkmasının belirgin olduğu, kas ayrışmasının eşlik ettiği ve göbek üstü bölgenin de düzeltilmesi gereken vakalarda tercih edilir." },
+      { type: "p", text: "Mini karın germe: Göbek altında sınırlı deri fazlalığı olan vakalarda uygulanır. Daha küçük kesi gerektirir; göbeğin konumu değiştirilmez. İyileşme süreci görece daha hızlıdır. Ancak sağlayabileceği düzeltme kapasitesi sınırlıdır; bu nedenle uygunluk değerlendirmesi titizlikle yapılmalıdır. Hafif doğum sonrası sarkmalarında ve kas ayrışmasının minimal olduğu vakalarda anlamlı sonuçlar verebilir." },
+      { type: "p", text: "Hangi tekniğin uygun olduğu; deri fazlalığının miktarı, kas yapısı, göbeğin mevcut konumu ve hastanın beklentisi göz önünde bulundurularak muayenede belirlenir." },
+
+      { type: "h3", text: "Karın Germe ile Liposuction Arasındaki Fark" },
+      { type: "p", text: "Bu iki prosedür sıkça karıştırılmakta; kimi zaman biri diğerinin yerine önerilmektedir. Oysa farklı sorunlara farklı çözümler sunarlar." },
+      { type: "p", text: "Liposuction yalnızca yağ dokusunu hedef alır. Deri sarkmasına veya kas ayrışmasına müdahale edemez. Cilt elastikiyeti iyi olan ve yağ birikimi ön planda olan vakalarda etkilidir." },
+      { type: "p", text: "Karın germe ise çok katmanlı bir müdahaledir. Yağ dokusu, fazla deri ve kas yapısı aynı anda ele alınır. Sarkma ve kas ayrışmasının eşlik ettiği vakalarda liposuction tek başına yetersiz kalır; abdominoplasti bu boşluğu doldurur." },
+      { type: "p", text: "Pek çok vakada iki prosedür birlikte uygulanır. Bu kombinasyon özellikle hem yağ fazlalığı hem de deri sarkması olan hastalarda bütünsel ve dengeli bir sonuç sunar." },
+
+      { type: "h3", text: "Anne Estetiği: Karın Germe Kombine Operasyonlar" },
+      { type: "p", text: "Karın germe ameliyatı, özellikle doğum sonrası vücudunu yeniden şekillendirmek isteyen kadınlarda sıklıkla diğer prosedürlerle bir arada planlanır. Bu bütüncül yaklaşım anne estetiği olarak adlandırılır." },
+      { type: "p", text: "Sık tercih edilen kombinasyonlar şunlardır:<br>• Karın germe + meme büyütme veya dikleştirme: Doğum ve emzirmenin hem karın hem de meme bölgesinde yarattığı değişiklikleri tek seansta ele alır.<br>• Karın germe + liposuction: Karın çevresi ve yan bel bölgesindeki yağ fazlalığı ile deri sarkması birlikte çözüme kavuşturulur.<br>• Karın germe + kol veya uyluk germe: Genel vücut şekillendirmesinin daha kapsamlı ele alındığı kombine prosedürler." },
+      { type: "p", text: "Kombine operasyonlar; tek bir anestezi ve tek bir iyileşme süreciyle birden fazla bölgede sonuç almanın avantajını sunar. Ancak ameliyat süresinin uzaması ve genel sağlık durumu göz önünde bulundurularak güvenlik sınırları içinde planlanması şarttır." },
+
+      { type: "h3", text: "Karın Germe Ameliyatı Öncesi Hazırlık Süreci" },
+      { type: "p", text: "Ameliyat öncesi dönem, başarılı bir sonucun ilk adımıdır. Fiziksel ve psikolojik hazırlığın birlikte ele alınması bu sürecin en temel özelliğidir." },
+      { type: "p", text: "Ameliyat öncesinde dikkat edilmesi gereken başlıca noktalar:<br>• Sigarayı bırakmak: Sigara cilt kanlanmasını bozar; yara iyileşmesini ciddi ölçüde geciktirir ve komplikasyon riskini artırır. Ameliyattan en az 4-6 hafta önce bırakılması önerilir.<br>• Kan sulandırıcı ilaçları kesmek: Aspirin, ibuprofen ve benzeri ilaçlar hekim önerisiyle ameliyat öncesinde sonlandırılır.<br>• Beslenmeye özen göstermek: Protein ağırlıklı, antioksidandan zengin bir beslenme düzeni dokuyu destekler ve iyileşmeyi hızlandırır.<br>• Stabil bir kiloda olmak: Ameliyat öncesinde ani kilo değişimlerinden kaçınmak; sonucun kalıcılığı açısından belirleyicidir.<br>• Eşlik eden sağlık sorunlarının kontrolü: Varsa kronik rahatsızlıkların ilgili branş desteğiyle kontrol altına alınması iyileşme sürecini doğrudan etkiler." },
+      { type: "p", text: "Ameliyat öncesi konsültasyonda karın bölgesindeki deri fazlalığı, kas yapısı ve cilt elastikiyeti ayrıntılı biçimde değerlendirilir; cerrahi plan bireysel anatomiye göre oluşturulur." },
+
+      { type: "h3", text: "Karın Germe Ameliyatı Sonrası İyileşme Süreci" },
+      { type: "p", text: "İyileşme süreci hakkında doğru ve ayrıntılı bilgiye sahip olmak; gereksiz kaygıyı önler ve hastanın her aşamayı daha bilinçli yönetmesini sağlar." },
+      { type: "p", text: "İlk 48 saat: Karın bölgesinde gerginlik, ağırlık hissi ve sınırlı hareket beklenen bir tablo oluşturur. Hafif ağrı kontrol altında tutulur. Bu dönemde ayakta duruş hafifçe öne eğik olacak şekilde konumlandırılır; bu hem gerginliği azaltır hem de dikişler üzerindeki yükü hafifletir." },
+      { type: "p", text: "1. hafta: Drenlerin çıkarılması ve dikişlerin kontrol edilmesiyle birlikte hasta yavaş yavaş mobilize olmaya başlar. Kısa ve düz yürüyüşler dolaşımı destekler. Ağır kaldırma ve ani hareketlerden kesinlikle kaçınılır." },
+      { type: "p", text: "2-4. haftalar: Morluklar büyük ölçüde geçer; şişlik azalmaya devam eder. Masa başı çalışmaya bu dönemde kademeli dönüş mümkündür. Korse kullanımı sürdürülür." },
+      { type: "p", text: "6. hafta: Hafif egzersizlere hekim onayıyla başlanabilir. Karın kaslarını doğrudan zorlayan hareketler için daha uzun beklenmesi gerekir." },
+      { type: "p", text: "3-6. aylar: Nihai sonuç bu dönemde netleşir. Ödem tamamen çekilmiş, kesi izi soluklaşmaya başlamış ve karın bölgesi yeni konturuna tam olarak oturmuştur." },
+      { type: "p", text: "Ayrıca bakınız: Karın Germe Ameliyatı Sonrası Süreç" },
+
+      { type: "h3", text: "Karın Germe Sonrası Korse Kullanımı" },
+      { type: "p", text: "Korse, karın germe ameliyatının iyileşme sürecindeki en önemli desteklerden biridir. Yalnızca konfora katkı sağlamaz; iyileşmenin kalitesini ve sonucun kalıcılığını doğrudan etkiler." },
+      { type: "p", text: "Korsenin sağladığı faydalar şunlardır:<br>• Ödemin daha hızlı çekilmesini destekler<br>• Karın bölgesinin yeni şeklini korur ve yerleştirir<br>• Dikişler üzerindeki gerginliği azaltarak daha düzgün yara iyileşmesi sağlar<br>• Hareket sırasındaki rahatsızlığı sınırlar" },
+      { type: "p", text: "Korse kullanım süresi genellikle 6-8 hafta olarak önerilmekle birlikte bu süre kişinin iyileşme hızına göre cerrah tarafından bireysel olarak belirlenir. Korseyi düzenli ve doğru kullanmak, uzun vadeli sonuç kalitesi üzerinde anlamlı bir fark yaratır." },
+
+      { type: "h3", text: "Karın Germe Ameliyatı Sonrası İz" },
+      { type: "p", text: "Kesi izi, karın germe ameliyatına dair en sık sorulan konulardan biridir. İzin nereye yapıldığı ve nasıl iyileşeceği, çoğu hastanın karar sürecini etkileyen bir faktördür." },
+      { type: "p", text: "Kesi bikini çizgisi hizasında planlanır; bu sayede iz günlük kıyafetler ve mayo altında büyük ölçüde gizlenebilir. İz başlangıçta daha belirgin ve kırmızımsı görünür; ancak zamanla rengi solar, ten rengine yaklaşır ve dikkat çekmez hale gelir." },
+      { type: "p", text: "İzin iyileşme paterni; cilt yapısı, genetik yatkınlık, iyileşme sürecindeki özen ve hekim önerilerine uyumla doğrudan ilişkilidir. Düzenli nemlendirme, silikon bazlı iz kremleri ve güneşten koruma; izin görünürlüğünü en aza indirmeye katkı sağlayan temel uygulamalardır." },
+
+      { type: "h3", text: "Neden Doğru Cerrah Seçimi Bu Kadar Belirleyici?" },
+      { type: "p", text: "Karın germe ameliyatı, teknik açıdan detaylı bir cerrahi planlama ve deneyim gerektiren kapsamlı bir operasyondur. Kas sıkılaştırması, deri redrapajı, göbek yeniden konumlandırması ve kesi planlaması; birbirini tamamlayan ve her biri sonucu etkileyen adımlardır." },
+      { type: "p", text: "Aynı problemi aynı teknikle ele alan iki cerrahın sonuçları birbirinden belirgin biçimde farklı olabilir. Bu farkı yaratan; cerrahın anatomik değerlendirme kapasitesi, estetik bakışı ve vaka deneyimidir." },
+      { type: "p", text: "Ameliyat öncesi konsültasyonda gerçekleştirilen ayrıntılı değerlendirme ve şeffaf bilgilendirme; hastanın neyi beklemesi gerektiğini netleştirir ve sürecin her aşamasını öngörülebilir kılar. Sürprizin olmadığı bir ameliyat deneyimi, başarılı ve kalıcı bir sonucun ilk koşuludur." },
+
+      { type: "h3", text: "Karın germe ameliyatı kimler için uygundur?" },
+      { type: "p", text: "Doğum, aşırı kilo kaybı veya yaşlanmaya bağlı karın derisinde sarkma, çatlak ve kas gevşekliği yaşayan, ideal kilolarına yakın kişiler için uygundur. Hamilelik planı olan kişilerin ameliyatı doğumdan sonraya ertelemesi önerilir. VKİ 30'un altında olmak ameliyat güvenliğini artırır." },
+
+      { type: "h3", text: "Karın germe sonrası iz ne kadar belirgin olur?" },
+      { type: "p", text: "İz kasık kıvrımı çizgisine gizlenecek şekilde yerleştirilir; iç çamaşırı veya mayo altında büyük ölçüde saklanır. İlk 6 ayda pembe ve belirgin görünen iz, 12–18 ayda soluklaşır ve düzleşir. Silikon bant ve özel kremlerle izin görünümü daha da azaltılabilir." },
+
+      { type: "h3", text: "Karın germe ve liposuction aynı seansta yapılabilir mi?" },
+      { type: "p", text: "Evet, çoğu vakada karın germe ile birlikte bel, kalça ve yan bölgelerine liposuction uygulanır. Bu kombinasyon daha dengeli ve estetik bir vücut konturu elde edilmesini sağlar. Aynı seansta uygulamanın güvenli olup olmadığı her hasta için ayrıca değerlendirilir." },
+
+      { type: "h3", text: "Karın germe sonrası işe ne zaman dönebilirim?" },
+      { type: "p", text: "Masabaşı işlerde 2–3 haftada işe dönmek mümkündür. Fiziksel güç gerektiren işlerde bu süre 4–6 haftaya uzar. Ağır yük kaldırma ve yoğun egzersiz 6–8 hafta yasaktır. Nihai şekillenmede 6 aya kadar sürebilir." },
+
+      { type: "h3", text: "Karın germe göbek deliğini etkiler mi?" },
+      { type: "p", text: "Tam karın germe ameliyatında göbek deliği yeni konumuna taşınır. Cerrah göbek estetiğini de ameliyat sırasında iyileştirebilir. Sonuç; doğal görünümlü ve estetik olarak konumlandırılmış bir göbek deliğidir." },
+
+      { type: "h3", text: "Karın germe ile karın kasları da sıkılaştırılıyor mu?" },
+      { type: "p", text: "Evet, tam karın germe ameliyatının temel bileşenlerinden biri de gevşemiş karın kaslarının onarılmasıdır (diyastazis rekti onarımı). Bu işlem karın bölgesinde hem görsel düzleşme sağlar hem de duruş bozukluğunu ve bel ağrısını iyileştirebilir." }
     ],
     steps: [
-      { number: "01", title: "Değerlendirme", description: "Alın çizgileri, kaş pozisyonu ve göz çevresi birlikte değerlendirilerek endoskopik veya klasik teknik kararı verilir." },
-      { number: "02", title: "Endoskopik Kesiler", description: "Saçlı deride görünmeyecek konumlara 3–5 küçük kesi açılır ve kameralı endoskop yerleştirilir." },
-      { number: "03", title: "Diseksiyon", description: "Alın derisi ile periost (kemik zarı) arasında endoskopik kesi aracılığıyla diseksiyon gerçekleştirilir." },
-      { number: "04", title: "Kas Düzenlemesi", description: "Kaş düşüklüğüne neden olan frontal, korugator ve proserus kasları gerektiği ölçüde zayıflatılır veya yeniden konumlandırılır." },
-      { number: "05", title: "Sabitleme ve Kapatma", description: "Serbestlenen dokular yukarı kaldırılıp tespit sütürleriyle sabitlenir; kesiler saç arasına gizlenerek kapatılır." }
+      { number: "01", title: "Değerlendirme ve Planlama", description: "Hastanın deri fazlalığı, kas yapısı ve cilt elastikiyeti değerlendirilerek tam karın germe mi yoksa mini karın germe mi uygulanacağı belirlenir." },
+      { number: "02", title: "Ameliyat Öncesi Hazırlık", description: "Sigaranın bırakılması, kan sulandırıcı ilaçların kesilmesi ve beslenme düzeninin planlanmasıyla dokunun iyileşmeye hazır hale gelmesi sağlanır." },
+      { number: "03", title: "Kesi ve Kas Sıkılaştırma", description: "Bikini çizgisi hizasında planlanan kesiyle ayrışmış karın kasları (diyastazis rekti) orta hatta bir araya getirilerek sıkılaştırılır." },
+      { number: "04", title: "Fazla Deri ve Yağ Dokusunun Alınması, Göbek Yeniden Konumlandırma", description: "Fazla deri ve yağ dokusu uzaklaştırılır, tam karın germede göbek yeni konumuna taşınarak doğal bir görünüm oluşturulur." },
+      { number: "05", title: "İyileşme ve Korse Kullanımı", description: "Dren takibi, kademeli mobilizasyon ve 6-8 hafta süren korse kullanımıyla ödem çekilir; nihai sonuç 3-6 ay içinde belirginleşir." }
     ]
   }
 ];
