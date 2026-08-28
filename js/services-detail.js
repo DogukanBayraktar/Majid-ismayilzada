@@ -58,7 +58,7 @@ function heroHtml(service) {
   if (service.recovery) metaParts.push(`<span>${iconRecovery}İyileşme süresi: <b>${service.recovery}</b></span>`);
   const metaHtml = metaParts.length ? `<div class="service-meta">${metaParts.join('')}</div>` : '';
 
-  const bgStyle = service.image ? ` style="background-image:url('${service.image}');"` : '';
+  const bgStyle = (service.cardImage || service.image) ? ` style="background-image:url('${service.cardImage || service.image}');"` : '';
 
   // "İlgilendiğiniz İşlem" seçeneklerinde mevcut hizmet önceden seçili gelir.
   // Seçenekler data/services.js içindeki güncel hizmet başlıklarından üretilir.
@@ -684,7 +684,7 @@ function stepPhotosFor(service) {
   const addUnique = (src) => {
     if (src && !candidates.includes(src)) candidates.push(src);
   };
-  addUnique(service.image);
+  addUnique(service.cardImage || service.image);
   (service.results || []).forEach(r => addUnique(r.image));
   (service.videos || []).forEach(v => addUnique(v.image));
 
@@ -790,8 +790,9 @@ function initStepPhotoStack(root) {
 // 5) İlgili hizmetler
 // =================================================================
 function relatedCardHtml(service) {
-  const thumbStyle = service.image
-    ? ` style="background-image:url('${service.image}');background-size:cover;background-position:center;"`
+  const cardImg = service.cardImage || service.image;
+  const thumbStyle = cardImg
+    ? ` style="background-image:url('${cardImg}');background-size:cover;background-position:center;"`
     : '';
   return `
     <a class="blog-card" href="services-detay.html?id=${encodeURIComponent(service.id)}" style="display:block;">

@@ -289,6 +289,7 @@ function makeSlider(trackId, prevId, nextId, cardSelector) {
 }
 makeSlider('storyTrack', 'storiesPrev', 'storiesNext', '.story-card');
 makeSlider('videoGallery', 'videoPrev', 'videoNext', '.video-card');
+makeSlider('certTrack', 'certPrev', 'certNext', '.cert-card');
 
 // ---------------------------------------------------------------
 // HASTANE: fotoğraf alanı — otomatik geçişli (fade) slider.
