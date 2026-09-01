@@ -417,12 +417,12 @@ const services = [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 2", duration: "Abdominoplasti" }
     ],
     results: [
-      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-1.png" },
-      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-2.png" },
-      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-3.png" },
-      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-4.png" },
-      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-5.png" },
-      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-6.png" }
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-1.avif" },
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-2.avif" },
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-3.avif" },
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-4.avif" },
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-5.avif" },
+      { image: "assets/images/Abdominoplasty/Abdominoplasty-Before-After-6.avif" }
     ],
     content: [
       { type: "p", text: "Karın germe ameliyatı; doğum, ani kilo değişimleri veya yaşlanma süreciyle gevşeyen karın bölgesini cerrahi olarak yeniden şekillendiren, estetik cerrahinin en kapsamlı ve en dönüştürücü prosedürlerinden biridir. Yalnızca fazla deri ve yağ dokusunu ortadan kaldırmakla kalmaz; aynı zamanda ayrışmış karın kaslarını orta hatta bir araya getirerek vücuda hem estetik hem de işlevsel bir toparlanma sağlar." },
