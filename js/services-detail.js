@@ -679,29 +679,20 @@ function candidacyHtml(service) {
 // =================================================================
 // 4) SÜREÇ — "Nasıl Uygulanır" dikey adım listesi (mevcut davranış).
 // =================================================================
-function stepPhotosFor(service) {
-  const candidates = [];
-  const addUnique = (src) => {
-    if (src && !candidates.includes(src)) candidates.push(src);
-  };
-  addUnique(service.cardImage || service.image);
-  (service.results || []).forEach(r => addUnique(r.image));
-  (service.videos || []).forEach(v => addUnique(v.image));
-
-  while (candidates.length > 0 && candidates.length < 3) {
-    candidates.push(candidates[candidates.length % candidates.length] || candidates[0]);
-  }
-  return candidates.slice(0, 3);
-}
+const CERRAHI_PHOTOS = [
+  'assets/images/cerrahi-1.avif',
+  'assets/images/cerrahi-2.avif',
+  'assets/images/cerrahi-3.avif',
+];
 
 function stepsHtml(service) {
   const steps = service.steps;
   if (!steps || steps.length === 0) return '';
 
-  const photos = stepPhotosFor(service);
+  const photos = CERRAHI_PHOTOS;
 
   const stepsMarkup = steps.map((step, i) => {
-    const group = photos.length ? Math.min(photos.length - 1, Math.floor((i * photos.length) / steps.length)) : 0;
+    const group = Math.min(photos.length - 1, Math.floor(((i + 1) * photos.length) / steps.length));
     return `
       <div class="process-step reveal" data-photo-group="${group}" style="transition-delay:${(i % 6) * 70}ms;">
         <div class="marker">
@@ -716,7 +707,9 @@ function stepsHtml(service) {
   }).join('');
 
   const photosMarkup = photos.map((src, i) => `
-    <div class="process-photo" data-photo-index="${i}" style="--photo:url('${src}')"></div>
+    <div class="process-photo" data-photo-index="${i}">
+      <img src="${src}" alt="Cerrahi adım görseli ${i + 1}">
+    </div>
   `).join('');
 
   return `

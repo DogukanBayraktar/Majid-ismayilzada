@@ -399,7 +399,7 @@ makeSlider('certTrack', 'certPrev', 'certNext', '.cert-card');
 })();
 // Scroll reveal animations
 const revealTargets = document.querySelectorAll(
-    '.hero-copy, .hero-actions, .hero-form-wrap, .section-head, .service-card, .cred-card, .process-step, .safety-photo, .safety-card, .cert-card, .story-card, .video-card, .blog-card, .faq-item, .ba-slider-wrap, .ba-card, #contact .box, .hospital-slider-wrap, .istanbul-slider-wrap, .istanbul-feature'
+    '.hero-copy, .hero-actions, .hero-form-wrap, .section-head, .service-card, .cred-card, .process-step, .safety-photo, .safety-card, .cert-card, .story-card, .video-card, .blog-card, .faq-item, .ba-slider-wrap, .ba-card, #contact .cta-card, .hospital-slider-wrap, .istanbul-slider-wrap, .istanbul-feature'
 );
 revealTargets.forEach((el, i) => {
     el.classList.add('reveal');

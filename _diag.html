@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>diag</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  body { background: #0a0907; }
+  .wrap2 { max-width: 560px; margin: 120px auto; }
+  #diag { color: #7fd; font: 12px monospace; margin: 20px; white-space: pre; }
+</style>
+</head>
+<body>
+<div class="wrap2">
+  <div class="hero-form-wrap" id="wrap">
+    <form class="hero-form" id="heroForm">
+      <div class="form-row">
+        <input type="email" id="eposta" name="eposta" placeholder="E-posta" autocomplete="email">
+      </div>
+      <div class="form-row">
+        <div class="custom-select" id="islemDropdown">
+          <button type="button" class="custom-select-btn" id="islemBtn">
+            <span id="islemText" class="custom-select-placeholder">İlgilendiğiniz İşlem</span>
+            <svg class="custom-select-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="custom-select-list" id="islemList" role="listbox">
+            <li role="option" id="li0">Meme Dikleştirme ve Büyütme</li>
+            <li role="option">Popo Estetiği (BBL)</li>
+            <li role="option">Liposuction (Yağ Aldırma)</li>
+            <li role="option">Annelik Estetiği (Mommy Makeover)</li>
+            <li role="option">Burun Estetiği (Rinoplasti)</li>
+            <li role="option">Karın Germe</li>
+            <li role="option">Diğer</li>
+          </ul>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-cta form-submit" id="submitBtn"><span>Bilgi Talep Et</span><span class="arrow">→</span></button>
+      <p class="form-note" id="note">Bilgileriniz KVKK kapsamında gizli tutulur.</p>
+    </form>
+  </div>
+</div>
+<script>
+  function info(el) {
+    const cs = getComputedStyle(el);
+    const r = el.getBoundingClientRect();
+    return `${el.id||el.className}: pos=${cs.position} z=${cs.zIndex} bg=${cs.backgroundColor} top=${Math.round(r.top)} bottom=${Math.round(r.bottom)} ` +
+      `wrapCtx=${cs.transform!=='none'||cs.filter!=='none'||cs.backdropFilter!=='none'}`;
+  }
+  function run() {
+    try {
+      const dd = document.getElementById('islemDropdown');
+      dd.classList.add('open');
+      const list = document.getElementById('islemList');
+      list.removeAttribute('hidden');
+      const li0 = document.getElementById('li0');
+      setTimeout(() => {
+        const out = [];
+        const r = li0.getBoundingClientRect();
+        const cx = r.left + r.width/2, cy = r.top + r.height/2;
+        const topEl = document.elementFromPoint(cx, cy);
+        out.push('elementFromPoint at list[0] center -> ' + (topEl && (topEl.id || topEl.className)));
+        out.push('list[0] rect: ' + JSON.stringify({left:Math.round(r.left), top:Math.round(r.top), rw:Math.round(r.width), rh:Math.round(r.height)}));
+        ['islemDropdown','islemList','wrap','submitBtn','note'].forEach(id => out.push(info(document.getElementById(id))));
+        out.push('wrap backdropFilter=' + getComputedStyle(document.getElementById('wrap')).backdropFilter);
+        document.getElementById('diag').textContent = out.join(' | ');
+      }, 250);
+    } catch (e) {
+      document.getElementById('diag').textContent = 'ERROR: ' + e.message;
+    }
+  }
+  setTimeout(run, 200);
+</script>
+<pre id="diag"></pre>
+</body>
+</html>

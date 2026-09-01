@@ -504,5 +504,128 @@ const services = [
       { number: "04", title: "Fazla Deri ve Yağ Dokusunun Alınması, Göbek Yeniden Konumlandırma", description: "Fazla deri ve yağ dokusu uzaklaştırılır, tam karın germede göbek yeni konumuna taşınarak doğal bir görünüm oluşturulur." },
       { number: "05", title: "İyileşme ve Korse Kullanımı", description: "Dren takibi, kademeli mobilizasyon ve 6-8 hafta süren korse kullanımıyla ödem çekilir; nihai sonuç 3-6 ay içinde belirginleşir." }
     ]
-  }
+  },
+  {
+    id: "kol-germe-ameliyati",
+    title: "Kol Germe Ameliyatı",
+    excerpt: "Kol germe ameliyatı (brakyoplasti), üst kolda yaşlanma ya da aşırı kilo kaybı sonrasında oluşan deri sarkmasını ve yağ fazlalığını cerrahi olarak düzelten bir estetik operasyondur.",
+    category: "Estetik Cerrahi",
+    image: "assets/images/Armlift/Armlift.png",
+    cardImage: "assets/images/Uzmanlıklar/Arm-Lift.jpeg",
+    duration: "1,5-2,5 saat",
+    recovery: "6-8 hafta (iz izleri 12-18 ayda solar)",
+    videos: [
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 1", duration: "Brakyoplasti" },
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 2", duration: "Kol Germe Ameliyatı" }
+    ],
+    results: [
+      { image: "assets/images/Armlift/Armlift.png" }
+    ],
+    steps: [
+      { number: "01", title: "Değerlendirme ve Planlama", description: "Koldaki deri fazlalığı, cilt elastikiyeti ve yağ dokusu dağılımı değerlendirilerek uygun kesi tekniği ve liposuction kombinasyonuna karar verilir." },
+      { number: "02", title: "Ameliyat Öncesi Hazırlık", description: "Sigaranın bırakılması, kan sulandırıcı ilaçların kesilmesi ve gerekli tetkiklerin tamamlanmasıyla operasyon öncesi hazırlık yapılır." },
+      { number: "03", title: "Liposuction ile Yağ Alma", description: "Fazla yağ dokusu önce liposuction ile alınarak kolun konturu şekillendirilir; gevşeyen deri daha sonra ele alınır." },
+      { number: "04", title: "Derinin Gerilmesi ve Fazlalığın Alınması", description: "Koltuk altından başlayan ve sarkma derecesine göre dirseğe doğru uzanan kesiyle gevşeyen deri gerdirilir ve fazlalık uzaklaştırılır." },
+      { number: "05", title: "İyileşme Takibi", description: "Kompresyon bandajı/korse kullanımı ve düzenli kontrollerle ödem çözülür; izler 12-18 ayda soluklaşır ve nihai sonuç oturur." }
+    ],
+    content: [
+      { type: "p", text: "Kol germe ameliyatı (brakyoplasti), üst kolda yaşlanma ya da aşırı kilo kaybı sonrasında oluşan deri sarkmasını ve yağ fazlalığını cerrahi olarak düzelten bir estetik operasyondur. Cilt elastikiyetinin zamanla azalmasıyla birlikte kol bölgesinde oluşan sarkmalar; spor, diyet veya egzersizle giderilemez. Brakyoplasti, bu bölgede kalıcı ve estetik bir iyileşme sağlayan güvenilir bir cerrahi yöntemdir." },
+
+      { type: "h3", text: "Kol Germe Ameliyatı İstanbul" },
+      { type: "p", text: "Şişli'de Doç. Dr. Majid İsmayilzada kliniğinde uygulanan kol germe ameliyatı; aşırı kilo kaybı yaşayan, bariyatrik cerrahi geçiren ya da yaşa bağlı cilt sarkması olan kişilere kolda sıkı, genç ve estetik bir görünüm kazandırmayı hedefler. Kıyafet seçiminde özgürlük, kolları açarak hareket edebilme ve estetik kaygılardan arınma, bu ameliyatı tercih eden hastaların başlıca motivasyonları arasında yer alır." },
+
+      { type: "h3", text: "Kol Germe Ameliyatı Kimler İçin Uygundur?" },
+      { type: "p", text: "Brakyoplasti, aşağıdaki durumların bir ya da birkaçını yaşayan kişiler için uygun bir çözüm sunar:<br>• Ani veya aşırı kilo kaybı (bariyatrik cerrahi sonrası dahil) nedeniyle kol iç yüzünde belirgin deri fazlalığı<br>• Yaşlanmaya bağlı üst kolda elastikiyet kaybı ve sarkma<br>• Spor veya diyetle düzelmeyen inatçı kol sarkmaları<br>• Kıyafet seçimini etkileyen ve özgüveni kıran kollardan rahatsızlık<br>• Kol bölgesinde yağ fazlalığı ile birlikte deri sarkması" },
+      { type: "p", text: "Aday değerlendirmesi Doç. Dr. İsmayilzada ile yapılan kişisel muayenede gerçekleştirilir. Kolun deri fazlalığı miktarı, cilt elastikiyeti, yağ dokusu dağılımı ve genel sağlık durumu cerrah tarafından detaylı biçimde incelenerek en uygun cerrahi plan oluşturulur." },
+
+      { type: "h3", text: "Kol Germe Ameliyatı Nasıl Yapılır?" },
+      { type: "p", text: "Kol germe ameliyatı genel anestezi altında gerçekleştirilir ve ortalama 1,5–2,5 saat sürer. Uygulanan cerrahi teknik, kol sarkmasının derecesine ve yağ dokusunun varlığına göre belirlenir." },
+      { type: "p", text: "Minimal sarkmalarda koltuk altına gizlenen küçük bir kesi yeterli olabilirken; orta veya ileri derecede sarkmalarda kesi koltuk altından başlayarak dirsek yönüne doğru uzanır. Bu uzunluk, uzaklaştırılması gereken deri fazlalığıyla doğrudan ilişkilidir. Ameliyat sırasında sıklıkla liposuction da eklenerek kolun konturu aynı anda şekillendirilir: önce fazla yağ dokusu alınır, ardından gevşeyen deri gerdirilip fazlalık uzaklaştırılır. Böylece hem inceltme hem sıkılaştırma tek seansta sağlanır." },
+      { type: "p", text: "Ameliyat sonunda dikişler kapatılır, kompresyon bandajı uygulanır ve hastanın iyileşme süreci başlar." },
+
+      { type: "h3", text: "Kol Germe ile Liposuction Arasındaki Fark" },
+      { type: "p", text: "Bu iki yöntem çoğu zaman birbiriyle karıştırılsa da amaçları ve endikasyonları farklıdır. Liposuction yalnızca fazla yağ dokusunu uzaklaştırır; sarkmış ya da elastikiyetini yitirmiş deriyi toparlayamaz. Kol germe ameliyatı ise hem fazla deriyi hem de yağ dokusunu cerrahi olarak çıkararak kolda gerçek anlamda bir şekillendirme ve sıkılaştırma sağlar." },
+      { type: "p", text: "Kolda yalnızca yağ birikimi varsa ve cilt elastikiyeti iyiyse tek başına liposuction yeterli olabilir. Deri sarkması da söz konusuysa brakyoplasti gereklidir; pek çok vakada iki yöntem kombine olarak uygulanır. Hangi yöntemin tek başına ya da birlikte uygulanacağına muayenede karar verilir." },
+
+      { type: "h3", text: "Ameliyat Öncesi Hazırlık Süreci" },
+      { type: "p", text: "Cerrahi planlama kadar ameliyat öncesi hazırlık da iyileşme sürecini doğrudan etkiler. Doğru hazırlık, hem komplikasyon riskini azaltır hem de iyileşmeyi hızlandırır." },
+      { type: "p", text: "• Sigara kullanıyorsanız ameliyattan en az 4 hafta önce bırakılması gerekir. Sigara; doku kanlanmasını bozar, yara iyileşmesini geciktirir ve kesi açılması riskini artırır.<br>• Kan sulandırıcı ilaçlar, aspirin ve bitkisel takviyeler doktor önerisiyle önceden kesilmelidir.<br>• Eşlik eden kronik hastalıklar (diyabet, hipertansiyon vb.) kontrol altında olmalıdır.<br>• Ameliyat günü için refakatçi planlanmalı, operasyon sonrası ilk birkaç gün için destek ayarlanmalıdır.<br>• Yeterli protein ve sıvı alımına dikkat edilerek vücudun iyileşmeye hazır olması desteklenmelidir." },
+
+      { type: "h3", text: "Kol Germe Ameliyatı Sonrası İyileşme Süreci" },
+      { type: "p", text: "Ameliyat sonrası erken dönemde kolda hafif ağrı, ödem ve morluk görülmesi beklenen ve geçici bir süreçtir. Hastalar çoğunlukla birkaç gün içinde günlük aktivitelerine hafif tempoda dönebilmektedir. İyileşme döneminde kompresyon bandajı ya da korse kullanımı zorunludur; bu uygulama ödemin hızla çözülmesine ve doku uyumunun daha sağlıklı ilerlemesine katkı sağlar." },]
+    },
+    {
+    id: "yuz-ve-boyun-germe-smas-facelift",
+    title: "Yüz ve Boyun Germe (SMAS Facelift)",
+    excerpt: "Yüz germe ameliyatı; yaşlanmanın yüz ve boyun bölgesinde bıraktığı sarkma, çizgi ve hacim kayıplarını cerrahi olarak gideren, günümüz estetik cerrahisinin en kapsamlı ve en kalıcı sonuçlar sunan prosedürlerinden biridir.",
+    category: "Estetik Cerrahi",
+    image: "assets/images/FaceLift/Facelift-1.png",
+    cardImage: "assets/images/Uzmanlıklar/Facelift.jpeg",
+    duration: "3-5 saat",
+    recovery: "3-6 hafta (nihai sonuç 3-6 ay)",
+    videos: [
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 1", duration: "SMAS Facelift" },
+      { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 2", duration: "Yüz ve Boyun Germe" }
+    ],
+    results: [
+      { image: "assets/images/FaceLift/Facelift-1.png" }
+    ],
+    content: [
+      { type: "p", text: "Yüz germe ameliyatı; yaşlanmanın yüz ve boyun bölgesinde bıraktığı sarkma, çizgi ve hacim kayıplarını cerrahi olarak gideren, günümüz estetik cerrahisinin en kapsamlı ve en kalıcı sonuçlar sunan prosedürlerinden biridir. Face-neck lift olarak da bilinen bu operasyon, yalnızca cildi germekle kalmaz; yüzün derin katmanlarındaki doku yapısını da yeniden konumlandırarak daha uzun süreli ve daha doğal bir gençleşme sağlar." },
+      { type: "p", text: "Amaç, yüzü değiştirmek değil; kişinin kendi yüzünü daha dinlenmiş, daha taze ve zamansız bir versiyonuyla yeniden buluşturmaktır. Yorgunluğun, sarkmanın ve zamanın izlerinin yerini; doğal, zarif ve dengeli bir ifade alır." },
+
+      { type: "h3", text: "Yüz ve Boyun Germe Kimlere Uygundur?" },
+      { type: "p", text: "Yüz germe ameliyatı yalnızca ileri yaşın değil; erken yaşlarda da başlayabilen cilt elastikiyet kaybının, genetik yatkınlığın veya yaşam tarzı faktörlerinin bir sonucu olarak gündeme gelebilir. Şu belirtiler face-neck lift adaylığını güçlendirir:<br>• Yanak ve orta yüz bölgesinde belirgin sarkma<br>• Çene hattının gevşemesi ve jowl oluşumu<br>• Boyunda derin bantlaşmalar ve sarkma<br>• Boyun-çene hattının belirsizleşmesi<br>• Şakak ve alın bölgesindeki cilt sarkması<br>• Botoks ve dolgu gibi girişimsel olmayan yöntemlerin artık yetersiz kaldığı ileri sarkma tabloları" },
+      { type: "p", text: "Yaşa bakılmaksızın cilt elastikiyetini kaybetmiş, yüz konturunda sarkma gelişmiş bireyler bu operasyon için uygun aday olabilir. Değerlendirme; cilt kalitesi, sarkmanın derecesi, genel sağlık durumu ve kişinin beklentileri göz önünde bulundurularak yapılır." },
+
+      { type: "h3", text: "SMAS Tabakası Nedir ve Neden Bu Kadar Önemli?" },
+      { type: "p", text: "Yüz germe ameliyatının kalitesi büyük ölçüde hangi doku katmanına müdahale edildiğiyle belirlenir. Bu noktada SMAS tabakası kavramı kritik bir öneme sahiptir." },
+      { type: "p", text: "SMAS (Superficial Musculo-Aponeurotic System), yüzün mimik kaslarını içinde barındıran ve cildin hemen altında yer alan derin bir doku tabakasıdır. Yüzün yapısal desteğini sağlayan bu tabaka, yaşlanmayla birlikte gevşer ve sarkar; bu gevşeme de yüz yüzeyine yansır." },
+      { type: "p", text: "Yalnızca cildi geren yüzeysel tekniklerde germe kuvveti doğrudan deriye uygulanır. Bu durum zamanla iz kalitesini düşürür, sonucun ömrünü kısaltır ve bazen yapay bir 'gergin yüz' görünümüne yol açar." },
+      { type: "p", text: "Derin plan yüz germe ve yüksek SMAS tekniklerinde ise germe kuvveti SMAS tabakasına uygulanır; cilt doğal pozisyonuna yeniden oturur. Bu yaklaşım üç temel avantaj sağlar:<br>• Sonuçların ömrü diğer tekniklere kıyasla anlamlı biçimde uzar<br>• Kulak önündeki kesi izi çok daha düzgün iyileşir; çünkü cilt üzerinde gerginlik kalmaz<br>• Yüz ifadesi korunur; doğal ve dinamik bir görünüm elde edilir" },
+
+      { type: "h3", text: "Yüz ve Boyun Germe Birlikte Uygulanmalı mı?" },
+      { type: "p", text: "Yüz ve boyun anatomisi birbirine yakın komşuluk içindedir. Yüz ve boyun yaşlanması genellikle eş zamanlı ilerler; bu nedenle iki bölgenin aynı seansta ele alınması çoğu vakada çok daha uyumlu ve bütüncül bir sonuç sağlar." },
+      { type: "p", text: "Yalnızca yüz gerdirilen ancak boyun bölgesine müdahale edilmeyen vakalarda yüz-boyun geçişindeki uyumsuzluk dikkat çekici olabilir. Bu nedenle face-neck lift kombinasyonu hem estetik denge hem de uzun vadeli sonuç kalitesi açısından altın standart kabul edilmektedir." },
+
+      { type: "h3", text: "Yüz Germe ile Kombine Edilebilen Prosedürler" },
+      { type: "p", text: "Yüz germe tek başına güçlü bir gençleştirme sağlar; ancak bütünsel bir yüz yenilenmesi hedeflendiğinde kombine prosedürler sonucu önemli ölçüde güçlendirir." },
+      { type: "p", text: "• Göz kapağı estetiği (blefaroplasti): Yüzdeki gençleşmeyi tamamlar, bakışlara dinlenmiş ve uyanık bir ifade kazandırır.<br>• Yüze yağ enjeksiyonu: Sarkma giderilirken hacim kaybının da eş zamanlı doldurulması, daha dengeli ve dolgun bir sonuç üretir. Kişinin kendi yağından elde edilen bu transfer, tamamen doğal bir dolgunluk sağlar.<br>• Kaş kaldırma (endoskopik alın germe): Alın ve kaş bölgesindeki sarkmanın giderilmesi yüz germenin üst yüz etkisini tamamlar.<br>• Botoks ve dolgu uygulamaları: Cerrahi sonrası ince çizgilerin yönetimi ve yüz dengesinin korunması için kullanılabilir.<br>• Cilt yenileme (lazer, PRP): Ameliyatla elde edilen yapısal gençleşmeyi cilt kalitesi açısından destekler." },
+
+      { type: "h3", text: "Yüz Germe Ameliyatı Nasıl Gerçekleşir?" },
+      { type: "p", text: "Ameliyat genel anestezi altında gerçekleştirilir. Operasyon süresi uygulanacak tekniğe ve kombine prosedürlere göre değişmekle birlikte genellikle 3-5 saat arasında tamamlanır. Ameliyat sonrasında 1-2 gün hastanede yatarak takip önerilir." },
+      { type: "p", text: "Kesi planlaması; kulak önü, kulak arkası ve saç çizgisi içinde ilerleyecek şekilde tasarlanır. Bu anatomik gizleme sayesinde izler sosyal hayatta fark edilmez hale gelir." },
+
+      { type: "h3", text: "Yüz Germe Ameliyatı Sonrası İyileşme Süreci" },
+      { type: "p", text: "İlk 48 saat: Yüz ve boyunda şişlik, morluk ve gerginlik belirgindir. Baş hafifçe yüksek tutularak yatılır. Boyun ve yüze hafif baskı yapan kompresyon giysileri bu dönemde kullanılır.<br>1-2. haftalar: Morluklar büyük ölçüde azalır. Hastaların önemli bir kısmı 10-14 gün içinde sosyal çevreye dönebilir. Dikişler bu dönemde alınır.<br>1. ay: Şişlik büyük ölçüde çekilmiştir; genel görünüm belirginleşmeye başlar. Cilt üzerinde hafif uyuşma veya gerginlik hissi bu dönemde normal kabul edilir.<br>3-6. aylar: Nihai sonuç oturur; izler soluklaşır ve yüz tam konturuna kavuşur." },
+
+      { type: "h3", text: "Yüz Germe Sonuçları Ne Kadar Süre Kalıcıdır?" },
+      { type: "p", text: "Derin plan ve yüksek SMAS tekniğiyle gerçekleştirilen yüz germe ameliyatının sonuçları 8-12 yıl veya daha uzun süre kalıcı olabilir. Yaşlanma süreci devam ettiğinden zamanla yeniden sarkma başlayabilir; ancak yüz germe bu süreci yıllarca geriye alır." },
+      { type: "p", text: "Kalıcılığı destekleyen faktörler:<br>• Sigara kullanmamak; sigara cilt kanlanmasını bozar ve yaşlanmayı hızlandırır<br>• Güneş koruyucu kullanımını alışkanlık haline getirmek<br>• Kilo stabilitesini korumak<br>• Cilt bakımına düzenli devam etmek" },
+      { type: "p", text: "Sarkma yalnızca alt yüz bölgesinde sınırlıysa daha az kapsamlı bir girişim yeterli olabilir; mini facelift kimlere uygundur sorusunu ayrı bir yazıda ele aldık." },
+      { type: "p", text: "Şikâyet ağırlıklı olarak boyun bölgesindeyse, boyun sarkmasının ameliyatsız yöntemlerle düzelip düzelmediğini ve cerrahiye geçiş eşiğini ayrıca inceledik." },
+
+      { type: "h3", text: "Yüz germe ameliyatı kaç yaşında yapılır?" },
+      { type: "p", text: "Yüz germe için belirli bir yaş sınırı yoktur; genel sağlık durumu uygun olan, yüzde belirgin sarkma ve derin kıvrımlar oluşmuş kişilere uygulanabilir. Çoğunlukla 40–65 yaş arasında tercih edilmekle birlikte, daha genç yaşta ciddi sarkma yaşayan kişiler de aday olabilir." },
+
+      { type: "h3", text: "Yüz germe ne kadar süre etkili kalır?" },
+      { type: "p", text: "Yüz germe ameliyatının etkisi ortalama 7–10 yıl kalıcıdır. Yaşlanma süreci devam etse de, ameliyat öncesiyle kıyaslandığında görünüm çok daha genç ve taze kalır. Sağlıklı yaşam tarzı, güneş koruma ve cilt bakımı sonucun ömrünü uzatır." },
+
+      { type: "h3", text: "Yüz germe sonrası sosyal hayata ne zaman dönülür?" },
+      { type: "p", text: "Şişlik ve morarmalar büyük ölçüde 2–3 haftada geçer. Çoğu hasta 3. haftada sosyal ortamlara çıkmaya başlayabilir. Makyaj ile örtme 10–14 günde mümkündür. Nihai sonuç 3–6 ayda tam olarak ortaya çıkar." },
+
+      { type: "h3", text: "Yüz germe doğal görünür mü, gergin bir ifade kalır mı?" },
+      { type: "p", text: "Modern yüz germe teknikleri (SMAS tekniği) yalnızca deriyi değil, derin dokuları da ele alır. Bu sayede yapay gerginlik yerine doğal, dinlenmiş bir yüz ifadesi elde edilir. Fazla germe yapmamak ve yüzün anatomik yapısına saygı göstermek cerrahın temel prensibidir." },
+
+      { type: "h3", text: "Yüz germe ile boyun germe birlikte yapılabilir mi?" },
+      { type: "p", text: "Evet, yüz ve boyun germe çoğunlukla tek seansta kombine uygulanır. Boyun bölgesindeki sarkmalar, bantlaşmalar ve jowl olarak adlandırılan çene altı sarkıklığı da aynı ameliyatta düzeltilebilir; bu bütünsel bir gençleşme sağlar." }
+    ],
+    steps: [
+      { number: "01", title: "Değerlendirme ve Planlama", description: "Cilt kalitesi, sarkmanın derecesi, genel sağlık durumu ve kişinin beklentileri değerlendirilerek SMAS tekniği ve kombine prosedürler planlanır." },
+      { number: "02", title: "Kesi Planlaması", description: "Kulak önü, kulak arkası ve saç çizgisi içinde ilerleyecek şekilde anatomik olarak gizlenebilir kesiler tasarlanır." },
+      { number: "03", title: "SMAS Tabakasının Yeniden Konumlandırılması", description: "Germe kuvveti doğrudan cilde değil, SMAS tabakasına uygulanır; derin dokular yeniden konumlandırılarak doğal ve kalıcı bir gençleşme sağlanır." },
+      { number: "04", title: "Cilt Fazlalığının Alınması ve Kombine Prosedürler", description: "Gevşeyen fazla cilt uzaklaştırılır; talep ve ihtiyaca göre blefaroplasti, yağ enjeksiyonu veya kaş kaldırma gibi işlemler aynı seansta uygulanabilir." },
+      { number: "05", title: "İyileşme Takibi", description: "Kompresyon giysisi kullanımı ve düzenli doktor kontrolleriyle iyileşme süreci desteklenir; nihai sonuç 3-6 ayda tam olarak oturur." }
+    ]
+  },
 ];
