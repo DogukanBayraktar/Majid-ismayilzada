@@ -13,7 +13,9 @@ const services = [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 2", duration: "Meme Dikleştirme ve Büyütme" }
     ],
     results: [
-      { image: "assets/images/Breast/Breast-1.png" }
+      { image: "assets/images/Breast/Breast-1.jpeg" },
+      { image: "assets/images/Breast/Breast-2.jpeg" },
+      { image: "assets/images/Breast/Breast-3.jpeg" }
     ],
     content: [
       { type: "p", text: "Meme dikleştirme ve büyütme ameliyatı (augmentasyon mastopeksi), hem sarkmış hem de hacim kaybına uğramış memelere aynı seansta yeniden form, dik görünüm ve dolgunluk kazandıran kombine bir estetik cerrahi işlemdir. Yaşlanma, yerçekimi, doğum, emzirme veya önemli kilo değişimleri gibi faktörler zamanla meme dokusunu etkiler; sarkma (ptoz) ve hacim kaybı çoğunlukla birlikte görülür." },
@@ -568,7 +570,10 @@ const services = [
       { videoId: "VIDEO_ID_BURAYA", image: "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800", name: "Hasta 2", duration: "Yüz ve Boyun Germe" }
     ],
     results: [
-      { image: "assets/images/FaceLift/Facelift-1.png" }
+      { image: "assets/images/FaceLift/Facelift-1.png" },
+      { image: "assets/images/FaceLift/Facelift-2.png" },
+      { image: "assets/images/FaceLift/Facelift-3.png" },
+      { image: "assets/images/FaceLift/Facelift-4.jpeg" }
     ],
     content: [
       { type: "p", text: "Yüz germe ameliyatı; yaşlanmanın yüz ve boyun bölgesinde bıraktığı sarkma, çizgi ve hacim kayıplarını cerrahi olarak gideren, günümüz estetik cerrahisinin en kapsamlı ve en kalıcı sonuçlar sunan prosedürlerinden biridir. Face-neck lift olarak da bilinen bu operasyon, yalnızca cildi germekle kalmaz; yüzün derin katmanlarındaki doku yapısını da yeniden konumlandırarak daha uzun süreli ve daha doğal bir gençleşme sağlar." },
