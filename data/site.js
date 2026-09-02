@@ -9,7 +9,7 @@ const siteSettings = {
   "email": "info@majidismayilzada.com",
   "address": "Cumhuriyet, Halaskargazi Cd. No:121, Şişli/İstanbul",
   "mapsLink": "https://www.google.com/maps?q=Halaskargazi+Cd.+No%3A121,+%C5%9Ei%C5%9Fli/%C4%B0stanbul",
-  "instagram": "",
+  "instagram": "https://www.instagram.com/dr.mecid.ismayilzade/",
   "facebook": "",
   "youtube": "",
   "ctaAppointmentText": "Randevu Al",
