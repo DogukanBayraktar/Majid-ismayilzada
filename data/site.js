@@ -10,7 +10,7 @@ const siteSettings = {
   "address": "Cumhuriyet, Halaskargazi Cd. No:121, Şişli/İstanbul",
   "mapsLink": "https://www.google.com/maps?q=Halaskargazi+Cd.+No%3A121,+%C5%9Ei%C5%9Fli/%C4%B0stanbul",
   "instagram": "https://www.instagram.com/dr.mecid.ismayilzade/",
-  "ctaAppointmentText": "Randevu Al",
+  "ctaAppointmentText": "Randevu Alma",
   "ctaWhatsAppText": "WhatsApp'tan Randevu Al",
   "ctaCallText": "Muhammet'i Telefonla Ara",
   "footerBrandText": "İstanbul — Plastik, rekonstrüktif ve estetik cerrahide kişiye özel yaklaşım.",
