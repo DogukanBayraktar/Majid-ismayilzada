@@ -3,17 +3,17 @@
 
 const siteSettings = {
   "phone": "+905015804482",
-  "phoneDisplay": "(TEST) 555 555 55 55",
+  "phoneDisplay": "(+90) 501 580 44 82",
   "whatsapp": "905015804482",
   "whatsappLink": "https://wa.me/905015804482",
   "email": "info@majidismayilzada.com",
   "address": "Cumhuriyet, Halaskargazi Cd. No:121, Şişli/İstanbul",
   "mapsLink": "https://www.google.com/maps?q=Halaskargazi+Cd.+No%3A121,+%C5%9Ei%C5%9Fli/%C4%B0stanbul",
   "instagram": "https://www.instagram.com/dr.mecid.ismayilzade/",
-  "ctaAppointmentText": "Randevu Alma",
+  "ctaAppointmentText": "Randevu Al",
   "ctaWhatsAppText": "WhatsApp'tan Randevu Al",
-  "ctaCallText": "Muhammet'i Telefonla Ara",
-  "footerBrandText": "TEST MARKA YAZISI",
+  "ctaCallText": "Muhammedi Telefonla Ara",
+  "footerBrandText": "İstanbul — Plastik, rekonstrüktif ve estetik cerrahide kişiye özel yaklaşım.",
   "footerCopyright": "© {year} Doç. Dr. Majid İsmayilzada. Tüm hakları saklıdır.",
   "footerMenu": [
     {
