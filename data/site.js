@@ -5,7 +5,7 @@ const siteSettings = {
   "phone": "+905015804482",
   "phoneDisplay": "(+90) 501 580 44 82",
   "whatsapp": "905015804482",
-  "whatsappLink": "https://wa.me/905356534274",
+  "whatsappLink": "https://wa.me/905015804482",
   "email": "info@majidismayilzada.com",
   "address": "Cumhuriyet, Halaskargazi Cd. No:121, Şişli/İstanbul kadıköy",
   "mapsLink": "https://www.google.com/maps?q=Halaskargazi+Cd.+No%3A121,+%C5%9Ei%C5%9Fli/%C4%B0stanbul",
