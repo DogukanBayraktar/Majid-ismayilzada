@@ -1,0 +1,34 @@
+<aside class="sidebar">
+  <div class="brand">
+    <div class="name">Majid İsmayilzada</div>
+    <div class="sub">Yönetim Paneli</div>
+  </div>
+  <nav>
+    <a href="/admin/services" class="<%= active === 'services' ? 'active' : '' %>">Uzmanlıklar</a>
+    <a href="/admin/blog" class="<%= active === 'blog' ? 'active' : '' %>">Blog Yazıları</a>
+    <a href="/admin/settings" class="<%= active === 'settings' ? 'active' : '' %>">Site Ayarları</a>
+    <a href="/admin/security" class="<%= active === 'security' ? 'active' : '' %>">Güvenlik</a>
+  </nav>
+  <div class="site-top">
+    <a href="/" target="_blank" class="site-link">
+      Siteyi görüntüle
+      <span class="arr">↗</span>
+    </a>
+  </div>
+  <div class="foot">
+    <% if (typeof backupActive !== 'undefined' && backupActive) { %>
+      <div class="badge on">
+        <span class="dot"></span>
+        <div>GitHub yedek: açık</div>
+      </div>
+    <% } else { %>
+      <div class="badge off">
+        <span class="dot"></span>
+        <div>GitHub yedek: kapalı<small>Veriler yalnızca bu sunucuda tutuluyor.</small></div>
+      </div>
+    <% } %>
+    <form method="post" action="/admin/logout" onsubmit="return confirmLogout();">
+      <button type="submit" class="logout">Çıkış yap</button>
+    </form>
+  </div>
+</aside>

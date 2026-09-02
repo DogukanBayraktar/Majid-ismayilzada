@@ -1,0 +1,58 @@
+<%- include('../_head') -%>
+<body>
+<%- include('../_sidebar', { active: active, backupActive: backupActive }) -%>
+
+<main class="content">
+  <h1>Uzmanlıklar / Hizmetler</h1>
+  <div class="page-sub">Sitede "Uzmanlıklar" sayfasında görüntülenen hizmet kartları.</div>
+
+  <% if (loadError) { %>
+    <div class="alert err"><strong>Veri dosyası okunamadı.</strong> data/services.js içinde sözdizimi hatası olabilir. Dosyayı kontrol edip tekrar deneyin.</div>
+  <% } else { %>
+    <% if (saved) { %><div class="alert ok">Kaydedildi.</div><% } %>
+    <% if (backup === 'ok') { %><div class="alert ok">Değişiklikler GitHub'a da yedeklendi.</div><% } %>
+    <% if (backup === 'skip') { %><div class="alert warn">GitHub yedeği ayarlanmadı — değişiklikler yalnızca bu sunucuda duruyor.</div><% } %>
+    <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu. Token/Bağlantı ayarlarını kontrol edin.</div><% } %>
+
+    <div style="display:flex; justify-content:flex-end; margin-bottom:16px;">
+      <a href="/admin/services/new" class="btn">+ Yeni Uzmanlık Ekle</a>
+    </div>
+
+    <div class="card">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Başlık</th>
+            <th>Kategori</th>
+            <th style="text-align:right;">İşlem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% (services || []).forEach(function (s) { %>
+            <tr>
+              <td><img class="thumb" src="<%= s.image || '' %>" alt="" onerror="this.style.display='none'"></td>
+              <td>
+                <div class="row-title"><%= s.title %></div>
+                <div class="row-sub"><%= s.id %></div>
+              </td>
+              <td><%= s.category %></td>
+              <td style="text-align:right; white-space:nowrap;">
+                <a class="btn btn-sm btn-outline" href="/admin/services/edit/<%= s.id %>">Düzenle</a>
+                <form method="post" action="/admin/services/delete/<%= s.id %>" style="display:inline;"
+                      onsubmit="return confirmDelete('«<%= s.title %>» silinecek, emin misiniz?');">
+                  <button type="submit" class="btn btn-sm btn-danger">Sil</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+          <% if (!services || services.length === 0) { %>
+            <tr><td colspan="4" style="text-align:center; color:#8a94a3; padding:24px;">Henüz kayıt yok. "Yeni Uzmanlık Ekle" ile başlayın.</td></tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+</main>
+
+<%- include('../_foot') -%>

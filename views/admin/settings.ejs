@@ -1,0 +1,102 @@
+<%- include('./_head') -%>
+<body class="has-savebar">
+<%- include('./_sidebar', { active: active, backupActive: backupActive }) -%>
+
+<main class="content">
+  <h1>Site Ayarları</h1>
+  <div class="page-sub">İletişim bilgileri, randevu/CTA butonları ve footer bilgileri. Sitede tüm sayfalarda otomatik güncellenir.</div>
+
+  <% if (loadError) { %>
+    <div class="alert err"><strong>Veri dosyası okunamadı.</strong> data/site.js içinde sözdizimi hatası olabilir.</div>
+  <% } else { %>
+    <% if (saved) { %><div class="alert ok">Kaydedildi.</div><% } %>
+    <% if (backup === 'ok') { %><div class="alert ok">Değişiklikler GitHub'a da yedeklendi.</div><% } %>
+    <% if (backup === 'skip') { %><div class="alert warn">GitHub yedeği ayarlanmadı — değişiklikler yalnızca bu sunucuda duruyor.</div><% } %>
+    <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu.</div><% } %>
+
+    <form method="post" action="/admin/settings/save" id="settingsForm">
+      <div class="card">
+        <h2>İletişim Bilgileri</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label for="phone">Telefon (numara)</label>
+            <input type="text" id="phone" name="phone" class="inp" value="<%= settings.phone || '' %>" placeholder="+905015804482">
+          </div>
+          <div class="field">
+            <label for="phoneDisplay">Telefon (görünen)</label>
+            <input type="text" id="phoneDisplay" name="phoneDisplay" class="inp" value="<%= settings.phoneDisplay || '' %>" placeholder="(+90) 501 580 44 82">
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="whatsapp">WhatsApp numarası</label>
+            <input type="text" id="whatsapp" name="whatsapp" class="inp" value="<%= settings.whatsapp || '' %>" placeholder="905015804482">
+          </div>
+          <div class="field">
+            <label for="email">E-posta</label>
+            <input type="text" id="email" name="email" class="inp" value="<%= settings.email || '' %>" placeholder="info@majidismayilzada.com">
+          </div>
+        </div>
+        <div class="field">
+          <label for="address">Adres</label>
+          <input type="text" id="address" name="address" class="inp" value="<%= settings.address || '' %>">
+        </div>
+        <div class="field">
+          <label for="mapsLink">Google Maps bağlantısı</label>
+          <input type="text" id="mapsLink" name="mapsLink" class="inp" value="<%= settings.mapsLink || '' %>">
+        </div>
+        <div class="field">
+          <label for="instagram">Instagram bağlantısı</label>
+          <input type="text" id="instagram" name="instagram" class="inp" value="<%= settings.instagram || '' %>">
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Randevu / CTA Butonları</h2>
+        <div class="grid-3">
+          <div class="field">
+            <label for="ctaAppointmentText">Menü "Randevu" metni</label>
+            <input type="text" id="ctaAppointmentText" name="ctaAppointmentText" class="inp" value="<%= settings.ctaAppointmentText || '' %>">
+          </div>
+          <div class="field">
+            <label for="ctaWhatsAppText">WhatsApp CTA metni</label>
+            <input type="text" id="ctaWhatsAppText" name="ctaWhatsAppText" class="inp" value="<%= settings.ctaWhatsAppText || '' %>">
+          </div>
+          <div class="field">
+            <label for="ctaCallText">Telefon CTA metni</label>
+            <input type="text" id="ctaCallText" name="ctaCallText" class="inp" value="<%= settings.ctaCallText || '' %>">
+          </div>
+        </div>
+        <div class="field">
+          <label for="whatsappLink">WhatsApp bağlantısı</label>
+          <input type="text" id="whatsappLink" name="whatsappLink" class="inp" value="<%= settings.whatsappLink || '' %>" placeholder="https://wa.me/905015804482">
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Footer</h2>
+        <div class="field">
+          <label for="footerBrandText">Marka açıklaması</label>
+          <textarea id="footerBrandText" name="footerBrandText" class="inp" rows="2"><%= settings.footerBrandText || '' %></textarea>
+        </div>
+        <div class="field">
+          <label for="footerCopyright">Telif metni ({year} yılına çevrilir)</label>
+          <input type="text" id="footerCopyright" name="footerCopyright" class="inp" value="<%= settings.footerCopyright || '' %>">
+        </div>
+      </div>
+
+      <div class="savebar">
+        <div class="sb-title">
+          Site Ayarları
+          <small>Değişiklikler "Kaydet" ile kaydedilir</small>
+        </div>
+        <div class="sb-actions">
+          <a href="/admin/services" class="btn btn-outline">Vazgeç</a>
+          <button type="submit" class="btn">Kaydet</button>
+        </div>
+      </div>
+    </form>
+  <% } %>
+</main>
+
+<%- include('./_foot') -%>

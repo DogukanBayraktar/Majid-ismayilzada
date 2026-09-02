@@ -1,0 +1,4 @@
+node_modules/
+.env
+data/admin-pass.json
+assets/images/uploads/

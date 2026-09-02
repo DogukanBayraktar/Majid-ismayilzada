@@ -1,0 +1,27 @@
+<%- include('_head') -%>
+<body class="login-page">
+  <div class="login-box">
+    <div class="brand">
+      <img src="/assets/images/logo.png" alt="Majid İsmayilzada">
+      <div class="name">Majid İsmayilzada</div>
+      <div class="sub">Yönetim Paneline Giriş</div>
+    </div>
+
+    <% if (error) { %>
+      <div class="alert err"><%= error %></div>
+    <% } %>
+
+    <form method="post" action="/admin/login">
+      <div class="field">
+        <label for="username">Kullanıcı adı</label>
+        <input type="text" id="username" name="username" class="inp" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="password">Şifre</label>
+        <input type="password" id="password" name="password" class="inp" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn">Giriş yap</button>
+    </form>
+  </div>
+</body>
+</html>

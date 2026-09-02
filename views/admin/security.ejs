@@ -1,0 +1,41 @@
+<%- include('_head') -%>
+<body>
+<%- include('_sidebar', { active: active, backupActive: backupActive }) -%>
+
+<main class="content">
+  <h1>Güvenlik</h1>
+  <div class="page-sub">Admin paneli giriş bilgilerini değiştirin.</div>
+
+  <% if (saved) { %><div class="alert ok">Girdiğiniz yeni şifre kaydedildi. Bir sonraki girişte yeni şifreyi kullanın.</div><% } %>
+  <% if (error) { %><div class="alert err"><%= error %></div><% } %>
+
+  <% if (!backupActive) { %>
+    <div class="alert warn">Şifre bu sunucuda <b>data/admin-pass.json</b> içine yazılır (GitHub'a gönderilmez, .gitignore'da). GitHub yedeği kapalı olduğundan başka bir sunucuda giriş bilgilerinizi elle tekrar vermeniz gerekir.</div>
+  <% } else { %>
+    <div class="alert ok">Şifre yalnızca bu sunucuda saklanır; GitHub'a şifre/hash gönderilmez.</div>
+  <% } %>
+
+  <form method="post" action="/admin/password" class="card" style="max-width:460px;">
+    <h2>Şifre Değiştir</h2>
+    <div class="field">
+      <label for="username">Kullanıcı adı</label>
+      <input type="text" id="username" name="username" class="inp" placeholder="yeni kullanıcı adı (veya mevcut bırakın)">
+    </div>
+    <div class="field">
+      <label for="currentPassword">Mevcut şifre</label>
+      <input type="password" id="currentPassword" name="currentPassword" class="inp" autocomplete="current-password" required>
+    </div>
+    <div class="field">
+      <label for="newPassword">Yeni şifre</label>
+      <input type="password" id="newPassword" name="newPassword" class="inp" autocomplete="new-password" minlength="6" required>
+      <div class="hint">En az 6 karakter.</div>
+    </div>
+    <div class="field">
+      <label for="newPasswordAgain">Yeni şifre (tekrar)</label>
+      <input type="password" id="newPasswordAgain" name="newPasswordAgain" class="inp" autocomplete="new-password" required>
+    </div>
+    <button type="submit" class="btn">Şifreyi güncelle</button>
+  </form>
+</main>
+
+<%- include('_foot') -%>

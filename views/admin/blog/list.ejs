@@ -1,0 +1,54 @@
+<%- include('../_head') -%>
+<body>
+<%- include('../_sidebar', { active: active, backupActive: backupActive }) -%>
+
+<main class="content">
+  <h1>Blog Yazıları</h1>
+  <div class="page-sub">Sitede "Blog" sayfasında görüntülenen yazılar.</div>
+
+  <% if (loadError) { %>
+    <div class="alert err"><strong>Veri dosyası okunamadı.</strong> data/blog-posts.js içinde sözdizimi hatası olabilir. Dosyayı kontrol edip tekrar deneyin.</div>
+  <% } else { %>
+    <% if (saved) { %><div class="alert ok">Kaydedildi.</div><% } %>
+    <% if (backup === 'ok') { %><div class="alert ok">Değişiklikler GitHub'a da yedeklendi.</div><% } %>
+    <% if (backup === 'skip') { %><div class="alert warn">GitHub yedeği ayarlanmadı — değişiklikler yalnızca bu sunucuda duruyor.</div><% } %>
+    <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu. Token/Bağlantı ayarlarını kontrol edin.</div><% } %>
+
+    <div style="display:flex; justify-content:flex-end; margin-bottom:16px;">
+      <a href="/admin/blog/new" class="btn">+ Yeni Yazı Ekle</a>
+    </div>
+
+    <div class="card">
+      <table class="tbl">
+        <thead>
+          <tr><th></th><th>Başlık</th><th>Kategori</th><th>Tarih</th><th style="text-align:right;">İşlem</th></tr>
+        </thead>
+        <tbody>
+          <% (posts || []).forEach(function (p) { %>
+            <tr>
+              <td><img class="thumb" src="<%= p.image || '' %>" alt="" onerror="this.style.display='none'"></td>
+              <td>
+                <div class="row-title"><%= p.title %></div>
+                <div class="row-sub"><%= p.id %></div>
+              </td>
+              <td><%= p.category %></td>
+              <td><%= p.date %></td>
+              <td style="text-align:right; white-space:nowrap;">
+                <a class="btn btn-sm btn-outline" href="/admin/blog/edit/<%= p.id %>">Düzenle</a>
+                <form method="post" action="/admin/blog/delete/<%= p.id %>" style="display:inline;"
+                      onsubmit="return confirmDelete('«<%= p.title %>» silinecek, emin misiniz?');">
+                  <button type="submit" class="btn btn-sm btn-danger">Sil</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+          <% if (!posts || posts.length === 0) { %>
+            <tr><td colspan="5" style="text-align:center; color:#8a94a3; padding:24px;">Henüz kayıt yok. "Yeni Yazı Ekle" ile başlayın.</td></tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+</main>
+
+<%- include('../_foot') -%>

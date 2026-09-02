@@ -1,0 +1,156 @@
+<%- include('../_head') -%>
+<body data-type="service" class="has-savebar">
+<%- include('../_sidebar', { active: active, backupActive: backupActive }) -%>
+
+<main class="content">
+  <h1><%= isNew ? 'Yeni Uzmanlık Ekle' : 'Uzmanlık Düzenle' %></h1>
+  <div class="page-sub">
+    <% if (isNew) { %>Yeni bir hizmet kartı oluşturuyorsunuz.<% } else { %>Kayıt: <strong><%= service.id %></strong><% } %>
+  </div>
+
+  <% if (error) { %><div class="alert err"><%= error %></div><% } %>
+
+  <form method="post" action="/admin/services/save" id="svcForm">
+    <input type="hidden" id="id" name="id" value="<%= service.id || '' %>">
+    <input type="hidden" name="useJson" id="useJson" value="0">
+
+    <div id="normalMode">
+      <div class="card">
+        <h2>Temel Bilgiler</h2>
+        <div class="field">
+          <label for="title">Başlık *</label>
+          <input type="text" id="title" name="title" class="inp" value="<%= service.title || '' %>" required>
+        </div>
+        <div class="field">
+          <label for="excerpt">Kısa açıklama (liste kartında görünür)</label>
+          <textarea id="excerpt" name="excerpt" class="inp" rows="2"><%= service.excerpt || '' %></textarea>
+        </div>
+        <div class="grid-3">
+          <div class="field">
+            <label for="category">Kategori *</label>
+            <input type="text" id="category" name="category" class="inp" value="<%= service.category || '' %>" placeholder="örn. Genel Cerrahi">
+          </div>
+          <div class="field">
+            <label for="duration">Ameliyat süresi</label>
+            <input type="text" id="duration" name="duration" class="inp" value="<%= service.duration || '' %>" placeholder="örn. 45-60 dakika">
+          </div>
+          <div class="field">
+            <label for="recovery">İyileşme süresi</label>
+            <input type="text" id="recovery" name="recovery" class="inp" value="<%= service.recovery || '' %>" placeholder="örn. 2 hafta">
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="image">Ana görsel (detail sayfası)</label>
+            <div class="imgpick">
+              <input type="text" id="image" name="image" class="inp" value="<%= service.image || '' %>" placeholder="/assets/images/...">
+              <button type="button" class="btn btn-sm btn-outline" title="Görsel yükle" onclick="pickImage('image')">↗ Yükle</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cardImage">Kart görseli (liste)</label>
+            <div class="imgpick">
+              <input type="text" id="cardImage" name="cardImage" class="inp" value="<%= service.cardImage || '' %>" placeholder="/assets/images/...">
+              <button type="button" class="btn btn-sm btn-outline" title="Görsel yükle" onclick="pickImage('cardImage')">↗ Yükle</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card collapse">
+        <div class="card-head" onclick="toggleCard(this)">
+          <h2>Adımlar (Steps)</h2>
+          <span class="chev">▾</span>
+        </div>
+        <div class="card-body">
+        <p class="page-sub">Hizmet detay sayfasındaki hazırlık/işlem adımları. Her satır: numara, başlık, açıklama.</p>
+        <div class="rows-wrap">
+          <table class="tbl">
+            <thead><tr><th class="cell-select">No</th><th>Başlık</th><th>Açıklama</th><th class="cell-action"></th></tr></thead>
+            <tbody id="rows-step"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:10px;"><button type="button" class="btn btn-add btn-sm" onclick="addRow('step')">+ Adım Ekle</button></div>
+        </div>
+      </div>
+
+      <div class="card collapse collapsed">
+        <div class="card-head" onclick="toggleCard(this)">
+          <h2>Videolar</h2>
+          <span class="chev">▾</span>
+        </div>
+        <div class="card-body">
+        <p class="page-sub">YouTube video ID'si (video kısa adresi). Kapak görseli boş bırakılırsa video küçük resmi kullanılır.</p>
+        <div class="rows-wrap">
+          <table class="tbl">
+            <thead><tr><th>Video ID</th><th>Kapak görseli</th><th>Video adı</th><th>Süre</th><th class="cell-action"></th></tr></thead>
+            <tbody id="rows-video"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:10px;"><button type="button" class="btn btn-add btn-sm" onclick="addRow('video')">+ Video Ekle</button></div>
+        </div>
+      </div>
+
+      <div class="card collapse collapsed">
+        <div class="card-head" onclick="toggleCard(this)">
+          <h2>Sonuçlar (Öncesi / Sonrası)</h2>
+          <span class="chev">▾</span>
+        </div>
+        <div class="card-body">
+        <div class="rows-wrap">
+          <table class="tbl">
+            <thead><tr><th>Görsel yolu</th><th class="cell-action"></th></tr></thead>
+            <tbody id="rows-result"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:10px;"><button type="button" class="btn btn-add btn-sm" onclick="addRow('result')">+ Görsel Ekle</button></div>
+        </div>
+      </div>
+
+      <div class="card collapse">
+        <div class="card-head" onclick="toggleCard(this)">
+          <h2>Sayfa İçeriği</h2>
+          <span class="chev">▾</span>
+        </div>
+        <div class="card-body">
+        <p class="page-sub">Satırlar sırayla gösterilir. Tip: <b>p</b> paragraf, <b>h3</b> ara başlık, <b>quote</b> alıntı/vurgu.</p>
+        <div class="rows-wrap">
+          <table class="tbl">
+            <thead><tr><th>Tip</th><th>Metin</th><th class="cell-action"></th></tr></thead>
+            <tbody id="rows-content"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:10px;"><button type="button" class="btn btn-add btn-sm" onclick="addRow('content')">+ İçerik Ekle</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="jsonMode" class="json-wrap">
+      <div class="card">
+        <h2>Gelişmiş JSON Düzenleyici</h2>
+        <div class="alert warn">Yalnızca JavaScript/JSON bilenler için. Bu kutu, üstteki formdaki güncel veriyi taşır;
+        burayı değiştirip kaydederseniz form verisi yerine bu içerik kaydedilir.</div>
+        <textarea id="jsonSource" name="jsonSource" class="json-src" spellcheck="false"></textarea>
+      </div>
+    </div>
+
+    <div class="savebar">
+      <div class="sb-title">
+        <%= isNew ? 'Yeni Uzmanlık' : (service.title || service.id) %>
+        <small>Değişiklikler "Kaydet" ile kaydedilir</small>
+      </div>
+      <div class="sb-actions">
+        <label class="json-toggle">
+          <input type="checkbox" id="jsonToggle" onchange="setJsonMode(this.checked, 'service')">
+          JSON
+        </label>
+        <a href="/admin/services" class="btn btn-outline">Vazgeç</a>
+        <button type="submit" class="btn">Kaydet</button>
+      </div>
+    </div>
+  </form>
+</main>
+
+<script id="initData" type="application/json"><%- jsonBlob %></script>
+
+<%- include('../_foot') -%>

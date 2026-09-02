@@ -1,0 +1,107 @@
+<%- include('../_head') -%>
+<body data-type="post" class="has-savebar">
+<%- include('../_sidebar', { active: active, backupActive: backupActive }) -%>
+
+<main class="content">
+  <h1><%= isNew ? 'Yeni Yazı Ekle' : 'Yazı Düzenle' %></h1>
+  <div class="page-sub">
+    <% if (isNew) { %>Yeni bir blog yazısı oluşturuyorsunuz.<% } else { %>Kayıt: <strong><%= post.id %></strong><% } %>
+  </div>
+
+  <% if (error) { %><div class="alert err"><%= error %></div><% } %>
+
+  <form method="post" action="/admin/blog/save" id="postForm">
+    <input type="hidden" id="id" name="id" value="<%= post.id || '' %>">
+    <input type="hidden" name="useJson" id="useJson" value="0">
+
+    <div id="normalMode">
+      <div class="card">
+        <h2>Yazı Bilgileri</h2>
+        <div class="field">
+          <label for="title">Başlık *</label>
+          <input type="text" id="title" name="title" class="inp" value="<%= post.title || '' %>" required>
+        </div>
+        <div class="grid-3">
+          <div class="field">
+            <label for="category">Kategori *</label>
+            <input type="text" id="category" name="category" class="inp" value="<%= post.category || '' %>" placeholder="örn. Sağlık">
+          </div>
+          <div class="field">
+            <label for="date">Tarih</label>
+            <input type="text" id="date" name="date" class="inp" value="<%= post.date || '' %>" placeholder="örn. 15.02.2025">
+          </div>
+          <div class="field">
+            <label for="readTime">Okuma süresi</label>
+            <input type="text" id="readTime" name="readTime" class="inp" value="<%= post.readTime || '' %>" placeholder="örn. 4 dakika okuma">
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="author">Yazar</label>
+            <input type="text" id="author" name="author" class="inp" value="<%= post.author || '' %>">
+          </div>
+          <div class="field">
+            <label for="link">Bağlantı (blog detay linki)</label>
+            <input type="text" id="link" name="link" class="inp" value="<%= post.link || '' %>" placeholder="örn. /blog-detay.html">
+          </div>
+        </div>
+        <div class="field">
+          <label for="excerpt">Kısa açıklama</label>
+          <textarea id="excerpt" name="excerpt" class="inp" rows="3"><%= post.excerpt || '' %></textarea>
+        </div>
+        <div class="field">
+          <label for="image">Kapak görseli</label>
+          <div class="imgpick">
+            <input type="text" id="image" name="image" class="inp" value="<%= post.image || '' %>" placeholder="/assets/images/...">
+            <button type="button" class="btn btn-sm btn-outline" title="Görsel yükle" onclick="pickImage('image')">↗ Yükle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card collapse">
+        <div class="card-head" onclick="toggleCard(this)">
+          <h2>Sayfa İçeriği</h2>
+          <span class="chev">▾</span>
+        </div>
+        <div class="card-body">
+        <p class="page-sub">Satırlar sırayla gösterilir. Tip: <b>p</b> paragraf, <b>h3</b> ara başlık, <b>quote</b> alıntı/vurgu.</p>
+        <div class="rows-wrap">
+          <table class="tbl">
+            <thead><tr><th>Tip</th><th>Metin</th><th class="cell-action"></th></tr></thead>
+            <tbody id="rows-content"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:10px;"><button type="button" class="btn btn-add btn-sm" onclick="addRow('content')">+ İçerik Ekle</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="jsonMode" class="json-wrap">
+      <div class="card">
+        <h2>Gelişmiş JSON Düzenleyici</h2>
+        <div class="alert warn">Yalnızca JavaScript/JSON bilenler için. Bu kutu, üstteki formdaki güncel veriyi taşır;
+        burayı değiştirip kaydederseniz form verisi yerine bu içerik kaydedilir.</div>
+        <textarea id="jsonSource" name="jsonSource" class="json-src" spellcheck="false"></textarea>
+      </div>
+    </div>
+
+    <div class="savebar">
+      <div class="sb-title">
+        <%= isNew ? 'Yeni Yazı' : (post.title || post.id) %>
+        <small>Değişiklikler "Kaydet" ile kaydedilir</small>
+      </div>
+      <div class="sb-actions">
+        <label class="json-toggle">
+          <input type="checkbox" id="jsonToggle" onchange="setJsonMode(this.checked, 'post')">
+          JSON
+        </label>
+        <a href="/admin/blog" class="btn btn-outline">Vazgeç</a>
+        <button type="submit" class="btn">Kaydet</button>
+      </div>
+    </div>
+  </form>
+</main>
+
+<script id="initData" type="application/json"><%- jsonBlob %></script>
+
+<%- include('../_foot') -%>
