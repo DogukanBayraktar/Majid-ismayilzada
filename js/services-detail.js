@@ -206,6 +206,7 @@ function initHeroForm(root) {
   const telefonInput = root.querySelector('#svcTelefon');
   const epostaInput = root.querySelector('#svcEposta');
   const islemInput = root.querySelector('#svcIslem');
+  const matchedProcedure = islemInput.value;
 
   const islemDropdown = root.querySelector('#svcIslemDropdown');
   const islemBtn = root.querySelector('#svcIslemBtn');
