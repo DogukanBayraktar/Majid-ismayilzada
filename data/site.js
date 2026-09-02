@@ -2,19 +2,19 @@
 // Bu dosya /admin/settings üzerinden güncellenir; kaydedince site otomatik yenilenir.
 
 const siteSettings = {
-  "phone": "+905555555555+905015804482",
+  "phone": "+905000000000",
   "phoneDisplay": "(+90) 501 580 44 82",
   "whatsapp": "905015804482",
   "whatsappLink": "https://wa.me/905015804482",
-  "email": "info@majidismayilzada.com",
+  "email": "test@example.com",
   "address": "Cumhuriyet, Halaskargazi Cd. No:121, Şişli/İstanbul",
   "mapsLink": "https://www.google.com/maps?q=Halaskargazi+Cd.+No%3A121,+%C5%9Ei%C5%9Fli/%C4%B0stanbul",
   "instagram": "https://www.instagram.com/dr.mecid.ismayilzade/",
   "ctaAppointmentText": "Randevu Al",
   "ctaWhatsAppText": "WhatsApp'tan Randevu Al",
   "ctaCallText": "Telefonla Ara",
-  "footerBrandText": "Yeni test marka açıklamasıİstanbul — Plastik, rekonstrüktif ve estetik cerrahide kişiye özel yaklaşım.",
-  "footerCopyright": "© {year} Doç. Dr. Majid İsmayilzada. Tüm hakları saklıdır.",
+  "footerBrandText": "TEST MARKA",
+  "footerCopyright": "(c) {year} Test",
   "footerMenu": [
     {
       "title": "Menü",
