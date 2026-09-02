@@ -3,7 +3,7 @@
 
 const siteSettings = {
   "phone": "+905015804482",
-  "phoneDisplay": "(+90) 501 580 44 82",
+  "phoneDisplay": "(TEST) 555 555 55 55",
   "whatsapp": "905015804482",
   "whatsappLink": "https://wa.me/905015804482",
   "email": "info@majidismayilzada.com",
@@ -13,7 +13,7 @@ const siteSettings = {
   "ctaAppointmentText": "Randevu Alma",
   "ctaWhatsAppText": "WhatsApp'tan Randevu Al",
   "ctaCallText": "Muhammet'i Telefonla Ara",
-  "footerBrandText": "İstanbul — Plastik, rekonstrüktif ve estetik cerrahide kişiye özel yaklaşım.",
+  "footerBrandText": "TEST MARKA YAZISI",
   "footerCopyright": "© {year} Doç. Dr. Majid İsmayilzada. Tüm hakları saklıdır.",
   "footerMenu": [
     {
