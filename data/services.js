@@ -1,7 +1,7 @@
 const services = [
   {
     "id": "meme-diklestirme-ve-buyutme",
-    "title": "Muhammed Ali Kartal",
+    "title": "Meme Dikleştirme ve Büyütme",
     "excerpt": "Meme dikleştirme ve büyütme ameliyatı (augmentasyon mastopeksi), hem sarkmış hem de hacim kaybına uğramış memelere aynı seansta yeniden form, dik görünüm ve dolgunluk kazandıran kombine bir estetik cerrahi işlemdir.",
     "category": "Estetik Cerrahi",
     "image": "assets/images/Breast.jpg",
