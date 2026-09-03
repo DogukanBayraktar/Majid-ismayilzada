@@ -1844,5 +1844,5 @@ const services = [
         "description": "Kompresyon giysisi kullanımı ve düzenli doktor kontrolleriyle iyileşme süreci desteklenir; nihai sonuç 3-6 ayda tam olarak oturur."
       }
     ]
-  },
+  }
 ];
