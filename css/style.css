@@ -3259,13 +3259,13 @@ footer {
    }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 640px) {
    .result-photo-card {
-      flex: 0 0 calc(85% - 10px);
+      flex: 0 0 86%;
    }
 
    .result-photo {
-      height: 300px;
+      height: 500px;
    }
 }
 

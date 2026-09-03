@@ -51,6 +51,12 @@ app.use(
 
 app.use('/admin', adminRoutes);
 
+// data/*.js ve js/*.js panelden değişebilen içerikler olduğu için cache'lenmemeli.
+// Aksi halde panele kaydedilen değişiklik tarayıcıda eski önbellekten okunur ("güncellenmiyor" sorunu).
+const noCache = { setHeaders(res) { res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate'); res.setHeader('Pragma', 'no-cache'); res.setHeader('Expires', '0'); } };
+app.use('/data', express.static(path.join(__dirname, 'data'), noCache));
+app.use('/js', express.static(path.join(__dirname, 'js'), noCache));
+
 // Mevcut site (tasarım aynen) statik olarak servis edilir
 app.use(express.static(path.join(__dirname), { index: 'index.html' }));
 

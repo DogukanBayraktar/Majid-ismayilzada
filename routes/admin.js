@@ -407,7 +407,7 @@ router.post('/settings/save', requireAuth, (req, res) => {
 
   const trims = [
     'phone', 'phoneDisplay', 'whatsapp', 'whatsappLink', 'email',
-    'address', 'mapsLink', 'instagram',
+    'address', 'mapsLink', 'instagram', 'facebook', 'youtube',
     'ctaAppointmentText', 'ctaWhatsAppText', 'ctaCallText',
     'footerBrandText', 'footerCopyright'
   ];
