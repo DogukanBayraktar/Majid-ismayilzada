@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 const UPLOAD_DIR = path.join(__dirname, '..', 'assets', 'images', 'uploads');
-fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+try { fs.mkdirSync(UPLOAD_DIR, { recursive: true }); } catch (_) { /* read-only fs (Render) */ }
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, UPLOAD_DIR),
