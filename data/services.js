@@ -1,7 +1,7 @@
 const services = [
   {
     "id": "meme-diklestirme-ve-buyutme",
-    "title": "Meme Dikleştirme ve Büyütme",
+    "title": "Meme Dikleştirme ve Büyütmememeee",
     "excerpt": "Meme dikleştirme ve büyütme ameliyatı (augmentasyon mastopeksi), hem sarkmış hem de hacim kaybına uğramış memelere aynı seansta yeniden form, dik görünüm ve dolgunluk kazandıran kombine bir estetik cerrahi işlemdir.",
     "category": "Estetik Cerrahi",
     "image": "assets/images/Breast.jpg",
@@ -1844,5 +1844,5 @@ const services = [
         "description": "Kompresyon giysisi kullanımı ve düzenli doktor kontrolleriyle iyileşme süreci desteklenir; nihai sonuç 3-6 ayda tam olarak oturur."
       }
     ]
-  },
+  }
 ];
