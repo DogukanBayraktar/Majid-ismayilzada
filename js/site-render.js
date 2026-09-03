@@ -17,10 +17,16 @@
   // Nav menü öğelerini data/site.js'deki navMenu listesinden render eder.
   // HTML'deki mevcut .nav-links ve .mobile-nav bloklarını günceller.
   function renderNav() {
+    // ÖNEMLİ: data/site.js içinde navMenu tanımlı değilse (bu site şu an
+    // için tanımlamıyor), HTML'de sayfa başına elle yazılmış ve zaten doğru
+    // olan linklere DOKUNMA. Aksi halde .nav-links / .mobile-nav boş bir
+    // diziyle ("") üzerine yazılır ve navbar'da hiçbir öğe görünmez.
+    if (!Array.isArray(s.navMenu) || !s.navMenu.length) return;
+
     // Desktop: .nav-links içindeki linkleri navMenu'den bas
     var linksHost = document.querySelector('.nav-links');
     if (linksHost) {
-      linksHost.innerHTML = (s.navMenu || []).map(function (m) {
+      linksHost.innerHTML = s.navMenu.map(function (m) {
         return '<a href="' + m.href + '">' + m.label + '</a>';
       }).join('');
     }
@@ -28,7 +34,7 @@
     // Mobile: .mobile-nav içindeki linkleri navMenu'den bas + Randevu CTA'sı
     var mobileHost = document.querySelector('.mobile-nav');
     if (mobileHost) {
-      var html = (s.navMenu || []).map(function (m) {
+      var html = s.navMenu.map(function (m) {
         return '<a href="' + m.href + '">' + m.label + '</a>';
       }).join('');
       var cta = document.querySelector('.mobile-nav .mobile-cta');
