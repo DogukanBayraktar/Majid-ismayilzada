@@ -12,7 +12,7 @@ const siteSettings = {
   "instagram": "https://www.instagram.com/dr.mecid.ismayilzade/",
   "ctaAppointmentText": "Randevu Al",
   "ctaWhatsAppText": "WhatsApp'tan Randevu Al",
-  "ctaCallText": "Muhammet'i Telefonla Ara",
+  "ctaCallText": "Telefonla Ara",
   "footerBrandText": "İstanbul — Plastik, rekonstrüktif ve estetik cerrahide kişiye özel yaklaşım.",
   "footerCopyright": "© {year} Doç. Dr. Majid İsmayilzada. Tüm hakları saklıdır.",
   "footerMenu": [
