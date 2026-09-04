@@ -1237,9 +1237,9 @@ const services = [
       {
         "image": "assets/images/Abdominoplasty/Abdominoplasty-Before-After-2.avif"
       },
-      {
-        "image": "assets/images/Abdominoplasty/Abdominoplasty-Before-After-3.avif"
-      },
+      // {
+      //   "image": "assets/images/Abdominoplasty/Abdominoplasty-Before-After-3.avif"
+      // },
       {
         "image": "assets/images/Abdominoplasty/Abdominoplasty-Before-After-4.avif"
       },
