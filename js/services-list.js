@@ -24,9 +24,20 @@ function applyServiceReveal(el, i) {
     const track = document.getElementById('servicesAllTrack');
     if (!track || typeof services === 'undefined') return;
 
+    function serviceHref(s) {
+        const l = ((s.link || '') + '').trim();
+        if (l && l !== '#') {
+            if (/^services-detay\.html\?id=/i.test(l)) {
+                return `services-detay.html?id=${encodeURIComponent(s.id)}`;
+            }
+            return l;
+        }
+        return `services-detay.html?id=${encodeURIComponent(s.id)}`;
+    }
+
     track.innerHTML = services.map(s => `
-<a class="service-card" href="services-detay.html?id=${encodeURIComponent(s.id)}">
-<img src="${s.cardImage || s.image}" alt="${s.title}">
+<a class="service-card" href="${serviceHref(s)}">
+<img src="${s.cardImage}" alt="${s.title}">
 <h4>${s.title}</h4>
 <p>${s.excerpt}</p>
 <span class="more">Detaylı Bilgi <span class="a">→</span></span>

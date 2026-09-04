@@ -2547,7 +2547,43 @@ footer {
    margin: 42px 0 16px;
 }
 
+.article-body ul,
+.article-body ol {
+   margin: 0 0 22px;
+   padding-left: 24px;
+   color: var(--ink-dim);
+   font-size: 16px;
+   line-height: 1.85;
+}
+.article-body ul { list-style: disc; }
+.article-body ol { list-style: decimal; }
+.article-body li { margin-bottom: 8px; }
+
+.article-body a {
+   color: var(--accent-deep);
+   text-decoration: underline;
+   word-break: break-word;
+}
+
+.article-body strong { color: var(--ink); font-weight: 600; }
+.article-body em { font-style: italic; }
+
 .article-quote {
+   position: relative;
+   background: var(--panel);
+   border: 1px solid var(--line);
+   border-left: 3px solid var(--accent);
+   border-radius: var(--r-sm);
+   padding: 26px 30px;
+   margin: 32px 0;
+   font-size: 17px;
+   font-weight: 500;
+   color: var(--ink);
+   line-height: 1.6;
+   font-style: italic;
+}
+
+.article-body blockquote {
    position: relative;
    background: var(--panel);
    border: 1px solid var(--line);

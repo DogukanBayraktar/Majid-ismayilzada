@@ -16,7 +16,14 @@ function applyReveal(el, i) {
 }
 
 function hrefFor(post) {
-    return (post.link && post.link !== '#') ? post.link : `blog-detay.html?id=${encodeURIComponent(post.id)}`;
+    const l = ((post.link || '') + '').trim();
+    if (l && l !== '#') {
+        if (/^blog-detay\.html\?id=/i.test(l)) {
+            return `blog-detay.html?id=${encodeURIComponent(post.id)}`;
+        }
+        return l;
+    }
+    return `blog-detay.html?id=${encodeURIComponent(post.id)}`;
 }
 
 function relatedCardHtml(post) {
@@ -78,7 +85,7 @@ function renderNotFound(root) {
     const metaHtml = metaParts.map((m, i) => i === 0 ? m : `<span class="dot"></span>${m}`).join('');
 
     const coverStyle = post.image ? ` style="--photo:url('${post.image}');"` : '';
-    const contentHtml = (post.content || []).map(contentBlockHtml).join('');
+    const contentHtml = post.contentHtml || (post.content || []).map(contentBlockHtml).join('');
 
     const related = blogPosts.filter(p => p.id !== post.id).slice(0, 3);
     const relatedHtml = related.length

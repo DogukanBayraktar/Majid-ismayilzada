@@ -16,7 +16,14 @@ function applyReveal(el, i) {
 }
 
 function hrefFor(post) {
-    return (post.link && post.link !== '#') ? post.link : `blog-detay.html?id=${encodeURIComponent(post.id)}`;
+    const l = ((post.link || '') + '').trim();
+    if (l && l !== '#') {
+        if (/^blog-detay\.html\?id=/i.test(l)) {
+            return `blog-detay.html?id=${encodeURIComponent(post.id)}`;
+        }
+        return l;
+    }
+    return `blog-detay.html?id=${encodeURIComponent(post.id)}`;
 }
 
 function cardHtml(post) {

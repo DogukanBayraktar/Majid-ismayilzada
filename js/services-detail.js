@@ -58,7 +58,7 @@ function heroHtml(service) {
   if (service.recovery) metaParts.push(`<span>${iconRecovery}İyileşme süresi: <b>${service.recovery}</b></span>`);
   const metaHtml = metaParts.length ? `<div class="service-meta">${metaParts.join('')}</div>` : '';
 
-  const bgStyle = (service.cardImage || service.image) ? ` style="background-image:url('${service.cardImage || service.image}');"` : '';
+  const bgStyle = service.cardImage ? ` style="background-image:url('${service.cardImage}');"` : '';
 
   // "İlgilendiğiniz İşlem" seçeneklerinde mevcut hizmet önceden seçili gelir.
   // Seçenekler data/services.js içindeki güncel hizmet başlıklarından üretilir.
@@ -600,9 +600,19 @@ function extractCandidacyBlock(service) {
 }
 
 function parseBulletParagraph(text) {
-  const parts = text.split(/<br\s*\/?>\s*•\s*/i);
-  const intro = (parts[0] || '').trim();
-  const items = parts.slice(1).map(s => s.trim()).filter(Boolean);
+  // Quill HTML içeriğinden <li> öğelerini topla; yoksa <br>• ayraçlarına düş.
+  let items = [];
+  const liRe = /<li[^>]*>([\s\S]*?)<\/li>/gi;
+  let m;
+  while ((m = liRe.exec(text)) !== null) {
+    const clean = m[1].replace(/<[^>]+>/g, '').trim();
+    if (clean) items.push(clean);
+  }
+  if (items.length === 0) {
+    const intro = (text.split(/<br\s*\/?>\s*•\s*/i)[0] || '').replace(/<[^>]+>/g, '').trim();
+    return { intro, items: [] };
+  }
+  const intro = (text.split(/<ul[\s\S]*?<\/ul>/i)[0] || '').replace(/<[^>]+>/g, '').trim();
   return { intro, items };
 }
 
@@ -784,12 +794,21 @@ function initStepPhotoStack(root) {
 // 5) İlgili hizmetler
 // =================================================================
 function relatedCardHtml(service) {
-  const cardImg = service.cardImage || service.image;
+  const cardImg = service.cardImage;
   const thumbStyle = cardImg
     ? ` style="background-image:url('${cardImg}');background-size:cover;background-position:center;"`
     : '';
+  const l = ((service.link || '') + '').trim();
+  let href;
+  if (l && l !== '#') {
+    href = /^services-detay\.html\?id=/i.test(l)
+      ? `services-detay.html?id=${encodeURIComponent(service.id)}`
+      : l;
+  } else {
+    href = `services-detay.html?id=${encodeURIComponent(service.id)}`;
+  }
   return `
-    <a class="blog-card" href="services-detay.html?id=${encodeURIComponent(service.id)}" style="display:block;">
+    <a class="blog-card" href="${href}" style="display:block;">
       <div class="blog-thumb"${thumbStyle}></div>
       <div class="blog-body">
         <span>${service.category}</span>
@@ -820,7 +839,7 @@ function relatedCardHtml(service) {
   const descEl = document.getElementById('pageDescription');
   if (descEl) descEl.setAttribute('content', service.excerpt || '');
 
-  const contentHtml = (service.content || []).map(contentBlockHtml).join('');
+  const contentHtml = service.contentHtml || (service.content || []).map(contentBlockHtml).join('');
 
   // İlgili hizmetler (mevcut hariç)
   const related = services.filter(s => s.id !== service.id).slice(0, 3);

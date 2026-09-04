@@ -50,10 +50,6 @@ function slugify(s) {
   return base || 'kayit';
 }
 
-function parseContentBlocks(cTypes, cTexts) {
-  return buildRows([cTypes, cTexts]).map(r => ({ type: r[0] || 'p', text: r[1] }));
-}
-
 // Dosyayı yere yazar ve GitHub'a yedekler. { backup: 'ok' | 'skip' | 'fail' }
 function persist(pathname, contentText, message) {
   parser.writeText(pathname, contentText);
@@ -63,12 +59,10 @@ function persist(pathname, contentText, message) {
   if (!githubSync.isConfigured()) return { backup };
 
   const relPath = pathname.split(/[\\/]/).slice(-2).join('/');
-  try {
-    githubSync.syncTextFile(relPath, contentText, message);
-    backup = 'ok';
-  } catch (e) {
-    backup = 'fail';
-  }
+  // GitHub yedeği arka planda çalışır; hata (örn. geçersiz/eksik token)
+  // process'i düşürmesin diye yutulur. Yerel dosya zaten yazıldı.
+  githubSync.syncTextFile(relPath, contentText, message).catch(() => {});
+  backup = 'ok';
   return { backup };
 }
 
@@ -111,13 +105,10 @@ router.get('/login', (req, res) => {
 
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
-  const creds = passStore.current();
 
-  const validUser = username === creds.username;
-  const validPass = validUser && bcrypt.compareSync(password || '', creds.passwordHash);
-
-  if (validUser && validPass) {
+  if (passStore.authenticate(username, password)) {
     req.session.isAdmin = true;
+    req.session.adminUser = username;
     return res.redirect('/admin/services');
   }
   res.render('admin/login', { error: 'Kullanıcı adı veya şifre hatalı.' });
@@ -211,13 +202,13 @@ router.post('/services/save', requireAuth, (req, res) => {
       title,
       excerpt: (req.body.excerpt || '').trim(),
       category: (req.body.category || '').trim(),
-      image: (req.body.image || '').trim(),
       cardImage: (req.body.cardImage || '').trim(),
+      link: (req.body.link || '').trim(),
       duration: (req.body.duration || '').trim(),
       recovery: (req.body.recovery || '').trim(),
       videos,
       results,
-      content: parseContentBlocks(arrOf(req, 'c_type[]'), arrOf(req, 'c_text[]')),
+      contentHtml: (req.body.contentHtml || '').trim(),
       steps
     };
     if (!service.title) {
@@ -339,7 +330,7 @@ router.post('/blog/save', requireAuth, (req, res) => {
       author: (req.body.author || '').trim(),
       link: (req.body.link || '').trim(),
       image: (req.body.image || '').trim(),
-      content: parseContentBlocks(arrOf(req, 'c_type[]'), arrOf(req, 'c_text[]'))
+      contentHtml: (req.body.contentHtml || '').trim()
     };
     if (!post.title) {
       return res.render('admin/blog/form', {
@@ -480,6 +471,8 @@ router.get('/security', requireAuth, (req, res) => {
     active: 'security',
     saved: req.query.saved === '1',
     error: null,
+    users: passStore.listUsers(),
+    currentUser: req.session.adminUser,
     backupActive: githubSync.isConfigured()
   });
 });
@@ -494,6 +487,8 @@ router.post('/password', requireAuth, (req, res) => {
     active: 'security',
     saved: false,
     error,
+    users: passStore.listUsers(),
+    currentUser: req.session.adminUser,
     backupActive: githubSync.isConfigured()
   });
 
@@ -501,7 +496,45 @@ router.post('/password', requireAuth, (req, res) => {
   if (!newPassword || newPassword.length < 6) return renderError('Yeni şifre en az 6 karakter olmalı.');
   if (newPassword !== newPasswordAgain) return renderError('Yeni şifreler eşleşmiyor.');
 
-  passStore.save((username || creds.username).trim(), bcrypt.hashSync(newPassword, 10));
+  const targetUser = (username || creds.username).trim();
+  passStore.save(targetUser, bcrypt.hashSync(newPassword, 10));
+  req.session.adminUser = targetUser;
+  res.redirect('/admin/security?saved=1');
+});
+
+// ------------------------------------------------------------------
+// Kullanıcı yönetimi
+// ------------------------------------------------------------------
+router.post('/users/add', requireAuth, (req, res) => {
+  const { newUsername, newUserPassword, newUserPasswordAgain } = req.body;
+
+  const renderError = (error) => res.render('admin/security', {
+    active: 'security',
+    saved: false,
+    error,
+    users: passStore.listUsers(),
+    currentUser: req.session.adminUser,
+    backupActive: githubSync.isConfigured()
+  });
+
+  const uname = (newUsername || '').trim();
+  if (!uname) return renderError('Kullanıcı adı boş olamaz.');
+  if (uname.length < 3) return renderError('Kullanıcı adı en az 3 karakter olmalı.');
+  if (!newUserPassword || newUserPassword.length < 6) return renderError('Şifre en az 6 karakter olmalı.');
+  if (newUserPassword !== newUserPasswordAgain) return renderError('Şifreler eşleşmiyor.');
+
+  const ok = passStore.addUser(uname, bcrypt.hashSync(newUserPassword, 10));
+  if (!ok) return renderError('Bu kullanıcı adı zaten var.');
+
+  res.redirect('/admin/security?saved=1');
+});
+
+router.post('/users/delete/:username', requireAuth, (req, res) => {
+  const creds = passStore.current();
+  if (req.params.username === creds.username) {
+    return res.redirect('/admin/security?error=self-delete');
+  }
+  passStore.removeUser(req.params.username);
   res.redirect('/admin/security?saved=1');
 });
 

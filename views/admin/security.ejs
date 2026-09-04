@@ -4,38 +4,128 @@
 
 <main class="content">
   <h1>Güvenlik</h1>
-  <div class="page-sub">Admin paneli giriş bilgilerini değiştirin.</div>
+  <div class="page-sub">Admin paneli hesaplarını yönetin.</div>
 
-  <% if (saved) { %><div class="alert ok">Girdiğiniz yeni şifre kaydedildi. Bir sonraki girişte yeni şifreyi kullanın.</div><% } %>
+  <% if (saved) { %><div class="alert ok">İşlem başarılı.</div><% } %>
   <% if (error) { %><div class="alert err"><%= error %></div><% } %>
 
   <% if (!backupActive) { %>
-    <div class="alert warn">Şifre bu sunucuda <b>data/admin-pass.json</b> içine yazılır (GitHub'a gönderilmez, .gitignore'da). GitHub yedeği kapalı olduğundan başka bir sunucuda giriş bilgilerinizi elle tekrar vermeniz gerekir.</div>
+    <div class="alert warn">Şifre bu sunucuda <b>data/admin-pass.json</b> içine yazılır (GitHub'a gönderilmez, .gitignore'da).</div>
   <% } else { %>
     <div class="alert ok">Şifre yalnızca bu sunucuda saklanır; GitHub'a şifre/hash gönderilmez.</div>
   <% } %>
 
-  <form method="post" action="/admin/password" class="card" style="max-width:460px;">
-    <h2>Şifre Değiştir</h2>
-    <div class="field">
-      <label for="username">Kullanıcı adı</label>
-      <input type="text" id="username" name="username" class="inp" placeholder="yeni kullanıcı adı (veya mevcut bırakın)">
-    </div>
-    <div class="field">
-      <label for="currentPassword">Mevcut şifre</label>
-      <input type="password" id="currentPassword" name="currentPassword" class="inp" autocomplete="current-password" required>
-    </div>
-    <div class="field">
-      <label for="newPassword">Yeni şifre</label>
-      <input type="password" id="newPassword" name="newPassword" class="inp" autocomplete="new-password" minlength="6" required>
-      <div class="hint">En az 6 karakter.</div>
-    </div>
-    <div class="field">
-      <label for="newPasswordAgain">Yeni şifre (tekrar)</label>
-      <input type="password" id="newPasswordAgain" name="newPasswordAgain" class="inp" autocomplete="new-password" required>
-    </div>
-    <button type="submit" class="btn">Şifreyi güncelle</button>
-  </form>
+  <!-- Şifre Değiştir + Yeni Hesap Ekle (yan yana) -->
+  <div class="sec-grid">
+    <form method="post" action="/admin/password" class="card">
+      <h2>Şifre Değiştir</h2>
+      <div class="field">
+        <label for="username">Kullanıcı adı</label>
+        <select id="username" name="username" class="inp">
+          <% users.forEach(function(u) { %>
+          <option value="<%= u.username %>" <%= (currentUser === u.username) ? 'selected' : '' %>><%= u.username %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div class="field">
+        <label for="currentPassword">Mevcut şifre</label>
+        <div class="pass-wrap">
+          <input type="password" id="currentPassword" name="currentPassword" class="inp" autocomplete="current-password" required>
+          <button type="button" class="pass-toggle" onclick="togglePass(this)" title="Şifreyi göster">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="newPassword">Yeni şifre</label>
+        <div class="pass-wrap">
+          <input type="password" id="newPassword" name="newPassword" class="inp" autocomplete="new-password" minlength="6" required>
+          <button type="button" class="pass-toggle" onclick="togglePass(this)" title="Şifreyi göster">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+        <div class="hint">En az 6 karakter.</div>
+      </div>
+      <div class="field">
+        <label for="newPasswordAgain">Yeni şifre (tekrar)</label>
+        <div class="pass-wrap">
+          <input type="password" id="newPasswordAgain" name="newPasswordAgain" class="inp" autocomplete="new-password" required>
+          <button type="button" class="pass-toggle" onclick="togglePass(this)" title="Şifreyi göster">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <button type="submit" class="btn">Şifreyi güncelle</button>
+    </form>
+
+    <form method="post" action="/admin/users/add" class="card">
+      <h2>Yeni Hesap Ekle</h2>
+      <div class="field">
+        <label for="newUsername">Kullanıcı adı</label>
+        <input type="text" id="newUsername" name="newUsername" class="inp" minlength="3" required>
+      </div>
+      <div class="field">
+        <label for="newUserPassword">Şifre</label>
+        <div class="pass-wrap">
+          <input type="password" id="newUserPassword" name="newUserPassword" class="inp" minlength="6" required>
+          <button type="button" class="pass-toggle" onclick="togglePass(this)" title="Şifreyi göster">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+        <div class="hint">En az 6 karakter.</div>
+      </div>
+      <div class="field">
+        <label for="newUserPasswordAgain">Şifre (tekrar)</label>
+        <div class="pass-wrap">
+          <input type="password" id="newUserPasswordAgain" name="newUserPasswordAgain" class="inp" required>
+          <button type="button" class="pass-toggle" onclick="togglePass(this)" title="Şifreyi göster">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-add">Hesap ekle</button>
+    </form>
+  </div>
+
+  <!-- Hesap Listesi -->
+  <div class="card">
+    <h2>Kayıtlı Hesaplar (<%= users.length %>)</h2>
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Kullanıcı Adı</th>
+          <th style="width:200px;">İşlemler</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(function(u) { %>
+        <tr>
+          <td><strong><%= u.username %></strong></td>
+          <td>
+            <div class="row-actions">
+              <button type="button" class="btn-toggle-detail" onclick="toggleUserDetail(this)" title="Şifre detayını göster">
+                <svg class="chev-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <form method="post" action="/admin/users/delete/<%= u.username %>" style="display:inline;" onsubmit="return confirmDelete('«<%= u.username %>» hesabını silmek istediğinize emin misiniz?')">
+                <button type="submit" class="btn-mini danger">Sil</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        <tr class="user-detail-row" style="display:none;">
+          <td colspan="2">
+            <div class="user-detail-box">
+              <div class="detail-label">Kullanıcı Adı</div>
+              <div class="detail-value"><%= u.username %></div>
+              <div class="detail-label">Şifre (hash)</div>
+              <div class="detail-value"><%= u.passwordHash || '—' %></div>
+            </div>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
 </main>
 
 <%- include('_foot') -%>

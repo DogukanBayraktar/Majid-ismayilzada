@@ -484,7 +484,17 @@ function renderBlogPosts() {
             ? ` style="background-image:url('${post.image}');background-size:cover;background-position:center;"`
             : '';
         const meta = post.date || '';
-        const href = (post.link && post.link !== '#') ? post.link : `blog-detay.html?id=${encodeURIComponent(post.id)}`;
+        const rl = ((post.link || '') + '').trim();
+        let href;
+        if (rl && rl !== '#') {
+            if (/^blog-detay\.html\?id=/i.test(rl)) {
+                href = `blog-detay.html?id=${encodeURIComponent(post.id)}`;
+            } else {
+                href = rl;
+            }
+        } else {
+            href = `blog-detay.html?id=${encodeURIComponent(post.id)}`;
+        }
         return `
 <a class="blog-card" href="${href}" style="display:block;">
 <div class="blog-thumb"${thumbStyle}></div>

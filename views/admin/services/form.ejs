@@ -39,21 +39,17 @@
             <input type="text" id="recovery" name="recovery" class="inp" value="<%= service.recovery || '' %>" placeholder="örn. 2 hafta">
           </div>
         </div>
-        <div class="grid-2">
-          <div class="field">
-            <label for="image">Ana görsel (detail sayfası)</label>
-            <div class="imgpick">
-              <input type="text" id="image" name="image" class="inp" value="<%= service.image || '' %>" placeholder="/assets/images/...">
-              <button type="button" class="btn btn-sm btn-outline" title="Görsel yükle" onclick="pickImage('image')">↗ Yükle</button>
-            </div>
+        <div class="field">
+          <label for="cardImage">Görsel</label>
+          <div class="imgpick">
+            <input type="text" id="cardImage" name="cardImage" class="inp" value="<%= service.cardImage || '' %>" placeholder="/assets/images/...">
+            <button type="button" class="btn btn-sm btn-outline" title="Görsel yükle" onclick="pickImage('cardImage')">↗ Yükle</button>
           </div>
-          <div class="field">
-            <label for="cardImage">Kart görseli (liste)</label>
-            <div class="imgpick">
-              <input type="text" id="cardImage" name="cardImage" class="inp" value="<%= service.cardImage || '' %>" placeholder="/assets/images/...">
-              <button type="button" class="btn btn-sm btn-outline" title="Görsel yükle" onclick="pickImage('cardImage')">↗ Yükle</button>
-            </div>
-          </div>
+        </div>
+        <div class="field">
+          <label for="link">URL (Boş bırakılırsa detay sayfası otomatik oluşur)</label>
+          <input type="text" id="link" name="link" class="inp" value="<%= service.link || '' %>" placeholder="örn. /services-detay.html?id=slug">
+          <div class="hint">Başka bir siteye bağlamak isterseniz tam URL (https://...) yazabilirsiniz.</div>
         </div>
       </div>
 
@@ -74,7 +70,7 @@
         </div>
       </div>
 
-      <div class="card collapse collapsed">
+      <div class="card collapse">
         <div class="card-head" onclick="toggleCard(this)">
           <h2>Videolar</h2>
           <span class="chev">▾</span>
@@ -91,7 +87,7 @@
         </div>
       </div>
 
-      <div class="card collapse collapsed">
+      <div class="card collapse">
         <div class="card-head" onclick="toggleCard(this)">
           <h2>Sonuçlar (Öncesi / Sonrası)</h2>
           <span class="chev">▾</span>
@@ -107,20 +103,16 @@
         </div>
       </div>
 
-      <div class="card collapse">
-        <div class="card-head" onclick="toggleCard(this)">
+      <div class="card">
+        <div class="card-head" style="cursor:default;">
           <h2>Sayfa İçeriği</h2>
-          <span class="chev">▾</span>
         </div>
         <div class="card-body">
-        <p class="page-sub">Satırlar sırayla gösterilir. Tip: <b>p</b> paragraf, <b>h3</b> ara başlık, <b>quote</b> alıntı/vurgu.</p>
-        <div class="rows-wrap">
-          <table class="tbl">
-            <thead><tr><th>Tip</th><th>Metin</th><th class="cell-action"></th></tr></thead>
-            <tbody id="rows-content"></tbody>
-          </table>
+        <p class="page-sub">Hizmet detay sayfasının tamamı aşağıdaki editörde yazılır. Başlıklar, kalın/italik, listeler, alıntılar ekleyebilirsiniz.</p>
+        <div class="field">
+          <input type="hidden" id="contentHtml" name="contentHtml" value="">
+          <div id="contentEditor" class="ql-single"></div>
         </div>
-        <div style="margin-top:10px;"><button type="button" class="btn btn-add btn-sm" onclick="addRow('content')">+ İçerik Ekle</button></div>
         </div>
       </div>
     </div>

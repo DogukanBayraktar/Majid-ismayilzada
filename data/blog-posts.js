@@ -41,62 +41,9 @@ const blogPosts = [
     "date": "14 Ocak 2026",
     "readTime": "6 dk okuma",
     "author": "Doç. Dr. Majid İsmayilzada",
-    "link": "#",
+    "link": "blog-detay.html?id=rinoplasti-iyilesme-surecida",
     "image": "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    "content": [
-      {
-        "type": "p",
-        "text": "Rinoplasti sonrası iyileşme, çoğu hastanın en çok merak ettiği ama en az bilgi sahibi olduğu süreçtir. Operasyonun kendisi kadar, sonraki haftalarda vücudunuzun izlediği yol da nihai sonucu şekillendirir. Bu yazıda, konsültasyonlarımda en sık gelen soruları gerçekçi bir zaman çizelgesiyle yanıtlıyorum."
-      },
-      {
-        "type": "h3",
-        "text": "İlk 48 saat: dinlenme ve baş yüksekliği"
-      },
-      {
-        "type": "p",
-        "text": "Operasyonun ardından ilk gün şişlik hızla artar ve genellikle 2-3. günde zirveye ulaşır. Bu dönemde başınızı kalpten yüksekte tutmak, sırt üstü yatmak ve buz uygulaması şişliği belirgin şekilde azaltır. Ağrı, çoğu hastanın tahmin ettiğinden daha hafiftir; basınç hissi ağrıdan daha baskındır."
-      },
-      {
-        "type": "h3",
-        "text": "İlk hafta: atel ve görünür morluk"
-      },
-      {
-        "type": "p",
-        "text": "Burun ateli genellikle 6-7. günde alınır. Bu aşamada hafif-orta düzeyde morluk normaldir ve kişiden kişiye değişir; sigara kullanmayan, kan sulandırıcı almayan hastalarda iyileşme belirgin şekilde daha hızlı seyreder. Atel alındığında burun hâlâ şişkin görünür — bu, nihai şekil değil, geçiş sürecidir."
-      },
-      {
-        "type": "h3",
-        "text": "1-3 ay: sosyal iyileşme"
-      },
-      {
-        "type": "p",
-        "text": "Görünür morluk ve belirgin şişlik genellikle 2-3 hafta içinde geriler; hastaların büyük kısmı bu noktada sosyal ortama rahatlıkla dönebilir. Ancak burun ucundaki ince doku şişliği aylarca sinsi bir şekilde devam edebilir; özellikle sabahları veya tuzlu beslenme sonrasında fark edilir hale gelir."
-      },
-      {
-        "type": "h3",
-        "text": "6-12 ay: nihai sonuç"
-      },
-      {
-        "type": "p",
-        "text": "Burun derisinin kalınlığına bağlı olarak, ameliyatın gerçek sonucunu görmek 6 ay ile 1 yıl arasında sürebilir. İnce ciltli hastalarda bu süreç daha kısa, kalın ciltli hastalarda daha uzun olur. Bu bekleyiş sabır gerektirir, ancak planlama aşamasında bu zaman çizelgesi hastayla açıkça paylaşıldığında kaygı büyük ölçüde azalır."
-      },
-      {
-        "type": "quote",
-        "text": "Rinoplastide sabır, cerrahi teknik kadar sonucun bir parçasıdır — doku yavaş yavaş kendi hikâyesini tamamlar."
-      },
-      {
-        "type": "h3",
-        "text": "Dönüşü hızlandırmak için pratik öneriler"
-      },
-      {
-        "type": "p",
-        "text": "Tuz alımını sınırlamak, bol su tüketmek, doktorunuzun önerdiği burun içi bakımı düzenli yapmak ve güneşten korunmak iyileşmeyi destekleyen basit ama etkili adımlardır. Egzersiz ve ağır fiziksel aktivite için genellikle 4-6 haftalık bir ara önerilir; bu süre kişiye göre netleştirilir."
-      },
-      {
-        "type": "p",
-        "text": "Her burun farklıdır ve her iyileşme süreci kendine özgü bir hızda ilerler. Konsültasyonda sizin doku yapınıza özel bir zaman çizelgesi oluşturuyor ve süreç boyunca düzenli kontrollerle yanınızda oluyoruz."
-      }
-    ]
+    "contentHtml": "<p>Rinoplasti sonrası iyileşme, çoğu hastanın en çok merak ettiği ama en az bilgi sahibi olduğu süreçtir. Operasyonun kendisi kadar, sonraki haftalarda vücudunuzun izlediği yol da nihai sonucu şekillendirir. Bu yazıda, konsültasyonlarımda en sık gelen soruları gerçekçi bir zaman çizelgesiyle yanıtlıyorum.</p><h3>İlk 48 saat: dinlenme ve baş yüksekliği</h3><p>Operasyonun ardından ilk gün şişlik hızla artar ve genellikle 2-3. günde zirveye ulaşır. Bu dönemde başınızı kalpten yüksekte tutmak, sırt üstü yatmak ve buz uygulaması şişliği belirgin şekilde azaltır. Ağrı, çoğu hastanın tahmin ettiğinden daha hafiftir; basınç hissi ağrıdan daha baskındır.</p><h3>İlk hafta: atel ve görünür morluk</h3><p>Burun ateli genellikle 6-7. günde alınır. Bu aşamada hafif-orta düzeyde morluk normaldir ve kişiden kişiye değişir; sigara kullanmayan, kan sulandırıcı almayan hastalarda iyileşme belirgin şekilde daha hızlı seyreder. Atel alındığında burun hâlâ şişkin görünür — bu, nihai şekil değil, geçiş sürecidir.</p><h3>1-3 ay: sosyal iyileşme</h3><p>Görünür morluk ve belirgin şişlik genellikle 2-3 hafta içinde geriler; hastaların büyük kısmı bu noktada sosyal ortama rahatlıkla dönebilir. Ancak burun ucundaki ince doku şişliği aylarca sinsi bir şekilde devam edebilir; özellikle sabahları veya tuzlu beslenme sonrasında fark edilir hale gelir.</p><h3>6-12 ay: nihai sonuç</h3><p>Burun derisinin kalınlığına bağlı olarak, ameliyatın gerçek sonucunu görmek 6 ay ile 1 yıl arasında sürebilir. İnce ciltli hastalarda bu süreç daha kısa, kalın ciltli hastalarda daha uzun olur. Bu bekleyiş sabır gerektirir, ancak planlama aşamasında bu zaman çizelgesi hastayla açıkça paylaşıldığında kaygı büyük ölçüde azalır.</p><blockquote>Rinoplastide sabır, cerrahi teknik kadar sonucun bir parçasıdır — doku yavaş yavaş kendi hikâyesini tamamlar.</blockquote><h3>Dönüşü hızlandırmak için pratik öneriler</h3><p>Tuz alımını sınırlamak, bol su tüketmek, doktorunuzun önerdiği burun içi bakımı düzenli yapmak ve güneşten korunmak iyileşmeyi destekleyen basit ama etkili adımlardır. Egzersiz ve ağır fiziksel aktivite için genellikle 4-6 haftalık bir ara önerilir; bu süre kişiye göre netleştirilir.</p><p>Her burun farklıdır ve her iyileşme süreci kendine özgü bir hızda ilerler. Konsültasyonda sizin doku yapınıza özel bir zaman çizelgesi oluşturuyor ve süreç boyunca düzenli kontrollerle yanınızda oluyoruz.</p>"
   },
   {
     "id": "ilk-konsultasyon-sorulari",
@@ -106,7 +53,7 @@ const blogPosts = [
     "date": "3 Şubat 2026",
     "readTime": "5 dk okuma",
     "author": "Doç. Dr. Majid İsmayilzada",
-    "link": "#",
+    "link": "blog-detay.html?id=ilk-konsultasyon-sorulari",
     "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "content": [
       {
@@ -161,7 +108,8 @@ const blogPosts = [
         "type": "p",
         "text": "Bu sorularla girdiğiniz bir ön görüşme, sizi yalnızca bilgilendirmekle kalmaz; karar sürecinde kendinizi güvende hissetmenizi de sağlar. Bizimle yapacağınız ücretsiz ön görüşmede tüm bu başlıkları birlikte, adım adım ele alıyoruz."
       }
-    ]
+    ],
+    "contentHtml": "<p>Estetik ya da rekonstrüktif bir cerrahiye karar vermeden önceki ilk görüşme, tüm sürecin en kritik adımıdır. Doğru sorularla girdiğiniz bir konsültasyon, hem beklentilerinizi netleştirir hem de doğru cerrahı seçtiğinizden emin olmanızı sağlar.</p>\n<h3>Cerrahın uzmanlığı ve deneyimi</h3>\n<p>Talep ettiğiniz operasyonu ne sıklıkla yaptığını, hangi tekniklere hâkim olduğunu ve akademik/bilimsel arka planını sormaktan çekinmeyin. Board sertifikası, üniversite bağlantıları ve yayınlar, cerrahın alanındaki güncelliğinin somut göstergeleridir.</p>\n<h3>Beklenti ve risk konuşması</h3>\n<p>İyi bir konsültasyon, yalnızca olası en iyi sonucu değil, gerçekçi sınırları ve olası riskleri de açıkça konuşur. \"Bu operasyonla neyi elde edemem?\" sorusu, \"Neyi elde edebilirim?\" kadar önemlidir. Dijital simülasyon kullanılıyorsa, bunun bir tahmin aracı olduğunu, garanti olmadığını unutmayın.</p>\n<h3>Anestezi ve güvenlik altyapısı</h3>\n<p>Operasyonun nerede yapılacağı, anestezi ekibinin kim olduğu ve olası bir komplikasyon durumunda izlenecek protokol netleşmelidir. Tam donanımlı bir ameliyathane ve deneyimli bir anestezi ekibi, güvenli bir sürecin temelini oluşturur.</p>\n<h3>İyileşme süreci ve takip</h3>\n<p>Ameliyat sonrası kaç kontrol yapılacağı, dikişlerin ne zaman alınacağı, işe/sosyal hayata dönüş süresi ve acil bir durumda kime ulaşabileceğiniz gibi pratik detaylar, süreç boyunca kaygınızı büyük ölçüde azaltır.</p>\n<blockquote>Sorularınıza sabırla ve açıkça yanıt vermeyen bir konsültasyon, yanlış cerrahı işaret eden en net sinyaldir.</blockquote>\n<h3>Maliyet ve şeffaflık</h3>\n<p>Fiyatlandırmanın nelerden oluştuğu (ameliyathane, anestezi, kontroller, olası revizyon politikası) net bir şekilde yazılı olarak paylaşılmalıdır. Şeffaf bir fiyatlandırma, güvenilir bir klinik ilişkisinin göstergesidir.</p>\n<p>Bu sorularla girdiğiniz bir ön görüşme, sizi yalnızca bilgilendirmekle kalmaz; karar sürecinde kendinizi güvende hissetmenizi de sağlar. Bizimle yapacağınız ücretsiz ön görüşmede tüm bu başlıkları birlikte, adım adım ele alıyoruz.</p>"
   },
   {
     "id": "meme-rekonstruksiyonu-teknik",
@@ -171,7 +119,7 @@ const blogPosts = [
     "date": "21 Şubat 2026",
     "readTime": "7 dk okuma",
     "author": "Doç. Dr. Majid İsmayilzada",
-    "link": "#",
+    "link": "blog-detay.html?id=meme-rekonstruksiyonu-teknik",
     "image": "https://images.pexels.com/photos/6749773/pexels-photo-6749773.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "content": [
       {
@@ -226,6 +174,7 @@ const blogPosts = [
         "type": "p",
         "text": "Her hastanın onkolojik öyküsü, doku yapısı ve beklentileri farklıdır; bu nedenle teknik seçimi tek bir konsültasyonla değil, onkoloji ekibiyle koordineli, çok yönlü bir değerlendirmeyle netleştirilir."
       }
-    ]
+    ],
+    "contentHtml": "<p>Meme rekonstrüksiyonu, kanser tedavisi sonrası hastanın hem bedensel bütünlüğünü hem de özgüvenini yeniden inşa etmesine yardımcı olan, son derece kişiye özel bir cerrahi alandır. Doğru tekniğin seçimi; hastanın anatomisine, önceki tedavilerine ve kişisel önceliklerine bağlı olarak şekillenir.</p>\n<h3>İmplant bazlı rekonstrüksiyon</h3>\n<p>Doku genişletici ile başlayıp silikon implanta geçilen bu yöntem, ek bir donör bölge gerektirmediği için ameliyat süresini ve iyileşme sürecini kısaltır. Özellikle ince-orta kalınlıkta doku örtüsü olan ve tek seferde daha az cerrahi işlem isteyen hastalar için uygun bir seçenektir.</p>\n<h3>Otolog (kendi dokusu ile) rekonstrüksiyon</h3>\n<p>DIEP flep gibi mikrocerrahi teknikleriyle karın, sırt ya da uyluk bölgesinden alınan doku kullanılarak yapılan bu yöntem, zaman içinde vücutla birlikte doğal şekilde yaşlanan, daha kalıcı bir sonuç sunar. Daha uzun ve teknik olarak daha karmaşık bir operasyon gerektirir, ancak radyoterapi görmüş dokularda genellikle daha iyi sonuç verir.</p>\n<h3>Radyoterapi geçmişi kararı nasıl etkiler?</h3>\n<p>Radyoterapi almış dokuda kan dolaşımı ve elastikiyet azaldığından, implant bazlı yöntemlerde komplikasyon riski artabilir. Bu hastalarda çoğunlukla otolog teknikler ya da hibrit yaklaşımlar (kendi doku + implant kombinasyonu) tercih edilir.</p>\n<h3>Zamanlama: eş zamanlı mı, gecikmiş mi?</h3>\n<p>Rekonstrüksiyon, mastektomi ile aynı seansta (eş zamanlı) ya da onkolojik tedaviler tamamlandıktan sonra (gecikmiş) yapılabilir. Bu karar; tümörün evresi, radyoterapi ihtiyacı ve hastanın tercihleriyle birlikte onkoloji ekibiyle ortak şekilde planlanır.</p>\n<blockquote>Doğru teknik, 'en gelişmiş' olan değil, hastanın anatomisine ve hayatına en uygun olandır.</blockquote>\n<h3>Meme ucu ve areola rekonstrüksiyonu</h3>\n<p>Meme formu oturduktan sonra, isteğe bağlı olarak yerel doku flepleri veya 3B dövme teknikleriyle meme ucu-areola kompleksinin görünümü tamamlanabilir. Bu, sürecin genellikle son ve en az invaziv adımıdır.</p>\n<p>Her hastanın onkolojik öyküsü, doku yapısı ve beklentileri farklıdır; bu nedenle teknik seçimi tek bir konsültasyonla değil, onkoloji ekibiyle koordineli, çok yönlü bir değerlendirmeyle netleştirilir.</p>"
   }
 ];

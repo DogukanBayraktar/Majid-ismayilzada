@@ -164,6 +164,76 @@ table.tbl .row-sub { color: var(--ink-faint); font-size: 12px; }
 }
 .inp::placeholder { color: var(--ink-faint); }
 .inp:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+/* Şifre toggle wrapper */
+.pass-wrap { position: relative; }
+.pass-wrap .inp { padding-right: 42px; }
+.pass-wrap .pass-toggle {
+  position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+  background: transparent; border: none; cursor: pointer; color: var(--ink-faint);
+  border-radius: 8px; transition: color 0.15s, background 0.15s;
+}
+.pass-wrap .pass-toggle:hover { color: var(--ink); background: var(--panel-3); }
+.pass-wrap .pass-toggle svg { width: 18px; height: 18px; }
+
+/* Kullanıcı detay satırı */
+.user-detail-row td {
+  padding: 4px 10px 16px !important;
+  background: var(--panel-2);
+}
+.user-detail-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 14px 16px;
+  font-size: 13px;
+}
+.user-detail-box .detail-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-faint); font-weight: 600; margin-bottom: 4px;
+}
+.user-detail-box .detail-value {
+  font-family: Consolas, "Cascadia Code", monospace;
+  font-size: 12px; color: var(--ink-dim);
+  word-break: break-all; background: var(--panel-3);
+  padding: 8px 10px; border-radius: 8px; margin-bottom: 10px;
+}
+.user-detail-box .detail-value:last-child { margin-bottom: 0; }
+
+/* Hesap tablosu satır açma butonu */
+.btn-toggle-detail {
+  background: transparent; border: 1px solid var(--line-strong);
+  width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--ink-dim); font-size: 10px;
+  transition: color 0.15s, border-color 0.15s, transform 0.2s;
+}
+.btn-toggle-detail .chev-svg { width: 15px; height: 15px; transition: transform 0.2s; }
+.btn-toggle-detail.open .chev-svg { transform: rotate(180deg); }
+.btn-toggle-detail:hover { color: var(--accent-deep); border-color: var(--accent); }
+.row-actions { display: inline-flex; align-items: center; gap: 8px; }
+
+/* Güvenlik: iki form yan yana */
+.sec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.sec-grid .card { max-width: none; }
+@media (max-width: 860px) {
+  .sec-grid { grid-template-columns: 1fr; }
+}
+select.inp {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 34px;
+  cursor: pointer;
+}
 .inp-sm { max-width: 110px; }
 .inp-ct { max-width: 110px; }
 .inp-area { resize: vertical; font-family: inherit; }
@@ -277,6 +347,49 @@ textarea.json-src {
 }
 .toast.show { opacity: 1; }
 .toast.error { background: var(--danger); }
+
+/* --- Rich Text (Quill) --- */
+.ql-single {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: #fff;
+}
+.ql-single .ql-editor {
+  min-height: 360px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+  padding: 18px 20px;
+}
+.ql-single .ql-editor.ql-blank::before {
+  color: var(--ink-faint);
+  font-style: normal;
+}
+.ql-single .ql-toolbar.ql-snow {
+  border-color: var(--line-strong);
+  border-radius: var(--r-md) var(--r-md) 0 0;
+  background: var(--panel-2);
+}
+.ql-single .ql-container.ql-snow {
+  border-color: var(--line-strong);
+  border-radius: 0 0 var(--r-md) var(--r-md);
+  font-family: "Onest", -apple-system, "Segoe UI", Arial, sans-serif;
+}
+.ql-toolbar.ql-snow .ql-stroke { stroke: var(--ink-dim); }
+.ql-toolbar.ql-snow .ql-fill { fill: var(--ink-dim); }
+.ql-toolbar.ql-snow .ql-picker { color: var(--ink-dim); }
+.ql-toolbar.ql-snow .ql-picker-label { border: none; }
+.ql-toolbar.ql-snow button:hover .ql-stroke,
+.ql-toolbar.ql-snow button.ql-active .ql-stroke { stroke: var(--accent-deep); }
+.ql-toolbar.ql-snow button:hover .ql-fill,
+.ql-toolbar.ql-snow button.ql-active .ql-fill { fill: var(--accent-deep); }
+.ql-toolbar.ql-snow .ql-picker:hover .ql-picker-label { color: var(--accent-deep); }
+.ql-single .ql-editor h2 { font-size: 22px; margin: 18px 0 8px; }
+.ql-single .ql-editor h3 { font-size: 18px; margin: 16px 0 6px; }
+.ql-single .ql-editor h4 { font-size: 16px; margin: 12px 0 4px; }
+.ql-single .ql-editor blockquote { border-left: 3px solid var(--accent); margin: 14px 0; padding: 8px 16px; color: var(--ink-dim); font-style: italic; }
+.ql-single .ql-editor ul, .ql-single .ql-editor ol { padding-left: 22px; margin: 10px 0; }
+.ql-single .ql-editor a { color: var(--accent-deep); text-decoration: underline; }
 
 /* --- Onay (silme) modalı --- */
 .modal-overlay {
