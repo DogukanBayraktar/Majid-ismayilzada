@@ -633,26 +633,37 @@ function buildCandidacyLists(blocks) {
 }
 
 function candidacyHtml(service) {
-  const block = extractCandidacyBlock(service);
-  const parsed = block ? buildCandidacyLists(block.blocks) : { suitable: [], notSuitable: [], notes: [] };
-  const hasLists = parsed.suitable.length > 0 || parsed.notSuitable.length > 0;
+  // Admin formundaki "Adaylık Değerlendirmesi" alanından gelen yapılandırılmış
+  // veri önceliklidir; yoksa içerikten otomatik ayıklamaya düşülür.
+  const custom = service.candidacy && (
+    (Array.isArray(service.candidacy.suitable) && service.candidacy.suitable.length > 0) ||
+    (Array.isArray(service.candidacy.notSuitable) && service.candidacy.notSuitable.length > 0) ||
+    (service.candidacy.note && String(service.candidacy.note).trim() !== '')
+  );
 
-  // Hiçbir uygun aday bilgisi ayıklanamazsa, güvenli ve genel bir
-  // çerçeve metniyle bölüm yine de gösterilir (uydurma tıbbi kriter yok).
-  const suitableList = hasLists ? parsed.suitable : [
-    'Genel sağlık durumunuz ve beklentileriniz muayenede birlikte değerlendirilir.',
-    'Kişiye özel planlama, ücretsiz ön görüşme sırasında netleştirilir.'
-  ];
-
-  const introNote = !hasLists
-    ? 'Bu işlem için adaylık kriterleri, kişisel sağlık geçmişiniz ve beklentileriniz doğrultusunda muayenede belirlenir.'
-    : (parsed.notes[0] || '');
-
-  const cautionList = parsed.notSuitable.length > 0 ? parsed.notSuitable : [
-    'Kontrol altında olmayan kronik hastalıklar',
-    'Aktif sigara kullanımı (en az 4 hafta önce bırakılması önerilir)',
-    'Gerçekçi olmayan beklentiler'
-  ];
+  let suitableList, cautionList, introNote;
+  if (custom) {
+    suitableList = (service.candidacy.suitable || []).filter(Boolean);
+    cautionList = (service.candidacy.notSuitable || []).filter(Boolean);
+    introNote = (service.candidacy.note || '').trim();
+    if (suitableList.length === 0) suitableList = ['Muayenede size özel uygunluk değerlendirmesi yapılır.'];
+  } else {
+    const block = extractCandidacyBlock(service);
+    const parsed = block ? buildCandidacyLists(block.blocks) : { suitable: [], notSuitable: [], notes: [] };
+    const hasLists = parsed.suitable.length > 0 || parsed.notSuitable.length > 0;
+    suitableList = hasLists ? parsed.suitable : [
+      'Genel sağlık durumunuz ve beklentileriniz muayenede birlikte değerlendirilir.',
+      'Kişiye özel planlama, ücretsiz ön görüşme sırasında netleştirilir.'
+    ];
+    introNote = !hasLists
+      ? 'Bu işlem için adaylık kriterleri, kişisel sağlık geçmişiniz ve beklentileriniz doğrultusunda muayenede belirlenir.'
+      : (parsed.notes[0] || '');
+    cautionList = parsed.notSuitable.length > 0 ? parsed.notSuitable : [
+      'Kontrol altında olmayan kronik hastalıklar',
+      'Aktif sigara kullanımı (en az 4 hafta önce bırakılması önerilir)',
+      'Gerçekçi olmayan beklentiler'
+    ];
+  }
 
   return `
     <section class="candidacy-section" id="candidacy">
@@ -826,6 +837,13 @@ function relatedCardHtml(service) {
   const root = document.getElementById('serviceRoot');
   if (!root || typeof services === 'undefined') return;
 
+  // İçerik #serviceRoot'a enjekte edilirken tarayıcı "scroll anchoring" ile
+  // görünümü kaydırabilir; bu sıçramayı engelle, sayfa hep en üstten başlasın.
+  document.body.style.overflowAnchor = 'none';
+  if (window.history && 'scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   const service = services.find(s => s.id === id);
@@ -878,6 +896,8 @@ function relatedCardHtml(service) {
     </section>
     ${relatedHtml}
   `;
+
+  window.scrollTo(0, 0);
 
   initHeroForm(root);
   initVideosSection(root);

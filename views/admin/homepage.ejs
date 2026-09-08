@@ -1,0 +1,360 @@
+<%- include('./_head') -%>
+<body class="has-savebar">
+<%- include('./_sidebar', { active: active, backupActive: backupActive }) -%>
+
+<main class="content">
+  <h1>Ana Sayfa İçerikleri</h1>
+  <div class="page-sub">Hero, Hakkımda, Uzmanlık, İstanbul, Hastane, SSS, İletişim ve tüm ana sayfa bölümleri.</div>
+
+  <%
+  // Tekrarlayan liste alanları için tablo üreten yardımcı: JSON textarea yerine satır satır form.
+  function hpRep(label, section, key, hint, cols) {
+    var arr = (hp[section] || {})[key] || [];
+    var fieldName = section + '_' + key;
+    var head = cols.map(function (c) { return '<th>' + c[1] + '</th>'; }).join('');
+    var json = JSON.stringify(arr, null, 2).replace(/</g, '\\u003c');
+    return '<div class="field"><label>' + label + '</label>' +
+      '<div class="rows-wrap"><table class="tbl"><thead><tr>' + head + '<th class="cell-action"></th></tr></thead>' +
+      '<tbody id="rows-' + fieldName + '"></tbody></table></div>' +
+      '<div style="margin-top:10px;"><button type="button" class="btn btn-add btn-sm" onclick="addHpRow(\'' + fieldName + '\')">+ Ekle</button></div>' +
+      '<textarea name="' + fieldName + '" class="rep-sink" hidden>' + json + '</textarea>' +
+      (hint ? '<div class="hint">' + hint + '</div>' : '') + '</div>';
+  }
+  %>
+
+  <% if (loadError) { %>
+    <div class="alert err"><strong>Veri dosyası okunamadı.</strong> data/homepage.js içinde sözdizimi hatası olabilir.</div>
+  <% } else { %>
+    <% if (saved) { %><div class="alert ok">Kaydedildi.</div><% } %>
+    <% if (backup === 'ok') { %><div class="alert ok">Değişiklikler GitHub'a da yedeklendi.</div><% } %>
+    <% if (backup === 'skip') { %><div class="alert warn">GitHub yedeği ayarlanmadı — değişiklikler yalnızca bu sunucuda duruyor.</div><% } %>
+    <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu.</div><% } %>
+
+    <form method="post" action="/admin/homepage/save" id="hpForm">
+      <input type="hidden" name="useJson" id="useJson" value="0">
+
+      <!-- JSON Mode -->
+      <div class="json-wrap" id="jsonMode">
+        <div class="card">
+          <h2>JSON Kaynağı</h2>
+          <div class="alert warn">Yalnızca JavaScript/JSON bilenler için. Bu kutu, üstteki formdaki güncel veriyi taşır; burayı değiştirip kaydederseniz form verisi yerine bu içerik kaydedilir.</div>
+          <textarea name="jsonSource" id="jsonSource" class="json-src" rows="30"><%= JSON.stringify(hp || {}, null, 2).replace(/</g, '\\u003c') %></textarea>
+        </div>
+      </div>
+
+      <!-- Normal Mode -->
+      <div id="normalMode">
+
+      <!-- Hero -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Hero Bölümü</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="field">
+              <label>Başlık (HTML destekler: &lt;br&gt;, &lt;span&gt; vb.)</label>
+              <textarea name="hero_title" class="inp" rows="2"><%= (hp.hero || {}).title || '' %></textarea>
+            </div>
+            <div class="field">
+              <label>Alt başlık (lead)</label>
+              <textarea name="hero_lead" class="inp" rows="2"><%= (hp.hero || {}).lead || '' %></textarea>
+            </div>
+            <div class="grid-3">
+              <div class="field"><label>Birincil CTA</label><input type="text" name="hero_ctaPrimary" class="inp" value="<%= (hp.hero || {}).ctaPrimary || '' %>"></div>
+              <div class="field"><label>İkincil CTA</label><input type="text" name="hero_ctaSecondary" class="inp" value="<%= (hp.hero || {}).ctaSecondary || '' %>"></div>
+              <div class="field"><label>Video yolu</label><input type="text" name="hero_videoSrc" class="inp" value="<%= (hp.hero || {}).videoSrc || '' %>"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hakkımda -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Hakkımda</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-2">
+              <div class="field"><label>Bölüm etiketi</label><input type="text" name="about_label" class="inp" value="<%= (hp.about || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="about_title" class="inp" value="<%= (hp.about || {}).title || '' %>"></div>
+            </div>
+            <div class="field"><label>Açıklama (HTML destekler)</label><textarea name="about_description" class="inp" rows="2"><%= (hp.about || {}).description || '' %></textarea></div>
+            <div class="field"><label>Biyografi</label><textarea name="about_bio" class="inp" rows="3"><%= (hp.about || {}).bio || '' %></textarea></div>
+            <div class="field"><label>Fotoğraf yolu</label>
+              <div class="imgpick"><input type="text" name="about_photo" class="inp" value="<%= (hp.about || {}).photo || '' %>"><button type="button" class="btn-mini" onclick="pickImage(this.parentNode.querySelector('input'))">↗</button></div>
+            </div>
+            <%- hpRep('Bullet Noktaları', 'about', 'bullets', 'Uzmanlık kartlarındaki kısa vurgular.', [['text', 'Nokta']]) %>
+            <%- hpRep('Kimlik Bilgileri', 'about', 'credentials', 'İkon, başlık ve detay olarak ekleyin.', [['icon', 'İkon (remixicon)'], ['title', 'Başlık'], ['detail', 'Detay']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Uzmanlık Başlığı -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Uzmanlık Bölümü Başlığı</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="hint" style="margin-bottom:12px;color:var(--accent-deep);font-weight:600;">Not: Uzmanlık kartları otomatik olarak data/services.js dosyasından yüklenir. Buradan başlık ve açıklama düzenlenebilir.</div>
+            <div class="grid-3">
+              <div class="field"><label>Etiket</label><input type="text" name="servicesSection_label" class="inp" value="<%= (hp.servicesSection || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="servicesSection_title" class="inp" value="<%= (hp.servicesSection || {}).title || '' %>"></div>
+              <div class="field"><label>Açıklama</label><textarea name="servicesSection_description" class="inp" rows="2"><%= (hp.servicesSection || {}).description || '' %></textarea></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hasta Hikayeleri -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Hasta Hikayeleri</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-3">
+              <div class="field"><label>Etiket</label><input type="text" name="stories_label" class="inp" value="<%= (hp.stories || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="stories_title" class="inp" value="<%= (hp.stories || {}).title || '' %>"></div>
+              <div class="field"><label>Açıklama</label><textarea name="stories_description" class="inp" rows="2"><%= (hp.stories || {}).description || '' %></textarea></div>
+            </div>
+            <%- hpRep('Yorumlar', 'stories', 'items', 'Yorum, ad-soyad, işlem ve baş harfler.', [['quote', 'Yorum'], ['name', 'Ad'], ['treatment', 'İşlem'], ['initials', 'Baş harfler']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Yorumlar -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Video Yorumlar</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-3">
+              <div class="field"><label>Etiket</label><input type="text" name="videoStories_label" class="inp" value="<%= (hp.videoStories || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="videoStories_title" class="inp" value="<%= (hp.videoStories || {}).title || '' %>"></div>
+              <div class="field"><label>Açıklama</label><textarea name="videoStories_description" class="inp" rows="2"><%= (hp.videoStories || {}).description || '' %></textarea></div>
+            </div>
+            <%- hpRep('Videolar', 'videoStories', 'items', 'YouTube video ID\'si ve isteğe bağlı kapak görseli.', [['videoId', 'YouTube ID'], ['photo', 'Kapak görseli'], ['name', 'Ad'], ['treatment', 'İşlem']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Öncesi/Sonrası -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Öncesi / Sonrası</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-3">
+              <div class="field"><label>Etiket</label><input type="text" name="results_label" class="inp" value="<%= (hp.results || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="results_title" class="inp" value="<%= (hp.results || {}).title || '' %>"></div>
+              <div class="field"><label>Açıklama</label><textarea name="results_description" class="inp" rows="2"><%= (hp.results || {}).description || '' %></textarea></div>
+            </div>
+            <%- hpRep('Görseller', 'results', 'images', 'Öncesi/sonrası görsel yolları.', [['src', 'Görsel yolu'], ['alt', 'Açıklama']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Operasyon Süreci -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Operasyon Süreci</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-3">
+              <div class="field"><label>Etiket</label><input type="text" name="process_label" class="inp" value="<%= (hp.process || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="process_title" class="inp" value="<%= (hp.process || {}).title || '' %>"></div>
+              <div class="field"><label>Açıklama</label><textarea name="process_description" class="inp" rows="2"><%= (hp.process || {}).description || '' %></textarea></div>
+            </div>
+            <%- hpRep('Adımlar', 'process', 'steps', 'Numara, etiket, başlık ve açıklama.', [['number', 'No'], ['tag', 'Etiket'], ['title', 'Başlık'], ['description', 'Açıklama']]) %>
+            <%- hpRep('Fotoğraflar', 'process', 'photos', 'Sürece ait görsel yolları.', [['src', 'Görsel yolu'], ['alt', 'Açıklama']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Güvenlik -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Güvenlik & Şeffaflık</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-2">
+              <div class="field"><label>Etiket</label><input type="text" name="safety_label" class="inp" value="<%= (hp.safety || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="safety_title" class="inp" value="<%= (hp.safety || {}).title || '' %>"></div>
+            </div>
+            <div class="field"><label>Açıklama</label><textarea name="safety_description" class="inp" rows="2"><%= (hp.safety || {}).description || '' %></textarea></div>
+            <div class="field"><label>Fotoğraf yolu</label>
+              <div class="imgpick"><input type="text" name="safety_photo" class="inp" value="<%= (hp.safety || {}).photo || '' %>"><button type="button" class="btn-mini" onclick="pickImage(this.parentNode.querySelector('input'))">↗</button></div>
+            </div>
+            <%- hpRep('Kartlar', 'safety', 'cards', 'Güvenlik kartları: başlık ve açıklama.', [['title', 'Başlık'], ['description', 'Açıklama']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hastane -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Hastanemiz</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-2">
+              <div class="field"><label>Etiket</label><input type="text" name="hospital_label" class="inp" value="<%= (hp.hospital || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="hospital_title" class="inp" value="<%= (hp.hospital || {}).title || '' %>"></div>
+            </div>
+            <%- hpRep('Paragraflar', 'hospital', 'paragraphs', 'Hastane bölümündeki açıklama paragrafları.', [['text', 'Paragraf']]) %>
+            <%- hpRep('Kimlik Bilgileri', 'hospital', 'credentials', 'İkon, başlık ve detay.', [['icon', 'İkon (remixicon)'], ['title', 'Başlık'], ['detail', 'Detay']]) %>
+            <%- hpRep('Slaytlar', 'hospital', 'slides', 'Hastane galerisindeki görseller.', [['src', 'Görsel yolu'], ['alt', 'Açıklama']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hasta Ulaşım -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Hasta Ulaşım Desteği</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-2">
+              <div class="field"><label>Etiket</label><input type="text" name="patientAccess_label" class="inp" value="<%= (hp.patientAccess || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="patientAccess_title" class="inp" value="<%= (hp.patientAccess || {}).title || '' %>"></div>
+            </div>
+            <div class="grid-2">
+              <div class="field"><label>Açıklama</label><textarea name="patientAccess_description" class="inp" rows="2"><%= (hp.patientAccess || {}).description || '' %></textarea></div>
+              <div class="field"><label>CTA Metni</label><input type="text" name="patientAccess_ctaText" class="inp" value="<%= (hp.patientAccess || {}).ctaText || '' %>"></div>
+            </div>
+            <%- hpRep('Kartlar', 'patientAccess', 'cards', 'İkon, başlık ve açıklama.', [['icon', 'İkon (remixicon)'], ['title', 'Başlık'], ['description', 'Açıklama']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- İstanbul -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>İstanbul</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-2">
+              <div class="field"><label>Etiket</label><input type="text" name="istanbul_label" class="inp" value="<%= (hp.istanbul || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="istanbul_title" class="inp" value="<%= (hp.istanbul || {}).title || '' %>"></div>
+            </div>
+            <div class="field"><label>Açıklama</label><textarea name="istanbul_description" class="inp" rows="2"><%= (hp.istanbul || {}).description || '' %></textarea></div>
+            <%- hpRep('Slaytlar', 'istanbul', 'slides', 'İstanbul galerisindeki görseller.', [['src', 'Görsel yolu'], ['alt', 'Açıklama']]) %>
+            <%- hpRep('Özellikler', 'istanbul', 'features', 'Numara, başlık ve açıklama.', [['number', 'Numara'], ['title', 'Başlık'], ['description', 'Açıklama']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sertifikalar -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Sertifikalar & Üyelikler</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-3">
+              <div class="field"><label>Etiket</label><input type="text" name="certificates_label" class="inp" value="<%= (hp.certificates || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="certificates_title" class="inp" value="<%= (hp.certificates || {}).title || '' %>"></div>
+              <div class="field"><label>Açıklama</label><textarea name="certificates_description" class="inp" rows="2"><%= (hp.certificates || {}).description || '' %></textarea></div>
+            </div>
+            <%- hpRep('Sertifikalar', 'certificates', 'items', 'Görsel, rozet, etiket ve açıklama.', [['image', 'Görsel yolu'], ['badge', 'Rozet'], ['mark', 'Etiket'], ['text', 'Açıklama']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- SSS -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Sıkça Sorulan Sorular</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-3">
+              <div class="field"><label>Etiket</label><input type="text" name="faq_label" class="inp" value="<%= (hp.faq || {}).label || '' %>"></div>
+              <div class="field"><label>Başlık</label><input type="text" name="faq_title" class="inp" value="<%= (hp.faq || {}).title || '' %>"></div>
+              <div class="field"><label>Açıklama</label><textarea name="faq_description" class="inp" rows="2"><%= (hp.faq || {}).description || '' %></textarea></div>
+            </div>
+            <%- hpRep('Sorular', 'faq', 'items', 'Soru ve cevap çiftleri.', [['question', 'Soru'], ['answer', 'Cevap']]) %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teşekkür Mesajları -->
+      <div class="collapse">
+        <div class="card">
+          <div class="card-head" onclick="toggleCard(this)">
+            <h2>Teşekkür / Tebrik Mesajları (Form Sonrası)</h2><span class="chev">▼</span>
+          </div>
+          <div class="card-body">
+            <div class="grid-3">
+              <div class="field"><label>Başlık</label><input type="text" name="thankYou_title" class="inp" value="<%= (hp.thankYou || {}).title || '' %>"></div>
+              <div class="field"><label>Açıklama</label><textarea name="thankYou_description" class="inp" rows="2"><%= (hp.thankYou || {}).description || '' %></textarea></div>
+              <div class="field"><label>Tekrar Dene Butonu</label><input type="text" name="thankYou_retryText" class="inp" value="<%= (hp.thankYou || {}).retryText || '' %>"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div><!-- /normalMode -->
+
+      <div class="savebar">
+        <div class="sb-title">
+          Ana Sayfa İçerikleri
+          <small>Değişiklikler "Kaydet" ile kaydedilir</small>
+        </div>
+        <div class="sb-actions">
+          <label class="json-toggle">
+            <input type="checkbox" id="jsonToggle" onchange="setHomepageJson(this.checked)" title="Gelişmiş: tüm veriyi JSON olarak düzenle">JSON</label>
+          <a href="/admin/services" class="btn btn-outline">Vazgeç</a>
+          <button type="submit" class="btn">Kaydet</button>
+        </div>
+      </div>
+    </form>
+  <% } %>
+</main>
+
+<script id="initHomepageData" type="application/json"><%- jsonBlob %></script>
+<script>
+function setHomepageJson(on) {
+  var jsonMode = document.getElementById('jsonMode');
+  var normalMode = document.getElementById('normalMode');
+  var useJson = document.getElementById('useJson');
+  if (on) {
+    // Önce tablo satırlarını gizli JSON alanlarına yaz
+    if (typeof syncHpRows === 'function') syncHpRows();
+    // Normal mode'dan JSON'a geçiş: form verilerini topla
+    var data = {};
+    var inputs = document.querySelectorAll('#normalMode [name]');
+    inputs.forEach(function(inp) {
+      var name = inp.name;
+      if (name === 'useJson') return;
+      var parts = name.split('_');
+      if (parts.length >= 2) {
+        var section = parts[0];
+        var key = parts.slice(1).join('_');
+        if (!data[section]) data[section] = {};
+        var val = inp.value.trim();
+        // Try to parse JSON arrays/objects
+        if (val.startsWith('[') || val.startsWith('{')) {
+          try { val = JSON.parse(val); } catch(e) {}
+        }
+        data[section][key] = val;
+      }
+    });
+    document.getElementById('jsonSource').value = JSON.stringify(data, null, 2);
+  }
+  jsonMode.style.display = on ? 'block' : 'none';
+  normalMode.style.display = on ? 'none' : 'block';
+  useJson.value = on ? '1' : '0';
+}
+</script>
+
+<%- include('./_foot') -%>

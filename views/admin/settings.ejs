@@ -4,7 +4,7 @@
 
 <main class="content">
   <h1>Site Ayarları</h1>
-  <div class="page-sub">İletişim bilgileri, randevu/CTA butonları ve footer bilgileri. Sitede tüm sayfalarda otomatik güncellenir.</div>
+  <div class="page-sub">Randevu/CTA butonları, iletişim CTA bölümü ve footer bilgileri. Sitede tüm sayfalarda otomatik güncellenir. İletişim bilgileri (e-posta, adres, harita, sosyal medya) için yan menüdeki <strong>İletişim</strong> sayfasını kullanın.</div>
 
   <% if (loadError) { %>
     <div class="alert err"><strong>Veri dosyası okunamadı.</strong> data/site.js içinde sözdizimi hatası olabilir.</div>
@@ -16,53 +16,19 @@
 
     <form method="post" action="/admin/settings/save" id="settingsForm">
       <div class="card">
-        <h2>İletişim Bilgileri</h2>
+        <h2>Randevu / CTA</h2>
+        <div class="page-sub">Telefon, WhatsApp bağlantısı, CTA butonlarının metinleri ve anasayfa sonundaki iletişim CTA bölümü.</div>
         <div class="grid-2">
           <div class="field">
-            <label for="phone">Telefon (numara)</label>
+            <label for="phone">Telefon (tel: bağlantıları ve görüntülenen metin için)</label>
             <input type="text" id="phone" name="phone" class="inp" value="<%= settings.phone || '' %>" placeholder="+905015804482">
           </div>
           <div class="field">
-            <label for="phoneDisplay">Telefon (görünen)</label>
-            <input type="text" id="phoneDisplay" name="phoneDisplay" class="inp" value="<%= settings.phoneDisplay || '' %>" placeholder="(+90) 501 580 44 82">
+            <label for="whatsappLink">WhatsApp bağlantısı</label>
+            <input type="text" id="whatsappLink" name="whatsappLink" class="inp" value="<%= settings.whatsappLink || '' %>" placeholder="https://wa.me/905015804482">
           </div>
         </div>
-        <div class="grid-2">
-          <div class="field">
-            <label for="whatsapp">WhatsApp numarası</label>
-            <input type="text" id="whatsapp" name="whatsapp" class="inp" value="<%= settings.whatsapp || '' %>" placeholder="905015804482">
-          </div>
-          <div class="field">
-            <label for="email">E-posta</label>
-            <input type="text" id="email" name="email" class="inp" value="<%= settings.email || '' %>" placeholder="info@majidismayilzada.com">
-          </div>
-        </div>
-        <div class="field">
-          <label for="address">Adres</label>
-          <input type="text" id="address" name="address" class="inp" value="<%= settings.address || '' %>">
-        </div>
-        <div class="field">
-          <label for="mapsLink">Google Maps bağlantısı</label>
-          <input type="text" id="mapsLink" name="mapsLink" class="inp" value="<%= settings.mapsLink || '' %>">
-        </div>
-        <div class="field">
-          <label for="instagram">Instagram bağlantısı</label>
-          <input type="text" id="instagram" name="instagram" class="inp" value="<%= settings.instagram || '' %>">
-        </div>
-        <div class="grid-2">
-          <div class="field">
-            <label for="facebook">Facebook bağlantısı</label>
-            <input type="text" id="facebook" name="facebook" class="inp" value="<%= settings.facebook || '' %>" placeholder="Boş bırakılırsa sitede gösterilmez">
-          </div>
-          <div class="field">
-            <label for="youtube">YouTube bağlantısı</label>
-            <input type="text" id="youtube" name="youtube" class="inp" value="<%= settings.youtube || '' %>" placeholder="Boş bırakılırsa sitede gösterilmez">
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Randevu / CTA Butonları</h2>
+        <div class="group-title">Buton metinleri</div>
         <div class="grid-3">
           <div class="field">
             <label for="ctaAppointmentText">Menü "Randevu" metni</label>
@@ -77,10 +43,86 @@
             <input type="text" id="ctaCallText" name="ctaCallText" class="inp" value="<%= settings.ctaCallText || '' %>">
           </div>
         </div>
-        <div class="field">
-          <label for="whatsappLink">WhatsApp bağlantısı</label>
-          <input type="text" id="whatsappLink" name="whatsappLink" class="inp" value="<%= settings.whatsappLink || '' %>" placeholder="https://wa.me/905015804482">
+        <div class="group-title">İletişim bölümü (Anasayfa son bölüm)</div>
+        <div class="grid-3">
+          <div class="field">
+            <label for="contactLabel">Etiket</label>
+            <input type="text" id="contactLabel" name="contactLabel" class="inp" value="<%= settings.contactLabel || '' %>">
+          </div>
+          <div class="field">
+            <label for="contactTitle">Başlık</label>
+            <input type="text" id="contactTitle" name="contactTitle" class="inp" value="<%= settings.contactTitle || '' %>">
+          </div>
+          <div class="field">
+            <label for="contactDescription">Açıklama</label>
+            <input type="text" id="contactDescription" name="contactDescription" class="inp" value="<%= settings.contactDescription || '' %>">
+          </div>
         </div>
+        <div class="field">
+          <label for="contactImage">Görsel</label>
+          <div class="imgpick">
+            <input type="text" id="contactImage" name="contactImage" class="inp" value="<%= settings.contactImage || '' %>" placeholder="/assets/images/...">
+            <button type="button" class="btn btn-sm btn-outline" title="Görsel yükle" onclick="pickImage('contactImage')">↗ Yükle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Menü (Üst Menü)</h2>
+        <div class="page-sub">Masaüstü ve mobil menüdeki linkler. Etiketi boş olan satırlar kaydedilmez.</div>
+        <table class="rep">
+          <thead><tr><th class="cell-drag"></th><th>Etiket</th><th>Bağlantı</th><th class="cell-action"></th></tr></thead>
+          <tbody id="rows-navmenu">
+            <% (settings.navMenu || []).forEach(function (m) { %>
+              <tr class="menu-row">
+                <td class="cell-drag"><button type="button" class="drag-handle" draggable="true" title="Sıralamak için sürükleyin">⠿</button></td>
+                <td><input type="text" class="inp" name="nav_label[]" value="<%= m.label %>" placeholder="Örn. Hakkımda"></td>
+                <td><input type="text" class="inp" name="nav_href[]" value="<%= m.href %>" placeholder="#services, blog.html, https://..."></td>
+                <td class="cell-action"><button type="button" class="btn-mini danger" title="Sil" onclick="removeMenuRow(this)">✕</button></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-sm btn-outline" onclick="addMenuRow('navmenu')">+ Link Ekle</button>
+      </div>
+
+      <div class="card">
+        <h2>Footer Menüsü</h2>
+        <div class="page-sub">Footer'daki bağlantı sütunları. "Dinamik" seçilirse etiket/bağlantı ilgili ayardan otomatik doldurulur (ör. Telefon → Site Ayarları telefonu).</div>
+        <div id="menuCols">
+          <% (settings.footerMenu || []).forEach(function (col, ci) { %>
+            <div class="menu-col" data-col="<%= ci %>">
+              <div class="col-head">
+                <label>Sütun başlığı</label>
+                <input type="text" class="inp col-title" name="m_title[]" value="<%= col.title %>">
+                <button type="button" class="btn-mini danger" title="Sütunu sil" onclick="removeMenuCol(this)">✕</button>
+              </div>
+              <table class="rep">
+                <thead><tr><th class="cell-drag"></th><th>Etiket</th><th>Bağlantı</th><th>Dinamik</th><th class="cell-action"></th></tr></thead>
+                <tbody>
+                  <% (col.links || []).forEach(function (l) { %>
+                    <tr class="menu-row">
+                      <td class="cell-drag"><button type="button" class="drag-handle" draggable="true" title="Sıralamak için sürükleyin">⠿</button></td>
+                      <td><input type="text" class="inp" name="m_<%= ci %>_label[]" value="<%= l.label %>" placeholder="Etiket"></td>
+                      <td><input type="text" class="inp" name="m_<%= ci %>_href[]" value="<%= l.href %>" placeholder="#about, blog.html, https://..."></td>
+                      <td>
+                        <select class="inp" name="m_<%= ci %>_dynamic[]">
+                          <option value="" <%= !l.dynamic ? 'selected' : '' %>>— Yok —</option>
+                          <option value="phoneDisplay" <%= l.dynamic === 'phoneDisplay' ? 'selected' : '' %>>Telefon</option>
+                          <option value="email" <%= l.dynamic === 'email' ? 'selected' : '' %>>E-posta</option>
+                          <option value="address" <%= l.dynamic === 'address' ? 'selected' : '' %>>Adres</option>
+                        </select>
+                      </td>
+                      <td class="cell-action"><button type="button" class="btn-mini danger" title="Sil" onclick="removeMenuRow(this)">✕</button></td>
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+              <button type="button" class="btn btn-sm btn-outline" onclick="addMenuColRow(this)">+ Link Ekle</button>
+            </div>
+          <% }) %>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline" onclick="addMenuCol()">+ Sütun Ekle</button>
       </div>
 
       <div class="card">
@@ -105,6 +147,45 @@
           <button type="submit" class="btn">Kaydet</button>
         </div>
       </div>
+
+      <template id="tpl-navmenu">
+        <tr class="menu-row">
+          <td class="cell-drag"><button type="button" class="drag-handle" draggable="true" title="Sıralamak için sürükleyin">⠿</button></td>
+          <td><input type="text" class="inp" name="nav_label[]" placeholder="Örn. Hakkımda"></td>
+          <td><input type="text" class="inp" name="nav_href[]" placeholder="#services, blog.html, https://..."></td>
+          <td class="cell-action"><button type="button" class="btn-mini danger" title="Sil" onclick="removeMenuRow(this)">✕</button></td>
+        </tr>
+      </template>
+      <template id="tpl-menu-col">
+        <div class="menu-col" data-col="0">
+          <div class="col-head">
+            <label>Sütun başlığı</label>
+            <input type="text" class="inp col-title" name="m_title[]">
+            <button type="button" class="btn-mini danger" title="Sütunu sil" onclick="removeMenuCol(this)">✕</button>
+          </div>
+          <table class="rep">
+            <thead><tr><th class="cell-drag"></th><th>Etiket</th><th>Bağlantı</th><th>Dinamik</th><th class="cell-action"></th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <button type="button" class="btn btn-sm btn-outline" onclick="addMenuColRow(this)">+ Link Ekle</button>
+        </div>
+      </template>
+      <template id="tpl-menu-col-row">
+        <tr class="menu-row">
+          <td class="cell-drag"><button type="button" class="drag-handle" draggable="true" title="Sıralamak için sürükleyin">⠿</button></td>
+          <td><input type="text" class="inp" name="m_0_label[]" placeholder="Etiket"></td>
+          <td><input type="text" class="inp" name="m_0_href[]" placeholder="#about, blog.html, https://..."></td>
+          <td>
+            <select class="inp" name="m_0_dynamic[]">
+              <option value="">— Yok —</option>
+              <option value="phoneDisplay">Telefon</option>
+              <option value="email">E-posta</option>
+              <option value="address">Adres</option>
+            </select>
+          </td>
+          <td class="cell-action"><button type="button" class="btn-mini danger" title="Sil" onclick="removeMenuRow(this)">✕</button></td>
+        </tr>
+      </template>
     </form>
   <% } %>
 </main>

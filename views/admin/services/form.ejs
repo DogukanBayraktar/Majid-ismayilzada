@@ -89,6 +89,30 @@
 
       <div class="card collapse">
         <div class="card-head" onclick="toggleCard(this)">
+          <h2>Adaylık Değerlendirmesi</h2>
+          <span class="chev">▾</span>
+        </div>
+        <div class="card-body">
+        <p class="page-sub">Detay sayfasındaki "Kimler Uygundur?" kartları. Boş bırakılırsa Sayfa İçeriği'ndeki ilgili bölümden otomatik üretilir; doldurursanız buradaki liste gösterilir.</p>
+        <div class="field">
+          <label for="candNote">Not / giriş metni</label>
+          <textarea id="candNote" name="candNote" class="inp" rows="2"><%= (service.candidacy && service.candidacy.note) || '' %></textarea>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="suitableList">Uygun Adaylar (her satır bir madde)</label>
+            <textarea id="suitableList" name="suitableList" class="inp" rows="6"><%= ((service.candidacy && service.candidacy.suitable) || []).join('\n') %></textarea>
+          </div>
+          <div class="field">
+            <label for="notSuitableList">Uygun Olmayanlar (her satır bir madde)</label>
+            <textarea id="notSuitableList" name="notSuitableList" class="inp" rows="6"><%= ((service.candidacy && service.candidacy.notSuitable) || []).join('\n') %></textarea>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="card collapse">
+        <div class="card-head" onclick="toggleCard(this)">
           <h2>Sonuçlar (Öncesi / Sonrası)</h2>
           <span class="chev">▾</span>
         </div>

@@ -90,6 +90,14 @@ function loadSite() {
   }
 }
 
+function loadHomepage() {
+  try {
+    return parser.parseHomepageFile();
+  } catch (e) {
+    return null;
+  }
+}
+
 // EJS'e güvenli JSON iletmek için: < işaretleri \u003c'e çevrilir (</script> atlamasını engeller).
 function blob(obj) {
   return JSON.stringify(obj || {}).replace(/</g, '\\u003c');
@@ -209,7 +217,12 @@ router.post('/services/save', requireAuth, (req, res) => {
       videos,
       results,
       contentHtml: (req.body.contentHtml || '').trim(),
-      steps
+      steps,
+      candidacy: {
+        note: (req.body.candNote || '').trim(),
+        suitable: Array.isArray(req.body.suitableList) ? req.body.suitableList : String(req.body.suitableList || '').split(/[\r\n]+/).map(function (l) { return l.trim(); }).filter(Boolean),
+        notSuitable: Array.isArray(req.body.notSuitableList) ? req.body.notSuitableList : String(req.body.notSuitableList || '').split(/[\r\n]+/).map(function (l) { return l.trim(); }).filter(Boolean)
+      }
     };
     if (!service.title) {
       return res.render('admin/services/form', {
@@ -397,12 +410,22 @@ router.post('/settings/save', requireAuth, (req, res) => {
   const current = loadSite() || {};
 
   const trims = [
-    'phone', 'phoneDisplay', 'whatsapp', 'whatsappLink', 'email',
-    'address', 'mapsLink', 'instagram', 'facebook', 'youtube',
+    'phone', 'whatsappLink',
     'ctaAppointmentText', 'ctaWhatsAppText', 'ctaCallText',
+    'contactLabel', 'contactTitle', 'contactDescription', 'contactImage',
     'footerBrandText', 'footerCopyright'
   ];
   trims.forEach(k => { current[k] = (req.body[k] || '').toString().trim(); });
+
+  // navMenu düzenlenebilir üst menü linkleri: nav_label[], nav_href[]
+  if (Array.isArray(req.body.nav_label) && Array.isArray(req.body.nav_href)) {
+    const labels = req.body.nav_label;
+    const hrefs = req.body.nav_href;
+    current.navMenu = labels.map((label, i) => ({
+      label: (label || '').trim(),
+      href: (hrefs[i] || '').trim() || '#'
+    })).filter(l => l.label);
+  }
 
   // footerMenu düzenlenebilir menü linkleri: m_title[], m_label[], m_href[], m_dynamic[]
   if (Array.isArray(req.body.m_title)) {
@@ -441,6 +464,212 @@ router.post('/settings/save', requireAuth, (req, res) => {
   }
 
   res.redirect('/admin/settings?saved=1&backup=' + backup);
+});
+
+// ------------------------------------------------------------------
+// Genel Ayarlar (logo, çalışma saatleri, SEO başlık/açıklama)
+// ------------------------------------------------------------------
+router.get('/site', requireAuth, (req, res) => {
+  const settings = loadSite();
+  res.render('admin/site', {
+    active: 'site',
+    settings,
+    loadError: settings === null,
+    saved: req.query.saved === '1',
+    backup: req.query.backup || '',
+    backupActive: githubSync.isConfigured()
+  });
+});
+
+router.post('/site/save', requireAuth, (req, res) => {
+  const current = loadSite() || {};
+
+  const trims = ['logo', 'workingHours', 'seoTitle', 'seoDescription'];
+  trims.forEach(k => { current[k] = (req.body[k] || '').toString().trim(); });
+
+  const serialized = parser.serializeSite(current);
+  let backup = 'skip';
+  try {
+    backup = persist(parser.SITE_FILE, serialized, 'Yönetim panelinden genel ayarlar güncellendi').backup;
+  } catch (e) {
+    backup = 'fail';
+  }
+
+  res.redirect('/admin/site?saved=1&backup=' + backup);
+});
+
+// ------------------------------------------------------------------
+// İletişim (sitede gösterilen iletişim bilgileri)
+// ------------------------------------------------------------------
+router.get('/iletisim', requireAuth, (req, res) => {
+  const settings = loadSite();
+  res.render('admin/contact', {
+    active: 'iletisim',
+    settings,
+    loadError: settings === null,
+    saved: req.query.saved === '1',
+    backup: req.query.backup || '',
+    backupActive: githubSync.isConfigured()
+  });
+});
+
+router.post('/iletisim/save', requireAuth, (req, res) => {
+  const current = loadSite() || {};
+
+  const trims = ['email', 'address', 'mapsLink', 'instagram', 'facebook', 'youtube'];
+  trims.forEach(k => { current[k] = (req.body[k] || '').toString().trim(); });
+
+  const serialized = parser.serializeSite(current);
+  let backup = 'skip';
+  try {
+    backup = persist(parser.SITE_FILE, serialized, 'Yönetim panelinden iletişim bilgileri güncellendi').backup;
+  } catch (e) {
+    backup = 'fail';
+  }
+
+  res.redirect('/admin/iletisim?saved=1&backup=' + backup);
+});
+
+// ------------------------------------------------------------------
+// Ana Sayfa İçerikleri
+// ------------------------------------------------------------------
+router.get('/homepage', requireAuth, (req, res) => {
+  const hp = loadHomepage();
+  res.render('admin/homepage', {
+    active: 'homepage',
+    hp,
+    loadError: hp === null,
+    saved: req.query.saved === '1',
+    backup: req.query.backup || '',
+    backupActive: githubSync.isConfigured(),
+    jsonBlob: blob(hp || {})
+  });
+});
+
+router.post('/homepage/save', requireAuth, (req, res) => {
+  let hp;
+  if (req.body.useJson === '1') {
+    try {
+      hp = JSON.parse(req.body.jsonSource || '{}');
+    } catch (e) {
+      return res.render('admin/homepage', {
+        active: 'homepage',
+        hp: {},
+        loadError: false,
+        saved: false,
+        backup: '',
+        backupActive: githubSync.isConfigured(),
+        jsonBlob: req.body.jsonSource || '{}'
+      });
+    }
+  } else {
+    const t = (k) => (req.body[k] || '').toString().trim();
+    const parseJson = (k) => { try { return JSON.parse(req.body[k] || '[]'); } catch (e) { return []; } };
+
+    hp = {
+      hero: {
+        title: t('hero_title'),
+        lead: t('hero_lead'),
+        ctaPrimary: t('hero_ctaPrimary'),
+        ctaSecondary: t('hero_ctaSecondary'),
+        videoSrc: t('hero_videoSrc')
+      },
+      about: {
+        label: t('about_label'),
+        title: t('about_title'),
+        description: t('about_description'),
+        bullets: parseJson('about_bullets'),
+        bio: t('about_bio'),
+        photo: t('about_photo'),
+        credentials: parseJson('about_credentials')
+      },
+      servicesSection: {
+        label: t('servicesSection_label'),
+        title: t('servicesSection_title'),
+        description: t('servicesSection_description')
+      },
+      results: {
+        label: t('results_label'),
+        title: t('results_title'),
+        description: t('results_description'),
+        images: parseJson('results_images')
+      },
+      videoStories: {
+        label: t('videoStories_label'),
+        title: t('videoStories_title'),
+        description: t('videoStories_description'),
+        items: parseJson('videoStories_items')
+      },
+      stories: {
+        label: t('stories_label'),
+        title: t('stories_title'),
+        description: t('stories_description'),
+        items: parseJson('stories_items')
+      },
+      process: {
+        label: t('process_label'),
+        title: t('process_title'),
+        description: t('process_description'),
+        steps: parseJson('process_steps'),
+        photos: parseJson('process_photos')
+      },
+      safety: {
+        label: t('safety_label'),
+        title: t('safety_title'),
+        description: t('safety_description'),
+        photo: t('safety_photo'),
+        cards: parseJson('safety_cards')
+      },
+      hospital: {
+        label: t('hospital_label'),
+        title: t('hospital_title'),
+        paragraphs: parseJson('hospital_paragraphs'),
+        credentials: parseJson('hospital_credentials'),
+        slides: parseJson('hospital_slides')
+      },
+      patientAccess: {
+        label: t('patientAccess_label'),
+        title: t('patientAccess_title'),
+        description: t('patientAccess_description'),
+        ctaText: t('patientAccess_ctaText'),
+        cards: parseJson('patientAccess_cards')
+      },
+      istanbul: {
+        label: t('istanbul_label'),
+        title: t('istanbul_title'),
+        description: t('istanbul_description'),
+        slides: parseJson('istanbul_slides'),
+        features: parseJson('istanbul_features')
+      },
+      certificates: {
+        label: t('certificates_label'),
+        title: t('certificates_title'),
+        description: t('certificates_description'),
+        items: parseJson('certificates_items')
+      },
+      faq: {
+        label: t('faq_label'),
+        title: t('faq_title'),
+        description: t('faq_description'),
+        items: parseJson('faq_items')
+      },
+      thankYou: {
+        title: t('thankYou_title'),
+        description: t('thankYou_description'),
+        retryText: t('thankYou_retryText')
+      }
+    };
+  }
+
+  const serialized = parser.serializeHomepage(hp);
+  let backup = 'skip';
+  try {
+    const result = persist(parser.HOMEPAGE_FILE, serialized, 'Yönetim panelinden ana sayfa içerikleri güncellendi');
+    backup = result.backup;
+  } catch (e) {
+    backup = 'fail';
+  }
+  res.redirect('/admin/homepage?saved=1&backup=' + backup);
 });
 
 // ------------------------------------------------------------------

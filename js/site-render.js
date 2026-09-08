@@ -68,7 +68,7 @@
           '<div class="foot-content">' +
             '<div class="foot-top">' +
               '<div class="foot-brand">' +
-                '<img src="assets/images/logo.png" alt="Doç. Dr. Majid İsmayilzada">' +
+                '<img src="' + (s.logo || 'assets/images/logo.png') + '" alt="Doç. Dr. Majid İsmayilzada">' +
                 '<p>' + (s.footerBrandText || '') + '</p>' +
                 '<div class="foot-social">' +
                   (s.instagram ? '<a href="' + s.instagram + '" target="_blank" rel="noopener" aria-label="Instagram">' + instagramSvg + '</a>' : '') +
@@ -123,13 +123,185 @@
       var val = s[key];
       if (typeof val === 'string' && val !== '') el.setAttribute('href', val);
     });
+    document.querySelectorAll('[data-site-tel]').forEach(function (el) {
+      var key = el.getAttribute('data-site-tel');
+      var val = s[key];
+      if (typeof val === 'string' && val !== '') el.setAttribute('href', 'tel:' + val);
+    });
+    document.querySelectorAll('[data-site-mailto]').forEach(function (el) {
+      var key = el.getAttribute('data-site-mailto');
+      var val = s[key];
+      if (typeof val === 'string' && val !== '') el.setAttribute('href', 'mailto:' + val);
+    });
+    document.querySelectorAll('[data-site-map]').forEach(function (el) {
+      var key = el.getAttribute('data-site-map');
+      var val = s[key];
+      if (typeof val === 'string' && val !== '') {
+        el.setAttribute('src', val + (val.indexOf('output=embed') === -1 ? '&output=embed&z=16' : ''));
+      }
+    });
     applyCta();
+  }
+
+  // Logo: üst menüdeki .logo img'i ayar dosyasındaki logo ile günceller.
+  function applyLogo() {
+    if (!s.logo) return;
+    document.querySelectorAll('.logo img').forEach(function (img) {
+      img.src = s.logo;
+    });
+  }
+
+  // SEO: data-seo-title ve data-seo-description taşıyan statik sayfalara
+  // ayar dosyasındaki başlık/açıklamayı uygular; ayrıca Open Graph, Twitter Card,
+  // canonical, robots, favicon ve JSON-LD şemasını kod tarafından üretir.
+  // Bu etiketler bilinçli olarak admin panelinde düzenlenmez (kod ile yönetilir).
+  function upsertMeta(attr, name, content) {
+    var el = document.querySelector('meta[' + attr + '="' + name + '"]');
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute(attr, name);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', content || '');
+  }
+
+  function dayToIso(name) {
+    var map = { 'Pzt': 'Mo', 'Pazartesi': 'Mo', 'Sal': 'Tu', 'Salı': 'Tu', 'Çar': 'We', 'Çarşamba': 'We', 'Per': 'Th', 'Perşembe': 'Th', 'Cum': 'Fr', 'Cuma': 'Fr', 'Cmt': 'Sa', 'Cumartesi': 'Sa', 'Paz': 'Su', 'Pazar': 'Su' };
+    return map[name] || null;
+  }
+
+  function buildOpeningHours(workingHours) {
+    var text = String(workingHours || '');
+    var m = text.match(/([A-Za-zÇĞİÖŞÜığçöşü]+)\s*[–−-]\s*([A-Za-zÇĞİÖŞÜığçöşü]+)\s*[::]\s*(\d{1,2}:\d{2})\s*[–−-]\s*(\d{1,2}:\d{2})/);
+    if (!m) return null;
+    var start = dayToIso(m[1]);
+    var end = dayToIso(m[2]);
+    if (!start || !end) return null;
+    return {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': [start, end].map(function (d) {
+        return 'https://schema.org/' + d;
+      }),
+      'opens': m[3],
+      'closes': m[4]
+    };
+  }
+
+  function applySeo() {
+    var head = document.head;
+    if (!head) return;
+
+    if (s.seoTitle) {
+      document.querySelectorAll('title[data-seo-title]').forEach(function (el) {
+        el.textContent = s.seoTitle;
+      });
+    }
+    if (s.seoDescription) {
+      document.querySelectorAll('meta[name="description"][data-seo-description]').forEach(function (el) {
+        el.setAttribute('content', s.seoDescription);
+      });
+    }
+
+    var origin = location.origin;
+    var path = location.pathname || '/';
+    var canonical = origin + path;
+    var ogImage = s.logo || 'assets/images/logo.png';
+    var ogDescription = s.seoDescription || '';
+
+    // Open Graph
+    upsertMeta('property', 'og:title', s.seoTitle || document.title);
+    upsertMeta('property', 'og:description', ogDescription);
+    upsertMeta('property', 'og:url', canonical);
+    upsertMeta('property', 'og:image', origin + '/' + ogImage.replace(/^\//, ''));
+    upsertMeta('property', 'og:type', 'website');
+    upsertMeta('property', 'og:locale', 'tr_TR');
+    upsertMeta('property', 'og:site_name', 'Doç. Dr. Majid İsmayilzada');
+
+    // Twitter Card
+    upsertMeta('name', 'twitter:card', 'summary_large_image');
+    upsertMeta('name', 'twitter:title', s.seoTitle || document.title);
+    upsertMeta('name', 'twitter:description', ogDescription);
+    upsertMeta('name', 'twitter:image', origin + '/' + ogImage.replace(/^\//, ''));
+
+    // Canonical + robots
+    var canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', canonical);
+    upsertMeta('name', 'robots', 'index, follow');
+
+    // Favicon: backend logosu (logo.png) değil, özel favicon.png kullanılır.
+    // Tarayıcı favicon'u sert önbelleğe aldığından her yüklemede farklı
+    // sürüm parametresi eklenir; güncellenen favicon hemen görünür olur.
+    var favicon = document.querySelector('link[rel="icon"]');
+    if (!favicon) {
+      favicon = document.createElement('link');
+      favicon.setAttribute('rel', 'icon');
+      favicon.setAttribute('type', 'image/png');
+      head.appendChild(favicon);
+    }
+    favicon.setAttribute('href', 'assets/images/favicon.png?v=' + Date.now());
+
+    // JSON-LD (yalnızca ana sayfada)
+    var isHome = path.replace(/\.html$/i, '') === '/' || path.replace(/\.html$/i, '').endsWith('/index');
+    if (isHome) {
+      var addressParts = String(s.address || '');
+      var schema = {
+        '@context': 'https://schema.org',
+        '@type': 'Physician',
+        'name': 'Doç. Dr. Majid İsmayilzada',
+        'url': origin,
+        'telephone': s.phone || '',
+        'email': s.email || '',
+        'image': origin + '/' + (s.logo || 'assets/images/logo.png').replace(/^\//, ''),
+        'logo': origin + '/' + (s.logo || 'assets/images/logo.png').replace(/^\//, ''),
+        'sameAs': [s.instagram, s.facebook, s.youtube].filter(Boolean),
+        'medicalSpecialty': ['PlasticSurgery', 'Surgical'],
+        'address': {
+          '@type': 'PostalAddress',
+          'streetAddress': addressParts,
+          'addressCountry': 'TR'
+        }
+      };
+      var hours = buildOpeningHours(s.workingHours);
+      if (hours) schema['openingHoursSpecification'] = hours;
+      var script = document.querySelector('script[data-site-schema]');
+      if (!script) {
+        script = document.createElement('script');
+        script.setAttribute('data-site-schema', '');
+        script.setAttribute('type', 'application/ld+json');
+        head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(schema);
+    }
+  }
+
+  // Ana sayfa sonundaki İletişim CTA bölümünü site ayarlarından doldurur.
+  function renderContact() {
+    var section = document.getElementById('contact');
+    if (!section) return;
+    var label = section.querySelector('.cta-content .label');
+    if (label && s.contactLabel) label.textContent = s.contactLabel;
+    var title = section.querySelector('.cta-content h2');
+    if (title && s.contactTitle) title.textContent = s.contactTitle;
+    var desc = section.querySelector('.cta-content p');
+    if (desc && s.contactDescription) desc.textContent = s.contactDescription;
+    if (s.contactImage) {
+      var img = section.querySelector('.cta-image');
+      if (img) img.src = s.contactImage;
+    }
   }
 
   function init() {
     renderNav();
     renderFooter();
     applyPlaceholders();
+    applyLogo();
+    applySeo();
+    renderContact();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

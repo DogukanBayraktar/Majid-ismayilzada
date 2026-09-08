@@ -66,6 +66,11 @@ function renderNotFound(root) {
     const root = document.getElementById('articleRoot');
     if (!root || typeof blogPosts === 'undefined') return;
 
+    document.body.style.overflowAnchor = 'none';
+    if (window.history && 'scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+    }
+
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
     const post = blogPosts.find(p => p.id === id);
@@ -132,6 +137,8 @@ ${post.excerpt ? `<p>${post.excerpt}</p>` : ''}
 </section>
 ${relatedHtml}
 `;
+
+    window.scrollTo(0, 0);
 
     const relatedTrack = document.getElementById('relatedTrack');
     if (relatedTrack) {

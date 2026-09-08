@@ -1,0 +1,62 @@
+<%- include('./_head') -%>
+<body class="has-savebar">
+<%- include('./_sidebar', { active: active, backupActive: backupActive }) -%>
+
+<main class="content">
+  <h1>İletişim</h1>
+  <div class="page-sub">Sitede gösterilen iletişim bilgileri: e-posta, adres, harita bağlantısı ve sosyal medya hesapları. Tüm sayfalarda (nav, footer, iletişim bölümü) otomatik güncellenir. Telefon ve WhatsApp için yan menüdeki Site Ayarları → Randevu / CTA sayfasını kullanın.</div>
+
+  <% if (loadError) { %>
+    <div class="alert err"><strong>Veri dosyası okunamadı.</strong> data/site.js içinde sözdizimi hatası olabilir.</div>
+  <% } else { %>
+    <% if (saved) { %><div class="alert ok">Kaydedildi.</div><% } %>
+    <% if (backup === 'ok') { %><div class="alert ok">Değişiklikler GitHub'a da yedeklendi.</div><% } %>
+    <% if (backup === 'skip') { %><div class="alert warn">GitHub yedeği ayarlanmadı — değişiklikler yalnızca bu sunucuda duruyor.</div><% } %>
+    <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu.</div><% } %>
+
+    <form method="post" action="/admin/iletisim/save" id="contactForm">
+      <div class="card">
+        <h2>İletişim Bilgileri</h2>
+        <div class="field">
+          <label for="email">E-posta</label>
+          <input type="text" id="email" name="email" class="inp" value="<%= settings.email || '' %>" placeholder="info@majidismayilzada.com">
+        </div>
+        <div class="field">
+          <label for="address">Adres</label>
+          <input type="text" id="address" name="address" class="inp" value="<%= settings.address || '' %>">
+        </div>
+        <div class="field">
+          <label for="mapsLink">Google Maps bağlantısı</label>
+          <input type="text" id="mapsLink" name="mapsLink" class="inp" value="<%= settings.mapsLink || '' %>">
+        </div>
+        <div class="field">
+          <label for="instagram">Instagram bağlantısı</label>
+          <input type="text" id="instagram" name="instagram" class="inp" value="<%= settings.instagram || '' %>">
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="facebook">Facebook bağlantısı</label>
+            <input type="text" id="facebook" name="facebook" class="inp" value="<%= settings.facebook || '' %>" placeholder="Boş bırakılırsa sitede gösterilmez">
+          </div>
+          <div class="field">
+            <label for="youtube">YouTube bağlantısı</label>
+            <input type="text" id="youtube" name="youtube" class="inp" value="<%= settings.youtube || '' %>" placeholder="Boş bırakılırsa sitede gösterilmez">
+          </div>
+        </div>
+      </div>
+
+      <div class="savebar">
+        <div class="sb-title">
+          İletişim
+          <small>Değişiklikler "Kaydet" ile kaydedilir</small>
+        </div>
+        <div class="sb-actions">
+          <a href="/admin/settings" class="btn btn-outline">Vazgeç</a>
+          <button type="submit" class="btn">Kaydet</button>
+        </div>
+      </div>
+    </form>
+  <% } %>
+</main>
+
+<%- include('./_foot') -%>

@@ -120,6 +120,224 @@ function appendRow(kind, obj) {
 }
 
 // ------------------------------------------------------------------
+// Ana sayfa tekrarlayan listeler (JSON textarea yerine tablo satırları)
+// ------------------------------------------------------------------
+var HP_ROWS = {
+  about_bullets:         { cols: [{ k: '', l: 'Nokta', t: 'text' }] },
+  about_credentials:     { cols: [{ k: 'icon', l: 'İkon (remixicon)', t: 'text' }, { k: 'title', l: 'Başlık', t: 'text' }, { k: 'detail', l: 'Detay', t: 'text' }] },
+  stories_items:         { cols: [{ k: 'quote', l: 'Yorum', t: 'area' }, { k: 'name', l: 'Ad', t: 'text' }, { k: 'treatment', l: 'İşlem', t: 'text' }, { k: 'initials', l: 'Baş harfler', t: 'text' }] },
+  videoStories_items:    { cols: [{ k: 'videoId', l: 'YouTube ID', t: 'text' }, { k: 'photo', l: 'Kapak görseli', t: 'img' }, { k: 'name', l: 'Ad', t: 'text' }, { k: 'treatment', l: 'İşlem', t: 'text' }] },
+  results_images:        { cols: [{ k: 'src', l: 'Görsel yolu', t: 'img' }, { k: 'alt', l: 'Açıklama', t: 'text' }] },
+  process_steps:         { cols: [{ k: 'number', l: 'No', t: 'text' }, { k: 'tag', l: 'Etiket', t: 'text' }, { k: 'title', l: 'Başlık', t: 'text' }, { k: 'description', l: 'Açıklama', t: 'text' }] },
+  process_photos:        { cols: [{ k: 'src', l: 'Görsel yolu', t: 'img' }, { k: 'alt', l: 'Açıklama', t: 'text' }] },
+  safety_cards:          { cols: [{ k: 'title', l: 'Başlık', t: 'text' }, { k: 'description', l: 'Açıklama', t: 'area' }] },
+  hospital_paragraphs:   { cols: [{ k: '', l: 'Paragraf', t: 'area' }] },
+  hospital_credentials:  { cols: [{ k: 'icon', l: 'İkon (remixicon)', t: 'text' }, { k: 'title', l: 'Başlık', t: 'text' }, { k: 'detail', l: 'Detay', t: 'text' }] },
+  hospital_slides:       { cols: [{ k: 'src', l: 'Görsel yolu', t: 'img' }, { k: 'alt', l: 'Açıklama', t: 'text' }] },
+  patientAccess_cards:   { cols: [{ k: 'icon', l: 'İkon (remixicon)', t: 'text' }, { k: 'title', l: 'Başlık', t: 'text' }, { k: 'description', l: 'Açıklama', t: 'area' }] },
+  istanbul_slides:       { cols: [{ k: 'src', l: 'Görsel yolu', t: 'img' }, { k: 'alt', l: 'Açıklama', t: 'text' }] },
+  istanbul_features:     { cols: [{ k: 'number', l: 'Numara', t: 'text' }, { k: 'title', l: 'Başlık', t: 'text' }, { k: 'description', l: 'Açıklama', t: 'area' }] },
+  certificates_items:    { cols: [{ k: 'image', l: 'Görsel yolu', t: 'img' }, { k: 'badge', l: 'Rozet', t: 'text' }, { k: 'mark', l: 'Etiket', t: 'text' }, { k: 'text', l: 'Açıklama', t: 'area' }] },
+  faq_items:             { cols: [{ k: 'question', l: 'Soru', t: 'area' }, { k: 'answer', l: 'Cevap', t: 'area' }] }
+};
+
+function hpCellHtml(col, value) {
+  value = value == null ? '' : value;
+  var placeholder = col.t === 'img' ? '/assets/images/...' : col.l;
+  var attrs = 'class="inp" placeholder="' + esc(placeholder) + '"';
+  var inner = col.t === 'area'
+    ? '<textarea ' + attrs + ' rows="3">' + esc(value) + '</textarea>'
+    : '<input type="text" ' + attrs + ' value="' + esc(value) + '">';
+  if (col.t === 'img') {
+    inner = '<div class="imgpick">' + inner +
+      '<button type="button" class="btn-mini" title="Görsel seç" onclick="pickImage(this.previousElementSibling)">↗</button></div>';
+  }
+  return '<td>' + inner + '</td>';
+}
+
+function hpRowHtml(field, item) {
+  var cfg = HP_ROWS[field];
+  item = item || {};
+  var cells = cfg.cols.map(function (col) {
+    return hpCellHtml(col, col.k ? item[col.k] : item);
+  });
+  return '<tr>' + cells.join('') +
+    '<td class="cell-action"><button type="button" class="btn-mini danger" title="Sil" onclick="this.closest(\'tr\').remove(); syncHpRows()">✕</button></td>' +
+  '</tr>';
+}
+
+function addHpRow(field) {
+  var tbody = document.getElementById('rows-' + field);
+  if (!tbody) return;
+  var tr = document.createElement('tr');
+  tr.innerHTML = hpRowHtml(field, HP_ROWS[field].cols.length === 1 && HP_ROWS[field].cols[0].k === '' ? '' : {});
+  tbody.appendChild(tr);
+  var first = tr.querySelector('input,textarea');
+  if (first) first.focus();
+  syncHpRows();
+}
+
+function appendHpRow(field, item) {
+  var tbody = document.getElementById('rows-' + field);
+  if (!tbody) return;
+  var tr = document.createElement('tr');
+  tr.innerHTML = hpRowHtml(field, item);
+  tbody.appendChild(tr);
+}
+
+function hpSink(field) {
+  return document.querySelector('textarea[name="' + field + '"]');
+}
+
+// Boş satırları atlayarak tablodan JSON üretir ve gizli alana yazar.
+function syncHpRows() {
+  Object.keys(HP_ROWS).forEach(function (field) {
+    var tbody = document.getElementById('rows-' + field);
+    var sink = hpSink(field);
+    if (!tbody || !sink) return;
+    var cfg = HP_ROWS[field];
+    var isStringList = cfg.cols.length === 1 && cfg.cols[0].k === '';
+    var out = [];
+    tbody.querySelectorAll('tr').forEach(function (tr) {
+      var els = tr.querySelectorAll('input, textarea');
+      var values = cfg.cols.map(function (col, i) {
+        var el = els[i];
+        return el ? el.value.trim() : '';
+      });
+      if (values.every(function (v) { return v === ''; })) return;
+      if (isStringList) { out.push(values[0]); return; }
+      var obj = {};
+      cfg.cols.forEach(function (col, i) { obj[col.k] = values[i]; });
+      out.push(obj);
+    });
+    sink.value = JSON.stringify(out);
+  });
+}
+
+function initHpRows() {
+  Object.keys(HP_ROWS).forEach(function (field) {
+    var tbody = document.getElementById('rows-' + field);
+    var sink = hpSink(field);
+    if (!tbody || !sink) return;
+    var items = [];
+    try { items = JSON.parse(sink.value || '[]'); } catch (e) { items = []; }
+    if (!Array.isArray(items)) items = [];
+    items.forEach(function (it) { appendHpRow(field, it); });
+  });
+}
+
+// ------------------------------------------------------------------
+// Menü (üst menü) ve Footer menüsü düzenleyicileri
+// ------------------------------------------------------------------
+function removeMenuRow(btn) {
+  var tr = btn.closest('tr');
+  if (tr) tr.remove();
+}
+
+function addMenuRow(kind) {
+  var host = kind === 'navmenu' ? document.getElementById('rows-navmenu') : null;
+  var tpl = document.getElementById('tpl-' + kind);
+  if (!host || !tpl) return;
+  host.appendChild(document.importNode(tpl.content, true));
+  var first = host.lastElementChild ? host.lastElementChild.querySelector('input') : null;
+  if (first) first.focus();
+}
+
+// Sütundaki m_{i}_label/href/dynamic[] adlarını verilen indekse göre yeniden adlandırır.
+function syncColInputNames(col, ci) {
+  col.querySelectorAll('input[name^="m_"][name$="[]"], select[name^="m_"][name$="[]"]').forEach(function (el) {
+    var n = el.name;
+    var m = /^m_(\d+)_(label|href|dynamic)(\[\])$/.exec(n);
+    if (m) el.name = 'm_' + ci + '_' + m[2] + m[3];
+  });
+}
+
+// Sütunları yeniden numaralandırır (silme/eklemeden sonra isimler doğru kalır).
+function reindexFooterCols() {
+  var cols = document.querySelectorAll('#menuCols .menu-col');
+  cols.forEach(function (col, ci) {
+    col.setAttribute('data-col', ci);
+    syncColInputNames(col, ci);
+  });
+}
+
+function addMenuCol() {
+  var host = document.getElementById('menuCols');
+  var tpl = document.getElementById('tpl-menu-col');
+  if (!host || !tpl) return;
+  host.appendChild(document.importNode(tpl.content, true));
+  reindexFooterCols();
+}
+
+function addMenuColRow(btn) {
+  var col = btn.closest('.menu-col');
+  var tpl = document.getElementById('tpl-menu-col-row');
+  if (!col || !tpl) return;
+  var tbody = col.querySelector('table tbody');
+  if (!tbody) return;
+  tbody.appendChild(document.importNode(tpl.content, true));
+  reindexFooterCols();
+  var first = tbody.lastElementChild ? tbody.lastElementChild.querySelector('input') : null;
+  if (first) first.focus();
+}
+
+function removeMenuCol(btn) {
+  var col = btn.closest('.menu-col');
+  if (col) col.remove();
+  reindexFooterCols();
+}
+
+// --- Sürükle-bırak sıralama (menü satırları, yalnızca tutamaçtan) ---
+var dragRow = null;
+
+document.addEventListener('dragstart', function (e) {
+  var handle = e.target && e.target.closest ? e.target.closest('.drag-handle') : null;
+  if (!handle || dragRow) return;
+  var tr = handle.closest('tr.menu-row');
+  if (!tr) return;
+  dragRow = tr;
+  tr.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  try { e.dataTransfer.setData('text/plain', 'row'); } catch (err) {}
+});
+
+document.addEventListener('dragend', function () {
+  if (dragRow) dragRow.classList.remove('dragging');
+  dragRow = null;
+});
+
+document.addEventListener('dragover', function (e) {
+  if (!dragRow || !e.target || !e.target.closest) return;
+  var targetRow = e.target.closest('tr.menu-row');
+  if (!targetRow || targetRow === dragRow) return;
+  if (targetRow.parentNode !== dragRow.parentNode) return;
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  var rect = targetRow.getBoundingClientRect();
+  var after = (e.clientY - rect.top) > rect.height / 2;
+  dragRow.classList.remove('drag-over-top', 'drag-over-bottom');
+  targetRow.classList.remove('drag-over-top', 'drag-over-bottom');
+  targetRow.classList.add(after ? 'drag-over-bottom' : 'drag-over-top');
+  if (after) {
+    if (targetRow.nextElementSibling !== dragRow) targetRow.parentNode.insertBefore(dragRow, targetRow.nextElementSibling);
+  } else if (targetRow !== dragRow) {
+    targetRow.parentNode.insertBefore(dragRow, targetRow);
+  }
+});
+
+document.addEventListener('dragend', function () {
+  if (dragRow) dragRow.classList.remove('dragging', 'drag-over-top', 'drag-over-bottom');
+  document.querySelectorAll('.menu-row.drag-over-top, .menu-row.drag-over-bottom').forEach(function (tr) {
+    tr.classList.remove('drag-over-top', 'drag-over-bottom');
+  });
+  dragRow = null;
+});
+
+document.addEventListener('drop', function (e) {
+  if (dragRow) e.preventDefault();
+});
+
+// ------------------------------------------------------------------
 // JSON (gelişmiş) modu
 // ------------------------------------------------------------------
 function collectService() {
@@ -143,10 +361,18 @@ function collectService() {
   var steps = zip(repr('input[name="s_number[]"]'), repr('input[name="s_title[]"]'), repr('input[name="s_description[]"]'))
     .map(function (r) { return { number: r[0], title: r[1], description: r[2] }; });
   var contentHtml = val('contentHtml');
+  var candNote = val('candNote');
+  var suitable = Array.prototype.map.call((val('suitableList') || '').split(/\r?\n/), function (l) { return l.trim(); }).filter(Boolean);
+  var notSuitable = Array.prototype.map.call((val('notSuitableList') || '').split(/\r?\n/), function (l) { return l.trim(); }).filter(Boolean);
+  var candidacy = {
+    note: candNote,
+    suitable: suitable,
+    notSuitable: notSuitable
+  };
   return {
     id: val('id'), title: val('title'), excerpt: val('excerpt'), category: val('category'),
     cardImage: val('cardImage'), link: val('link'), duration: val('duration'), recovery: val('recovery'),
-    videos: videos, results: results, contentHtml: contentHtml, steps: steps
+    videos: videos, results: results, contentHtml: contentHtml, steps: steps, candidacy: candidacy
   };
 }
 
@@ -362,6 +588,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // Submit'te içeriği senkronize et
   var f1 = document.getElementById('svcForm');
   var f2 = document.getElementById('postForm');
+  var f3 = document.getElementById('hpForm');
   if (f1) f1.addEventListener('submit', function () { syncSingleQuill(); });
   if (f2) f2.addEventListener('submit', function () { syncSingleQuill(); });
+  if (f3) f3.addEventListener('submit', function () { syncHpRows(); });
+  // Ana sayfa tablo satırlarını doldur (JSON textarea'lardan)
+  initHpRows();
 });

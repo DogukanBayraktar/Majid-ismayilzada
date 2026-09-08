@@ -2,9 +2,11 @@
 // Bu dosya /admin/settings üzerinden güncellenir; kaydedince site otomatik yenilenir.
 
 const siteSettings = {
+  "logo": "assets/images/logo.png",
+  "workingHours": "Pzt–Cmt: 10:00 – 19:00 · Pazar Kapalı",
+  "seoTitle": "Doç. Dr. Majid İsmayilzada — Plastik, Rekonstrüktif ve Estetik Cerrahi",
+  "seoDescription": "Plastik ve estetik cerrahi, meme rekonstrüksiyonu ve mikrocerrahide akademik deneyimli Doç. Dr. Majid İsmayilzada ile İstanbul'da doğal sonuçlar. Ücretsiz ön görüşme için iletişime geçin.",
   "phone": "+905015804482",
-  "phoneDisplay": "(+90) 501 580 44 82",
-  "whatsapp": "905015804482",
   "whatsappLink": "https://wa.me/905015804482",
   "email": "info@majidismayilzada.com",
   "address": "Cumhuriyet, Halaskargazi Cd. No:121, Şişli/İstanbul",
@@ -13,6 +15,28 @@ const siteSettings = {
   "ctaAppointmentText": "Randevu Al",
   "ctaWhatsAppText": "WhatsApp'tan Randevu Al",
   "ctaCallText": "Telefonla Ara",
+  "contactLabel": "İletişim",
+  "contactTitle": "Değişime ilk adımı birlikte atalım.",
+  "contactDescription": "Ücretsiz ön görüşme talebinizi bırakın, 24 saat içinde klinik koordinatörümüz sizinle iletişime geçsin.",
+  "contactImage": "assets/images/cta-image.png",
+  "navMenu": [
+    {
+      "label": "Hakkımda",
+      "href": "#about"
+    },
+    {
+      "label": "Uzmanlık",
+      "href": "#services"
+    },
+    {
+      "label": "Blog",
+      "href": "blog.html"
+    },
+    {
+      "label": "İletişim",
+      "href": "iletisim.html"
+    }
+  ],
   "footerBrandText": "İstanbul — Plastik, rekonstrüktif ve estetik cerrahide kişiye özel yaklaşım.",
   "footerCopyright": "© {year} Doç. Dr. Majid İsmayilzada. Tüm hakları saklıdır.",
   "footerMenu": [
@@ -98,5 +122,7 @@ const siteSettings = {
         }
       ]
     }
-  ]
+  ],
+  "facebook": "",
+  "youtube": ""
 };
