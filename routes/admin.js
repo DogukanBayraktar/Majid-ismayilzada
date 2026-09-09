@@ -117,7 +117,7 @@ router.post('/login', (req, res) => {
   if (passStore.authenticate(username, password)) {
     req.session.isAdmin = true;
     req.session.adminUser = username;
-    return res.redirect('/admin/services');
+    return res.redirect('/admin/homepage');
   }
   res.render('admin/login', { error: 'Kullanıcı adı veya şifre hatalı.' });
 });
@@ -126,7 +126,7 @@ router.post('/logout', (req, res) => {
   req.session.destroy(() => res.redirect('/admin/login'));
 });
 
-router.get('/', requireAuth, (req, res) => res.redirect('/admin/services'));
+router.get('/', requireAuth, (req, res) => res.redirect('/admin/homepage'));
 
 // ------------------------------------------------------------------
 // Uzmanlıklar

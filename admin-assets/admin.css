@@ -1,6 +1,8 @@
 /* Yönetim paneli için ayrı, temiz bir stil. Aydınlık tema + site bronz vurgusu. */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
+html, body {
+  overflow-anchor: none;
+}
 :root {
   --bg: #f4f1ea;
   --panel: #ffffff;

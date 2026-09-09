@@ -595,3 +595,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Ana sayfa tablo satırlarını doldur (JSON textarea'lardan)
   initHpRows();
 });
+
+window.addEventListener('load', function () {
+  window.scrollTo(0, 0);
+  setTimeout(function () { window.scrollTo(0, 0); }, 50);
+  setTimeout(function () { window.scrollTo(0, 0); }, 300);
+});

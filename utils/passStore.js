@@ -52,9 +52,12 @@ function current() {
 function listUsers() {
   const stored = readStored();
   if (stored && stored.users.length > 0) {
-    return stored.users.map(u => ({ username: u.username }));
+    return stored.users.map(u => ({ username: u.username, passwordHash: u.passwordHash }));
   }
-  return [{ username: process.env.ADMIN_USER || 'admin' }];
+  if (!envHashCache) {
+    envHashCache = bcrypt.hashSync(process.env.ADMIN_PASS || 'admin123', 10);
+  }
+  return [{ username: process.env.ADMIN_USER || 'admin', passwordHash: envHashCache }];
 }
 
 function authenticate(username, password) {
