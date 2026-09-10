@@ -1,9 +1,8 @@
 // Sitenin ortak bölümlerini data/site.js içindeki ayarlardan render eder.
 // Nav ve footer her sayfada tekrarlandığı için buradan tek noktadan yönetilir.
 (function () {
-  if (typeof siteSettings === 'undefined') return;
-
-  var s = siteSettings;
+  var s = (typeof i18n !== 'undefined') ? i18n.site() : (typeof siteSettings !== 'undefined' ? siteSettings : null);
+  if (!s) return;
   var instagramSvg = '<svg viewBox="0 0 24 24">' +
     '<path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.24-1.97.4-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.6 1.8c.46-.16 1.26-.35 2.43-.4C9.3 1.34 9.68 1.33 12 1.33m0 1.8c-3.15 0-3.5.01-4.73.07-.96.04-1.48.2-1.83.34-.46.18-.79.39-1.13.73a3.05 3.05 0 0 0-.73 1.13c-.14.35-.3.87-.34 1.83-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.96.2 1.48.34 1.83.18.46.39.79.73 1.13.34.34.67.55 1.13.73.35.14.87.3 1.83.34 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.96-.04 1.48-.2 1.83-.34.46-.18.79-.39 1.13-.73.34-.34.55-.67.73-1.13.14-.35.3-.87.34-1.83.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.96-.2-1.48-.34-1.83a3.05 3.05 0 0 0-.73-1.13 3.05 3.05 0 0 0-1.13-.73c-.35-.14-.87-.3-1.83-.34-1.23-.06-1.58-.07-4.73-.07M12 6.86A5.14 5.14 0 1 1 6.86 12 5.14 5.14 0 0 1 12 6.86m0 1.8A3.34 3.34 0 1 0 15.34 12 3.34 3.34 0 0 0 12 8.66m5.34-2.04a1.2 1.2 0 1 1-1.2-1.2 1.2 1.2 0 0 1 1.2 1.2" />' +
     '</svg>';
@@ -214,7 +213,7 @@
     upsertMeta('property', 'og:url', canonical);
     upsertMeta('property', 'og:image', origin + '/' + ogImage.replace(/^\//, ''));
     upsertMeta('property', 'og:type', 'website');
-    upsertMeta('property', 'og:locale', 'tr_TR');
+    upsertMeta('property', 'og:locale', (typeof i18n !== 'undefined' && i18n.isEn()) ? 'en_US' : 'tr_TR');
     upsertMeta('property', 'og:site_name', 'Doç. Dr. Majid İsmayilzada');
 
     // Twitter Card
@@ -283,12 +282,16 @@
   function renderContact() {
     var section = document.getElementById('contact');
     if (!section) return;
+    var isBlog = /blog/i.test(location.pathname) && !/admin/i.test(location.pathname);
+    var contactLabel = isBlog ? ((typeof i18n !== 'undefined') ? i18n.t('blogContactLabel') : 'İletişim') : s.contactLabel;
+    var contactTitle = isBlog ? ((typeof i18n !== 'undefined') ? i18n.t('blogContactTitle') : 'Sormak istediğiniz bir şey mi var?') : s.contactTitle;
+    var contactDesc = isBlog ? ((typeof i18n !== 'undefined') ? i18n.t('blogContactDesc') : 'Blog yazılarımız hakkında sorularınızı sorabilirsiniz.') : s.contactDescription;
     var label = section.querySelector('.cta-content .label');
-    if (label && s.contactLabel) label.textContent = s.contactLabel;
+    if (label && contactLabel) label.textContent = contactLabel;
     var title = section.querySelector('.cta-content h2');
-    if (title && s.contactTitle) title.textContent = s.contactTitle;
+    if (title && contactTitle) title.textContent = contactTitle;
     var desc = section.querySelector('.cta-content p');
-    if (desc && s.contactDescription) desc.textContent = s.contactDescription;
+    if (desc && contactDesc) desc.textContent = contactDesc;
     if (s.contactImage) {
       var img = section.querySelector('.cta-image');
       if (img) img.src = s.contactImage;

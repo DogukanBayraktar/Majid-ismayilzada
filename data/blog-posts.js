@@ -32,7 +32,7 @@
  *               { type: "quote", text: "..." } -> vurgulu alıntı kutusu
  */
 
-const blogPosts = [
+var blogPosts = [
   {
     "id": "rinoplasti-iyilesme-sureci",
     "category": "Rinoplasti",

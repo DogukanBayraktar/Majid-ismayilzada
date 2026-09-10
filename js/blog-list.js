@@ -27,6 +27,7 @@ function hrefFor(post) {
 }
 
 function cardHtml(post) {
+    const _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
     const thumbStyle = post.image
         ? ` style="background-image:url('${post.image}');background-size:cover;background-position:center;"`
         : '';
@@ -39,7 +40,7 @@ function cardHtml(post) {
 ${meta ? `<span class="blog-meta">${meta}</span>` : ''}
 <h4>${post.title}</h4>
 <p>${post.excerpt}</p>
-<span class="read-more-link">Devamını oku</span>
+<span class="read-more-link">${_t('blogReadMore')}</span>
 </div>
 </a>`;
 }
@@ -53,14 +54,16 @@ ${meta ? `<span class="blog-meta">${meta}</span>` : ''}
     const track = document.getElementById('blogAllTrack');
     const filterWrap = document.getElementById('blogFilter');
     const paginationWrap = document.getElementById('blogPagination');
-    if (!track || typeof blogPosts === 'undefined') return;
+    const _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
+    const blogPosts = (typeof i18n !== 'undefined') ? i18n.blog() : (typeof window.blogPosts !== 'undefined' ? window.blogPosts : []);
+    if (!track || !blogPosts.length) return;
 
     const POSTS_PER_PAGE = 9;
     let currentPage = 1;
-    let currentCategory = 'Tümü';
+    let currentCategory = _t('blogFilterAll');
     let filteredPosts = [];
 
-    const categories = ['Tümü', ...Array.from(new Set(blogPosts.map(p => p.category)))];
+    const categories = [_t('blogFilterAll'), ...Array.from(new Set(blogPosts.map(p => p.category)))];
 
     function getPaginatedPosts(posts, page) {
         const start = (page - 1) * POSTS_PER_PAGE;
@@ -80,7 +83,7 @@ ${meta ? `<span class="blog-meta">${meta}</span>` : ''}
 
         const prevBtn = document.createElement('button');
         prevBtn.className = 'pagination-btn' + (currentPage === 1 ? ' disabled' : '');
-        prevBtn.textContent = '← Önceki';
+        prevBtn.textContent = _t('blogPrev');
         prevBtn.disabled = currentPage === 1;
         prevBtn.addEventListener('click', () => {
             if (currentPage > 1) {
@@ -105,7 +108,7 @@ ${meta ? `<span class="blog-meta">${meta}</span>` : ''}
 
         const nextBtn = document.createElement('button');
         nextBtn.className = 'pagination-btn' + (currentPage === totalPages ? ' disabled' : '');
-        nextBtn.textContent = 'Sonraki →';
+        nextBtn.textContent = _t('blogNext');
         nextBtn.disabled = currentPage === totalPages;
         nextBtn.addEventListener('click', () => {
             if (currentPage < totalPages) {
@@ -119,14 +122,14 @@ ${meta ? `<span class="blog-meta">${meta}</span>` : ''}
 
     function render(activeCategory) {
         currentCategory = activeCategory;
-        filteredPosts = activeCategory === 'Tümü' ? blogPosts : blogPosts.filter(p => p.category === activeCategory);
+        filteredPosts = activeCategory === _t('blogFilterAll') ? blogPosts : blogPosts.filter(p => p.category === activeCategory);
         currentPage = 1; // Reset to first page when filtering
 
         const paginatedPosts = getPaginatedPosts(filteredPosts, currentPage);
 
         track.innerHTML = paginatedPosts.length
             ? paginatedPosts.map(cardHtml).join('')
-            : `<div class="blog-empty" style="grid-column: 1 / -1;">Bu kategoride henüz yazı bulunmuyor.</div>`;
+            : `<div class="blog-empty" style="grid-column: 1 / -1;">${_t('blogEmpty')}</div>`;
 
         track.querySelectorAll('.blog-card').forEach((el, i) => applyReveal(el, i));
         renderPagination(filteredPosts.length);
@@ -146,5 +149,5 @@ ${meta ? `<span class="blog-meta">${meta}</span>` : ''}
         });
     }
 
-    render('Tümü');
+    render(_t('blogFilterAll'));
 })();

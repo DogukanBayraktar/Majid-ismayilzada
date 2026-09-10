@@ -1,9 +1,12 @@
 <%- include('./_head') -%>
 <body class="has-savebar">
-<%- include('./_sidebar', { active: active, backupActive: backupActive }) -%>
+<%- include('./_sidebar', { active: active, backupActive: backupActive, lang: lang }) -%>
 
 <main class="content">
-  <h1>Site Ayarları</h1>
+  <div class="page-head">
+    <h1>Site Ayarları</h1>
+    <%- include('./_lang-picker') -%>
+  </div>
   <div class="page-sub">Randevu/CTA butonları, iletişim CTA bölümü ve footer bilgileri. Sitede tüm sayfalarda otomatik güncellenir. İletişim bilgileri (e-posta, adres, harita, sosyal medya) için yan menüdeki <strong>İletişim</strong> sayfasını kullanın.</div>
 
   <% if (loadError) { %>
@@ -15,6 +18,7 @@
     <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu.</div><% } %>
 
     <form method="post" action="/admin/settings/save" id="settingsForm">
+      <input type="hidden" name="lang" value="<%= lang || 'tr' %>">
       <div class="card">
         <h2>Randevu / CTA</h2>
         <div class="page-sub">Telefon, WhatsApp bağlantısı, CTA butonlarının metinleri ve anasayfa sonundaki iletişim CTA bölümü.</div>
@@ -143,7 +147,7 @@
           <small>Değişiklikler "Kaydet" ile kaydedilir</small>
         </div>
         <div class="sb-actions">
-          <a href="/admin/services" class="btn btn-outline">Vazgeç</a>
+          <a href="/admin/settings<%= (lang === 'en') ? '?lang=en' : '' %>" class="btn btn-outline">Vazgeç</a>
           <button type="submit" class="btn">Kaydet</button>
         </div>
       </div>

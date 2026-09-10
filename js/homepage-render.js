@@ -1,15 +1,16 @@
 // Ana sayfa bölümlerini data/homepage.js ve data/services.js dosyalarından render eder.
 (function () {
-  if (typeof homepageSettings === 'undefined') return;
-  var hp = homepageSettings;
+  var hp = (typeof i18n !== 'undefined') ? i18n.hp() : (typeof homepageSettings !== 'undefined' ? homepageSettings : null);
+  if (!hp) return;
 
   // --- Uzmanlık Kartları (data/services.js'den) ---
   function renderServiceCards() {
     var grid = document.getElementById('serviceGrid');
-    if (!grid || typeof services === 'undefined' || !Array.isArray(services)) return;
+    var svcData = (typeof i18n !== 'undefined') ? i18n.services() : (typeof services !== 'undefined' ? services : []);
+    if (!grid || !Array.isArray(svcData) || !svcData.length) return;
     var section = grid.closest('section');
     fillSectionHead(section, hp.servicesSection);
-    grid.innerHTML = services.map(function (s) {
+    grid.innerHTML = svcData.map(function (s) {
       var img = s.cardImage || '';
       var title = s.title || '';
       var excerpt = s.excerpt || '';
@@ -19,7 +20,7 @@
         '<img src="' + img + '" alt="' + title + '">' +
         '<h4>' + title + '</h4>' +
         '<p>' + excerpt + '</p>' +
-        '<span class="more">Detaylı Bilgi <span class="a">\u2192</span></span>' +
+        '<span class="more">' + ((typeof i18n !== 'undefined') ? i18n.t('svcMoreInfo') : 'Detaylı Bilgi') + ' <span class="a">\u2192</span></span>' +
       '</a>';
     }).join('');
   }
@@ -98,7 +99,7 @@
     gallery.innerHTML = v.items.map(function (item) {
       return '<div class="video-card" data-video-id="' + (item.videoId || '') + '"' +
         ' style="--photo:url(\'' + (item.photo || '') + '\')">' +
-        '<button class="video-play" aria-label="Videoyu oynat"></button>' +
+        '<button class="video-play" aria-label="' + ((typeof i18n !== 'undefined') ? i18n.t('videoPlay') : 'Videoyu oynat') + '"></button>' +
         '<div class="video-info"><b>' + (item.name || '') + '</b><span>' + (item.treatment || '') + '</span></div>' +
       '</div>';
     }).join('');
@@ -107,7 +108,7 @@
       card.addEventListener('click', function () {
         if (card.classList.contains('video-active')) return;
         var videoId = card.dataset.videoId;
-        var title = card.querySelector('.video-info b') ? card.querySelector('.video-info b').textContent : 'Hasta Videosu';
+        var title = card.querySelector('.video-info b') ? card.querySelector('.video-info b').textContent : ((typeof i18n !== 'undefined') ? i18n.t('patientVideo') : 'Hasta Videosu');
         card.classList.add('video-active');
         card.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" title="' + title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
       });

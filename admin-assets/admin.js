@@ -594,6 +594,15 @@ document.addEventListener('DOMContentLoaded', function () {
   if (f3) f3.addEventListener('submit', function () { syncHpRows(); });
   // Ana sayfa tablo satırlarını doldur (JSON textarea'lardan)
   initHpRows();
+
+  // Dil değiştirici: seçim yapıldığında mevcut sayfayı koruyarak ?lang= parametresini değiştir
+  document.querySelectorAll('.pl-select[data-set-lang]').forEach(function (sel) {
+    sel.addEventListener('change', function () {
+      var url = new URL(window.location.href);
+      url.searchParams.set('lang', sel.value);
+      window.location.href = url.toString();
+    });
+  });
 });
 
 window.addEventListener('load', function () {

@@ -3,14 +3,16 @@
     <div class="brand-logo"><img src="/assets/images/siyah-logo.png" alt="Doç. Dr. Majid İsmayilzada"></div>
     <div class="sub">Yönetim Paneli</div>
   </div>
+  <% var L = (typeof lang !== 'undefined' && lang === 'en') ? 'en' : 'tr'; %>
+  <% var qp = function(path){ return L === 'en' ? (path + '?lang=en') : path; }; %>
   <nav>
-    <a href="/admin/homepage" class="<%= active === 'homepage' ? 'active' : '' %>">Ana Sayfa</a>
-    <a href="/admin/services" class="<%= active === 'services' ? 'active' : '' %>">Uzmanlıklar</a>
-    <a href="/admin/blog" class="<%= active === 'blog' ? 'active' : '' %>">Blog Yazıları</a>
-    <a href="/admin/settings" class="<%= active === 'settings' ? 'active' : '' %>">Site Ayarları</a>
-    <a href="/admin/site" class="<%= active === 'site' ? 'active' : '' %>">Genel Ayarlar</a>
-    <a href="/admin/iletisim" class="<%= active === 'iletisim' ? 'active' : '' %>">İletişim</a>
-    <a href="/admin/security" class="<%= active === 'security' ? 'active' : '' %>">Güvenlik</a>
+    <a href="<%= qp('/admin/homepage') %>" class="<%= active === 'homepage' ? 'active' : '' %>">Ana Sayfa</a>
+    <a href="<%= qp('/admin/services') %>" class="<%= active === 'services' ? 'active' : '' %>">Uzmanlıklar</a>
+    <a href="<%= qp('/admin/blog') %>" class="<%= active === 'blog' ? 'active' : '' %>">Blog Yazıları</a>
+    <a href="<%= qp('/admin/settings') %>" class="<%= active === 'settings' ? 'active' : '' %>">Site Ayarları</a>
+    <a href="<%= qp('/admin/site') %>" class="<%= active === 'site' ? 'active' : '' %>">Genel Ayarlar</a>
+    <a href="<%= qp('/admin/iletisim') %>" class="<%= active === 'iletisim' ? 'active' : '' %>">İletişim</a>
+    <a href="<%= qp('/admin/security') %>" class="<%= active === 'security' ? 'active' : '' %>">Güvenlik</a>
   </nav>
   <div class="site-top">
     <a href="/" target="_blank" class="site-link">

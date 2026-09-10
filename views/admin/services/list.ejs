@@ -1,9 +1,14 @@
 <%- include('../_head') -%>
 <body>
-<%- include('../_sidebar', { active: active, backupActive: backupActive }) -%>
+<%- include('../_sidebar', { active: active, backupActive: backupActive, lang: lang }) -%>
+<% var L = (typeof lang !== 'undefined' && lang === 'en') ? 'en' : 'tr'; %>
+<% var qp = function(path){ return L === 'en' ? (path + '?lang=en') : path; }; %>
 
 <main class="content">
-  <h1>Uzmanlıklar / Hizmetler</h1>
+  <div class="page-head">
+    <h1>Uzmanlıklar / Hizmetler</h1>
+    <%- include('../_lang-picker') -%>
+  </div>
   <div class="page-sub">Sitede "Uzmanlıklar" sayfasında görüntülenen hizmet kartları.</div>
 
   <% if (loadError) { %>
@@ -15,7 +20,7 @@
     <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu. Token/Bağlantı ayarlarını kontrol edin.</div><% } %>
 
     <div style="display:flex; justify-content:flex-end; margin-bottom:16px;">
-      <a href="/admin/services/new" class="btn">+ Yeni Uzmanlık Ekle</a>
+      <a href="<%= qp('/admin/services/new') %>" class="btn">+ Yeni Uzmanlık Ekle</a>
     </div>
 
     <div class="card">
@@ -38,9 +43,10 @@
               </td>
               <td><%= s.category %></td>
               <td style="text-align:right; white-space:nowrap;">
-                <a class="btn btn-sm btn-outline" href="/admin/services/edit/<%= s.id %>">Düzenle</a>
+                <a class="btn btn-sm btn-outline" href="<%= qp('/admin/services/edit/' + s.id) %>">Düzenle</a>
                 <form method="post" action="/admin/services/delete/<%= s.id %>" style="display:inline;"
                       onsubmit="return confirmDelete('«<%= s.title %>» silinecek, emin misiniz?');">
+                  <input type="hidden" name="lang" value="<%= L %>">
                   <button type="submit" class="btn btn-sm btn-danger">Sil</button>
                 </form>
               </td>

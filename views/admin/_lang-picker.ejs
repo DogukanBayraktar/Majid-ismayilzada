@@ -1,0 +1,9 @@
+<% var L = (typeof lang !== 'undefined' && LANGS && LANGS.some(function (x) { return x.code === lang; })) ? lang : (LANGS && LANGS[0] ? LANGS[0].code : 'tr'); %>
+<div class="page-lang">
+  <label class="pl-label" for="plSelect">İçerik dili</label>
+  <select id="plSelect" class="pl-select" data-set-lang>
+    <% (LANGS || [{ code: 'tr', label: 'Türkçe' }, { code: 'en', label: 'English' }]).forEach(function (l) { %>
+      <option value="<%= l.code %>" <%= l.code === L ? 'selected' : '' %>><%= l.label %></option>
+    <% }); %>
+  </select>
+</div>

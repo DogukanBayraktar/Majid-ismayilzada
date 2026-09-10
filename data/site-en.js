@@ -1,31 +1,31 @@
 // Sitenin düzenlenebilir genel ayarları (menü, iletişim, CTA, footer).
 // Bu dosya /admin/settings üzerinden güncellenir; kaydedince site otomatik yenilenir.
 
-var siteSettings = {
+var siteSettingsEn = {
   "logo": "assets/images/logo.png",
-  "workingHours": "Pzt–Cmt: 10:00 – 19:00 · Pazar Kapalı",
-  "seoTitle": "Doç. Dr. Majid İsmayilzada — Plastik, Rekonstrüktif ve Estetik Cerrahi",
-  "seoDescription": "Plastik ve estetik cerrahi, meme rekonstrüksiyonu ve mikrocerrahide akademik deneyimli Doç. Dr. Majid İsmayilzada ile İstanbul'da doğal sonuçlar. Ücretsiz ön görüşme için iletişime geçin.",
+  "workingHours": "Mon–Sat: 10:00 – 19:00 · Sunday Closed",
+  "seoTitle": "Assoc. Prof. Dr. Majid Ismayilzada — Plastic, Reconstructive and Aesthetic Surgery",
+  "seoDescription": "Achieve natural results in Istanbul with Assoc. Prof. Dr. Majid Ismayilzada, who brings academic expertise in plastic and aesthetic surgery, breast reconstruction, and microsurgery. Contact us for a free consultation.",
   "phone": "+905015804482",
   "whatsappLink": "https://wa.me/905015804482",
   "email": "info@majidismayilzada.com",
   "address": "Cumhuriyet, Halaskargazi Cd. No:121, Şişli/İstanbul",
   "mapsLink": "https://www.google.com/maps?q=Halaskargazi+Cd.+No%3A121,+%C5%9Ei%C5%9Fli/%C4%B0stanbul",
   "instagram": "https://www.instagram.com/dr.mecid.ismayilzade/",
-  "ctaAppointmentText": "Randevu Al",
-  "ctaWhatsAppText": "WhatsApp'tan Randevu Al",
-  "ctaCallText": "Telefonla Ara",
-  "contactLabel": "İletişim",
-  "contactTitle": "Değişime ilk adımı birlikte atalım.",
-  "contactDescription": "Ücretsiz ön görüşme talebinizi bırakın, 24 saat içinde klinik koordinatörümüz sizinle iletişime geçsin.",
+  "ctaAppointmentText": "Book Appointment",
+  "ctaWhatsAppText": "Book via WhatsApp",
+  "ctaCallText": "Call Us",
+  "contactLabel": "Contact",
+  "contactTitle": "Let's take the first step toward transformation together.",
+  "contactDescription": "Submit your request for a free consultation, and our clinic coordinator will get in touch with you within 24 hours.",
   "contactImage": "assets/images/cta-image.png",
   "navMenu": [
     {
-      "label": "Hakkımda",
+      "label": "About",
       "href": "#about"
     },
     {
-      "label": "Uzmanlık",
+      "label": "Specialties",
       "href": "#services"
     },
     {
@@ -33,30 +33,30 @@ var siteSettings = {
       "href": "blog.html"
     },
     {
-      "label": "İletişim",
+      "label": "Contact",
       "href": "iletisim.html"
     }
   ],
-  "footerBrandText": "İstanbul — Plastik, rekonstrüktif ve estetik cerrahide kişiye özel yaklaşım.",
-  "footerCopyright": "© {year} Doç. Dr. Majid İsmayilzada. Tüm hakları saklıdır.",
+  "footerBrandText": "Istanbul — Personalized approach in plastic, reconstructive and aesthetic surgery.",
+  "footerCopyright": "© {year} Assoc. Prof. Dr. Majid Ismayilzada. All rights reserved.",
   "footerMenu": [
     {
-      "title": "Menü",
+      "title": "Menu",
       "links": [
         {
-          "label": "Hakkımda",
+          "label": "About",
           "href": "#about"
         },
         {
-          "label": "Uzmanlık",
+          "label": "Specialties",
           "href": "#services"
         },
         {
-          "label": "Süreç",
+          "label": "Process",
           "href": "#process"
         },
         {
-          "label": "Sonuçlar",
+          "label": "Results",
           "href": "#results"
         },
         {
@@ -64,59 +64,59 @@ var siteSettings = {
           "href": "blog.html"
         },
         {
-          "label": "Güvenlik",
+          "label": "Safety",
           "href": "#safety"
         },
         {
-          "label": "Hikayeler",
+          "label": "Stories",
           "href": "#stories"
         },
         {
-          "label": "Videolar",
+          "label": "Videos",
           "href": "#video-stories"
         },
         {
-          "label": "S.S.S.",
+          "label": "FAQ",
           "href": "#faq"
         },
         {
-          "label": "İletişim",
+          "label": "Contact",
           "href": "iletisim.html"
         }
       ]
     },
     {
-      "title": "Kurumsal",
+      "title": "Legal",
       "links": [
         {
-          "label": "KVKK Aydınlatma Metni",
+          "label": "Privacy Policy (KVKK)",
           "href": "kvkk.html"
         },
         {
-          "label": "Hasta Hakları",
+          "label": "Patient Rights",
           "href": "hasta-haklari.html"
         },
         {
-          "label": "Gizlilik Politikası",
+          "label": "Privacy Policy",
           "href": "gizlilik-politikasi.html"
         }
       ]
     },
     {
-      "title": "İletişim",
+      "title": "Contact",
       "links": [
         {
-          "label": "Telefon",
+          "label": "Phone",
           "href": "tel:+905015804482",
           "dynamic": "phoneDisplay"
         },
         {
-          "label": "E-posta",
+          "label": "Email",
           "href": "mailto:info@majidismayilzada.com",
           "dynamic": "email"
         },
         {
-          "label": "Adres",
+          "label": "Address",
           "href": "mapsLink",
           "dynamic": "address"
         }

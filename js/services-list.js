@@ -22,7 +22,9 @@ function applyServiceReveal(el, i) {
 // ---------------------------------------------------------------
 (function initServicesList() {
     const track = document.getElementById('servicesAllTrack');
-    if (!track || typeof services === 'undefined') return;
+    const _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
+    const svcData = (typeof i18n !== 'undefined') ? i18n.services() : (typeof services !== 'undefined' ? services : []);
+    if (!track || !svcData.length) return;
 
     function serviceHref(s) {
         const l = ((s.link || '') + '').trim();
@@ -35,12 +37,12 @@ function applyServiceReveal(el, i) {
         return `services-detay.html?id=${encodeURIComponent(s.id)}`;
     }
 
-    track.innerHTML = services.map(s => `
+    track.innerHTML = svcData.map(s => `
 <a class="service-card" href="${serviceHref(s)}">
 <img src="${s.cardImage}" alt="${s.title}">
 <h4>${s.title}</h4>
 <p>${s.excerpt}</p>
-<span class="more">Detaylı Bilgi <span class="a">→</span></span>
+<span class="more">${_t('svcMoreInfo')} <span class="a">\u2192</span></span>
 </a>`).join('');
 
     track.querySelectorAll('.service-card').forEach((el, i) => applyServiceReveal(el, i));

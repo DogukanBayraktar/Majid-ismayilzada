@@ -1,5 +1,5 @@
 // Ana sayfa içerikleri — bu dosya /admin/homepage üzerinden güncellenir.
-const homepageSettings = {
+var homepageSettings = {
   "hero": {
     "title": "Doğal görünen,<br><span>güvenle planlanan</span> sonuçlar.",
     "lead": "Akademik deneyim ve kişiye özel planlamayla, hayal ettiğiniz sonuca şeffaf ve güvenli bir süreçle ulaşıyoruz.",

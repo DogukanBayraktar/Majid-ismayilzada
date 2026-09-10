@@ -1,4 +1,5 @@
 // Hero iletişim formu — doğrulama + FormSubmit.co ile doğrudan e-postaya gönderim
+var _tf = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
 const heroForm = document.getElementById('heroForm');
 if (heroForm) {
     const adSoyadInput = document.getElementById('adSoyad');
@@ -45,7 +46,7 @@ if (heroForm) {
             phoneCodeText.textContent = code;
             closePhoneCodeList();
             telefonInput.value = '';
-            telefonInput.placeholder = code === '+90' ? '5XX XXX XX XX' : 'Telefon numarası';
+            telefonInput.placeholder = code === '+90' ? _tf('phonePlaceholderTR') : _tf('phonePlaceholderInt');
             clearError(telefonInput);
             telefonInput.focus();
         });
@@ -68,8 +69,9 @@ if (heroForm) {
 
     // "İlgilendiğiniz İşlem" seçeneklerini data/services.js içindeki güncel
     // hizmet başlıklarından otomatik üretir (liste güncellendiğinde form da otomatik güncellenir).
-    if (typeof services !== 'undefined' && Array.isArray(services) && services.length) {
-        const titles = [...services.map(s => s.title), 'Diğer'];
+    const svcData = (typeof i18n !== 'undefined') ? i18n.services() : (typeof services !== 'undefined' ? services : []);
+    if (svcData.length) {
+        const titles = [...svcData.map(s => s.title), _tf('heroFormProcedureOther')];
         islemList.innerHTML = titles.map(t =>
             `<li role="option" data-value="${t}">${t}</li>`
         ).join('');
@@ -130,11 +132,11 @@ if (heroForm) {
     const validateAdSoyad = () => {
         const value = adSoyadInput.value.trim();
         if (value.length < 3) {
-            showError(adSoyadInput, 'Lütfen adınızı ve soyadınızı girin.');
+            showError(adSoyadInput, _tf('valNameRequired'));
             return false;
         }
         if (!/^[A-Za-zÇĞİıÖŞÜçğıöşü\s]+$/.test(value)) {
-            showError(adSoyadInput, 'İsim yalnızca harflerden oluşmalıdır.');
+            showError(adSoyadInput, _tf('valNameLetters'));
             return false;
         }
         clearError(adSoyadInput);
@@ -146,16 +148,16 @@ if (heroForm) {
         const digits = telefonInput.value.replace(/\D/g, '');
         if (isTurkey) {
             if (digits.length !== 10) {
-                showError(telefonInput, 'Telefon numarası 10 haneli olmalıdır (5XX XXX XX XX).');
+                showError(telefonInput, _tf('valPhoneDigits'));
                 return false;
             }
             if (digits[0] !== '5') {
-                showError(telefonInput, 'Lütfen 5 ile başlayan bir cep telefonu numarası girin.');
+                showError(telefonInput, _tf('valPhoneStart5'));
                 return false;
             }
         } else {
             if (digits.length < 6 || digits.length > 14) {
-                showError(telefonInput, 'Lütfen geçerli bir telefon numarası girin.');
+                showError(telefonInput, _tf('valPhoneInvalid'));
                 return false;
             }
         }
@@ -167,7 +169,7 @@ if (heroForm) {
         const value = epostaInput.value.trim();
         if (value === '') { clearError(epostaInput); return true; }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-            showError(epostaInput, 'Geçerli bir e-posta adresi girin.');
+            showError(epostaInput, _tf('valEmailInvalid'));
             return false;
         }
         clearError(epostaInput);
@@ -176,7 +178,7 @@ if (heroForm) {
 
     const validateIslem = () => {
         if (!islemInput.value) {
-            showError(islemInput, 'Lütfen ilgilendiğiniz işlemi seçin.');
+            showError(islemInput, _tf('valProcedureRequired'));
             return false;
         }
         clearError(islemInput);
@@ -194,7 +196,7 @@ if (heroForm) {
     formRetry?.addEventListener('click', () => {
         heroForm.reset();
         islemInput.value = '';
-        islemText.textContent = 'İlgilendiğiniz İşlem';
+        islemText.textContent = _tf('heroFormProcedure');
         islemText.classList.add('custom-select-placeholder');
         islemList.querySelector('li.active')?.classList.remove('active');
         phoneCodeFlag.src = 'https://flagcdn.com/w20/tr.png';
@@ -214,7 +216,7 @@ if (heroForm) {
         const submitBtn = heroForm.querySelector('.form-submit');
         const submitLabel = submitBtn.querySelector('span:first-child');
         submitBtn.disabled = true;
-        submitLabel.textContent = 'Gönderiliyor...';
+        submitLabel.textContent = _tf('heroFormSending');
         try {
             const formData = new FormData(heroForm);
             formData.set('telefon', `${alanKoduSelect.value} ${telefonInput.value}`);
@@ -223,10 +225,10 @@ if (heroForm) {
                 body: formData,
                 headers: { 'Accept': 'application/json' }
             });
-            if (!response.ok) throw new Error('Gönderim başarısız');
+            if (!response.ok) throw new Error('Send failed');
             heroForm.reset();
             islemInput.value = '';
-            islemText.textContent = 'İlgilendiğiniz İşlem';
+            islemText.textContent = _tf('heroFormProcedure');
             islemText.classList.add('custom-select-placeholder');
             islemList.querySelector('li.active')?.classList.remove('active');
             phoneCodeFlag.src = 'https://flagcdn.com/w20/tr.png';
@@ -235,11 +237,11 @@ if (heroForm) {
             formFields.classList.add('hidden');
             formSuccess.classList.add('visible');
             submitBtn.disabled = false;
-            submitLabel.textContent = 'Bilgi Talep Et';
+            submitLabel.textContent = _tf('heroFormSubmit');
         } catch (err) {
-            submitLabel.textContent = 'Bir hata oluştu, tekrar deneyin';
+            submitLabel.textContent = _tf('heroFormError');
             setTimeout(() => {
-                submitLabel.textContent = 'Bilgi Talep Et';
+                submitLabel.textContent = _tf('heroFormSubmit');
                 submitBtn.disabled = false;
             }, 3000);
         }
@@ -250,7 +252,7 @@ document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
     card.addEventListener('click', () => {
         if (card.classList.contains('video-active')) return;
         const videoId = card.dataset.videoId;
-        const title = card.querySelector('.video-info b')?.textContent || 'Hasta Videosu';
+        const title = card.querySelector('.video-info b')?.textContent || ((typeof i18n !== 'undefined') ? i18n.t('patientVideo') : 'Hasta Videosu');
         card.classList.add('video-active');
         card.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     });
@@ -477,7 +479,9 @@ revealTargets.forEach(el => revealObserver.observe(el));
 // ---------------------------------------------------------------
 function renderBlogPosts() {
     const track = document.getElementById('blogTrack');
-    if (!track || typeof blogPosts === 'undefined') return;
+    const _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
+    const blogPosts = (typeof i18n !== 'undefined') ? i18n.blog() : (typeof window.blogPosts !== 'undefined' ? window.blogPosts : []);
+    if (!track || !blogPosts.length) return;
 
     track.innerHTML = blogPosts.slice(0, 3).map(post => {
         const thumbStyle = post.image
@@ -503,7 +507,7 @@ function renderBlogPosts() {
 ${meta ? `<span class="blog-meta">${meta}</span>` : ''}
 <h4>${post.title}</h4>
 <p>${post.excerpt}</p>
-<span class="read-more-link">Devamını oku</span>
+<span class="read-more-link">${_t('blogReadMore')}</span>
 </div>
 </a>`;
     }).join('');

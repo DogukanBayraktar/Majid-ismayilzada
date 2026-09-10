@@ -27,13 +27,14 @@ function contentBlockHtml(block) {
 }
 
 function renderNotFound(root) {
+  var _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
   root.innerHTML = `
     <section class="article-not-found">
       <div class="wrap">
-        <span class="label" style="display:block;">Hizmet</span>
-        <h2>Aradığınız hizmet bulunamadı</h2>
-        <p>Bu hizmet kaldırılmış ya da bağlantı hatalı olabilir. Tüm hizmetlerimize göz atabilirsiniz.</p>
-        <a href="index.html#services" class="btn btn-cta"><span>Tüm Hizmetlere Dön</span><span class="arrow">→</span></a>
+        <span class="label" style="display:block;">${_t('svcBreadcrumbsSpecialties')}</span>
+        <h2>${_t('svcNotFound')}</h2>
+        <p>${_t('svcNotFoundDesc')}</p>
+        <a href="index.html#services" class="btn btn-cta"><span>${_t('svcBackToServices')}</span><span class="arrow">→</span></a>
       </div>
     </section>`;
 }
@@ -51,20 +52,23 @@ const ICON_RECOVERY = `<svg viewBox="0 0 24 24"><path d="M12 21s-7.2-4.6-9.6-9.2
 //    Arkaplanda hizmet fotoğrafı + sitenin genel gradient stili.
 // =================================================================
 function heroHtml(service) {
+  var _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
   const iconDuration = ICON_DURATION;
   const iconRecovery = ICON_RECOVERY;
   const metaParts = [];
-  if (service.duration) metaParts.push(`<span>${iconDuration}Operasyon süresi: <b>${service.duration}</b></span>`);
-  if (service.recovery) metaParts.push(`<span>${iconRecovery}İyileşme süresi: <b>${service.recovery}</b></span>`);
+  if (service.duration) metaParts.push(`<span>${iconDuration}${_t('svcOpDuration')} <b>${service.duration}</b></span>`);
+  if (service.recovery) metaParts.push(`<span>${iconRecovery}${_t('svcRecovery')} <b>${service.recovery}</b></span>`);
   const metaHtml = metaParts.length ? `<div class="service-meta">${metaParts.join('')}</div>` : '';
 
   const bgStyle = service.cardImage ? ` style="background-image:url('${service.cardImage}');"` : '';
 
   // "İlgilendiğiniz İşlem" seçeneklerinde mevcut hizmet önceden seçili gelir.
   // Seçenekler data/services.js içindeki güncel hizmet başlıklarından üretilir.
-  const procedureBase = (typeof services !== 'undefined' && Array.isArray(services))
-    ? services.map(s => s.title)
-    : [];
+  const procedureBase = (typeof i18n !== 'undefined')
+    ? i18n.services().map(s => s.title)
+    : (typeof services !== 'undefined' && Array.isArray(services))
+      ? services.map(s => s.title)
+      : [];
   const procedureOptions = [...procedureBase, "Diğer"];
   const matchedProcedure = procedureOptions.find(p => p === service.title);
   const procedureOptionsHtml = procedureOptions.map(p =>
@@ -81,14 +85,14 @@ function heroHtml(service) {
       </div>
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <div class="breadcrumb"><a href="index.html">Ana Sayfa</a><span>→</span><a href="index.html#services">Uzmanlık</a><span>→</span><span>${service.category}</span></div>
+          <div class="breadcrumb"><a href="index.html">${_t('svcBreadcrumbsHome')}</a><span>→</span><a href="index.html#services">${_t('svcBreadcrumbsSpecialties')}</a><span>→</span><span>${service.category}</span></div>
           <span class="label">${service.category}</span>
           <h1>${service.title}</h1>
           ${service.excerpt ? `<p class="lead">${service.excerpt}</p>` : ''}
           ${metaHtml}
           <div class="hero-actions">
-            <a href="#service-hero-form" class="btn btn-cta"><span>Ücretsiz Ön Görüşme</span><span class="arrow">→</span></a>
-            <a href="#${service.results && service.results.length ? 'results' : 'videos'}" class="btn">Sonuçları İncele</a>
+            <a href="#service-hero-form" class="btn btn-cta"><span>${_t('svcFreeConsult')}</span><span class="arrow">→</span></a>
+            <a href="#${service.results && service.results.length ? 'results' : 'videos'}" class="btn">${_t('svcViewResults')}</a>
           </div>
         </div>
         <div class="hero-form-wrap" id="service-hero-form">
@@ -100,15 +104,15 @@ function heroHtml(service) {
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
             <div class="form-success">
               <div class="form-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="32" height="32"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <div class="form-success-title">Mesajınız Başarıyla İletildi!</div>
-              <div class="form-success-desc">En kısa sürede sizinle iletişime geçeceğiz.</div>
-              <button type="button" class="form-retry">Tekrar Gönder</button>
+              <div class="form-success-title">${_t('heroFormSuccess')}</div>
+              <div class="form-success-desc">${_t('heroFormSuccessDesc')}</div>
+              <button type="button" class="form-retry">${_t('heroFormRetry')}</button>
             </div>
             <div class="form-fields">
-              <span class="label">Ücretsiz Ön Görüşme</span>
-              <h3>Bilgilerinizi bırakın, size dönelim.</h3>
+              <span class="label">${_t('heroFormLabel')}</span>
+              <h3>${_t('heroFormTitle')}</h3>
               <div class="form-row">
-                <input type="text" id="svcAdSoyad" name="ad_soyad" placeholder="Ad Soyad" autocomplete="name" required>
+                <input type="text" id="svcAdSoyad" name="ad_soyad" placeholder="${_t('heroFormName')}" autocomplete="name" required>
                 <span class="field-error" id="svcAdSoyadError"></span>
               </div>
               <div class="form-row">
@@ -164,18 +168,18 @@ function heroHtml(service) {
                     </ul>
                   </div>
                   <input type="hidden" id="svcAlanKodu" name="alan_kodu" value="+90">
-                  <input type="tel" id="svcTelefon" name="telefon" placeholder="5XX XXX XX XX" autocomplete="tel" inputmode="numeric" maxlength="14" required>
+                  <input type="tel" id="svcTelefon" name="telefon" placeholder="${_t('phonePlaceholderTR')}" autocomplete="tel" inputmode="numeric" maxlength="14" required>
                 </div>
                 <span class="field-error" id="svcTelefonError"></span>
               </div>
               <div class="form-row">
-                <input type="email" id="svcEposta" name="eposta" placeholder="E-posta" autocomplete="email">
+                <input type="email" id="svcEposta" name="eposta" placeholder="${_t('heroFormEmail')}" autocomplete="email">
                 <span class="field-error" id="svcEpostaError"></span>
               </div>
               <div class="form-row">
                 <div class="custom-select" id="svcIslemDropdown">
                   <button type="button" class="custom-select-btn" id="svcIslemBtn" aria-haspopup="listbox" aria-expanded="false">
-                    <span id="svcIslemText" class="${selectedProcedure ? '' : 'custom-select-placeholder'}">${selectedProcedure || 'İlgilendiğiniz İşlem'}</span>
+                    <span id="svcIslemText" class="${selectedProcedure ? '' : 'custom-select-placeholder'}">${selectedProcedure || _t('heroFormProcedure')}</span>
                     <svg class="custom-select-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
                       <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
@@ -187,8 +191,8 @@ function heroHtml(service) {
                 <input type="hidden" id="svcIslem" name="islem" value="${selectedProcedure}" required>
                 <span class="field-error" id="svcIslemError"></span>
               </div>
-              <button type="submit" class="btn btn-cta form-submit"><span>Bilgi Talep Et</span><span class="arrow">→</span></button>
-              <p class="form-note">Bilgileriniz KVKK kapsamında gizli tutulur, üçüncü taraflarla paylaşılmaz.</p>
+              <button type="submit" class="btn btn-cta form-submit"><span>${_t('heroFormSubmit')}</span><span class="arrow">→</span></button>
+              <p class="form-note">${_t('heroFormNote')}</p>
             </div>
           </form>
         </div>
@@ -318,13 +322,14 @@ function initHeroForm(root) {
   });
 
   const validateAdSoyad = () => {
+    var _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
     const value = adSoyadInput.value.trim();
     if (value.length < 3) {
-      showError(adSoyadInput, 'Lütfen adınızı ve soyadınızı girin.');
+      showError(adSoyadInput, _t('valNameRequired'));
       return false;
     }
     if (!/^[A-Za-zÇĞİıÖŞÜçğıöşü\s]+$/.test(value)) {
-      showError(adSoyadInput, 'İsim yalnızca harflerden oluşmalıdır.');
+      showError(adSoyadInput, _t('valNameLetters'));
       return false;
     }
     clearError(adSoyadInput);
@@ -332,20 +337,21 @@ function initHeroForm(root) {
   };
 
   const validateTelefon = () => {
+    var _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
     const isTurkey = alanKoduSelect.value === '+90';
     const digits = telefonInput.value.replace(/\D/g, '');
     if (isTurkey) {
       if (digits.length !== 10) {
-        showError(telefonInput, 'Telefon numarası 10 haneli olmalıdır (5XX XXX XX XX).');
+        showError(telefonInput, _t('valPhoneDigits'));
         return false;
       }
       if (digits[0] !== '5') {
-        showError(telefonInput, 'Lütfen 5 ile başlayan bir cep telefonu numarası girin.');
+        showError(telefonInput, _t('valPhoneStart5'));
         return false;
       }
     } else {
       if (digits.length < 6 || digits.length > 14) {
-        showError(telefonInput, 'Lütfen geçerli bir telefon numarası girin.');
+        showError(telefonInput, _t('valPhoneInvalid'));
         return false;
       }
     }
@@ -463,7 +469,7 @@ function videoGalleryHtml(videos) {
     const photoVar = video.image ? `--photo:url('${video.image}');` : '';
     return `
       <div class="video-card reveal" data-video-id="${videoId}" style="transition-delay:${(i % 6) * 70}ms;${photoVar}">
-        <button class="video-play" aria-label="Videoyu oynat"></button>
+        <button class="video-play" aria-label="${(typeof i18n !== 'undefined') ? i18n.t('videoPlay') : 'Videoyu oynat'}"></button>
         <div class="video-info"><b>${video.name}</b><span>${video.duration}</span></div>
       </div>
     `;
@@ -480,6 +486,7 @@ function resultsGalleryHtml(results) {
 }
 
 function videosHtml(service) {
+  var _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
   const videos = service.videos;
   if (!videos || videos.length === 0) return '';
 
@@ -488,9 +495,9 @@ function videosHtml(service) {
       <div class="wrap">
         <div class="section-head-row">
           <div class="section-head">
-            <span class="label">Hasta Yorumları</span>
-            <h2>Operasyon sonrası kendi sözleriyle.</h2>
-            <p>Operasyondan sonra hastalarımızın kendi sözleriyle deneyimleri.</p>
+            <span class="label">${_t('svcPatientReviews')}</span>
+            <h2>${_t('svcPatientReviewsTitle')}</h2>
+            <p>${_t('svcPatientReviewsDesc')}</p>
           </div>
         </div>
         <div class="video-gallery-wrap">
@@ -507,6 +514,7 @@ function videosHtml(service) {
 }
 
 function resultsHtml(service) {
+  var _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
   const results = service.results;
   if (!results || results.length === 0) return '';
 
@@ -514,9 +522,9 @@ function resultsHtml(service) {
     <section class="service-results" id="results">
       <div class="wrap">
         <div class="section-head">
-          <span class="label">Sonuçlarımız</span>
-          <h2>Öncesi / Sonrası</h2>
-          <p>Gerçekleştirdiğimiz operasyonlardan örnek vakalar.</p>
+          <span class="label">${_t('svcResultsTitle')}</span>
+          <h2>${_t('svcResultsTitle')}</h2>
+          <p>${_t('svcResultsDesc')}</p>
         </div>
         <div class="results-slider-wrap">
           <div class="results-track" data-results-track>
@@ -540,7 +548,7 @@ function initVideosSection(root) {
       if (card.classList.contains('video-active')) return;
       const videoId = card.dataset.videoId;
       if (!videoId) return;
-      const title = card.querySelector('.video-info b')?.textContent || 'Hasta Videosu';
+      const title = card.querySelector('.video-info b')?.textContent || ((typeof i18n !== 'undefined') ? i18n.t('patientVideo') : 'Hasta Videosu');
       card.classList.add('video-active');
       card.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" title="${title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
     });
@@ -633,6 +641,7 @@ function buildCandidacyLists(blocks) {
 }
 
 function candidacyHtml(service) {
+  var _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
   // Admin formundaki "Adaylık Değerlendirmesi" alanından gelen yapılandırılmış
   // veri önceliklidir; yoksa içerikten otomatik ayıklamaya düşülür.
   const custom = service.candidacy && (
@@ -646,22 +655,22 @@ function candidacyHtml(service) {
     suitableList = (service.candidacy.suitable || []).filter(Boolean);
     cautionList = (service.candidacy.notSuitable || []).filter(Boolean);
     introNote = (service.candidacy.note || '').trim();
-    if (suitableList.length === 0) suitableList = ['Muayenede size özel uygunluk değerlendirmesi yapılır.'];
+    if (suitableList.length === 0) suitableList = [_t('svcDefaultCandidateNote')];
   } else {
     const block = extractCandidacyBlock(service);
     const parsed = block ? buildCandidacyLists(block.blocks) : { suitable: [], notSuitable: [], notes: [] };
     const hasLists = parsed.suitable.length > 0 || parsed.notSuitable.length > 0;
     suitableList = hasLists ? parsed.suitable : [
-      'Genel sağlık durumunuz ve beklentileriniz muayenede birlikte değerlendirilir.',
-      'Kişiye özel planlama, ücretsiz ön görüşme sırasında netleştirilir.'
+      _t('svcDefaultSuitable'),
+      _t('svcDefaultSuitable2')
     ];
     introNote = !hasLists
-      ? 'Bu işlem için adaylık kriterleri, kişisel sağlık geçmişiniz ve beklentileriniz doğrultusunda muayenede belirlenir.'
+      ? _t('svcCandidateNote')
       : (parsed.notes[0] || '');
     cautionList = parsed.notSuitable.length > 0 ? parsed.notSuitable : [
-      'Kontrol altında olmayan kronik hastalıklar',
-      'Aktif sigara kullanımı (en az 4 hafta önce bırakılması önerilir)',
-      'Gerçekçi olmayan beklentiler'
+      'Uncontrolled chronic diseases',
+      'Active smoking (recommended to quit at least 4 weeks prior)',
+      'Unrealistic expectations'
     ];
   }
 
@@ -669,29 +678,29 @@ function candidacyHtml(service) {
     <section class="candidacy-section" id="candidacy">
       <div class="wrap">
         <div class="section-head">
-          <span class="label">Adaylık Değerlendirmesi</span>
-          <h2>Kimler Uygundur?</h2>
+          <span class="label">${_t('svcCandidacy')}</span>
+          <h2>${_t('svcCandidacyTitle')}</h2>
           ${introNote ? `<p>${introNote}</p>` : ''}
         </div>
         <div class="candidacy-grid two-col">
           <div class="candidacy-card is-suitable reveal">
             <div class="candidacy-card-head">
               <span class="icon-circle">${ICON_CHECK}</span>
-              <h3>Uygun Adaylar</h3>
+              <h3>${_t('svcSuitableCandidates')}</h3>
             </div>
             <ul>${suitableList.map(i => `<li>${i}</li>`).join('')}</ul>
           </div>
           <div class="candidacy-card is-caution reveal">
             <div class="candidacy-card-head">
               <span class="icon-circle">${ICON_INFO}</span>
-              <h3>Değerlendirilmesi Gereken Durumlar</h3>
+              <h3>${_t('svcConsiderations')}</h3>
             </div>
             <ul>${cautionList.map(i => `<li>${i}</li>`).join('')}</ul>
           </div>
         </div>
         <div class="candidacy-cta">
-          <p>Adaylığınızdan emin değil misiniz? Doç. Dr. Majid İsmayilzada'nın klinik ekibi ücretsiz ön görüşmede sizi kişisel olarak değerlendirsin.</p>
-          <a href="#service-hero-form" class="btn btn-cta"><span>Adaylığımı Öğrenmek İstiyorum</span><span class="arrow">→</span></a>
+          <p>${_t('svcCandidateCTA')}</p>
+          <a href="#service-hero-form" class="btn btn-cta"><span>${_t('svcLearnMore')}</span><span class="arrow">→</span></a>
         </div>
       </div>
     </section>
@@ -708,6 +717,7 @@ const CERRAHI_PHOTOS = [
 ];
 
 function stepsHtml(service) {
+  var _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
   const steps = service.steps;
   if (!steps || steps.length === 0) return '';
 
@@ -738,9 +748,9 @@ function stepsHtml(service) {
     <section class="op-steps">
       <div class="wrap">
         <div class="section-head">
-          <span class="label">Nasıl Uygulanır</span>
-          <h2>Cerrahi Adımlar</h2>
-          <p>Operasyonun her aşaması önceden planlı ve kontrollü şekilde uygulanır.</p>
+          <span class="label">${_t('svcSurgerySteps')}</span>
+          <h2>${_t('svcSurgeryStepsTitle')}</h2>
+          <p>${_t('svcSurgeryStepsDesc')}</p>
         </div>
         <div class="process-layout">
           <div class="process-vertical">
@@ -805,6 +815,7 @@ function initStepPhotoStack(root) {
 // 5) İlgili hizmetler
 // =================================================================
 function relatedCardHtml(service) {
+  var _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
   const cardImg = service.cardImage;
   const thumbStyle = cardImg
     ? ` style="background-image:url('${cardImg}');background-size:cover;background-position:center;"`
@@ -825,7 +836,7 @@ function relatedCardHtml(service) {
         <span>${service.category}</span>
         <h4>${service.title}</h4>
         <p>${service.excerpt}</p>
-        <span class="read-more-link">Detaylı Bilgi</span>
+        <span class="read-more-link">${_t('svcMoreInfo')}</span>
       </div>
     </a>`;
 }
@@ -835,7 +846,8 @@ function relatedCardHtml(service) {
 // ---------------------------------------------------------------
 (function initService() {
   const root = document.getElementById('serviceRoot');
-  if (!root || typeof services === 'undefined') return;
+  const svcData = (typeof i18n !== 'undefined') ? i18n.services() : (typeof services !== 'undefined' ? services : []);
+  if (!root || !svcData.length) return;
 
   // İçerik #serviceRoot'a enjekte edilirken tarayıcı "scroll anchoring" ile
   // görünümü kaydırabilir; bu sıçramayı engelle, sayfa hep en üstten başlasın.
@@ -846,7 +858,7 @@ function relatedCardHtml(service) {
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
-  const service = services.find(s => s.id === id);
+  const service = svcData.find(s => s.id === id);
 
   if (!service) {
     renderNotFound(root);
@@ -860,13 +872,13 @@ function relatedCardHtml(service) {
   const contentHtml = service.contentHtml || (service.content || []).map(contentBlockHtml).join('');
 
   // İlgili hizmetler (mevcut hariç)
-  const related = services.filter(s => s.id !== service.id).slice(0, 3);
+  const related = svcData.filter(s => s.id !== service.id).slice(0, 3);
   const relatedHtml = related.length
     ? `<section class="related-section">
         <div class="wrap">
           <div class="section-head">
-            <h2>İlgili Hizmetler</h2>
-            <p>Diğer hizmetlerimizi keşfetmek için aşağıyı inceleyin.</p>
+            <h2>${(typeof i18n !== 'undefined') ? i18n.t('svcRelatedServices') : 'İlgili Hizmetler'}</h2>
+            <p>${(typeof i18n !== 'undefined') ? i18n.t('svcRelatedDesc') : 'Diğer hizmetlerimizi keşfetmek için aşağıyı inceleyin.'}</p>
           </div>
           <div class="slider-wrap">
             <div class="blog-slider" id="relatedTrack">
@@ -889,7 +901,7 @@ function relatedCardHtml(service) {
       <div class="wrap">
         <div class="section-head">
           <span class="label">${service.category}</span>
-          <h2>${service.title} Hakkında Detaylı Bilgi</h2>
+          <h2>${service.title} ${(typeof i18n !== 'undefined') ? i18n.t('svcDetailedInfo') : 'Hakkında Detaylı Bilgi'}</h2>
         </div>
         <div class="article-body">${contentHtml}</div>
       </div>

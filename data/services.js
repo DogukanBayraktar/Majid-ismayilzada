@@ -1,4 +1,4 @@
-const services = [
+var services = [
   {
     "id": "meme-diklestirme-ve-buyutme",
     "title": "Meme Dikleştirme ve Büyütme",

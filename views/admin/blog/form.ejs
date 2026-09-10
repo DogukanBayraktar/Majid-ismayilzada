@@ -1,9 +1,12 @@
 <%- include('../_head') -%>
 <body data-type="post" class="has-savebar">
-<%- include('../_sidebar', { active: active, backupActive: backupActive }) -%>
+<%- include('../_sidebar', { active: active, backupActive: backupActive, lang: lang }) -%>
 
 <main class="content">
-  <h1><%= isNew ? 'Yeni Yazı Ekle' : 'Yazı Düzenle' %></h1>
+  <div class="page-head">
+    <h1><%= isNew ? 'Yeni Yazı Ekle' : 'Yazı Düzenle' %></h1>
+    <%- include('../_lang-picker') -%>
+  </div>
   <div class="page-sub">
     <% if (isNew) { %>Yeni bir blog yazısı oluşturuyorsunuz.<% } else { %>Kayıt: <strong><%= post.id %></strong><% } %>
   </div>
@@ -13,6 +16,7 @@
   <form method="post" action="/admin/blog/save" id="postForm">
     <input type="hidden" id="id" name="id" value="<%= post.id || '' %>">
     <input type="hidden" name="useJson" id="useJson" value="0">
+    <input type="hidden" name="lang" value="<%= lang || 'tr' %>">
 
     <div id="normalMode">
       <div class="card">
@@ -92,7 +96,7 @@
           <input type="checkbox" id="jsonToggle" onchange="setJsonMode(this.checked, 'post')">
           JSON
         </label>
-        <a href="/admin/blog" class="btn btn-outline">Vazgeç</a>
+        <a href="/admin/blog<%= (lang === 'en') ? '?lang=en' : '' %>" class="btn btn-outline">Vazgeç</a>
         <button type="submit" class="btn">Kaydet</button>
       </div>
     </div>

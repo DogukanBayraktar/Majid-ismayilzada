@@ -6,6 +6,13 @@ const bcrypt = require('bcryptjs');
 
 const router = express.Router();
 
+const LANGUAGES = require('../data/languages');
+
+router.use(function (req, res, next) {
+  res.locals.LANGS = LANGUAGES;
+  next();
+});
+
 const requireAuth = require('../middleware/requireAuth');
 const passStore = require('../utils/passStore');
 const uploader = require('../utils/upload');
@@ -66,33 +73,54 @@ function persist(pathname, contentText, message) {
   return { backup };
 }
 
-function loadServices() {
+// Admin dilini döndürür: varsayılan ilk dil. GET'te ?lang=, POST'ta hidden lang alanı.
+function langOf(req) {
+  const v = (req.body && req.body.lang) || req.query.lang;
+  return LANGUAGES.some(l => l.code === v) ? v : LANGUAGES[0].code;
+}
+
+// Dile göre hangi veri dosyasının ve değişken adının kullanılacağını belirler.
+function targets(lang) {
+  const en = lang === 'en';
+  return {
+    servicesFile: en ? parser.SERVICES_EN_FILE : parser.SERVICES_FILE,
+    servicesVar: en ? 'servicesEn' : 'services',
+    blogFile: en ? parser.BLOG_EN_FILE : parser.BLOG_FILE,
+    blogVar: en ? 'blogPostsEn' : 'blogPosts',
+    siteFile: en ? parser.SITE_EN_FILE : parser.SITE_FILE,
+    siteVar: en ? 'siteSettingsEn' : 'siteSettings',
+    homepageFile: en ? parser.HOMEPAGE_EN_FILE : parser.HOMEPAGE_FILE,
+    homepageVar: en ? 'homepageSettingsEn' : 'homepageSettings'
+  };
+}
+
+function loadServices(filePath, varName) {
   try {
-    return parser.parseServicesFile();
+    return parser.parseServicesFile(filePath, varName);
   } catch (e) {
     return null;
   }
 }
 
-function loadBlog() {
+function loadBlog(filePath, varName) {
   try {
-    return parser.parseBlogFile();
+    return parser.parseBlogFile(filePath, varName);
   } catch (e) {
     return null;
   }
 }
 
-function loadSite() {
+function loadSite(filePath, varName) {
   try {
-    return parser.parseSiteFile();
+    return parser.parseSiteFile(filePath, varName);
   } catch (e) {
     return null;
   }
 }
 
-function loadHomepage() {
+function loadHomepage(filePath, varName) {
   try {
-    return parser.parseHomepageFile();
+    return parser.parseHomepageFile(filePath, varName);
   } catch (e) {
     return null;
   }
@@ -132,9 +160,12 @@ router.get('/', requireAuth, (req, res) => res.redirect('/admin/homepage'));
 // Uzmanlıklar
 // ------------------------------------------------------------------
 router.get('/services', requireAuth, (req, res) => {
-  const services = loadServices();
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const services = loadServices(tg.servicesFile, tg.servicesVar);
   res.render('admin/services/list', {
     active: 'services',
+    lang,
     services,
     loadError: services === null,
     saved: req.query.saved === '1',
@@ -144,8 +175,10 @@ router.get('/services', requireAuth, (req, res) => {
 });
 
 router.get('/services/new', requireAuth, (req, res) => {
+  const lang = langOf(req);
   res.render('admin/services/form', {
     active: 'services',
+    lang,
     isNew: true,
     service: {},
     error: null,
@@ -155,11 +188,14 @@ router.get('/services/new', requireAuth, (req, res) => {
 });
 
 router.get('/services/edit/:id', requireAuth, (req, res) => {
-  const services = loadServices();
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const services = loadServices(tg.servicesFile, tg.servicesVar);
   const service = Array.isArray(services) ? services.find(s => s.id === req.params.id) : null;
-  if (!service) return res.redirect('/admin/services');
+  if (!service) return res.redirect('/admin/services?lang=' + lang);
   res.render('admin/services/form', {
     active: 'services',
+    lang,
     isNew: false,
     service,
     error: null,
@@ -169,6 +205,8 @@ router.get('/services/edit/:id', requireAuth, (req, res) => {
 });
 
 router.post('/services/save', requireAuth, (req, res) => {
+  const lang = langOf(req);
+  const tg = targets(lang);
   let service;
 
   if (req.body.useJson === '1') {
@@ -181,6 +219,7 @@ router.post('/services/save', requireAuth, (req, res) => {
     } catch (e) {
       return res.render('admin/services/form', {
         active: 'services',
+        lang,
         isNew: !req.body.id,
         service: { ...req.body, id: req.body.id },
         error: 'JSON ayrıştırılamadı: ' + e.message,
@@ -227,6 +266,7 @@ router.post('/services/save', requireAuth, (req, res) => {
     if (!service.title) {
       return res.render('admin/services/form', {
         active: 'services',
+        lang,
         isNew: !req.body.id,
         service,
         error: 'Başlık boş olamaz.',
@@ -236,48 +276,53 @@ router.post('/services/save', requireAuth, (req, res) => {
     }
   }
 
-  const services = loadServices();
+  const services = loadServices(tg.servicesFile, tg.servicesVar);
   const idx = Array.isArray(services) ? services.findIndex(s => s.id === service.id) : -1;
   if (idx >= 0) services[idx] = service;
   else services.push(service);
 
-  const serialized = parser.serializeServices(services);
+  const serialized = parser.serializeServices(services, tg.servicesVar);
   let backup = 'skip';
   try {
-    const result = persist(parser.SERVICES_FILE, serialized, 'Yönetim panelinden uzmanlık güncellendi: ' + service.title);
+    const result = persist(tg.servicesFile, serialized, 'Yönetim panelinden uzmanlık güncellendi (' + lang + '): ' + service.title);
     backup = result.backup;
   } catch (e) {
     backup = 'fail';
   }
 
-  res.redirect('/admin/services?saved=1&backup=' + backup);
+  res.redirect('/admin/services?saved=1&backup=' + backup + '&lang=' + lang);
 });
 
 router.post('/services/delete/:id', requireAuth, (req, res) => {
-  const services = loadServices();
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const services = loadServices(tg.servicesFile, tg.servicesVar);
   if (Array.isArray(services)) {
     const next = services.filter(s => String(s.id) !== String(req.params.id));
     if (next.length !== services.length) {
-      const serialized = parser.serializeServices(next);
+      const serialized = parser.serializeServices(next, tg.servicesVar);
       let backup = 'skip';
       try {
-        backup = persist(parser.SERVICES_FILE, serialized, 'Yönetim panelinden uzmanlık silindi: ' + req.params.id).backup;
+        backup = persist(tg.servicesFile, serialized, 'Yönetim panelinden uzmanlık silindi (' + lang + '): ' + req.params.id).backup;
       } catch (e) {
         backup = 'fail';
       }
-      return res.redirect('/admin/services?backup=' + backup);
+      return res.redirect('/admin/services?backup=' + backup + '&lang=' + lang);
     }
   }
-  res.redirect('/admin/services');
+  res.redirect('/admin/services?lang=' + lang);
 });
 
 // ------------------------------------------------------------------
 // Blog
 // ------------------------------------------------------------------
 router.get('/blog', requireAuth, (req, res) => {
-  const posts = loadBlog();
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const posts = loadBlog(tg.blogFile, tg.blogVar);
   res.render('admin/blog/list', {
     active: 'blog',
+    lang,
     posts,
     loadError: posts === null,
     saved: req.query.saved === '1',
@@ -287,8 +332,10 @@ router.get('/blog', requireAuth, (req, res) => {
 });
 
 router.get('/blog/new', requireAuth, (req, res) => {
+  const lang = langOf(req);
   res.render('admin/blog/form', {
     active: 'blog',
+    lang,
     isNew: true,
     post: {},
     error: null,
@@ -298,11 +345,14 @@ router.get('/blog/new', requireAuth, (req, res) => {
 });
 
 router.get('/blog/edit/:id', requireAuth, (req, res) => {
-  const posts = loadBlog();
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const posts = loadBlog(tg.blogFile, tg.blogVar);
   const post = Array.isArray(posts) ? posts.find(p => p.id === req.params.id) : null;
-  if (!post) return res.redirect('/admin/blog');
+  if (!post) return res.redirect('/admin/blog?lang=' + lang);
   res.render('admin/blog/form', {
     active: 'blog',
+    lang,
     isNew: false,
     post,
     error: null,
@@ -312,6 +362,8 @@ router.get('/blog/edit/:id', requireAuth, (req, res) => {
 });
 
 router.post('/blog/save', requireAuth, (req, res) => {
+  const lang = langOf(req);
+  const tg = targets(lang);
   let post;
 
   if (req.body.useJson === '1') {
@@ -324,6 +376,7 @@ router.post('/blog/save', requireAuth, (req, res) => {
     } catch (e) {
       return res.render('admin/blog/form', {
         active: 'blog',
+        lang,
         isNew: !req.body.id,
         post: { ...req.body, id: req.body.id },
         error: 'JSON ayrıştırılamadı: ' + e.message,
@@ -348,6 +401,7 @@ router.post('/blog/save', requireAuth, (req, res) => {
     if (!post.title) {
       return res.render('admin/blog/form', {
         active: 'blog',
+        lang,
         isNew: !req.body.id,
         post,
         error: 'Başlık boş olamaz.',
@@ -357,47 +411,54 @@ router.post('/blog/save', requireAuth, (req, res) => {
     }
   }
 
-  const posts = loadBlog();
+  const posts = loadBlog(tg.blogFile, tg.blogVar);
   const idx = Array.isArray(posts) ? posts.findIndex(p => p.id === post.id) : -1;
   if (idx >= 0) posts[idx] = post;
   else posts.push(post);
 
-  const serialized = parser.serializeBlog(posts, parser.readText(parser.BLOG_FILE));
+  const originalText = parser.readText(tg.blogFile);
+  const serialized = parser.serializeBlog(posts, originalText, tg.blogVar);
   let backup = 'skip';
   try {
-    backup = persist(parser.BLOG_FILE, serialized, 'Yönetim panelinden blog güncellendi: ' + post.title).backup;
+    backup = persist(tg.blogFile, serialized, 'Yönetim panelinden blog güncellendi (' + lang + '): ' + post.title).backup;
   } catch (e) {
     backup = 'fail';
   }
 
-  res.redirect('/admin/blog?saved=1&backup=' + backup);
+  res.redirect('/admin/blog?saved=1&backup=' + backup + '&lang=' + lang);
 });
 
 router.post('/blog/delete/:id', requireAuth, (req, res) => {
-  const posts = loadBlog();
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const posts = loadBlog(tg.blogFile, tg.blogVar);
   if (Array.isArray(posts)) {
     const next = posts.filter(p => String(p.id) !== String(req.params.id));
     if (next.length !== posts.length) {
-      const serialized = parser.serializeBlog(next, parser.readText(parser.BLOG_FILE));
+      const originalText = parser.readText(tg.blogFile);
+      const serialized = parser.serializeBlog(next, originalText, tg.blogVar);
       let backup = 'skip';
       try {
-        backup = persist(parser.BLOG_FILE, serialized, 'Yönetim panelinden blog silindi: ' + req.params.id).backup;
+        backup = persist(tg.blogFile, serialized, 'Yönetim panelinden blog silindi (' + lang + '): ' + req.params.id).backup;
       } catch (e) {
         backup = 'fail';
       }
-      return res.redirect('/admin/blog?backup=' + backup);
+      return res.redirect('/admin/blog?backup=' + backup + '&lang=' + lang);
     }
   }
-  res.redirect('/admin/blog');
+  res.redirect('/admin/blog?lang=' + lang);
 });
 
 // ------------------------------------------------------------------
 // Site Ayarları (iletişim, CTA, footer)
 // ------------------------------------------------------------------
 router.get('/settings', requireAuth, (req, res) => {
-  const settings = loadSite();
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const settings = loadSite(tg.siteFile, tg.siteVar);
   res.render('admin/settings', {
     active: 'settings',
+    lang,
     settings,
     loadError: settings === null,
     saved: req.query.saved === '1',
@@ -407,7 +468,9 @@ router.get('/settings', requireAuth, (req, res) => {
 });
 
 router.post('/settings/save', requireAuth, (req, res) => {
-  const current = loadSite() || {};
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const current = loadSite(tg.siteFile, tg.siteVar) || {};
 
   const trims = [
     'phone', 'whatsappLink',
@@ -455,24 +518,27 @@ router.post('/settings/save', requireAuth, (req, res) => {
     }).filter(c => c.title);
   }
 
-  const serialized = parser.serializeSite(current);
+  const serialized = parser.serializeSite(current, tg.siteVar);
   let backup = 'skip';
   try {
-    backup = persist(parser.SITE_FILE, serialized, 'Yönetim panelinden site ayarları güncellendi').backup;
+    backup = persist(tg.siteFile, serialized, 'Yönetim panelinden site ayarları güncellendi (' + lang + ')').backup;
   } catch (e) {
     backup = 'fail';
   }
 
-  res.redirect('/admin/settings?saved=1&backup=' + backup);
+  res.redirect('/admin/settings?saved=1&backup=' + backup + '&lang=' + lang);
 });
 
 // ------------------------------------------------------------------
 // Genel Ayarlar (logo, çalışma saatleri, SEO başlık/açıklama)
 // ------------------------------------------------------------------
 router.get('/site', requireAuth, (req, res) => {
-  const settings = loadSite();
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const settings = loadSite(tg.siteFile, tg.siteVar);
   res.render('admin/site', {
     active: 'site',
+    lang,
     settings,
     loadError: settings === null,
     saved: req.query.saved === '1',
@@ -482,29 +548,34 @@ router.get('/site', requireAuth, (req, res) => {
 });
 
 router.post('/site/save', requireAuth, (req, res) => {
-  const current = loadSite() || {};
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const current = loadSite(tg.siteFile, tg.siteVar) || {};
 
   const trims = ['logo', 'workingHours', 'seoTitle', 'seoDescription'];
   trims.forEach(k => { current[k] = (req.body[k] || '').toString().trim(); });
 
-  const serialized = parser.serializeSite(current);
+  const serialized = parser.serializeSite(current, tg.siteVar);
   let backup = 'skip';
   try {
-    backup = persist(parser.SITE_FILE, serialized, 'Yönetim panelinden genel ayarlar güncellendi').backup;
+    backup = persist(tg.siteFile, serialized, 'Yönetim panelinden genel ayarlar güncellendi (' + lang + ')').backup;
   } catch (e) {
     backup = 'fail';
   }
 
-  res.redirect('/admin/site?saved=1&backup=' + backup);
+  res.redirect('/admin/site?saved=1&backup=' + backup + '&lang=' + lang);
 });
 
 // ------------------------------------------------------------------
 // İletişim (sitede gösterilen iletişim bilgileri)
 // ------------------------------------------------------------------
 router.get('/iletisim', requireAuth, (req, res) => {
-  const settings = loadSite();
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const settings = loadSite(tg.siteFile, tg.siteVar);
   res.render('admin/contact', {
     active: 'iletisim',
+    lang,
     settings,
     loadError: settings === null,
     saved: req.query.saved === '1',
@@ -514,29 +585,34 @@ router.get('/iletisim', requireAuth, (req, res) => {
 });
 
 router.post('/iletisim/save', requireAuth, (req, res) => {
-  const current = loadSite() || {};
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const current = loadSite(tg.siteFile, tg.siteVar) || {};
 
   const trims = ['email', 'address', 'mapsLink', 'instagram', 'facebook', 'youtube'];
   trims.forEach(k => { current[k] = (req.body[k] || '').toString().trim(); });
 
-  const serialized = parser.serializeSite(current);
+  const serialized = parser.serializeSite(current, tg.siteVar);
   let backup = 'skip';
   try {
-    backup = persist(parser.SITE_FILE, serialized, 'Yönetim panelinden iletişim bilgileri güncellendi').backup;
+    backup = persist(tg.siteFile, serialized, 'Yönetim panelinden iletişim bilgileri güncellendi (' + lang + ')').backup;
   } catch (e) {
     backup = 'fail';
   }
 
-  res.redirect('/admin/iletisim?saved=1&backup=' + backup);
+  res.redirect('/admin/iletisim?saved=1&backup=' + backup + '&lang=' + lang);
 });
 
 // ------------------------------------------------------------------
 // Ana Sayfa İçerikleri
 // ------------------------------------------------------------------
 router.get('/homepage', requireAuth, (req, res) => {
-  const hp = loadHomepage();
+  const lang = langOf(req);
+  const tg = targets(lang);
+  const hp = loadHomepage(tg.homepageFile, tg.homepageVar);
   res.render('admin/homepage', {
     active: 'homepage',
+    lang,
     hp,
     loadError: hp === null,
     saved: req.query.saved === '1',
@@ -547,6 +623,8 @@ router.get('/homepage', requireAuth, (req, res) => {
 });
 
 router.post('/homepage/save', requireAuth, (req, res) => {
+  const lang = langOf(req);
+  const tg = targets(lang);
   let hp;
   if (req.body.useJson === '1') {
     try {
@@ -554,6 +632,7 @@ router.post('/homepage/save', requireAuth, (req, res) => {
     } catch (e) {
       return res.render('admin/homepage', {
         active: 'homepage',
+        lang,
         hp: {},
         loadError: false,
         saved: false,
@@ -661,15 +740,15 @@ router.post('/homepage/save', requireAuth, (req, res) => {
     };
   }
 
-  const serialized = parser.serializeHomepage(hp);
+  const serialized = parser.serializeHomepage(hp, tg.homepageVar);
   let backup = 'skip';
   try {
-    const result = persist(parser.HOMEPAGE_FILE, serialized, 'Yönetim panelinden ana sayfa içerikleri güncellendi');
+    const result = persist(tg.homepageFile, serialized, 'Yönetim panelinden ana sayfa içerikleri güncellendi (' + lang + ')');
     backup = result.backup;
   } catch (e) {
     backup = 'fail';
   }
-  res.redirect('/admin/homepage?saved=1&backup=' + backup);
+  res.redirect('/admin/homepage?saved=1&backup=' + backup + '&lang=' + lang);
 });
 
 // ------------------------------------------------------------------
@@ -696,8 +775,10 @@ router.post('/upload', requireAuth, uploader.single('file'), (req, res) => {
 // Güvenlik (şifre değiştirme)
 // ------------------------------------------------------------------
 router.get('/security', requireAuth, (req, res) => {
+  const lang = langOf(req);
   res.render('admin/security', {
     active: 'security',
+    lang,
     saved: req.query.saved === '1',
     error: null,
     users: passStore.listUsers(),

@@ -27,6 +27,7 @@ function hrefFor(post) {
 }
 
 function relatedCardHtml(post) {
+    const _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
     const thumbStyle = post.image
         ? ` style="background-image:url('${post.image}');background-size:cover;background-position:center;"`
         : '';
@@ -39,7 +40,7 @@ function relatedCardHtml(post) {
 ${meta ? `<span class="blog-meta">${meta}</span>` : ''}
 <h4>${post.title}</h4>
 <p>${post.excerpt}</p>
-<span class="read-more-link">Devamını oku</span>
+<span class="read-more-link">${_t('blogReadMore')}</span>
 </div>
 </a>`;
 }
@@ -51,20 +52,23 @@ function contentBlockHtml(block) {
 }
 
 function renderNotFound(root) {
+    const _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
     root.innerHTML = `
 <section class="article-not-found">
 <div class="wrap">
 <span class="label" style="display:block;">Blog</span>
-<h2>Aradığınız yazı bulunamadı</h2>
-<p>Bu yazı kaldırılmış ya da bağlantı hatalı olabilir. Tüm yazılarımıza göz atabilirsiniz.</p>
-<a href="blog.html" class="btn btn-cta"><span>Tüm Yazılara Dön</span><span class="arrow">→</span></a>
+<h2>${_t('blogNotFound')}</h2>
+<p>${_t('blogNotFoundDesc')}</p>
+<a href="blog.html" class="btn btn-cta"><span>${_t('blogBackToAll')}</span><span class="arrow">\u2192</span></a>
 </div>
 </section>`;
 }
 
 (function initArticle() {
     const root = document.getElementById('articleRoot');
-    if (!root || typeof blogPosts === 'undefined') return;
+    const _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
+    const blogPosts = (typeof i18n !== 'undefined') ? i18n.blog() : (typeof window.blogPosts !== 'undefined' ? window.blogPosts : []);
+    if (!root || !blogPosts.length) return;
 
     document.body.style.overflowAnchor = 'none';
     if (window.history && 'scrollRestoration' in window.history) {
@@ -80,7 +84,7 @@ function renderNotFound(root) {
         return;
     }
 
-    document.getElementById('pageTitle').textContent = `${post.title} — Doç. Dr. Majid İsmayilzada`;
+    document.getElementById('pageTitle').textContent = `${post.title} \u2014 ${_t('siteTitleDoc')}`;
     const descEl = document.getElementById('pageDescription');
     if (descEl) descEl.setAttribute('content', post.excerpt || '');
 
@@ -97,8 +101,8 @@ function renderNotFound(root) {
         ? `<section class="related-section">
 <div class="wrap">
 <div class="section-head">
-<h2>Sonraki Yazılar</h2>
-<p>İlgili konuları keşfetmek için diğer yazılarımızı okuyun.</p>
+<h2>${_t('blogRelatedTitle')}</h2>
+<p>${_t('blogRelatedDesc')}</p>
 </div>
 <div class="slider-wrap">
 <div class="blog-slider" id="relatedTrack">
@@ -112,7 +116,7 @@ ${related.map(relatedCardHtml).join('')}
     root.innerHTML = `
 <section class="article-hero">
 <div class="wrap">
-<div class="breadcrumb"><a href="index.html">Ana Sayfa</a><span>→</span><a href="blog.html">Blog</a><span>→</span><span>${post.category}</span></div>
+<div class="breadcrumb"><a href="index.html">${_t('navHome')}</a><span>\u2192</span><a href="blog.html">${_t('navBlog')}</a><span>\u2192</span><span>${post.category}</span></div>
 <div class="section-head">
 <span class="label">${post.category}</span>
 <h2>${post.title}</h2>
@@ -130,7 +134,7 @@ ${post.excerpt ? `<p>${post.excerpt}</p>` : ''}
 <div class="wrap">
 <div class="article-body">${contentHtml}</div>
 <div class="article-share">
-<a href="blog.html" class="back-link">← Tüm Yazılara Dön</a>
+<a href="blog.html" class="back-link">\u2190 ${_t('blogBackToAll')}</a>
 <span class="tag-pill">${post.category}</span>
 </div>
 </div>

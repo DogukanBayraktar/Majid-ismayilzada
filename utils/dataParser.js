@@ -9,6 +9,12 @@ const BLOG_FILE = path.join(DATA_DIR, 'blog-posts.js');
 const SITE_FILE = path.join(DATA_DIR, 'site.js');
 const HOMEPAGE_FILE = path.join(DATA_DIR, 'homepage.js');
 
+// İngilizce veri dosyaları (data/*-en.js) — admin panelindeki EN sekmesi bunları yönetir.
+const SERVICES_EN_FILE = path.join(DATA_DIR, 'services-en.js');
+const BLOG_EN_FILE = path.join(DATA_DIR, 'blog-posts-en.js');
+const SITE_EN_FILE = path.join(DATA_DIR, 'site-en.js');
+const HOMEPAGE_EN_FILE = path.join(DATA_DIR, 'homepage-en.js');
+
 function readText(filePath) {
   return fs.readFileSync(filePath, 'utf-8');
 }
@@ -24,46 +30,46 @@ function evalArray(src, varName) {
   return fn();
 }
 
-function parseServicesFile(filePath) {
-  return evalArray(readText(filePath || SERVICES_FILE), 'services');
+function parseServicesFile(filePath, varName) {
+  return evalArray(readText(filePath || SERVICES_FILE), varName || 'services');
 }
 
-function parseBlogFile(filePath) {
-  return evalArray(readText(filePath || BLOG_FILE), 'blogPosts');
+function parseBlogFile(filePath, varName) {
+  return evalArray(readText(filePath || BLOG_FILE), varName || 'blogPosts');
 }
 
-function parseSiteFile(filePath) {
-  return evalArray(readText(filePath || SITE_FILE), 'siteSettings');
+function parseSiteFile(filePath, varName) {
+  return evalArray(readText(filePath || SITE_FILE), varName || 'siteSettings');
 }
 
-function parseHomepageFile(filePath) {
-  return evalArray(readText(filePath || HOMEPAGE_FILE), 'homepageSettings');
+function parseHomepageFile(filePath, varName) {
+  return evalArray(readText(filePath || HOMEPAGE_FILE), varName || 'homepageSettings');
 }
 
 // Blog dosyasının başındaki açıklama (yorum) bloğunu korur.
-function blogCommentPrefix(text) {
-  const i = text.indexOf('const blogPosts');
+function blogCommentPrefix(text, varName) {
+  const i = text.indexOf('const ' + (varName || 'blogPosts'));
   return i > 0 ? text.slice(0, i) : '';
 }
 
-function serializeServices(data) {
-  return 'const services = ' + JSON.stringify(data, null, 2) + ';\n';
+function serializeServices(data, varName) {
+  return 'const ' + (varName || 'services') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
 }
 
-function serializeBlog(data, originalText) {
-  const prefix = originalText ? blogCommentPrefix(originalText) : '';
-  return prefix + 'const blogPosts = ' + JSON.stringify(data, null, 2) + ';\n';
+function serializeBlog(data, originalText, varName) {
+  const prefix = originalText ? blogCommentPrefix(originalText, varName) : '';
+  return prefix + 'const ' + (varName || 'blogPosts') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
 }
 
-function serializeSite(data) {
+function serializeSite(data, varName) {
   return '// Sitenin düzenlenebilir genel ayarları (menü, iletişim, CTA, footer).\n' +
     '// Bu dosya /admin/settings üzerinden güncellenir; kaydedince site otomatik yenilenir.\n\n' +
-    'const siteSettings = ' + JSON.stringify(data, null, 2) + ';\n';
+    'const ' + (varName || 'siteSettings') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
 }
 
-function serializeHomepage(data) {
+function serializeHomepage(data, varName) {
   return '// Ana sayfa içerikleri — bu dosya /admin/homepage üzerinden güncellenir.\n' +
-    'const homepageSettings = ' + JSON.stringify(data, null, 2) + ';\n';
+    'const ' + (varName || 'homepageSettings') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
 }
 
 // Üretilen JS'in sözdizimi hatasız olduğunu doğrular.
@@ -77,6 +83,10 @@ module.exports = {
   BLOG_FILE,
   SITE_FILE,
   HOMEPAGE_FILE,
+  SERVICES_EN_FILE,
+  BLOG_EN_FILE,
+  SITE_EN_FILE,
+  HOMEPAGE_EN_FILE,
   readText,
   writeText,
   parseServicesFile,

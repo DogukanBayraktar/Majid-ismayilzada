@@ -1,9 +1,12 @@
 <%- include('./_head') -%>
 <body class="has-savebar">
-<%- include('./_sidebar', { active: active, backupActive: backupActive }) -%>
+<%- include('./_sidebar', { active: active, backupActive: backupActive, lang: lang }) -%>
 
 <main class="content">
-  <h1>Genel Ayarlar</h1>
+  <div class="page-head">
+    <h1>Genel Ayarlar</h1>
+    <%- include('./_lang-picker') -%>
+  </div>
   <div class="page-sub">Logo, çalışma saatleri ve SEO başlık/açıklama. Bu ayarlar sitede tüm sayfalara otomatik uygulanır; mesaj ve CTA metinleri için <strong>Site Ayarları</strong>, iletişim bilgileri için <strong>İletişim</strong> sayfasını kullanın.</div>
 
   <% if (loadError) { %>
@@ -15,6 +18,7 @@
     <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu.</div><% } %>
 
     <form method="post" action="/admin/site/save" id="siteForm">
+      <input type="hidden" name="lang" value="<%= lang || 'tr' %>">
       <div class="card">
         <h2>Logo</h2>
         <div class="page-sub">Üst menü ve footer'daki logo. Görsel seçmek için "Yükle" butonunu kullanın.</div>
@@ -55,7 +59,7 @@
           <small>Değişiklikler "Kaydet" ile kaydedilir</small>
         </div>
         <div class="sb-actions">
-          <a href="/admin/services" class="btn btn-outline">Vazgeç</a>
+          <a href="/admin/site<%= (lang === 'en') ? '?lang=en' : '' %>" class="btn btn-outline">Vazgeç</a>
           <button type="submit" class="btn">Kaydet</button>
         </div>
       </div>

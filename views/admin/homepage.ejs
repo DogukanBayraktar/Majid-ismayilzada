@@ -1,9 +1,12 @@
 <%- include('./_head') -%>
 <body class="has-savebar">
-<%- include('./_sidebar', { active: active, backupActive: backupActive }) -%>
+<%- include('./_sidebar', { active: active, backupActive: backupActive, lang: lang }) -%>
 
 <main class="content">
-  <h1>Ana Sayfa İçerikleri</h1>
+  <div class="page-head">
+    <h1>Ana Sayfa İçerikleri</h1>
+    <%- include('./_lang-picker') -%>
+  </div>
   <div class="page-sub">Hero, Hakkımda, Uzmanlık, İstanbul, Hastane, SSS, İletişim ve tüm ana sayfa bölümleri.</div>
 
   <%
@@ -31,6 +34,7 @@
     <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu.</div><% } %>
 
     <form method="post" action="/admin/homepage/save" id="hpForm">
+      <input type="hidden" name="lang" value="<%= lang || 'tr' %>">
       <input type="hidden" name="useJson" id="useJson" value="0">
 
       <!-- JSON Mode -->
@@ -313,7 +317,7 @@
         <div class="sb-actions">
           <label class="json-toggle">
             <input type="checkbox" id="jsonToggle" onchange="setHomepageJson(this.checked)" title="Gelişmiş: tüm veriyi JSON olarak düzenle">JSON</label>
-          <a href="/admin/services" class="btn btn-outline">Vazgeç</a>
+          <a href="/admin/homepage<%= (lang === 'en') ? '?lang=en' : '' %>" class="btn btn-outline">Vazgeç</a>
           <button type="submit" class="btn">Kaydet</button>
         </div>
       </div>
