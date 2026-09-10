@@ -44,7 +44,8 @@ var homepageSettings = {
   "servicesSection": {
     "label": "Uzmanlık Alanları",
     "title": "Her operasyon, kişiye özel bir plandır.",
-    "description": "Yüz, burun ve vücut estetiğinde, konsültasyondan iyileşme sürecine kadar bütünsel bir yaklaşım."
+    "description": "Yüz, burun ve vücut estetiğinde, konsültasyondan iyileşme sürecine kadar bütünsel bir yaklaşım.",
+    "ctaText": "Tümünü Gör"
   },
   "results": {
     "label": "Öncesi / Sonrası",
@@ -468,6 +469,12 @@ var homepageSettings = {
         "answer": "Genel örnekleri sitemizde bulabilirsiniz; kapsamlı galeri gizlilik nedeniyle konsültasyon sonrası paylaşılır."
       }
     ]
+  },
+  "blog": {
+    "label": "Blog",
+    "title": "Merak ettikleriniz için rehber içerikler.",
+    "description": "Rinoplastiden meme rekonstrüksiyonuna, konsültasyondan iyileşmeye kadar bilgilendirici yazılar.",
+    "ctaText": "Tümünü Gör"
   },
   "thankYou": {
     "title": "Mesajınız Başarıyla İletildi!",

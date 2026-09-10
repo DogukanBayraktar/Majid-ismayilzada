@@ -10,6 +10,8 @@
     if (!grid || !Array.isArray(svcData) || !svcData.length) return;
     var section = grid.closest('section');
     fillSectionHead(section, hp.servicesSection);
+    var cta = section.querySelector('.head-actions .btn');
+    if (cta && hp.servicesSection && hp.servicesSection.ctaText) cta.textContent = hp.servicesSection.ctaText;
     grid.innerHTML = svcData.map(function (s) {
       var img = s.cardImage || '';
       var title = s.title || '';
@@ -300,6 +302,17 @@
     }
   }
 
+  // --- Blog Bölümü ---
+  function renderBlog() {
+    var b = hp.blog;
+    if (!b) return;
+    var section = document.getElementById('blog');
+    if (!section) return;
+    fillSectionHead(section, b);
+    var cta = section.querySelector('.head-actions .btn');
+    if (cta && b.ctaText) cta.textContent = b.ctaText;
+  }
+
   // Başlangıç
   function init() {
     renderHero();
@@ -314,6 +327,7 @@
     renderFaq();
     renderIstanbul();
     renderCertificates();
+    renderBlog();
     renderThankYou();
   }
 

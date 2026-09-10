@@ -190,6 +190,8 @@
 
     var breadcrumb = document.querySelector('.breadcrumb');
     var sectionHead = document.querySelector('.page-hero .section-head');
+    var isBlogPage = /blog\.html/i.test(location.pathname);
+    var isServicesPage = /uzmanliklar\.html/i.test(location.pathname);
     if (breadcrumb) {
       var homeLink = breadcrumb.querySelector('a[href="index.html"]');
       if (homeLink) homeLink.textContent = t('navHome');
@@ -198,9 +200,19 @@
       var label = sectionHead.querySelector('.label');
       var h2 = sectionHead.querySelector('h2');
       var p = sectionHead.querySelector('p');
-      if (label) label.textContent = t('navContact');
-      if (h2) h2.textContent = t('contactHeroTitle');
-      if (p) p.textContent = t('contactHeroDesc');
+      if (isBlogPage) {
+        if (label) label.textContent = t('navBlog');
+        if (h2) h2.textContent = t('blogHeroTitle');
+        if (p) p.textContent = t('blogHeroDesc');
+      } else if (isServicesPage) {
+        if (label) label.textContent = t('svcHeroLabel');
+        if (h2) h2.textContent = t('svcHeroTitle');
+        if (p) p.textContent = t('svcHeroDesc');
+      } else {
+        if (label) label.textContent = t('navContact');
+        if (h2) h2.textContent = t('contactHeroTitle');
+        if (p) p.textContent = t('contactHeroDesc');
+      }
     }
 
     var contactCards = document.querySelectorAll('.contact-info-stack .cred-card');
