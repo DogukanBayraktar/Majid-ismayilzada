@@ -163,7 +163,21 @@ var translations = {
     
     // Nav links
     navHome: 'Ana Sayfa',
-    siteTitleDoc: 'Doç. Dr. Majid İsmayilzada'
+    siteTitleDoc: 'Doç. Dr. Majid İsmayilzada',
+
+    // Kurumsal / legal sayfalar
+    legalKvkkCrumb: 'KVKK Aydınlatma Metni',
+    legalKvkkLabel: 'KVKK Aydınlatma Metni',
+    legalKvkkTitle: 'Kişisel Verilerin Korunması',
+    legalKvkkDesc: '6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında aydınlatma metnimiz.',
+    legalHastaCrumb: 'Hasta Hakları',
+    legalHastaLabel: 'Hasta Hakları',
+    legalHastaTitle: 'Hasta Hakları Bildirgesi',
+    legalHastaDesc: 'Sağlık hizmeti alırken sahip olduğunuz haklar ve yükümlülükler.',
+    legalGizlilikCrumb: 'Gizlilik Politikası',
+    legalGizlilikLabel: 'Gizlilik Politikası',
+    legalGizlilikTitle: 'Gizlilik Politikamız',
+    legalGizlilikDesc: 'Web sitemizi ziyaret ederken ve hizmetlerimizi kullanırken kişisel verilerinizin nasıl korunduğu.'
   },
   en: {
     // Nav
@@ -329,6 +343,20 @@ var translations = {
     
     // Nav links
     navHome: 'Home',
-    siteTitleDoc: 'Assoc. Prof. Dr. Majid Ismayilzada'
+    siteTitleDoc: 'Assoc. Prof. Dr. Majid Ismayilzada',
+
+    // Legal pages
+    legalKvkkCrumb: 'KVKK Privacy Notice',
+    legalKvkkLabel: 'KVKK Privacy Notice',
+    legalKvkkTitle: 'Protection of Personal Data',
+    legalKvkkDesc: 'Our privacy notice under the Turkish Law No. 6698 on the Protection of Personal Data.',
+    legalHastaCrumb: 'Patient Rights',
+    legalHastaLabel: 'Patient Rights',
+    legalHastaTitle: 'Patient Rights Declaration',
+    legalHastaDesc: 'Your rights and obligations when receiving healthcare services.',
+    legalGizlilikCrumb: 'Privacy Policy',
+    legalGizlilikLabel: 'Privacy Policy',
+    legalGizlilikTitle: 'Our Privacy Policy',
+    legalGizlilikDesc: 'How your personal data is protected when you visit our website and use our services.'
   }
 };

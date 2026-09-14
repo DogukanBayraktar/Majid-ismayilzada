@@ -192,9 +192,21 @@
     var sectionHead = document.querySelector('.page-hero .section-head');
     var isBlogPage = /blog\.html/i.test(location.pathname);
     var isServicesPage = /uzmanliklar\.html/i.test(location.pathname);
+    var isKvkkPage = /kvkk\.html/i.test(location.pathname);
+    var isHastaPage = /hasta-haklari\.html/i.test(location.pathname);
+    var isGizlilikPage = /gizlilik-politikasi\.html/i.test(location.pathname);
     if (breadcrumb) {
       var homeLink = breadcrumb.querySelector('a[href="index.html"]');
       if (homeLink) homeLink.textContent = t('navHome');
+      var crumbLabel = breadcrumb.querySelector('span:last-child');
+      if (crumbLabel) {
+        if (isKvkkPage) crumbLabel.textContent = t('legalKvkkCrumb');
+        else if (isHastaPage) crumbLabel.textContent = t('legalHastaCrumb');
+        else if (isGizlilikPage) crumbLabel.textContent = t('legalGizlilikCrumb');
+        else if (isServicesPage) crumbLabel.textContent = t('navSpecialties');
+        else if (isBlogPage) crumbLabel.textContent = t('navBlog');
+        else crumbLabel.textContent = t('navContact');
+      }
     }
     if (sectionHead) {
       var label = sectionHead.querySelector('.label');
@@ -208,6 +220,18 @@
         if (label) label.textContent = t('svcHeroLabel');
         if (h2) h2.textContent = t('svcHeroTitle');
         if (p) p.textContent = t('svcHeroDesc');
+      } else if (isKvkkPage) {
+        if (label) label.textContent = t('legalKvkkLabel');
+        if (h2) h2.textContent = t('legalKvkkTitle');
+        if (p) p.textContent = t('legalKvkkDesc');
+      } else if (isHastaPage) {
+        if (label) label.textContent = t('legalHastaLabel');
+        if (h2) h2.textContent = t('legalHastaTitle');
+        if (p) p.textContent = t('legalHastaDesc');
+      } else if (isGizlilikPage) {
+        if (label) label.textContent = t('legalGizlilikLabel');
+        if (h2) h2.textContent = t('legalGizlilikTitle');
+        if (p) p.textContent = t('legalGizlilikDesc');
       } else {
         if (label) label.textContent = t('navContact');
         if (h2) h2.textContent = t('contactHeroTitle');
