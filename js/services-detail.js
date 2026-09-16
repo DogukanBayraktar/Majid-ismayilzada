@@ -69,7 +69,7 @@ function heroHtml(service) {
     : (typeof services !== 'undefined' && Array.isArray(services))
       ? services.map(s => s.title)
       : [];
-  const procedureOptions = [...procedureBase, "Diğer"];
+  const procedureOptions = [...procedureBase, _t('heroFormProcedureOther')];
   const matchedProcedure = procedureOptions.find(p => p === service.title);
   const procedureOptionsHtml = procedureOptions.map(p =>
     `<li role="option" data-value="${p}"${p === matchedProcedure ? ' class="active"' : ''}>${p}</li>`
@@ -202,6 +202,7 @@ function heroHtml(service) {
 }
 
 function initHeroForm(root) {
+  var _t = (typeof i18n !== 'undefined') ? i18n.t : function(k){return k;};
   const heroForm = root.querySelector('#serviceHeroForm');
   if (!heroForm) return;
 
@@ -249,7 +250,7 @@ function initHeroForm(root) {
       phoneCodeText.textContent = code;
       closePhoneCodeList();
       telefonInput.value = '';
-      telefonInput.placeholder = code === '+90' ? '5XX XXX XX XX' : 'Telefon numarası';
+      telefonInput.placeholder = code === '+90' ? _t('phonePlaceholderTR') : _t('phonePlaceholderInt');
       clearError(telefonInput);
       telefonInput.focus();
     });
@@ -363,7 +364,7 @@ function initHeroForm(root) {
     const value = epostaInput.value.trim();
     if (value === '') { clearError(epostaInput); return true; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-      showError(epostaInput, 'Geçerli bir e-posta adresi girin.');
+      showError(epostaInput, _t('valEmailInvalid'));
       return false;
     }
     clearError(epostaInput);
@@ -372,7 +373,7 @@ function initHeroForm(root) {
 
   const validateIslem = () => {
     if (!islemInput.value) {
-      showError(islemInput, 'Lütfen ilgilendiğiniz işlemi seçin.');
+      showError(islemInput, _t('valProcedureRequired'));
       return false;
     }
     clearError(islemInput);
@@ -390,7 +391,7 @@ function initHeroForm(root) {
   formRetry?.addEventListener('click', () => {
     heroForm.reset();
     islemInput.value = matchedProcedure || '';
-    islemText.textContent = matchedProcedure || 'İlgilendiğiniz İşlem';
+    islemText.textContent = matchedProcedure || _t('heroFormProcedure');
     if (matchedProcedure) {
       islemText.classList.remove('custom-select-placeholder');
       islemList.querySelector('li.active')?.classList.remove('active');
@@ -416,7 +417,7 @@ function initHeroForm(root) {
     const submitBtn = heroForm.querySelector('.form-submit');
     const submitLabel = submitBtn.querySelector('span:first-child');
     submitBtn.disabled = true;
-    submitLabel.textContent = 'Gönderiliyor...';
+    submitLabel.textContent = _t('heroFormSending');
     try {
       const formData = new FormData(heroForm);
       formData.set('telefon', `${alanKoduSelect.value} ${telefonInput.value}`);
@@ -425,10 +426,10 @@ function initHeroForm(root) {
         body: formData,
         headers: { 'Accept': 'application/json' }
       });
-      if (!response.ok) throw new Error('Gönderim başarısız');
+      if (!response.ok) throw new Error('Send failed');
       heroForm.reset();
       islemInput.value = matchedProcedure || '';
-      islemText.textContent = matchedProcedure || 'İlgilendiğiniz İşlem';
+      islemText.textContent = matchedProcedure || _t('heroFormProcedure');
       if (matchedProcedure) {
         islemText.classList.remove('custom-select-placeholder');
         islemList.querySelector('li.active')?.classList.remove('active');
@@ -443,11 +444,11 @@ function initHeroForm(root) {
       formFields.classList.add('hidden');
       formSuccess.classList.add('visible');
       submitBtn.disabled = false;
-      submitLabel.textContent = 'Bilgi Talep Et';
+      submitLabel.textContent = _t('heroFormSubmit');
     } catch (err) {
-      submitLabel.textContent = 'Bir hata oluştu, tekrar deneyin';
+      submitLabel.textContent = _t('heroFormError');
       setTimeout(() => {
-        submitLabel.textContent = 'Bilgi Talep Et';
+        submitLabel.textContent = _t('heroFormSubmit');
         submitBtn.disabled = false;
       }, 3000);
     }

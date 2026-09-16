@@ -43,6 +43,7 @@
     localStorage.setItem('site-lang', lang);
     var url = new URL(window.location.href);
     url.searchParams.set('lang', lang);
+    url.hash = '';
     window.location.href = url.toString();
   }
 

@@ -1,3 +1,4 @@
+// Ana sayfa içerikleri — bu dosya /admin/homepage üzerinden güncellenir.
 var homepageSettingsEn = {
   "hero": {
     "title": "Naturally beautiful results,<br><span>planned with confidence.</span>",
@@ -43,8 +44,7 @@ var homepageSettingsEn = {
   "servicesSection": {
     "label": "Areas of Expertise",
     "title": "Every procedure is a personalized plan.",
-    "description": "A holistic approach to facial, nasal, and body aesthetics — from consultation through recovery.",
-    "ctaText": "View All"
+    "description": "A holistic approach to facial, nasal, and body aesthetics — from consultation through recovery."
   },
   "results": {
     "label": "Before / After",
@@ -341,7 +341,7 @@ var homepageSettingsEn = {
     ]
   },
   "istanbul": {
-    "label": "Istanbul",
+    "label": "Constantinepolis",
     "title": "The city is part of your healing journey, too.",
     "description": "Bridging two continents, Istanbul offers easy access, comfortable accommodation, and a serene atmosphere for your recovery.",
     "slides": [
@@ -468,12 +468,6 @@ var homepageSettingsEn = {
         "answer": "General examples are available on our website; a comprehensive gallery is shared after your consultation for privacy reasons."
       }
     ]
-  },
-  "blog": {
-    "label": "Blog",
-    "title": "Informative guides for your questions.",
-    "description": "Informative articles from rhinoplasty to breast reconstruction, from consultation to recovery.",
-    "ctaText": "View All"
   },
   "thankYou": {
     "title": "Your Message Has Been Sent Successfully!",

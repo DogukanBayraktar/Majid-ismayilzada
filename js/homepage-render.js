@@ -314,21 +314,26 @@
   }
 
   // Başlangıç
+  function safe(cb) {
+    try { cb(); }
+    catch (e) { console.error('Homepage render error:', e); }
+  }
+
   function init() {
-    renderHero();
-    renderServiceCards();
-    renderAbout();
-    renderHospital();
-    renderPatientAccess();
-    renderStories();
-    renderVideoStories();
-    renderResults();
-    renderSafety();
-    renderFaq();
-    renderIstanbul();
-    renderCertificates();
-    renderBlog();
-    renderThankYou();
+    safe(renderHero);
+    safe(renderServiceCards);
+    safe(renderAbout);
+    safe(renderHospital);
+    safe(renderPatientAccess);
+    safe(renderStories);
+    safe(renderVideoStories);
+    safe(renderResults);
+    safe(renderSafety);
+    safe(renderFaq);
+    safe(renderIstanbul);
+    safe(renderCertificates);
+    safe(renderBlog);
+    safe(renderThankYou);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

@@ -48,28 +48,33 @@ function parseHomepageFile(filePath, varName) {
 
 // Blog dosyasının başındaki açıklama (yorum) bloğunu korur.
 function blogCommentPrefix(text, varName) {
-  const i = text.indexOf('const ' + (varName || 'blogPosts'));
+  const name = varName || 'blogPosts';
+  let i = text.indexOf('const ' + name);
+  if (i === -1) i = text.indexOf('var ' + name);
   return i > 0 ? text.slice(0, i) : '';
 }
 
+// ÖNEMLİ: Değişkenler tarayıcıda window.* üzerinden (i18n.js pickData) okunduğu
+// için üst düzey bildirim MUTLAKA 'var' olmalıdır. 'const'/'let' window özelliği
+// oluşturmaz ve site İngilizce seçiliyken Türkçe veriye düşer.
 function serializeServices(data, varName) {
-  return 'const ' + (varName || 'services') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
+  return 'var ' + (varName || 'services') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
 }
 
 function serializeBlog(data, originalText, varName) {
   const prefix = originalText ? blogCommentPrefix(originalText, varName) : '';
-  return prefix + 'const ' + (varName || 'blogPosts') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
+  return prefix + 'var ' + (varName || 'blogPosts') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
 }
 
 function serializeSite(data, varName) {
   return '// Sitenin düzenlenebilir genel ayarları (menü, iletişim, CTA, footer).\n' +
     '// Bu dosya /admin/settings üzerinden güncellenir; kaydedince site otomatik yenilenir.\n\n' +
-    'const ' + (varName || 'siteSettings') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
+    'var ' + (varName || 'siteSettings') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
 }
 
 function serializeHomepage(data, varName) {
   return '// Ana sayfa içerikleri — bu dosya /admin/homepage üzerinden güncellenir.\n' +
-    'const ' + (varName || 'homepageSettings') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
+    'var ' + (varName || 'homepageSettings') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
 }
 
 // Üretilen JS'in sözdizimi hatasız olduğunu doğrular.
