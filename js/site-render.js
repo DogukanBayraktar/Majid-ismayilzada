@@ -38,7 +38,10 @@
       }).join('');
       var cta = document.querySelector('.mobile-nav .mobile-cta');
       if (cta) html += cta.outerHTML;
+      // Menüye taşınmış dil seçiciyi, içerik yeniden yazılırken kaybetme
+      var keepLang = mobileHost.querySelector('.lang-switcher');
       mobileHost.innerHTML = html;
+      if (keepLang) mobileHost.appendChild(keepLang);
     }
   }
 
@@ -213,7 +216,7 @@
     upsertMeta('property', 'og:url', canonical);
     upsertMeta('property', 'og:image', origin + '/' + ogImage.replace(/^\//, ''));
     upsertMeta('property', 'og:type', 'website');
-    upsertMeta('property', 'og:locale', (typeof i18n !== 'undefined' && i18n.isEn()) ? 'en_US' : 'tr_TR');
+    upsertMeta('property', 'og:locale', (typeof i18n !== 'undefined' && i18n.ogLocale) ? i18n.ogLocale() : 'tr_TR');
     upsertMeta('property', 'og:site_name', 'Doç. Dr. Majid İsmayilzada');
 
     // Twitter Card

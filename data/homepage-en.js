@@ -123,7 +123,7 @@ var homepageSettingsEn = {
     ]
   },
   "stories": {
-    "label": "Patient Stories",
+    "label": "Patient Stories 15 temmuz",
     "title": "Hear it from those who lived it.",
     "description": "Learn about our patients' surgical experiences and outcomes — in their own words.",
     "items": [

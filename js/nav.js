@@ -32,19 +32,36 @@
       document.body.appendChild(mobileNav);
     }
 
+    // Dil seçici: mobilde (<=920px) menünün içine taşınır, masaüstünde eski yerine döner.
+    const langSwitcher = document.getElementById('langSwitcher');
+    if (langSwitcher && langSwitcher.parentNode) {
+      const marker = document.createComment('lang-switcher');
+      langSwitcher.parentNode.insertBefore(marker, langSwitcher);
+      const mq = window.matchMedia('(max-width: 920px)');
+      const placeLang = () => {
+        if (mq.matches) mobileNav.appendChild(langSwitcher);
+        else marker.parentNode.insertBefore(langSwitcher, marker.nextSibling);
+      };
+      placeLang();
+      if (mq.addEventListener) mq.addEventListener('change', placeLang);
+      else if (mq.addListener) mq.addListener(placeLang);
+    }
+
     const setMenu = (open) => {
       navToggle.classList.toggle('open', open);
       mobileNav.classList.toggle('open', open);
       navToggle.setAttribute('aria-expanded', String(open));
       document.body.classList.toggle('menu-open', open);
+      if (!open && langSwitcher) langSwitcher.classList.remove('open');
     };
 
     navToggle.addEventListener('click', () => {
       setMenu(!mobileNav.classList.contains('open'));
     });
 
-    mobileNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setMenu(false));
+    // Linkler site-render.js tarafından yeniden çizilebildiği için delegasyon kullanılır
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target.closest('a')) setMenu(false);
     });
 
     document.addEventListener('keydown', (e) => {

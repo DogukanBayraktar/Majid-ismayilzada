@@ -16,7 +16,6 @@ router.use(function (req, res, next) {
 const requireAuth = require('../middleware/requireAuth');
 const passStore = require('../utils/passStore');
 const uploader = require('../utils/upload');
-const githubSync = require('../utils/githubSync');
 const parser = require('../utils/dataParser');
 
 // ------------------------------------------------------------------
@@ -57,20 +56,10 @@ function slugify(s) {
   return base || 'kayit';
 }
 
-// Dosyayı yere yazar ve GitHub'a yedekler. { backup: 'ok' | 'skip' | 'fail' }
-function persist(pathname, contentText, message) {
+// Dosyayı sunucuya yazar ve geçerli JS olduğunu doğrular.
+function persist(pathname, contentText) {
   parser.writeText(pathname, contentText);
   parser.assertValidJs(contentText);
-
-  let backup = 'skip';
-  if (!githubSync.isConfigured()) return { backup };
-
-  const relPath = pathname.split(/[\\/]/).slice(-2).join('/');
-  // GitHub yedeği arka planda çalışır; hata (örn. geçersiz/eksik token)
-  // process'i düşürmesin diye yutulur. Yerel dosya zaten yazıldı.
-  githubSync.syncTextFile(relPath, contentText, message).catch(() => {});
-  backup = 'ok';
-  return { backup };
 }
 
 // Admin dilini döndürür: varsayılan ilk dil. GET'te ?lang=, POST'ta hidden lang alanı.
@@ -81,17 +70,7 @@ function langOf(req) {
 
 // Dile göre hangi veri dosyasının ve değişken adının kullanılacağını belirler.
 function targets(lang) {
-  const en = lang === 'en';
-  return {
-    servicesFile: en ? parser.SERVICES_EN_FILE : parser.SERVICES_FILE,
-    servicesVar: en ? 'servicesEn' : 'services',
-    blogFile: en ? parser.BLOG_EN_FILE : parser.BLOG_FILE,
-    blogVar: en ? 'blogPostsEn' : 'blogPosts',
-    siteFile: en ? parser.SITE_EN_FILE : parser.SITE_FILE,
-    siteVar: en ? 'siteSettingsEn' : 'siteSettings',
-    homepageFile: en ? parser.HOMEPAGE_EN_FILE : parser.HOMEPAGE_FILE,
-    homepageVar: en ? 'homepageSettingsEn' : 'homepageSettings'
-  };
+  return parser.langTargets(lang || LANGUAGES[0].code);
 }
 
 function loadServices(filePath, varName) {
@@ -169,8 +148,6 @@ router.get('/services', requireAuth, (req, res) => {
     services,
     loadError: services === null,
     saved: req.query.saved === '1',
-    backup: req.query.backup || '',
-    backupActive: githubSync.isConfigured()
   });
 });
 
@@ -182,7 +159,6 @@ router.get('/services/new', requireAuth, (req, res) => {
     isNew: true,
     service: {},
     error: null,
-    backupActive: githubSync.isConfigured(),
     jsonBlob: blob({})
   });
 });
@@ -199,7 +175,6 @@ router.get('/services/edit/:id', requireAuth, (req, res) => {
     isNew: false,
     service,
     error: null,
-    backupActive: githubSync.isConfigured(),
     jsonBlob: blob(service)
   });
 });
@@ -223,7 +198,6 @@ router.post('/services/save', requireAuth, (req, res) => {
         isNew: !req.body.id,
         service: { ...req.body, id: req.body.id },
         error: 'JSON ayrıştırılamadı: ' + e.message,
-        backupActive: githubSync.isConfigured(),
         jsonBlob: blob({ ...req.body, id: req.body.id })
       });
     }
@@ -270,7 +244,6 @@ router.post('/services/save', requireAuth, (req, res) => {
         isNew: !req.body.id,
         service,
         error: 'Başlık boş olamaz.',
-        backupActive: githubSync.isConfigured(),
         jsonBlob: blob(service)
       });
     }
@@ -282,15 +255,9 @@ router.post('/services/save', requireAuth, (req, res) => {
   else services.push(service);
 
   const serialized = parser.serializeServices(services, tg.servicesVar);
-  let backup = 'skip';
-  try {
-    const result = persist(tg.servicesFile, serialized, 'Yönetim panelinden uzmanlık güncellendi (' + lang + '): ' + service.title);
-    backup = result.backup;
-  } catch (e) {
-    backup = 'fail';
-  }
+  persist(tg.servicesFile, serialized, 'Yönetim panelinden uzmanlık güncellendi (' + lang + '): ' + service.title);
 
-  res.redirect('/admin/services?saved=1&backup=' + backup + '&lang=' + lang);
+  res.redirect('/admin/services?saved=1&lang=' + lang);
 });
 
 router.post('/services/delete/:id', requireAuth, (req, res) => {
@@ -301,13 +268,8 @@ router.post('/services/delete/:id', requireAuth, (req, res) => {
     const next = services.filter(s => String(s.id) !== String(req.params.id));
     if (next.length !== services.length) {
       const serialized = parser.serializeServices(next, tg.servicesVar);
-      let backup = 'skip';
-      try {
-        backup = persist(tg.servicesFile, serialized, 'Yönetim panelinden uzmanlık silindi (' + lang + '): ' + req.params.id).backup;
-      } catch (e) {
-        backup = 'fail';
-      }
-      return res.redirect('/admin/services?backup=' + backup + '&lang=' + lang);
+      persist(tg.servicesFile, serialized, 'Yönetim panelinden uzmanlık silindi (' + lang + '): ' + req.params.id);
+      return res.redirect('/admin/services?lang=' + lang);
     }
   }
   res.redirect('/admin/services?lang=' + lang);
@@ -326,8 +288,6 @@ router.get('/blog', requireAuth, (req, res) => {
     posts,
     loadError: posts === null,
     saved: req.query.saved === '1',
-    backup: req.query.backup || '',
-    backupActive: githubSync.isConfigured()
   });
 });
 
@@ -339,7 +299,6 @@ router.get('/blog/new', requireAuth, (req, res) => {
     isNew: true,
     post: {},
     error: null,
-    backupActive: githubSync.isConfigured(),
     jsonBlob: blob({})
   });
 });
@@ -356,7 +315,6 @@ router.get('/blog/edit/:id', requireAuth, (req, res) => {
     isNew: false,
     post,
     error: null,
-    backupActive: githubSync.isConfigured(),
     jsonBlob: blob(post)
   });
 });
@@ -380,7 +338,6 @@ router.post('/blog/save', requireAuth, (req, res) => {
         isNew: !req.body.id,
         post: { ...req.body, id: req.body.id },
         error: 'JSON ayrıştırılamadı: ' + e.message,
-        backupActive: githubSync.isConfigured(),
         jsonBlob: blob({ ...req.body, id: req.body.id })
       });
     }
@@ -405,7 +362,6 @@ router.post('/blog/save', requireAuth, (req, res) => {
         isNew: !req.body.id,
         post,
         error: 'Başlık boş olamaz.',
-        backupActive: githubSync.isConfigured(),
         jsonBlob: blob(post)
       });
     }
@@ -418,14 +374,9 @@ router.post('/blog/save', requireAuth, (req, res) => {
 
   const originalText = parser.readText(tg.blogFile);
   const serialized = parser.serializeBlog(posts, originalText, tg.blogVar);
-  let backup = 'skip';
-  try {
-    backup = persist(tg.blogFile, serialized, 'Yönetim panelinden blog güncellendi (' + lang + '): ' + post.title).backup;
-  } catch (e) {
-    backup = 'fail';
-  }
+  persist(tg.blogFile, serialized, 'Yönetim panelinden blog güncellendi (' + lang + '): ' + post.title);
 
-  res.redirect('/admin/blog?saved=1&backup=' + backup + '&lang=' + lang);
+  res.redirect('/admin/blog?saved=1&lang=' + lang);
 });
 
 router.post('/blog/delete/:id', requireAuth, (req, res) => {
@@ -437,13 +388,8 @@ router.post('/blog/delete/:id', requireAuth, (req, res) => {
     if (next.length !== posts.length) {
       const originalText = parser.readText(tg.blogFile);
       const serialized = parser.serializeBlog(next, originalText, tg.blogVar);
-      let backup = 'skip';
-      try {
-        backup = persist(tg.blogFile, serialized, 'Yönetim panelinden blog silindi (' + lang + '): ' + req.params.id).backup;
-      } catch (e) {
-        backup = 'fail';
-      }
-      return res.redirect('/admin/blog?backup=' + backup + '&lang=' + lang);
+      persist(tg.blogFile, serialized, 'Yönetim panelinden blog silindi (' + lang + '): ' + req.params.id);
+      return res.redirect('/admin/blog?lang=' + lang);
     }
   }
   res.redirect('/admin/blog?lang=' + lang);
@@ -462,8 +408,6 @@ router.get('/settings', requireAuth, (req, res) => {
     settings,
     loadError: settings === null,
     saved: req.query.saved === '1',
-    backup: req.query.backup || '',
-    backupActive: githubSync.isConfigured()
   });
 });
 
@@ -519,14 +463,9 @@ router.post('/settings/save', requireAuth, (req, res) => {
   }
 
   const serialized = parser.serializeSite(current, tg.siteVar);
-  let backup = 'skip';
-  try {
-    backup = persist(tg.siteFile, serialized, 'Yönetim panelinden site ayarları güncellendi (' + lang + ')').backup;
-  } catch (e) {
-    backup = 'fail';
-  }
+  persist(tg.siteFile, serialized, 'Yönetim panelinden site ayarları güncellendi (' + lang + ')');
 
-  res.redirect('/admin/settings?saved=1&backup=' + backup + '&lang=' + lang);
+  res.redirect('/admin/settings?saved=1&lang=' + lang);
 });
 
 // ------------------------------------------------------------------
@@ -542,8 +481,6 @@ router.get('/site', requireAuth, (req, res) => {
     settings,
     loadError: settings === null,
     saved: req.query.saved === '1',
-    backup: req.query.backup || '',
-    backupActive: githubSync.isConfigured()
   });
 });
 
@@ -556,14 +493,9 @@ router.post('/site/save', requireAuth, (req, res) => {
   trims.forEach(k => { current[k] = (req.body[k] || '').toString().trim(); });
 
   const serialized = parser.serializeSite(current, tg.siteVar);
-  let backup = 'skip';
-  try {
-    backup = persist(tg.siteFile, serialized, 'Yönetim panelinden genel ayarlar güncellendi (' + lang + ')').backup;
-  } catch (e) {
-    backup = 'fail';
-  }
+  persist(tg.siteFile, serialized, 'Yönetim panelinden genel ayarlar güncellendi (' + lang + ')');
 
-  res.redirect('/admin/site?saved=1&backup=' + backup + '&lang=' + lang);
+  res.redirect('/admin/site?saved=1&lang=' + lang);
 });
 
 // ------------------------------------------------------------------
@@ -579,8 +511,6 @@ router.get('/iletisim', requireAuth, (req, res) => {
     settings,
     loadError: settings === null,
     saved: req.query.saved === '1',
-    backup: req.query.backup || '',
-    backupActive: githubSync.isConfigured()
   });
 });
 
@@ -593,14 +523,9 @@ router.post('/iletisim/save', requireAuth, (req, res) => {
   trims.forEach(k => { current[k] = (req.body[k] || '').toString().trim(); });
 
   const serialized = parser.serializeSite(current, tg.siteVar);
-  let backup = 'skip';
-  try {
-    backup = persist(tg.siteFile, serialized, 'Yönetim panelinden iletişim bilgileri güncellendi (' + lang + ')').backup;
-  } catch (e) {
-    backup = 'fail';
-  }
+  persist(tg.siteFile, serialized, 'Yönetim panelinden iletişim bilgileri güncellendi (' + lang + ')');
 
-  res.redirect('/admin/iletisim?saved=1&backup=' + backup + '&lang=' + lang);
+  res.redirect('/admin/iletisim?saved=1&lang=' + lang);
 });
 
 // ------------------------------------------------------------------
@@ -616,8 +541,6 @@ router.get('/homepage', requireAuth, (req, res) => {
     hp,
     loadError: hp === null,
     saved: req.query.saved === '1',
-    backup: req.query.backup || '',
-    backupActive: githubSync.isConfigured(),
     jsonBlob: blob(hp || {})
   });
 });
@@ -636,8 +559,6 @@ router.post('/homepage/save', requireAuth, (req, res) => {
         hp: {},
         loadError: false,
         saved: false,
-        backup: '',
-        backupActive: githubSync.isConfigured(),
         jsonBlob: req.body.jsonSource || '{}'
       });
     }
@@ -741,14 +662,8 @@ router.post('/homepage/save', requireAuth, (req, res) => {
   }
 
   const serialized = parser.serializeHomepage(hp, tg.homepageVar);
-  let backup = 'skip';
-  try {
-    const result = persist(tg.homepageFile, serialized, 'Yönetim panelinden ana sayfa içerikleri güncellendi (' + lang + ')');
-    backup = result.backup;
-  } catch (e) {
-    backup = 'fail';
-  }
-  res.redirect('/admin/homepage?saved=1&backup=' + backup + '&lang=' + lang);
+  persist(tg.homepageFile, serialized, 'Yönetim panelinden ana sayfa içerikleri güncellendi (' + lang + ')');
+  res.redirect('/admin/homepage?saved=1&lang=' + lang);
 });
 
 // ------------------------------------------------------------------
@@ -759,14 +674,6 @@ router.post('/upload', requireAuth, uploader.single('file'), (req, res) => {
 
   const filename = req.file.filename;
   const url = '/assets/images/uploads/' + filename;
-  const relPath = 'assets/images/uploads/' + filename;
-
-  try {
-    const buffer = fs.readFileSync(req.file.path);
-    githubSync.syncBufferFile(relPath, buffer).catch(() => {});
-  } catch (e) {
-    /* yedek başarısız olursa görsel yine çalışır */
-  }
 
   res.json({ ok: true, url });
 });
@@ -783,7 +690,6 @@ router.get('/security', requireAuth, (req, res) => {
     error: null,
     users: passStore.listUsers(),
     currentUser: req.session.adminUser,
-    backupActive: githubSync.isConfigured()
   });
 });
 
@@ -799,7 +705,6 @@ router.post('/password', requireAuth, (req, res) => {
     error,
     users: passStore.listUsers(),
     currentUser: req.session.adminUser,
-    backupActive: githubSync.isConfigured()
   });
 
   if (!validCurrent) return renderError('Mevcut şifre hatalı.');
@@ -824,7 +729,6 @@ router.post('/users/add', requireAuth, (req, res) => {
     error,
     users: passStore.listUsers(),
     currentUser: req.session.adminUser,
-    backupActive: githubSync.isConfigured()
   });
 
   const uname = (newUsername || '').trim();

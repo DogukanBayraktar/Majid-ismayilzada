@@ -1,6 +1,6 @@
 <%- include('./_head') -%>
 <body class="has-savebar">
-<%- include('./_sidebar', { active: active, backupActive: backupActive, lang: lang }) -%>
+<%- include('./_sidebar', { active: active, lang: lang }) -%>
 
 <main class="content">
   <div class="page-head">
@@ -29,9 +29,6 @@
     <div class="alert err"><strong>Veri dosyası okunamadı.</strong> data/homepage.js içinde sözdizimi hatası olabilir.</div>
   <% } else { %>
     <% if (saved) { %><div class="alert ok">Kaydedildi.</div><% } %>
-    <% if (backup === 'ok') { %><div class="alert ok">Değişiklikler GitHub'a da yedeklendi.</div><% } %>
-    <% if (backup === 'skip') { %><div class="alert warn">GitHub yedeği ayarlanmadı — değişiklikler yalnızca bu sunucuda duruyor.</div><% } %>
-    <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu.</div><% } %>
 
     <form method="post" action="/admin/homepage/save" id="hpForm">
       <input type="hidden" name="lang" value="<%= lang || 'tr' %>">
@@ -317,7 +314,7 @@
         <div class="sb-actions">
           <label class="json-toggle">
             <input type="checkbox" id="jsonToggle" onchange="setHomepageJson(this.checked)" title="Gelişmiş: tüm veriyi JSON olarak düzenle">JSON</label>
-          <a href="/admin/homepage<%= (lang === 'en') ? '?lang=en' : '' %>" class="btn btn-outline">Vazgeç</a>
+          <a href="/admin/homepage<%= (typeof lang !== 'undefined' && lang && lang !== 'tr') ? '?lang=' + lang : '' %>" class="btn btn-outline">Vazgeç</a>
           <button type="submit" class="btn">Kaydet</button>
         </div>
       </div>

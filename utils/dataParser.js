@@ -15,6 +15,35 @@ const BLOG_EN_FILE = path.join(DATA_DIR, 'blog-posts-en.js');
 const SITE_EN_FILE = path.join(DATA_DIR, 'site-en.js');
 const HOMEPAGE_EN_FILE = path.join(DATA_DIR, 'homepage-en.js');
 
+// İspanyolca ve İtalyanca veri dosyaları (data/*-es.js, data/*-it.js).
+const SERVICES_ES_FILE = path.join(DATA_DIR, 'services-es.js');
+const BLOG_ES_FILE = path.join(DATA_DIR, 'blog-posts-es.js');
+const SITE_ES_FILE = path.join(DATA_DIR, 'site-es.js');
+const HOMEPAGE_ES_FILE = path.join(DATA_DIR, 'homepage-es.js');
+
+const SERVICES_IT_FILE = path.join(DATA_DIR, 'services-it.js');
+const BLOG_IT_FILE = path.join(DATA_DIR, 'blog-posts-it.js');
+const SITE_IT_FILE = path.join(DATA_DIR, 'site-it.js');
+const HOMEPAGE_IT_FILE = path.join(DATA_DIR, 'homepage-it.js');
+
+// Dile göre veri dosyası adını ve üst düzey değişken adını belirler.
+// Yeni dil eklerken yalnızca bu tabloya satır eklemek yeterlidir.
+// NOT: Değişken adları 'var' ile bildirilmelidir (bkz. serialize* yorumları).
+function langTargets(lang) {
+  const suffix = lang === 'tr' ? '' : '-' + lang;
+  const cap = lang.charAt(0).toUpperCase() + lang.slice(1);
+  return {
+    servicesFile: path.join(DATA_DIR, 'services' + suffix + '.js'),
+    servicesVar: lang === 'tr' ? 'services' : 'services' + cap,
+    blogFile: path.join(DATA_DIR, 'blog-posts' + suffix + '.js'),
+    blogVar: lang === 'tr' ? 'blogPosts' : 'blogPosts' + cap,
+    siteFile: path.join(DATA_DIR, 'site' + suffix + '.js'),
+    siteVar: lang === 'tr' ? 'siteSettings' : 'siteSettings' + cap,
+    homepageFile: path.join(DATA_DIR, 'homepage' + suffix + '.js'),
+    homepageVar: lang === 'tr' ? 'homepageSettings' : 'homepageSettings' + cap
+  };
+}
+
 function readText(filePath) {
   return fs.readFileSync(filePath, 'utf-8');
 }
@@ -92,6 +121,15 @@ module.exports = {
   BLOG_EN_FILE,
   SITE_EN_FILE,
   HOMEPAGE_EN_FILE,
+  SERVICES_ES_FILE,
+  BLOG_ES_FILE,
+  SITE_ES_FILE,
+  HOMEPAGE_ES_FILE,
+  SERVICES_IT_FILE,
+  BLOG_IT_FILE,
+  SITE_IT_FILE,
+  HOMEPAGE_IT_FILE,
+  langTargets,
   readText,
   writeText,
   parseServicesFile,

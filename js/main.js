@@ -400,13 +400,6 @@ makeSlider('certTrack', 'certPrev', 'certNext', '.cert-card');
     start();
 })();
 // Scroll reveal animations
-const revealTargets = document.querySelectorAll(
-    '.hero-copy, .hero-actions, .hero-form-wrap, .section-head, .service-card, .cred-card, .process-step, .safety-photo, .safety-card, .cert-card, .story-card, .video-card, .blog-card, .faq-item, .ba-slider-wrap, .ba-card, #contact .cta-card, .hospital-slider-wrap, .istanbul-slider-wrap, .istanbul-feature'
-);
-revealTargets.forEach((el, i) => {
-    el.classList.add('reveal');
-    el.style.transitionDelay = ((i % 6) * 70) + 'ms';
-});
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -415,7 +408,21 @@ const revealObserver = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-revealTargets.forEach(el => revealObserver.observe(el));
+
+// homepage-render.js içerikleri DOMContentLoaded'da yeniden çizdiği için hedefler,
+// çizimden SONRA toplanmalı; yoksa yeni elemanlar gözlenmez ve opacity:0 kalır.
+function initReveal() {
+    const revealTargets = document.querySelectorAll(
+        '.hero-copy, .hero-actions, .hero-form-wrap, .section-head, .service-card, .cred-card, .process-step, .safety-photo, .safety-card, .cert-card, .story-card, .video-card, .blog-card, .faq-item, .ba-slider-wrap, .ba-card, #contact .cta-card, .hospital-slider-wrap, .istanbul-slider-wrap, .istanbul-feature'
+    );
+    revealTargets.forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = ((i % 6) * 70) + 'ms';
+        revealObserver.observe(el);
+    });
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initReveal);
+else initReveal();
 
 // ---------------------------------------------------------------
 // SÜREÇ (PROCESS): scroll edilirken 3 fotoğraf kartını, hangi

@@ -1,6 +1,6 @@
 <%- include('_head') -%>
 <body>
-<%- include('_sidebar', { active: active, backupActive: backupActive, lang: lang }) -%>
+<%- include('_sidebar', { active: active, lang: lang }) -%>
 
 <main class="content">
   <h1>Güvenlik</h1>
@@ -9,11 +9,7 @@
   <% if (saved) { %><div class="alert ok">İşlem başarılı.</div><% } %>
   <% if (error) { %><div class="alert err"><%= error %></div><% } %>
 
-  <% if (!backupActive) { %>
-    <div class="alert warn">Şifre bu sunucuda <b>data/admin-pass.json</b> içine yazılır (GitHub'a gönderilmez, .gitignore'da).</div>
-  <% } else { %>
-    <div class="alert ok">Şifre yalnızca bu sunucuda saklanır; GitHub'a şifre/hash gönderilmez.</div>
-  <% } %>
+  <div class="alert warn">Şifre bu sunucuda <b>data/admin-pass.json</b> içine yazılır.</div>
 
   <!-- Şifre Değiştir + Yeni Hesap Ekle (yan yana) -->
   <div class="sec-grid">

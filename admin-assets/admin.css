@@ -99,17 +99,6 @@ body {
 .sidebar .site-top .site-link:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-deep); }
 .sidebar .site-top .site-link .arr { color: var(--ink-faint); font-size: 14px; }
 .sidebar .foot { padding: 14px 16px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
-.sidebar .badge {
-  display: flex; align-items: center; gap: 7px;
-  padding: 8px 12px; border-radius: var(--r-sm); font-size: 12px; font-weight: 600;
-  border: 1px solid var(--line);
-}
-.sidebar .badge .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.sidebar .badge.on { background: var(--ok-soft); color: #237c4c; border-color: rgba(46, 158, 99, 0.3); }
-.sidebar .badge.on .dot { background: var(--ok); }
-.sidebar .badge.off { background: var(--panel-2); color: var(--ink-dim); }
-.sidebar .badge.off .dot { background: #c3bba8; }
-.sidebar .badge.off small { display: block; font-weight: 400; font-size: 11px; color: var(--ink-faint); }
 .sidebar .foot .logout {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   width: 100%;

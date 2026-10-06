@@ -1,6 +1,6 @@
 <%- include('../_head') -%>
 <body data-type="post" class="has-savebar">
-<%- include('../_sidebar', { active: active, backupActive: backupActive, lang: lang }) -%>
+<%- include('../_sidebar', { active: active, lang: lang }) -%>
 
 <main class="content">
   <div class="page-head">
@@ -96,7 +96,7 @@
           <input type="checkbox" id="jsonToggle" onchange="setJsonMode(this.checked, 'post')">
           JSON
         </label>
-        <a href="/admin/blog<%= (lang === 'en') ? '?lang=en' : '' %>" class="btn btn-outline">Vazgeç</a>
+        <a href="/admin/blog<%= (typeof lang !== 'undefined' && lang && lang !== 'tr') ? '?lang=' + lang : '' %>" class="btn btn-outline">Vazgeç</a>
         <button type="submit" class="btn">Kaydet</button>
       </div>
     </div>

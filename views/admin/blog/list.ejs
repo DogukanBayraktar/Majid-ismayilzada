@@ -1,8 +1,8 @@
 <%- include('../_head') -%>
 <body>
-<%- include('../_sidebar', { active: active, backupActive: backupActive, lang: lang }) -%>
-<% var L = (typeof lang !== 'undefined' && lang === 'en') ? 'en' : 'tr'; %>
-<% var qp = function(path){ return L === 'en' ? (path + '?lang=en') : path; }; %>
+<%- include('../_sidebar', { active: active, lang: lang }) -%>
+<% var L = (typeof lang !== 'undefined' && lang) ? lang : 'tr'; %>
+<% var qp = function(path){ return L === 'tr' ? path : (path + '?lang=' + L); }; %>
 
 <main class="content">
   <div class="page-head">
@@ -15,9 +15,6 @@
     <div class="alert err"><strong>Veri dosyası okunamadı.</strong> data/blog-posts.js içinde sözdizimi hatası olabilir. Dosyayı kontrol edip tekrar deneyin.</div>
   <% } else { %>
     <% if (saved) { %><div class="alert ok">Kaydedildi.</div><% } %>
-    <% if (backup === 'ok') { %><div class="alert ok">Değişiklikler GitHub'a da yedeklendi.</div><% } %>
-    <% if (backup === 'skip') { %><div class="alert warn">GitHub yedeği ayarlanmadı — değişiklikler yalnızca bu sunucuda duruyor.</div><% } %>
-    <% if (backup === 'fail') { %><div class="alert err">Kayıt yapıldı ama GitHub yedeği başarısız oldu. Token/Bağlantı ayarlarını kontrol edin.</div><% } %>
 
     <div style="display:flex; justify-content:flex-end; margin-bottom:16px;">
       <a href="<%= qp('/admin/blog/new') %>" class="btn">+ Yeni Yazı Ekle</a>

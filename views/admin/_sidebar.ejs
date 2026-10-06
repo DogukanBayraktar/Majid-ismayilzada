@@ -3,8 +3,8 @@
     <div class="brand-logo"><img src="/assets/images/siyah-logo.png" alt="Doç. Dr. Majid İsmayilzada"></div>
     <div class="sub">Yönetim Paneli</div>
   </div>
-  <% var L = (typeof lang !== 'undefined' && lang === 'en') ? 'en' : 'tr'; %>
-  <% var qp = function(path){ return L === 'en' ? (path + '?lang=en') : path; }; %>
+  <% var L = (typeof lang !== 'undefined' && lang) ? lang : 'tr'; %>
+  <% var qp = function(path){ return L === 'tr' ? path : (path + '?lang=' + L); }; %>
   <nav>
     <a href="<%= qp('/admin/homepage') %>" class="<%= active === 'homepage' ? 'active' : '' %>">Ana Sayfa</a>
     <a href="<%= qp('/admin/services') %>" class="<%= active === 'services' ? 'active' : '' %>">Uzmanlıklar</a>
@@ -21,17 +21,6 @@
     </a>
   </div>
   <div class="foot">
-    <% if (typeof backupActive !== 'undefined' && backupActive) { %>
-      <div class="badge on">
-        <span class="dot"></span>
-        <div>GitHub yedek: açık</div>
-      </div>
-    <% } else { %>
-      <div class="badge off">
-        <span class="dot"></span>
-        <div>GitHub yedek: kapalı<small>Veriler yalnızca bu sunucuda tutuluyor.</small></div>
-      </div>
-    <% } %>
     <form method="post" action="/admin/logout" onsubmit="return confirmLogout();">
       <button type="submit" class="logout">Çıkış yap</button>
     </form>

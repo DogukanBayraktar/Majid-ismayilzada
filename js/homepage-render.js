@@ -11,7 +11,11 @@
     var section = grid.closest('section');
     fillSectionHead(section, hp.servicesSection);
     var cta = section.querySelector('.head-actions .btn');
-    if (cta && hp.servicesSection && hp.servicesSection.ctaText) cta.textContent = hp.servicesSection.ctaText;
+    if (cta) {
+      cta.textContent = (hp.servicesSection && hp.servicesSection.ctaText)
+        ? hp.servicesSection.ctaText
+        : ((typeof i18n !== 'undefined') ? i18n.t('viewAll') : 'Tümünü Gör');
+    }
     grid.innerHTML = svcData.map(function (s) {
       var img = s.cardImage || '';
       var title = s.title || '';
@@ -144,13 +148,15 @@
       var photo = cardsWrap.querySelector('.safety-photo');
       if (photo && s.photo) {
         var img = photo.querySelector('img');
-        if (img) img.src = s.photo;
+        // Aynı görsel zaten HTML'de varsa src'yi tekrar atama (görsel iki kez istenip iptal olmasın)
+        if (img && img.getAttribute('src') !== s.photo) img.src = s.photo;
       }
       var cardsHtml = s.cards.map(function (c) {
         return '<div class="safety-card"><div class="icon">\u2713</div><h4>' + c.title + '</h4><p>' + c.description + '</p></div>';
       }).join('');
-      // Fotoğraf kartını koru, diğerlerini yeniden oluştur
-      cardsWrap.innerHTML = (photo ? photo.outerHTML : '') + cardsHtml;
+      // Fotoğraf elemanına dokunma; sadece kartları yenile
+      cardsWrap.querySelectorAll('.safety-card').forEach(function (el) { el.remove(); });
+      cardsWrap.insertAdjacentHTML('beforeend', cardsHtml);
     }
   }
 
@@ -304,13 +310,18 @@
 
   // --- Blog Bölümü ---
   function renderBlog() {
-    var b = hp.blog;
-    if (!b) return;
     var section = document.getElementById('blog');
     if (!section) return;
-    fillSectionHead(section, b);
+    var tt = function (k, fb) { return (typeof i18n !== 'undefined') ? i18n.t(k) : fb; };
+    // data/homepage*.js içinde `blog` alanı varsa o kullanılır, yoksa dil dosyasındaki metinler.
+    var b = hp.blog || {};
+    fillSectionHead(section, {
+      label: b.label || tt('blogSectionLabel', 'Blog'),
+      title: b.title || tt('blogSectionTitle', 'Merak ettikleriniz için rehber içerikler.'),
+      description: b.description || tt('blogSectionDesc', 'Rinoplastiden meme rekonstrüksiyonuna, konsültasyondan iyileşmeye kadar bilgilendirici yazılar.')
+    });
     var cta = section.querySelector('.head-actions .btn');
-    if (cta && b.ctaText) cta.textContent = b.ctaText;
+    if (cta) cta.textContent = b.ctaText || tt('viewAll', 'Tümünü Gör');
   }
 
   // Başlangıç

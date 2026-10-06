@@ -9,16 +9,21 @@
   // Dile göre kullanılacak global değişken adları. Yeni dil eklerken
   // veri dosyası adıyla buraya satır eklemek yeterlidir.
   var DATA = {
-    hp: { tr: 'homepageSettings', en: 'homepageSettingsEn' },
-    site: { tr: 'siteSettings', en: 'siteSettingsEn' },
-    services: { tr: 'services', en: 'servicesEn' },
-    blog: { tr: 'blogPosts', en: 'blogPostsEn' }
+    hp: { tr: 'homepageSettings', en: 'homepageSettingsEn', es: 'homepageSettingsEs', it: 'homepageSettingsIt' },
+    site: { tr: 'siteSettings', en: 'siteSettingsEn', es: 'siteSettingsEs', it: 'siteSettingsIt' },
+    services: { tr: 'services', en: 'servicesEn', es: 'servicesEs', it: 'servicesIt' },
+    blog: { tr: 'blogPosts', en: 'blogPostsEn', es: 'blogPostsEs', it: 'blogPostsIt' }
   };
 
   var NAV = {
     tr: { about: 'Hakkımda', specialties: 'Uzmanlık', blog: 'Blog', contact: 'İletişim', cta: 'Randevu Al' },
-    en: { about: 'About', specialties: 'Specialties', blog: 'Blog', contact: 'Contact', cta: 'Book Appointment' }
+    en: { about: 'About', specialties: 'Specialties', blog: 'Blog', contact: 'Contact', cta: 'Book Appointment' },
+    es: { about: 'Sobre mí', specialties: 'Especialidades', blog: 'Blog', contact: 'Contacto', cta: 'Pedir cita' },
+    it: { about: 'Chi sono', specialties: 'Specializzazioni', blog: 'Blog', contact: 'Contatti', cta: 'Prenota appuntamento' }
   };
+
+  // Open Graph dili (og:locale) — dil kodundan locale'e çeviri.
+  var OG_LOCALE = { tr: 'tr_TR', en: 'en_US', es: 'es_ES', it: 'it_IT' };
 
   function detectLanguage() {
     var params = new URLSearchParams(window.location.search);
@@ -72,7 +77,8 @@
     services: function () { return pickData('services'); },
     blog: function () { return pickData('blog'); },
     isEn: function () { return currentLang === 'en'; },
-    isTr: function () { return currentLang === LANGS[0].code; }
+    isTr: function () { return currentLang === LANGS[0].code; },
+    ogLocale: function () { return OG_LOCALE[currentLang] || OG_LOCALE[LANGS[0].code]; }
   };
 
   document.documentElement.lang = currentLang;
