@@ -154,6 +154,35 @@ body {
 .alert.warn { background: rgba(200, 165, 110, 0.14); color: #8a6a3d; border-color: rgba(169, 132, 88, 0.35); }
 .alert.err { background: var(--danger-soft); color: var(--danger); border-color: rgba(214, 69, 65, 0.3); }
 
+/* --- Sekmeler (Kurumsal Sayfalar) --- */
+.tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+.tabs a {
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-dim);
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: var(--r-sm) var(--r-sm) 0 0;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.tabs a:hover { background: var(--panel-2); color: var(--ink); }
+.tabs a.active {
+  background: var(--panel);
+  color: var(--accent);
+  border-color: var(--line);
+  border-bottom: 1px solid var(--panel);
+}
+
 /* --- Tablo --- */
 table.tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
 table.tbl th {
@@ -181,6 +210,27 @@ table.tbl .row-sub { color: var(--ink-faint); font-size: 12px; }
 }
 .inp::placeholder { color: var(--ink-faint); }
 .inp:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+/* HTML gövde düzenleyicisi (Kurumsal Sayfalar) — monospace, satır kaydırmalı */
+textarea.inp.html-src {
+  font-family: Consolas, "Cascadia Code", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  tab-size: 2;
+  min-height: 480px;
+  resize: vertical;
+}
+.field .hint code, .page-sub code {
+  font-family: Consolas, "Cascadia Code", monospace;
+  font-size: 12px;
+  background: var(--panel-3);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 1px 5px;
+  color: var(--ink-dim);
+}
 
 /* Şifre toggle wrapper */
 .pass-wrap { position: relative; }
@@ -444,6 +494,20 @@ textarea.json-src {
 .ql-single .ql-editor blockquote { border-left: 3px solid var(--accent); margin: 14px 0; padding: 8px 16px; color: var(--ink-dim); font-style: italic; }
 .ql-single .ql-editor ul, .ql-single .ql-editor ol { padding-left: 22px; margin: 10px 0; }
 .ql-single .ql-editor a { color: var(--accent-deep); text-decoration: underline; }
+
+/* --- Kurumsal sayfa: iletişim kutusu önizlemesi (salt okunur) --- */
+.legal-box-preview {
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-md);
+  background: var(--panel-2);
+  padding: 16px 18px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ink-dim);
+}
+.legal-box-preview b { color: var(--ink); }
+.legal-box-preview a { color: var(--accent-deep); text-decoration: underline; }
+.legal-box-preview span { color: var(--ink-dim); }
 
 /* --- Onay (silme) modalı --- */
 .modal-overlay {

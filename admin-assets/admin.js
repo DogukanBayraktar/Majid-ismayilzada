@@ -589,9 +589,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var f1 = document.getElementById('svcForm');
   var f2 = document.getElementById('postForm');
   var f3 = document.getElementById('hpForm');
+  var f4 = document.getElementById('legalForm');
   if (f1) f1.addEventListener('submit', function () { syncSingleQuill(); });
   if (f2) f2.addEventListener('submit', function () { syncSingleQuill(); });
   if (f3) f3.addEventListener('submit', function () { syncHpRows(); });
+  if (f4) f4.addEventListener('submit', function () { syncSingleQuill(); });
   // Ana sayfa tablo satırlarını doldur (JSON textarea'lardan)
   initHpRows();
 

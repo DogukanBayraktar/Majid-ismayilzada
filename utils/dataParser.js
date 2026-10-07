@@ -9,6 +9,10 @@ const BLOG_FILE = path.join(DATA_DIR, 'blog-posts.js');
 const SITE_FILE = path.join(DATA_DIR, 'site.js');
 const HOMEPAGE_FILE = path.join(DATA_DIR, 'homepage.js');
 
+// Yasal/kurumsal sayfa gövdeleri (kvkk, hasta-haklari, gizlilik-politikasi).
+// Tek dosyada tüm diller tutulur: { tr: {...}, en: {...}, es: {...}, it: {...} }.
+const LEGAL_FILE = path.join(DATA_DIR, 'legal.js');
+
 // İngilizce veri dosyaları (data/*-en.js) — admin panelindeki EN sekmesi bunları yönetir.
 const SERVICES_EN_FILE = path.join(DATA_DIR, 'services-en.js');
 const BLOG_EN_FILE = path.join(DATA_DIR, 'blog-posts-en.js');
@@ -75,6 +79,15 @@ function parseHomepageFile(filePath, varName) {
   return evalArray(readText(filePath || HOMEPAGE_FILE), varName || 'homepageSettings');
 }
 
+// data/legal.js içindeki tüm dilleri içeren legalContent nesnesini okur.
+function parseLegalFile(filePath) {
+  const src = readText(filePath || LEGAL_FILE);
+  const fn = new Function(src + '\n;return (typeof legalContent !== "undefined") ? legalContent : undefined;');
+  const data = fn();
+  if (!data || typeof data !== 'object') throw new Error('legalContent okunamadı');
+  return data;
+}
+
 // Blog dosyasının başındaki açıklama (yorum) bloğunu korur.
 function blogCommentPrefix(text, varName) {
   const name = varName || 'blogPosts';
@@ -106,10 +119,32 @@ function serializeHomepage(data, varName) {
     'var ' + (varName || 'homepageSettings') + ' = ' + JSON.stringify(data, null, 2) + ';\n';
 }
 
+// Yasal sayfa gövdeleri. Tek dosyada tüm diller tutulur; panelde bir dil ve
+// sayfa düzenlenince diğer 11 gövde aynen geri yazılır.
+// NOT: 'var' ile bildirilmelidir (tarayıcıda window.legalContent üzerinden okunur).
+function serializeLegal(data) {
+  return '// Yasal sayfa gövdeleri (kvkk, hasta-haklari, gizlilik-politikasi).\n' +
+    '// Her dil için { title, desc, body } — body HTML stringidir ve .legal-body içine basılır.\n' +
+    '// Bu dosya /admin/kurumsal üzerinden düzenlenir; js/legal-render.js tarafından okunur.\n\n' +
+    'var legalContent = ' + JSON.stringify(data, null, 2) + ';\n';
+}
+
 // Üretilen JS'in sözdizimi hatasız olduğunu doğrular.
 function assertValidJs(text) {
   new Function(text);
   return true;
+}
+
+// İletişim kutusu (legal-highlight) gövdenin sonunda durur ve düzenlemeye
+// kapalıdır: ad/adres/telefon/e-posta satırları ile data-site-* öznitelikleri
+// site ayarlarından otomatik doldurulur. Editör yalnızca kutudan önceki kısmı
+// düzenler; kayıtta kutu orijinal body'den geri eklenerek korunur.
+// Dönen rest değeri kutu ve kutudan sonraki her şeyi kapsar.
+function splitLegalBody(body) {
+  if (typeof body !== 'string' || !body) return { editable: '', rest: '' };
+  const start = body.indexOf('<div class="legal-highlight">');
+  if (start === -1) return { editable: body, rest: '' };
+  return { editable: body.slice(0, start), rest: body.slice(start) };
 }
 
 module.exports = {
@@ -117,6 +152,7 @@ module.exports = {
   BLOG_FILE,
   SITE_FILE,
   HOMEPAGE_FILE,
+  LEGAL_FILE,
   SERVICES_EN_FILE,
   BLOG_EN_FILE,
   SITE_EN_FILE,
@@ -136,9 +172,12 @@ module.exports = {
   parseBlogFile,
   parseSiteFile,
   parseHomepageFile,
+  parseLegalFile,
   serializeServices,
   serializeBlog,
   serializeSite,
   serializeHomepage,
+  serializeLegal,
+  splitLegalBody,
   assertValidJs
 };

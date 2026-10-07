@@ -105,6 +105,27 @@ function loadHomepage(filePath, varName) {
   }
 }
 
+// Kurumsal/yasal sayfalar. key = data/legal.js içindeki nesne anahtarı,
+// file = sitedeki statik HTML dosyası (yalnızca bilgi/bağlantı için).
+const LEGAL_PAGES = [
+  { key: 'kvkk', label: 'KVKK Aydınlatma Metni', file: 'kvkk.html' },
+  { key: 'hastaHaklari', label: 'Hasta Hakları', file: 'hasta-haklari.html' },
+  { key: 'gizlilik', label: 'Gizlilik Politikası', file: 'gizlilik-politikasi.html' }
+];
+
+function loadLegal() {
+  try {
+    return parser.parseLegalFile();
+  } catch (e) {
+    return null;
+  }
+}
+
+// Adres çubuğundaki ?page= değerini geçerli anahtarlara indirger.
+function legalPageKey(v) {
+  return LEGAL_PAGES.some(p => p.key === v) ? v : LEGAL_PAGES[0].key;
+}
+
 // EJS'e güvenli JSON iletmek için: < işaretleri \u003c'e çevrilir (</script> atlamasını engeller).
 function blob(obj) {
   return JSON.stringify(obj || {}).replace(/</g, '\\u003c');
@@ -526,6 +547,80 @@ router.post('/iletisim/save', requireAuth, (req, res) => {
   persist(tg.siteFile, serialized, 'Yönetim panelinden iletişim bilgileri güncellendi (' + lang + ')');
 
   res.redirect('/admin/iletisim?saved=1&lang=' + lang);
+});
+
+// ------------------------------------------------------------------
+// Kurumsal Sayfalar (KVKK, Hasta Hakları, Gizlilik Politikası)
+// Sadece sayfa gövdesi (HTML) düzenlenir; title/desc ve üst bant
+// dosyalarda/sözlükte sabit kalır.
+// ------------------------------------------------------------------
+router.get('/kurumsal', requireAuth, (req, res) => {
+  const lang = langOf(req);
+  const page = legalPageKey(req.query.page);
+  const legal = loadLegal();
+  const cur = (legal && legal[lang] && legal[lang][page]) ? legal[lang][page] : null;
+  const parts = parser.splitLegalBody(cur ? cur.body : '');
+
+  res.render('admin/kurumsal', {
+    active: 'kurumsal',
+    lang,
+    page,
+    pages: LEGAL_PAGES,
+    legal,
+    jsonBlob: blob({ contentHtml: parts.editable }),
+    loadError: legal === null,
+    saved: req.query.saved === '1',
+    warn: req.query.warn === '1',
+    error: null
+  });
+});
+
+router.post('/kurumsal/save', requireAuth, (req, res) => {
+  const lang = langOf(req);
+  const page = legalPageKey(req.body.page);
+  const legal = loadLegal();
+  const editorHtml = (req.body.body || '');
+
+  // Hata durumunda da editöre yazılan metin korunur.
+  const renderForm = (opts) => res.render('admin/kurumsal', Object.assign({
+    active: 'kurumsal',
+    lang,
+    page,
+    pages: LEGAL_PAGES,
+    legal,
+    jsonBlob: blob({ contentHtml: editorHtml }),
+    loadError: false,
+    saved: false,
+    warn: false,
+    error: null
+  }, opts));
+
+  if (!legal) {
+    return renderForm({ legal: null, jsonBlob: blob({ contentHtml: '' }), loadError: true });
+  }
+
+  const prev = (legal[lang] && legal[lang][page] && typeof legal[lang][page] === 'object') ? legal[lang][page] : {};
+  // Editör yalnızca kutudan önceki kısmı gönderir; iletişim kutusu her zaman
+  // orijinal body'den geri eklenir. Böylece data-site-* öznitelikleri ve kutu
+  // bütünlüğü Quill editöründen geçerken kaybolmaz.
+  const rest = parser.splitLegalBody(prev.body || '').rest;
+  const body = editorHtml + rest;
+
+  if (!editorHtml.trim()) {
+    return renderForm({ prevBody: prev.body, error: 'Sayfa içeriği boş olamaz.' });
+  }
+
+  // Editöre iletişim kutusu / data-site-* öznitelikleri yapıştırıldıysa kutu
+  // ikiye bölünür ya da otomasyon çakışır → kaydetmeden önce bilgilendir.
+  const countIn = (s, needle) => (s || '').split(needle).length - 1;
+  const warn = ['<div class="legal-highlight">', 'data-site-text=', 'data-site-mailto=']
+    .some(n => countIn(body, n) > countIn(prev.body, n));
+
+  legal[lang] = legal[lang] || {};
+  legal[lang][page] = Object.assign({}, prev, { body });
+
+  persist(parser.LEGAL_FILE, parser.serializeLegal(legal));
+  res.redirect('/admin/kurumsal?saved=1&lang=' + lang + '&page=' + page + (warn ? '&warn=1' : ''));
 });
 
 // ------------------------------------------------------------------

@@ -1,0 +1,61 @@
+<%- include('./_head') -%>
+<body data-type="legal" class="has-savebar">
+<%- include('./_sidebar', { active: active, lang: lang }) -%>
+<% var L = (typeof lang !== 'undefined' && lang) ? lang : 'tr'; %>
+<% var hrefFor = function (pk) { return '/admin/kurumsal?page=' + pk + (L === 'tr' ? '' : '&lang=' + L); }; %>
+<% var tabs = (typeof pages !== 'undefined' && pages) ? pages : []; %>
+<% var current = tabs.filter(function (t) { return t.key === page; })[0] || tabs[0]; %>
+
+<main class="content">
+  <div class="page-head">
+    <h1>Kurumsal Sayfalar</h1>
+    <%- include('./_lang-picker') -%>
+  </div>
+  <div class="page-sub">Sitede yer alan yasal/kurumsal metinlerin gövde içeriği. Üst bant (sayfa başlığı ve kısa açıklama) ve SEO ayarları bu ekrandan değiştirilemez.</div>
+
+  <% if (loadError) { %>
+    <div class="alert err"><strong>Veri dosyası okunamadı.</strong> data/legal.js içinde sözdizimi hatası olabilir. Dosyayı kontrol edip tekrar deneyin.</div>
+  <% } else { %>
+    <% if (error) { %><div class="alert err"><%= error %></div><% } %>
+    <% if (saved) { %><div class="alert ok">Kaydedildi. Değişiklik sitede hemen görünür.</div><% } %>
+    <% if (warn) { %><div class="alert warn"><strong>Dikkat:</strong> Gövdeye iletişim kutusunun kopyası ya da <code>data-site-text</code>/<code>data-site-mailto</code> öznitelikleri eklenmiş görünüyor. Adres/telefon/e-posta satırları site ayarlarından otomatik doldurulduğu için bu kopyalar çakışabilir.</div><% } %>
+
+    <div class="tabs">
+      <% tabs.forEach(function (t) { %>
+        <a href="<%= hrefFor(t.key) %>" class="<%= t.key === page ? 'active' : '' %>"><%= t.label %></a>
+      <% }); %>
+    </div>
+
+    <form method="post" action="/admin/kurumsal/save" id="legalForm">
+      <input type="hidden" name="lang" value="<%= L %>">
+      <input type="hidden" name="page" value="<%= page %>">
+
+      <div class="card">
+        <div class="card-head" style="cursor:default;">
+          <h2><%= current.label %> — Sayfa İçeriği</h2>
+        </div>
+        <div class="card-body">
+          <div class="field">
+            <input type="hidden" id="contentHtml" name="body" value="">
+            <div id="contentEditor" class="ql-single"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="savebar">
+        <div class="sb-title">
+          <%= current.label %>
+          <small>Değişiklikler "Kaydet" ile kaydedilir · İçerik dili: <%= L.toUpperCase() %></small>
+        </div>
+        <div class="sb-actions">
+          <a href="<%= hrefFor(page) %>" class="btn btn-outline">Vazgeç</a>
+          <button type="submit" class="btn">Kaydet</button>
+        </div>
+      </div>
+    </form>
+  <% } %>
+</main>
+
+<script id="initData" type="application/json"><%- jsonBlob %></script>
+
+<%- include('./_foot') -%>

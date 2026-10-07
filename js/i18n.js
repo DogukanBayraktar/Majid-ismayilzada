@@ -3,7 +3,12 @@
 
   var LANGS = (typeof window.LANGUAGES !== 'undefined' && window.LANGUAGES.length)
     ? window.LANGUAGES
-    : [{ code: 'tr', label: 'Türkçe', flag: 'tr' }, { code: 'en', label: 'English', flag: 'gb' }];
+    : [
+      { code: 'tr', label: 'Türkçe', flag: 'tr' },
+      { code: 'en', label: 'English', flag: 'gb' },
+      { code: 'es', label: 'Español', flag: 'es' },
+      { code: 'it', label: 'Italiano', flag: 'it' }
+    ];
   var CODES = LANGS.map(function (l) { return l.code; });
 
   // Dile göre kullanılacak global değişken adları. Yeni dil eklerken
