@@ -10,7 +10,8 @@ const SITE_FILE = path.join(DATA_DIR, 'site.js');
 const HOMEPAGE_FILE = path.join(DATA_DIR, 'homepage.js');
 
 // Yasal/kurumsal sayfa gövdeleri (kvkk, hasta-haklari, gizlilik-politikasi).
-// Tek dosyada tüm diller tutulur: { tr: {...}, en: {...}, es: {...}, it: {...} }.
+// Tek dosyada tüm diller tutulur: { tr: {...}, en: {...}, es: {...}, it: {...},
+// ru: {...}, ro: {...} }.
 const LEGAL_FILE = path.join(DATA_DIR, 'legal.js');
 
 // İngilizce veri dosyaları (data/*-en.js) — admin panelindeki EN sekmesi bunları yönetir.
@@ -29,6 +30,17 @@ const SERVICES_IT_FILE = path.join(DATA_DIR, 'services-it.js');
 const BLOG_IT_FILE = path.join(DATA_DIR, 'blog-posts-it.js');
 const SITE_IT_FILE = path.join(DATA_DIR, 'site-it.js');
 const HOMEPAGE_IT_FILE = path.join(DATA_DIR, 'homepage-it.js');
+
+// Rusça ve Romence veri dosyaları (data/*-ru.js, data/*-ro.js).
+const SERVICES_RU_FILE = path.join(DATA_DIR, 'services-ru.js');
+const BLOG_RU_FILE = path.join(DATA_DIR, 'blog-posts-ru.js');
+const SITE_RU_FILE = path.join(DATA_DIR, 'site-ru.js');
+const HOMEPAGE_RU_FILE = path.join(DATA_DIR, 'homepage-ru.js');
+
+const SERVICES_RO_FILE = path.join(DATA_DIR, 'services-ro.js');
+const BLOG_RO_FILE = path.join(DATA_DIR, 'blog-posts-ro.js');
+const SITE_RO_FILE = path.join(DATA_DIR, 'site-ro.js');
+const HOMEPAGE_RO_FILE = path.join(DATA_DIR, 'homepage-ro.js');
 
 // Dile göre veri dosyası adını ve üst düzey değişken adını belirler.
 // Yeni dil eklerken yalnızca bu tabloya satır eklemek yeterlidir.
@@ -165,6 +177,14 @@ module.exports = {
   BLOG_IT_FILE,
   SITE_IT_FILE,
   HOMEPAGE_IT_FILE,
+  SERVICES_RU_FILE,
+  BLOG_RU_FILE,
+  SITE_RU_FILE,
+  HOMEPAGE_RU_FILE,
+  SERVICES_RO_FILE,
+  BLOG_RO_FILE,
+  SITE_RO_FILE,
+  HOMEPAGE_RO_FILE,
   langTargets,
   readText,
   writeText,

@@ -2,7 +2,7 @@
 <div class="page-lang">
   <label class="pl-label" for="plSelect">İçerik dili</label>
   <select id="plSelect" class="pl-select" data-set-lang>
-    <% (LANGS || [{ code: 'tr', label: 'Türkçe' }, { code: 'en', label: 'English' }]).forEach(function (l) { %>
+    <% (LANGS || [{ code: 'tr', label: 'Türkçe' }, { code: 'en', label: 'English' }, { code: 'es', label: 'Español' }, { code: 'it', label: 'Italiano' }, { code: 'ru', label: 'Русский' }, { code: 'ro', label: 'Română' }]).forEach(function (l) { %>
       <option value="<%= l.code %>" <%= l.code === L ? 'selected' : '' %>><%= l.label %></option>
     <% }); %>
   </select>

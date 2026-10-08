@@ -7,28 +7,32 @@
       { code: 'tr', label: 'Türkçe', flag: 'tr' },
       { code: 'en', label: 'English', flag: 'gb' },
       { code: 'es', label: 'Español', flag: 'es' },
-      { code: 'it', label: 'Italiano', flag: 'it' }
+      { code: 'it', label: 'Italiano', flag: 'it' },
+      { code: 'ru', label: 'Русский', flag: 'ru' },
+      { code: 'ro', label: 'Română', flag: 'ro' }
     ];
   var CODES = LANGS.map(function (l) { return l.code; });
 
   // Dile göre kullanılacak global değişken adları. Yeni dil eklerken
   // veri dosyası adıyla buraya satır eklemek yeterlidir.
   var DATA = {
-    hp: { tr: 'homepageSettings', en: 'homepageSettingsEn', es: 'homepageSettingsEs', it: 'homepageSettingsIt' },
-    site: { tr: 'siteSettings', en: 'siteSettingsEn', es: 'siteSettingsEs', it: 'siteSettingsIt' },
-    services: { tr: 'services', en: 'servicesEn', es: 'servicesEs', it: 'servicesIt' },
-    blog: { tr: 'blogPosts', en: 'blogPostsEn', es: 'blogPostsEs', it: 'blogPostsIt' }
+    hp: { tr: 'homepageSettings', en: 'homepageSettingsEn', es: 'homepageSettingsEs', it: 'homepageSettingsIt', ru: 'homepageSettingsRu', ro: 'homepageSettingsRo' },
+    site: { tr: 'siteSettings', en: 'siteSettingsEn', es: 'siteSettingsEs', it: 'siteSettingsIt', ru: 'siteSettingsRu', ro: 'siteSettingsRo' },
+    services: { tr: 'services', en: 'servicesEn', es: 'servicesEs', it: 'servicesIt', ru: 'servicesRu', ro: 'servicesRo' },
+    blog: { tr: 'blogPosts', en: 'blogPostsEn', es: 'blogPostsEs', it: 'blogPostsIt', ru: 'blogPostsRu', ro: 'blogPostsRo' }
   };
 
   var NAV = {
     tr: { about: 'Hakkımda', specialties: 'Uzmanlık', blog: 'Blog', contact: 'İletişim', cta: 'Randevu Al' },
     en: { about: 'About', specialties: 'Specialties', blog: 'Blog', contact: 'Contact', cta: 'Book Appointment' },
     es: { about: 'Sobre mí', specialties: 'Especialidades', blog: 'Blog', contact: 'Contacto', cta: 'Pedir cita' },
-    it: { about: 'Chi sono', specialties: 'Specializzazioni', blog: 'Blog', contact: 'Contatti', cta: 'Prenota appuntamento' }
+    it: { about: 'Chi sono', specialties: 'Specializzazioni', blog: 'Blog', contact: 'Contatti', cta: 'Prenota appuntamento' },
+    ru: { about: 'Обо мне', specialties: 'Направления', blog: 'Блог', contact: 'Контакты', cta: 'Записаться' },
+    ro: { about: 'Despre mine', specialties: 'Specializări', blog: 'Blog', contact: 'Contact', cta: 'Programează' }
   };
 
   // Open Graph dili (og:locale) — dil kodundan locale'e çeviri.
-  var OG_LOCALE = { tr: 'tr_TR', en: 'en_US', es: 'es_ES', it: 'it_IT' };
+  var OG_LOCALE = { tr: 'tr_TR', en: 'en_US', es: 'es_ES', it: 'it_IT', ru: 'ru_RU', ro: 'ro_RO' };
 
   function detectLanguage() {
     var params = new URLSearchParams(window.location.search);
