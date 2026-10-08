@@ -103,8 +103,10 @@
     var vSection = gallery.closest('section');
     fillSectionHead(vSection, v);
     gallery.innerHTML = v.items.map(function (item) {
+      var photo = item.photo || '';
+      if (photo && !/^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(photo)) photo = '/' + photo;
       return '<div class="video-card" data-video-id="' + (item.videoId || '') + '"' +
-        ' style="--photo:url(\'' + (item.photo || '') + '\')">' +
+        ' style="--photo:url(\'' + photo + '\')">' +
         '<button class="video-play" aria-label="' + ((typeof i18n !== 'undefined') ? i18n.t('videoPlay') : 'Videoyu oynat') + '"></button>' +
         '<div class="video-info"><b>' + (item.name || '') + '</b><span>' + (item.treatment || '') + '</span></div>' +
       '</div>';
@@ -116,7 +118,11 @@
         var videoId = card.dataset.videoId;
         var title = card.querySelector('.video-info b') ? card.querySelector('.video-info b').textContent : ((typeof i18n !== 'undefined') ? i18n.t('patientVideo') : 'Hasta Videosu');
         card.classList.add('video-active');
-        card.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" title="' + title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        if (/^(\/)?assets\//.test(videoId) || /\.(mp4|webm|ogv|mov|m4v)$/i.test(videoId)) {
+          card.innerHTML = '<video src="' + videoId + '" controls autoplay playsinline title="' + title + '"></video>';
+        } else {
+          card.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" title="' + title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        }
       });
     });
   }

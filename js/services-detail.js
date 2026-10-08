@@ -467,7 +467,9 @@ function extractYoutubeId(url) {
 function videoGalleryHtml(videos) {
   return videos.map((video, i) => {
     const videoId = video.videoId || extractYoutubeId(video.url);
-    const photoVar = video.image ? `--photo:url('${video.image}');` : '';
+    let img = video.image || '';
+    if (img && !/^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(img)) img = '/' + img;
+    const photoVar = img ? `--photo:url('${img}');` : '';
     return `
       <div class="video-card reveal" data-video-id="${videoId}" style="transition-delay:${(i % 6) * 70}ms;${photoVar}">
         <button class="video-play" aria-label="${(typeof i18n !== 'undefined') ? i18n.t('videoPlay') : 'Videoyu oynat'}"></button>
@@ -551,7 +553,11 @@ function initVideosSection(root) {
       if (!videoId) return;
       const title = card.querySelector('.video-info b')?.textContent || ((typeof i18n !== 'undefined') ? i18n.t('patientVideo') : 'Hasta Videosu');
       card.classList.add('video-active');
-      card.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" title="${title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      if (/^(\/)?assets\//.test(videoId) || /\.(mp4|webm|ogv|mov|m4v)$/i.test(videoId)) {
+        card.innerHTML = `<video src="${videoId}" controls autoplay playsinline title="${title}"></video>`;
+      } else {
+        card.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" title="${title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      }
     });
   });
 

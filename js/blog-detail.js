@@ -93,7 +93,9 @@ function renderNotFound(root) {
     if (post.date) metaParts.push(`<span>${post.date}</span>`);
     const metaHtml = metaParts.map((m, i) => i === 0 ? m : `<span class="dot"></span>${m}`).join('');
 
-    const coverStyle = post.image ? ` style="--photo:url('${post.image}');"` : '';
+    let coverImg = post.image || '';
+    if (coverImg && !/^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(coverImg)) coverImg = '/' + coverImg;
+    const coverStyle = coverImg ? ` style="--photo:url('${coverImg}');"` : '';
     const contentHtml = post.contentHtml || (post.content || []).map(contentBlockHtml).join('');
 
     const related = blogPosts.filter(p => p.id !== post.id).slice(0, 3);

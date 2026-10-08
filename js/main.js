@@ -254,7 +254,11 @@ document.querySelectorAll('.video-card[data-video-id]').forEach(card => {
         const videoId = card.dataset.videoId;
         const title = card.querySelector('.video-info b')?.textContent || ((typeof i18n !== 'undefined') ? i18n.t('patientVideo') : 'Hasta Videosu');
         card.classList.add('video-active');
-        card.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        if (/^(\/)?assets\//.test(videoId) || /\.(mp4|webm|ogv|mov|m4v)$/i.test(videoId)) {
+            card.innerHTML = `<video src="${videoId}" controls autoplay playsinline title="${title}"></video>`;
+        } else {
+            card.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        }
     });
 });
 document.querySelectorAll('.faq-item').forEach(item => {
