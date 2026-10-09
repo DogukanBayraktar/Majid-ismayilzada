@@ -11,15 +11,11 @@ var servicesRu = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 1",
-        "duration": "Мастопексия с аугментацией"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 2",
-        "duration": "Подтяжка и увеличение груди"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -93,15 +89,11 @@ var servicesRu = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 1",
-        "duration": "BBL"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 2",
-        "duration": "Эстетика ягодиц"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -389,15 +381,11 @@ var servicesRu = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "B. Koç",
-        "duration": "Липосакция"
+        "image": "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "M. Yıldız",
-        "duration": "Контур тела"
+        "image": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -683,9 +671,7 @@ var servicesRu = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Z. Arslan",
-        "duration": "Эстетика материнства"
+        "image": "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -911,15 +897,11 @@ var servicesRu = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 1",
-        "duration": "Ринопластика"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 2",
-        "duration": "Пластика носа"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1179,15 +1161,11 @@ var servicesRu = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 1",
-        "duration": "Подтяжка живота"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 2",
-        "duration": "Абдоминопластика"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1486,15 +1464,11 @@ var servicesRu = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 1",
-        "duration": "Бракиопластика"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 2",
-        "duration": "Операция подтяжки рук"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1565,15 +1539,11 @@ var servicesRu = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 1",
-        "duration": "SMAS Facelift"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Пациент 2",
-        "duration": "Подтяжка лица и шеи"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [

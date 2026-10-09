@@ -353,8 +353,8 @@ function collectService() {
     }
     return rows;
   }
-  var videos = zip(repr('input[name="v_videoId[]"]'), repr('input[name="v_image[]"]'), repr('input[name="v_name[]"]'), repr('input[name="v_duration[]"]'))
-    .map(function (r) { return { videoId: r[0], image: r[1], name: r[2], duration: r[3] }; });
+  var videos = zip(repr('input[name="v_videoId[]"]'), repr('input[name="v_image[]"]'))
+    .map(function (r) { return { videoId: r[0], image: r[1] }; });
   var results = zip(repr('input[name="r_image[]"]')).map(function (r) { return { image: r[0] }; });
   var steps = zip(repr('input[name="s_number[]"]'), repr('input[name="s_title[]"]'), repr('input[name="s_description[]"]'))
     .map(function (r) { return { number: r[0], title: r[1], description: r[2] }; });

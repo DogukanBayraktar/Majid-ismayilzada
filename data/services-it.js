@@ -11,15 +11,11 @@ var servicesIt = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 1",
-        "duration": "Mastopessi di aumento"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 2",
-        "duration": "Mastopessi e aumento del seno"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -93,15 +89,11 @@ var servicesIt = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 1",
-        "duration": "BBL"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 2",
-        "duration": "Estetica dei Glutei"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -389,15 +381,11 @@ var servicesIt = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "B. Koç",
-        "duration": "Liposuzione"
+        "image": "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "M. Yıldız",
-        "duration": "Contorno Corporeo"
+        "image": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -683,9 +671,7 @@ var servicesIt = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Z. Arslan",
-        "duration": "Estetica della Maternità"
+        "image": "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -911,15 +897,11 @@ var servicesIt = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 1",
-        "duration": "Rinoplastica"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 2",
-        "duration": "Estetica Nasale"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1179,15 +1161,11 @@ var servicesIt = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 1",
-        "duration": "Addominoplastia"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 2",
-        "duration": "Addominoplastia"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1486,15 +1464,11 @@ var servicesIt = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 1",
-        "duration": "Brachioplastia"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 2",
-        "duration": "Lifting delle Braccia"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1565,15 +1539,11 @@ var servicesIt = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 1",
-        "duration": "SMAS Facelift"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paziente 2",
-        "duration": "Lifting del Viso e del Collo"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [

@@ -92,39 +92,27 @@ var homepageSettingsRo = {
     "items": [
       {
         "videoId": "assets/video/mommy-makeover.mp4",
-        "photo": "assets/video/mommy-makeover.jpg",
-        "name": "Z. Arslan",
-        "treatment": "Estetica mamei"
+        "photo": "assets/video/mommy-makeover.jpg"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "photo": "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "M. Yılmaz",
-        "treatment": "Rinoplastie"
+        "photo": "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "photo": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "S. Demir",
-        "treatment": "Estetică mamară"
+        "photo": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "photo": "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "A. Kara",
-        "treatment": "Lifting facial"
+        "photo": "https://images.pexels.com/photos/5240617/pexels-photo-5240617.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "photo": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "E. Şahin",
-        "treatment": "Reconstrucție mamară"
+        "photo": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "photo": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "C. Öztürk",
-        "treatment": "Chirurgie craniofacială"
+        "photo": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ]
   },

@@ -92,45 +92,31 @@ var homepageSettings = {
     "items": [
       {
         "videoId": "assets/video/mommy-makeover.mp4",
-        "photo": "assets/video/mommy-makeover.jpg",
-        "name": "Z. Arslan",
-        "treatment": "Annelik Estetiği"
+        "photo": "assets/video/mommy-makeover.jpg"
       },
       {
         "videoId": "assets/video/abdominoplasty.mp4",
-        "photo": "assets/video/abdominoplasty.jpg",
-        "name": "M. Yılmaz",
-        "treatment": "Rinoplasti"
+        "photo": "assets/video/abdominoplasty.jpg"
       },
       {
         "videoId": "assets/video/bbl.mp4",
-        "photo": "assets/video/bbl.jpg",
-        "name": "S. Demir",
-        "treatment": "Meme Estetiği"
+        "photo": "assets/video/bbl.jpg"
       },
       {
         "videoId": "assets/video/breast-aesthetic.mp4",
-        "photo": "assets/video/breast-aesthetic.jpg",
-        "name": "A. Kara",
-        "treatment": "Yüz Germe"
+        "photo": "assets/video/breast-aesthetic.jpg"
       },
       {
         "videoId": "assets/video/liposuction.mp4",
-        "photo": "assets/video/liposuction.jpg",
-        "name": "E. Şahin",
-        "treatment": "Meme Rekonstrüksiyonu"
+        "photo": "assets/video/liposuction.jpg"
       },
       {
         "videoId": "assets/video/rhinoplasty.mp4",
-        "photo": "assets/video/rhinoplasty.jpg",
-        "name": "C. Öztürk",
-        "treatment": "Kraniyofasiyal"
+        "photo": "assets/video/rhinoplasty.jpg"
       },
       {
         "videoId": "assets/video/tummy.mp4",
-        "photo": "assets/video/tummy.jpg",
-        "name": "testg",
-        "treatment": "test"
+        "photo": "assets/video/tummy.jpg"
       }
     ]
   },

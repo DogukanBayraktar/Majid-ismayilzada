@@ -11,15 +11,11 @@ var services = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 1",
-        "duration": "Augmentasyon Mastopeksi"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 2",
-        "duration": "Meme Dikleştirme ve Büyütme"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -93,15 +89,11 @@ var services = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 1",
-        "duration": "BBL"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 2",
-        "duration": "Popo Estetiği"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -389,15 +381,11 @@ var services = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "B. Koç",
-        "duration": "Liposuction"
+        "image": "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "M. Yıldız",
-        "duration": "Vücut Konturu"
+        "image": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -683,9 +671,7 @@ var services = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Z. Arslan",
-        "duration": "Annelik Estetiği"
+        "image": "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -911,15 +897,11 @@ var services = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 1",
-        "duration": "Rinoplasti"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 2",
-        "duration": "Burun Estetiği"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1179,15 +1161,11 @@ var services = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 1",
-        "duration": "Karın Germe"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 2",
-        "duration": "Abdominoplasti"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1486,15 +1464,11 @@ var services = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 1",
-        "duration": "Brakyoplasti"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 2",
-        "duration": "Kol Germe Ameliyatı"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1565,15 +1539,11 @@ var services = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 1",
-        "duration": "SMAS Facelift"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Hasta 2",
-        "duration": "Yüz ve Boyun Germe"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [

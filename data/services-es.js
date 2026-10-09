@@ -11,15 +11,11 @@ var servicesEs = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 1",
-        "duration": "Mastopexia de aumento"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 2",
-        "duration": "Mastopexia y aumento de pecho"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -93,15 +89,11 @@ var servicesEs = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 1",
-        "duration": "BBL"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 2",
-        "duration": "Estética de los Glúteos"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -389,15 +381,11 @@ var servicesEs = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "B. Koç",
-        "duration": "Liposucción"
+        "image": "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "M. Yıldız",
-        "duration": "Contorno Corporal"
+        "image": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -683,9 +671,7 @@ var servicesEs = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Z. Arslan",
-        "duration": "Estética Materna"
+        "image": "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -911,15 +897,11 @@ var servicesEs = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 1",
-        "duration": "Rinoplastia"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 2",
-        "duration": "Estética Nasal"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1179,15 +1161,11 @@ var servicesEs = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 1",
-        "duration": "Abdominoplastia"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 2",
-        "duration": "Abdominoplastia"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1486,15 +1464,11 @@ var servicesEs = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 1",
-        "duration": "Braquioplastia"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 2",
-        "duration": "Lifting de Brazos"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
@@ -1565,15 +1539,11 @@ var servicesEs = [
     "videos": [
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 1",
-        "duration": "SMAS Facelift"
+        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
       },
       {
         "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800",
-        "name": "Paciente 2",
-        "duration": "Lifting Facial y de Cuello"
+        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
       }
     ],
     "results": [
