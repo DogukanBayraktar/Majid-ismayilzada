@@ -226,10 +226,8 @@ router.post('/services/save', requireAuth, (req, res) => {
     const title = (req.body.title || '').trim();
     const videos = buildRows([
       arrOf(req, 'v_videoId[]'),
-      arrOf(req, 'v_image[]'),
-      arrOf(req, 'v_name[]'),
-      arrOf(req, 'v_duration[]')
-    ]).map(r => ({ videoId: r[0], image: r[1], name: r[2], duration: r[3] }));
+      arrOf(req, 'v_image[]')
+    ]).map(r => ({ videoId: r[0], image: r[1] }));
 
     const results = buildRows([arrOf(req, 'r_image[]')]).map(r => ({ image: r[0] }));
 

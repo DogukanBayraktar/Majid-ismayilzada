@@ -475,7 +475,6 @@ function videoGalleryHtml(videos) {
     return `
       <div class="video-card reveal" data-video-id="${videoId}" style="transition-delay:${(i % 6) * 70}ms;${photoVar}">
         <button class="video-play" aria-label="${(typeof i18n !== 'undefined') ? i18n.t('videoPlay') : 'Videoyu oynat'}"></button>
-        <div class="video-info"><b>${video.name}</b><span>${video.duration}</span></div>
       </div>
     `;
   }).join('');
