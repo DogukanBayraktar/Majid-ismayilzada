@@ -104,7 +104,9 @@
     fillSectionHead(vSection, v);
     gallery.innerHTML = v.items.map(function (item) {
       var photo = item.photo || '';
-      if (photo && !/^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(photo)) photo = '/' + photo;
+      if (photo && !/^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(photo)) {
+        try { photo = new URL(photo, document.baseURI).href; } catch (e) {}
+      }
       return '<div class="video-card" data-video-id="' + (item.videoId || '') + '"' +
         ' style="--photo:url(\'' + photo + '\')">' +
         '<button class="video-play" aria-label="' + ((typeof i18n !== 'undefined') ? i18n.t('videoPlay') : 'Videoyu oynat') + '"></button>' +

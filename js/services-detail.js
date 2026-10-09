@@ -468,7 +468,9 @@ function videoGalleryHtml(videos) {
   return videos.map((video, i) => {
     const videoId = video.videoId || extractYoutubeId(video.url);
     let img = video.image || '';
-    if (img && !/^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(img)) img = '/' + img;
+    if (img && !/^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(img)) {
+      try { img = new URL(img, document.baseURI).href; } catch (e) {}
+    }
     const photoVar = img ? `--photo:url('${img}');` : '';
     return `
       <div class="video-card reveal" data-video-id="${videoId}" style="transition-delay:${(i % 6) * 70}ms;${photoVar}">

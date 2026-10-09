@@ -94,7 +94,9 @@ function renderNotFound(root) {
     const metaHtml = metaParts.map((m, i) => i === 0 ? m : `<span class="dot"></span>${m}`).join('');
 
     let coverImg = post.image || '';
-    if (coverImg && !/^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(coverImg)) coverImg = '/' + coverImg;
+    if (coverImg && !/^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(coverImg)) {
+      try { coverImg = new URL(coverImg, document.baseURI).href; } catch (e) {}
+    }
     const coverStyle = coverImg ? ` style="--photo:url('${coverImg}');"` : '';
     const contentHtml = post.contentHtml || (post.content || []).map(contentBlockHtml).join('');
 
