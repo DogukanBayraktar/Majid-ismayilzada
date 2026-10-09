@@ -110,7 +110,6 @@
       return '<div class="video-card" data-video-id="' + (item.videoId || '') + '"' +
         ' style="--photo:url(\'' + photo + '\')">' +
         '<button class="video-play" aria-label="' + ((typeof i18n !== 'undefined') ? i18n.t('videoPlay') : 'Videoyu oynat') + '"></button>' +
-        '<div class="video-info"><b>' + (item.name || '') + '</b><span>' + (item.treatment || '') + '</span></div>' +
       '</div>';
     }).join('');
     // Video kartları için event listener

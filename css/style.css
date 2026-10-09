@@ -3996,7 +3996,8 @@ object-position: center;
    bottom: auto;
    right: auto;
    z-index: 1;
-   align-self: center;
+   align-self: stretch;
+   width: 100%;
    margin-top: 22px;
    opacity: 0;
    transform: translateY(14px);
@@ -4011,14 +4012,18 @@ object-position: center;
 
 .mobile-nav .lang-switcher .lang-btn {
    box-shadow: none;
-   padding: 10px 18px;
-   font-size: 13px;
+   width: 100%;
+   justify-content: space-between;
+   padding: 12px 18px;
+   font-size: 14px;
+   border-radius: 10px;
 }
 
 .mobile-nav .lang-switcher .lang-menu {
    top: auto;
    bottom: calc(100% + 8px);
-   right: auto;
-   left: 50%;
-   margin-left: -84px;
+   left: 0;
+   right: 0;
+   width: 100%;
+   margin-left: 0;
 }
