@@ -138,7 +138,7 @@
               <div class="field"><label>Başlık</label><input type="text" name="videoStories_title" class="inp" value="<%= (hp.videoStories || {}).title || '' %>"></div>
               <div class="field"><label>Açıklama</label><textarea name="videoStories_description" class="inp" rows="2"><%= (hp.videoStories || {}).description || '' %></textarea></div>
             </div>
-            <%- hpRep('Videolar', 'videoStories', 'items', 'YouTube video ID\'si ve isteğe bağlı kapak görseli.', [['videoId', 'YouTube ID'], ['photo', 'Kapak görseli'], ['name', 'Ad'], ['treatment', 'İşlem']]) %>
+            <%- hpRep('Videolar', 'videoStories', 'items', 'YouTube video ID\'si ve isteğe bağlı kapak görseli.', [['videoId', 'YouTube ID'], ['photo', 'Kapak görseli']]) %>
           </div>
         </div>
       </div>

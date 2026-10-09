@@ -97,7 +97,7 @@ var homepageSettings = {
         "treatment": "Annelik Estetiği"
       },
       {
-        "videoId": "assets/video/abdominoplastymp4",
+        "videoId": "assets/video/abdominoplasty.mp4",
         "photo": "assets/video/abdominoplasty.jpg",
         "name": "M. Yılmaz",
         "treatment": "Rinoplasti"

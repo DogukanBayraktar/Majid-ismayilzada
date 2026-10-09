@@ -74,8 +74,6 @@ var ROW_TEMPLATES = {
       '<td><input type="text" name="v_videoId[]" value="' + esc(v.videoId) + '" class="inp" placeholder="Video ID"></td>' +
       '<td><div class="imgpick"><input type="text" name="v_image[]" value="' + esc(v.image) + '" class="inp" placeholder="Kapak görseli yolu">' +
       '<button type="button" class="btn-mini" title="Görsel yükle" onclick="pickImage(this.parentNode.querySelector(\'input\'))">↗</button></div></td>' +
-      '<td><input type="text" name="v_name[]" value="' + esc(v.name) + '" class="inp" placeholder="Video adı"></td>' +
-      '<td><input type="text" name="v_duration[]" value="' + esc(v.duration) + '" class="inp inp-sm" placeholder="Süre"></td>' +
       '<td class="cell-action"><button type="button" class="btn-mini danger" title="Sil" onclick="this.closest(\'tr\').remove()">✕</button></td>' +
       '</tr>';
   },
@@ -126,7 +124,7 @@ var HP_ROWS = {
   about_bullets:         { cols: [{ k: '', l: 'Nokta', t: 'text' }] },
   about_credentials:     { cols: [{ k: 'icon', l: 'İkon (remixicon)', t: 'text' }, { k: 'title', l: 'Başlık', t: 'text' }, { k: 'detail', l: 'Detay', t: 'text' }] },
   stories_items:         { cols: [{ k: 'quote', l: 'Yorum', t: 'area' }, { k: 'name', l: 'Ad', t: 'text' }, { k: 'treatment', l: 'İşlem', t: 'text' }, { k: 'initials', l: 'Baş harfler', t: 'text' }] },
-  videoStories_items:    { cols: [{ k: 'videoId', l: 'YouTube ID', t: 'text' }, { k: 'photo', l: 'Kapak görseli', t: 'img' }, { k: 'name', l: 'Ad', t: 'text' }, { k: 'treatment', l: 'İşlem', t: 'text' }] },
+  videoStories_items:    { cols: [{ k: 'videoId', l: 'YouTube ID', t: 'text' }, { k: 'photo', l: 'Kapak görseli', t: 'img' }] },
   results_images:        { cols: [{ k: 'src', l: 'Görsel yolu', t: 'img' }, { k: 'alt', l: 'Açıklama', t: 'text' }] },
   process_steps:         { cols: [{ k: 'number', l: 'No', t: 'text' }, { k: 'tag', l: 'Etiket', t: 'text' }, { k: 'title', l: 'Başlık', t: 'text' }, { k: 'description', l: 'Açıklama', t: 'text' }] },
   process_photos:        { cols: [{ k: 'src', l: 'Görsel yolu', t: 'img' }, { k: 'alt', l: 'Açıklama', t: 'text' }] },
