@@ -205,6 +205,23 @@
         return '<div class="istanbul-feature"><span class="num">' + f.number + '</span><h4>' + f.title + '</h4><p>' + f.description + '</p></div>';
       }).join('');
     }
+    if (ist.slides && ist.slides.length) {
+      var slider = document.getElementById('istanbulSlider');
+      var dotsWrap = document.getElementById('istanbulDots');
+      if (slider) {
+        slider.innerHTML = ist.slides.map(function (s, i) {
+          return '<div class="istanbul-slide">' +
+            '<img src="' + s.src + '" alt="' + (s.alt || '') + '" loading="lazy">' +
+          '</div>';
+        }).join('');
+      }
+      if (dotsWrap) {
+        dotsWrap.innerHTML = ist.slides.map(function (s, i) {
+          return '<span class="istanbul-dot' + (i === 0 ? ' is-active' : '') + '" data-index="' + i + '"></span>';
+        }).join('');
+      }
+      if (typeof window.initIstanbulSlider === 'function') window.initIstanbulSlider();
+    }
   }
 
   // --- Sertifikalar ---
@@ -289,6 +306,23 @@
           return '<div class="cred-card"><span class="cred-icon"><i class="' + c.icon + '"></i></span><b>' + c.title + '</b><span>' + c.detail + '</span></div>';
         }).join('');
       }
+    }
+    if (ho.slides && ho.slides.length) {
+      var slider = document.getElementById('hospitalSlider');
+      var dotsWrap = document.getElementById('hospitalDots');
+      if (slider) {
+        slider.innerHTML = ho.slides.map(function (s, i) {
+          return '<div class="hospital-slide' + (i === 0 ? ' is-active' : '') + '">' +
+            '<img src="' + s.src + '" alt="' + (s.alt || '') + '">' +
+          '</div>';
+        }).join('');
+      }
+      if (dotsWrap) {
+        dotsWrap.innerHTML = ho.slides.map(function (s, i) {
+          return '<span class="hospital-dot' + (i === 0 ? ' is-active' : '') + '" data-index="' + i + '"></span>';
+        }).join('');
+      }
+      if (typeof window.initHospitalSlider === 'function') window.initHospitalSlider();
     }
   }
 

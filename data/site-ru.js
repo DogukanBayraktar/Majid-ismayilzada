@@ -22,11 +22,11 @@ var siteSettingsRu = {
   "navMenu": [
     {
       "label": "Обо мне",
-      "href": "#about"
+      "href": "#aboutSection"
     },
     {
       "label": "Направления",
-      "href": "#services"
+      "href": "uzmanliklar.html"
     },
     {
       "label": "Блог",
@@ -45,7 +45,7 @@ var siteSettingsRu = {
       "links": [
         {
           "label": "Обо мне",
-          "href": "#about"
+          "href": "#aboutSection"
         },
         {
           "label": "Направления",

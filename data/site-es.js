@@ -22,11 +22,11 @@ var siteSettingsEs = {
   "navMenu": [
     {
       "label": "Sobre mí",
-      "href": "#about"
+      "href": "#aboutSection"
     },
     {
       "label": "Especialidades",
-      "href": "#services"
+      "href": "uzmanliklar.html"
     },
     {
       "label": "Blog",
@@ -45,7 +45,7 @@ var siteSettingsEs = {
       "links": [
         {
           "label": "Sobre mí",
-          "href": "#about"
+          "href": "#aboutSection"
         },
         {
           "label": "Especialidades",

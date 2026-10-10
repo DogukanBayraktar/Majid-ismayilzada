@@ -58,7 +58,13 @@ app.use('/data', express.static(path.join(__dirname, 'data'), noCache));
 app.use('/js', express.static(path.join(__dirname, 'js'), noCache));
 
 // Mevcut site (tasarım aynen) statik olarak servis edilir
-app.use(express.static(path.join(__dirname), { index: 'index.html' }));
+app.use(express.static(path.join(__dirname), {
+  index: 'index.html',
+  setHeaders: function (res, filePath) {
+    if (/\.avif$/i.test(filePath)) res.setHeader('Content-Type', 'image/avif');
+    else if (/\.webp$/i.test(filePath)) res.setHeader('Content-Type', 'image/webp');
+  }
+}));
 
 app.use((req, res) => {
   res.status(404).send('Sayfa bulunamadı.');

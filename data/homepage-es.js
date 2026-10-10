@@ -17,7 +17,7 @@ var homepageSettingsEs = {
       "Con un enfoque científico y amplia experiencia, alcance sus objetivos estéticos con total confianza."
     ],
     "bio": "Se licenció en la Facultad de Medicina de la Universidad de Ankara en 2015 y completó su especialización en Cirugía Plástica, Reconstructiva y Estética en la Universidad Necmettin Erbakan. Obtuvo primeros premios en congresos en 2018 y 2022 y en 2024 recibió el Premio Ciencia/Arte de Cirugía Plástica. En 2024 realizó un fellowship en reconstrucción mamaria en Bélgica, en 2025 obtuvo el título de Profesor Asociado y continúa su formación doctoral.",
-    "photo": "assets/images/hoca.jpeg",
+    "photo": "assets/images/hoca.avif",
     "credentials": [
       {
         "icon": "ri-graduation-cap-line",
@@ -52,35 +52,35 @@ var homepageSettingsEs = {
     "description": "Explore casos reales de nuestros pacientes y evalúe de cerca los resultados obtenidos.",
     "images": [
       {
-        "src": "assets/images/oncesi-sonrasi-rhinoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-rhinoplasty.avif",
         "alt": "Antes y después"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-breast.jpeg",
+        "src": "assets/images/oncesi-sonrasi-breast.avif",
         "alt": "Antes y después"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-liposuction.png",
+        "src": "assets/images/oncesi-sonrasi-liposuction.avif",
         "alt": "Antes y después"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-bbl.png",
+        "src": "assets/images/oncesi-sonrasi-bbl.avif",
         "alt": "Antes y después"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-mommy.png",
+        "src": "assets/images/oncesi-sonrasi-mommy.avif",
         "alt": "Antes y después"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-abdominoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-abdominoplasty.avif",
         "alt": "Antes y después"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-facelift.png",
+        "src": "assets/images/oncesi-sonrasi-facelift.avif",
         "alt": "Antes y después"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-armlift.png",
+        "src": "assets/images/oncesi-sonrasi-armlift.avif",
         "alt": "Antes y después"
       }
     ]
@@ -208,7 +208,7 @@ var homepageSettingsEs = {
     "label": "Seguridad y transparencia",
     "title": "La seguridad es tanta prioridad como la estética.",
     "description": "La cirugía estética también es un procedimiento médico; los posibles riesgos se comparten de forma transparente durante el proceso de consulta.",
-    "photo": "assets/images/guven.jpeg",
+    "photo": "assets/images/guven.avif",
     "cards": [
       {
         "title": "Consentimiento informado",
@@ -340,27 +340,27 @@ var homepageSettingsEs = {
     "description": "Estambul, que une dos continentes, ofrece fácil acceso, alojamiento confortable y un ambiente sereno para su recuperación.",
     "slides": [
       {
-        "src": "assets/images/İstanbul/istanbul-1.png",
+        "src": "assets/images/İstanbul/istanbul-1.avif",
         "alt": "Estambul - Vista de la ciudad 1"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-2.png",
+        "src": "assets/images/İstanbul/istanbul-2.avif",
         "alt": "Estambul - Vista de la ciudad 2"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-3.png",
+        "src": "assets/images/İstanbul/istanbul-3.avif",
         "alt": "Estambul - Vista de la ciudad 3"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-4.png",
+        "src": "assets/images/İstanbul/istanbul-4.avif",
         "alt": "Estambul - Vista de la ciudad 4"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-5.png",
+        "src": "assets/images/İstanbul/istanbul-5.avif",
         "alt": "Estambul - Vista de la ciudad 5"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-6.png",
+        "src": "assets/images/İstanbul/istanbul-6.avif",
         "alt": "Estambul - Vista de la ciudad 6"
       }
     ],

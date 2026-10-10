@@ -4,7 +4,7 @@ var servicesRo = [
     "title": "Ridicarea și mărirea sânilor",
     "excerpt": "Mastopexia cu augmentare este o intervenție chirurgicală estetică combinată, care redă sânului forma, fermitatea și volumul într-o singură ședință, atunci când există atât lăsare, cât și pierdere de volum.",
     "category": "Chirurgie estetică",
-    "cardImage": "assets/images/Uzmanlıklar/Breast.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Breast.avif",
     "link": "services-detay.html?id=meme-diklestirme-ve-buyutme",
     "duration": "2–3 ore",
     "recovery": "6–8 săptămâni (rezultatul final 3–6 luni)",
@@ -83,7 +83,7 @@ var servicesRo = [
     "title": "Estetica feselor (BBL)",
     "excerpt": "Intervenție chirurgicală estetică de modelare a șoldurilor și a taliei prin transfer de grăsime.",
     "category": "Chirurgie estetică",
-    "cardImage": "assets/images/Uzmanlıklar/BBL.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/BBL.avif",
     "duration": "3–5 ore",
     "recovery": "6–8 săptămâni (rezultatul final 2–3 luni)",
     "videos": [
@@ -375,7 +375,7 @@ var servicesRo = [
     "title": "Liposucție (Eliminarea grăsimii)",
     "excerpt": "Intervenție chirurgicală estetică care elimină depozitele locale încăpățânate de grăsime, nerezolvate prin dietă și exerciții, și remodelează corpul.",
     "category": "Estetică corporală",
-    "cardImage": "assets/images/Uzmanlıklar/Liposuction.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Liposuction.avif",
     "duration": "1–3 ore",
     "recovery": "4–6 săptămâni",
     "videos": [
@@ -390,13 +390,13 @@ var servicesRo = [
     ],
     "results": [
       {
-        "image": "assets/images/Liposuction/Liposuction-1.png"
+        "image": "assets/images/Liposuction/Liposuction-1.avif"
       },
       {
-        "image": "assets/images/Liposuction/Liposuction-2.png"
+        "image": "assets/images/Liposuction/Liposuction-2.avif"
       },
       {
-        "image": "assets/images/Liposuction/Liposuction-3.png"
+        "image": "assets/images/Liposuction/Liposuction-3.avif"
       }
     ],
     "content": [
@@ -665,7 +665,7 @@ var servicesRo = [
     "title": "Estetica mamei (Mommy Makeover)",
     "excerpt": "Abordare holistică estetică care tratează, într-un singur program chirurgical, schimbările corpului apărute după naștere și alăptare.",
     "category": "Estetică corporală",
-    "cardImage": "assets/images/Uzmanlıklar/Mommy-Makeover.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Mommy-Makeover.avif",
     "duration": "4–6 ore",
     "recovery": "6–8 săptămâni",
     "videos": [
@@ -676,13 +676,13 @@ var servicesRo = [
     ],
     "results": [
       {
-        "image": "assets/images/Mommy-Makeover/mommy-1.png"
+        "image": "assets/images/Mommy-Makeover/mommy-1.avif"
       },
       {
-        "image": "assets/images/Mommy-Makeover/mommy-2.png"
+        "image": "assets/images/Mommy-Makeover/mommy-2.avif"
       },
       {
-        "image": "assets/images/Mommy-Makeover/mommy-3.png"
+        "image": "assets/images/Mommy-Makeover/mommy-3.avif"
       }
     ],
     "content": [
@@ -891,7 +891,7 @@ var servicesRo = [
     "title": "Rinoplastie (Chirurgia nasului)",
     "excerpt": "Chirurgie estetică care corectează cocoașa de pe spatele nasului, lăsarea vârfului sau deviația axului; la nevoie îmbunătățește și funcția de respirație, planificată special pentru echilibrul feței.",
     "category": "Chirurgie estetică",
-    "cardImage": "assets/images/Uzmanlıklar/Rhinoplasty.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Rhinoplasty.avif",
     "duration": "2–3 ore",
     "recovery": "10–14 zile (rezultatul final la 12 luni)",
     "videos": [
@@ -1155,7 +1155,7 @@ var servicesRo = [
     "title": "Abdominoplastie",
     "excerpt": "Metodă cuprinzătoare de chirurgie estetică care remodelează abdomenul relaxat după naștere, schimbări de greutate sau îmbătrânire, prin eliminarea excesului de piele și a țesutului gras și întărirea mușchilor separați.",
     "category": "Chirurgie estetică",
-    "cardImage": "assets/images/Uzmanlıklar/Abdominoplasty.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Abdominoplasty.avif",
     "duration": "Tehnică completă sau mini",
     "recovery": "6–8 săptămâni (rezultatul final la 3–6 luni)",
     "videos": [
@@ -1457,7 +1457,7 @@ var servicesRo = [
     "title": "Operația de lifting al brațelor",
     "excerpt": "Operația de lifting al brațelor (brachioplastie) este o intervenție estetică ce corectează chirurgical lăsarea pielii și excesul de grăsime de pe brațul superior, apărute după îmbătrânire sau pierdere mare în greutate.",
     "category": "Chirurgie estetică",
-    "cardImage": "assets/images/Uzmanlıklar/Arm-Lift.jpeg",
+    "cardImage": "assets/images/Uzmanlıklar/Arm-Lift.avif",
     "link": "services-detay.html?id=kol-germe-ameliyati",
     "duration": "1,5–2,5 ore",
     "recovery": "6–8 săptămâni (cicatricea se decolorează în 12–18 luni)",
@@ -1473,13 +1473,13 @@ var servicesRo = [
     ],
     "results": [
       {
-        "image": "assets/images/Armlift/Armlift.png"
+        "image": "assets/images/Armlift/Armlift.avif"
       },
       {
-        "image": "assets/images/Armlift/ArmLift-Before-After-2.jpg.jpeg"
+        "image": "assets/images/Armlift/ArmLift-Before-After-2.avif"
       },
       {
-        "image": "assets/images/Armlift/ArmLift-Before-After-3.jpg.jpeg"
+        "image": "assets/images/Armlift/ArmLift-Before-After-3.avif"
       }
     ],
     "contentHtml": "<p>Operația de lifting al brațelor (brachioplastie) este o intervenție estetică ce corectează chirurgical lăsarea pielii și excesul de grăsime de pe brațul superior, apărute după îmbătrânire sau pierdere mare în greutate. Lăsările din zona brațului, apărute pe măsura scăderii elasticității pielii, nu pot fi eliminate prin sport, dietă sau exerciții. Brachioplastia este o metodă chirurgicală de încredere care oferă o îmbunătățire durabilă și estetică în această zonă.</p><h3>Operația de lifting al brațelor în Istanbul</h3><p>Operația de lifting al brațelor din clinica conf. dr. Majid Ismayilzada din districtul Şişli vizează să dea brațului un aspect ferm, tânăr și estetic persoanelor cu pierdere mare în greutate, care au trecut prin chirurgie bariatrică sau care se confruntă cu lăsarea pielii legată de vârstă. Libertatea în alegerea hainelor, posibilitatea de a te mișca cu brațele deschise și eliberarea de griji estetice se numără printre principalele motivații ale pacienților care aleg această operație.</p><h3>Cui îi este potrivită operația de lifting al brațelor?</h3><p>Brachioplastia oferă o soluție potrivită pentru una sau mai multe dintre următoarele situații:</p><p>• Exces vizibil de piele pe fața internă a brațului din cauza pierderii bruște sau mari în greutate (inclusiv după chirurgie bariatrică)</p><p>• Pierderea elasticității și lăsarea brațului superior legate de îmbătrânire</p><p>• Lăsări încăpățânate ale brațelor care nu se ameliorează prin sport sau dietă</p><p>• Disconfort care afectează alegerea hainelor și scade încrederea în sine</p><p>• Lăsarea pielii împreună cu exces de grăsime în zona brațului</p><p>Evaluarea candidaturii se face la consultația personală cu conf. dr. Ismayilzada. Cantitatea excesului de piele de pe braț, elasticitatea pielii, distribuția țesutului gras și starea generală de sănătate sunt examinate în detaliu de chirurg, iar planul chirurgical cel mai potrivit este elaborat.</p><h3>Cum se face operația de lifting al brațelor?</h3><p>Operația de lifting al brațelor se realizează sub anestezie generală și durează în medie 1,5–2,5 ore. Tehnica chirurgicală aplicată se stabilește în funcție de gradul de lăsare a brațului și de prezența țesutului gras.</p><p>La lăsările ușoare poate fi suficientă o incizie mică, ascunsă în axilă; la lăsările medii sau avansate incizia începe din axilă și se prelungește spre cot. Această lungime este direct legată de cantitatea de piele care trebuie eliminată. În timpul operației se adaugă adesea și liposucție, modelând conturul brațului simultan: mai întâi se elimină excesul de țesut gras, apoi se întinde pielea relaxată și se elimină excesul. Astfel, într-o singură ședință se obține atât subțiere, cât și fermitate.</p><p>La finalul operației firele sunt închise, se aplică bandaj compresiv, iar perioada de recuperare a pacientului începe.</p><h3>Diferența dintre liftingul brațelor și liposucție</h3><p>Deși cele două metode sunt adesea confundate, scopurile și indicațiile lor diferă. Liposucția elimină doar excesul de țesut gras; nu poate strânge pielea lăsată sau care și-a pierdut elasticitatea. Operația de lifting al brațelor elimină chirurgical atât excesul de piele, cât și țesutul gras, oferind cu adevărat modelarea și fermitatea brațului.</p><p>Dacă există doar depozite de grăsime, iar pielea este elastică, o singură liposucție poate fi suficientă. Dacă este prezentă și lăsarea pielii, brachioplastia este necesară; în multe cazuri ambele metode se aplică în combinație. Ce metodă se va folosi singură sau împreună se stabilește la consultație.</p><h3>Procesul de pregătire înaintea operației</h3><p>Pregătirea preoperatorie influențează perioada de recuperare la fel de mult ca planificarea chirurgicală. O pregătire corectă reduce atât riscul de complicații, cât și grăbește vindecarea.</p><p>• Dacă fumați, trebuie renunțat cu cel puțin 4 săptămâni înainte de operație. Fumatul afectează vascularizarea țesuturilor, întârzie vindecarea plăgii și crește riscul de deschidere a inciziei.</p><p>• Medicamentele care subțiază sângele, aspirina și suplimentele pe bază de plante se întrerup dinainte, la recomandarea medicului.</p><p>• Bolile cronice însoțitoare (diabet, hipertensiune etc.) trebuie ținute sub control.</p><p>• Pentru ziua operației ar trebui planificată o persoană de însoțire, iar pentru primele câteva zile după intervenție trebuie asigurat sprijin.</p><p>• Atenția la un aport suficient de proteine și lichide susține pregătirea corpului pentru vindecare.</p><h3>Recuperarea după operația de lifting al brațelor</h3><p>În perioada precoce postoperatorie, o durere ușoară, edem și vânătăi în zona brațului sunt un proces așteptat și temporar. Pacienții se întorc de obicei în câteva zile la activitățile zilnice, într-un ritm ușor. Pe perioada de recuperare este obligatorie purtarea unui bandaj compresiv sau a unui corset; această măsură contribuie la dispariția rapidă a edemului și la o adaptare mai sănătoasă a țesuturilor.</p>",
@@ -1533,7 +1533,7 @@ var servicesRo = [
     "title": "Lifting facial și de gât (SMAS Facelift)",
     "excerpt": "Operația de lifting facial este una dintre cele mai cuprinzătoare proceduri ale chirurgiei estetice moderne, care corectează chirurgical lăsarea, ridurile și pierderea de volum rămase pe față și gât din cauza îmbătrânirii și oferă cele mai durabile rezultate.",
     "category": "Chirurgie estetică",
-    "cardImage": "assets/images/Uzmanlıklar/Facelift.jpeg",
+    "cardImage": "assets/images/Uzmanlıklar/Facelift.avif",
     "duration": "3–5 ore",
     "recovery": "3–6 săptămâni (rezultatul final la 3–6 luni)",
     "videos": [
@@ -1548,16 +1548,16 @@ var servicesRo = [
     ],
     "results": [
       {
-        "image": "assets/images/FaceLift/Facelift-1.png"
+        "image": "assets/images/FaceLift/Facelift-1.avif"
       },
       {
-        "image": "assets/images/FaceLift/Facelift-2.png"
+        "image": "assets/images/FaceLift/Facelift-2.avif"
       },
       {
-        "image": "assets/images/FaceLift/Facelift-3.png"
+        "image": "assets/images/FaceLift/Facelift-3.avif"
       },
       {
-        "image": "assets/images/FaceLift/Facelift-4.jpeg"
+        "image": "assets/images/FaceLift/Facelift-4.avif"
       }
     ],
     "content": [

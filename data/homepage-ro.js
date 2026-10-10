@@ -17,7 +17,7 @@ var homepageSettingsRo = {
       "Vă puteți atinge cu încredere obiectivele estetice datorită abordării științifice și experienței mele."
     ],
     "bio": "A absolvit Facultatea de Medicină a Universității din Ankara în 2015; a finalizat specializarea în chirurgie plastică, reconstructivă și estetică la Universitatea Necmettin Erbakan. A obținut premiul I la congrese în 2018 și 2022, iar în 2024 Premiul Știință/Artă a Chirurgiei Plastice. În 2024 a efectuat un fellowship în Belgia în domeniul reconstrucției mamare, în 2025 a primit titlul de conferențiar și continuă pregătirea doctorală.",
-    "photo": "assets/images/hoca.jpeg",
+    "photo": "assets/images/hoca.avif",
     "credentials": [
       {
         "icon": "ri-graduation-cap-line",
@@ -52,35 +52,35 @@ var homepageSettingsRo = {
     "description": "Analizați cazurile noastre reale și evaluați îndeaproape rezultatele obținute.",
     "images": [
       {
-        "src": "assets/images/oncesi-sonrasi-rhinoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-rhinoplasty.avif",
         "alt": "Înainte / După"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-breast.jpeg",
+        "src": "assets/images/oncesi-sonrasi-breast.avif",
         "alt": "Înainte / După"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-liposuction.png",
+        "src": "assets/images/oncesi-sonrasi-liposuction.avif",
         "alt": "Înainte / După"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-bbl.png",
+        "src": "assets/images/oncesi-sonrasi-bbl.avif",
         "alt": "Înainte / După"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-mommy.png",
+        "src": "assets/images/oncesi-sonrasi-mommy.avif",
         "alt": "Înainte / După"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-abdominoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-abdominoplasty.avif",
         "alt": "Înainte / După"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-facelift.png",
+        "src": "assets/images/oncesi-sonrasi-facelift.avif",
         "alt": "Înainte / După"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-armlift.png",
+        "src": "assets/images/oncesi-sonrasi-armlift.avif",
         "alt": "Înainte / După"
       }
     ]
@@ -208,7 +208,7 @@ var homepageSettingsRo = {
     "label": "Siguranță și transparență",
     "title": "Siguranța la fel de importantă ca și frumusețea.",
     "description": "Chirurgia estetică este tot o intervenție medicală; riscurile potențiale sunt discutate transparent cu dumneavoastră în cadrul consultației.",
-    "photo": "assets/images/guven.jpeg",
+    "photo": "assets/images/guven.avif",
     "cards": [
       {
         "title": "Consimțământ informat",
@@ -340,27 +340,27 @@ var homepageSettingsRo = {
     "description": "Istanbulul, care unește două continente, oferă zboruri comode, cazare confortabilă și o atmosferă în care vă puteți recupera liniștiți.",
     "slides": [
       {
-        "src": "assets/images/İstanbul/istanbul-1.png",
+        "src": "assets/images/İstanbul/istanbul-1.avif",
         "alt": "Istanbul — vedere asupra orașului 1"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-2.png",
+        "src": "assets/images/İstanbul/istanbul-2.avif",
         "alt": "Istanbul — vedere asupra orașului 2"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-3.png",
+        "src": "assets/images/İstanbul/istanbul-3.avif",
         "alt": "Istanbul — vedere asupra orașului 3"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-4.png",
+        "src": "assets/images/İstanbul/istanbul-4.avif",
         "alt": "Istanbul — vedere asupra orașului 4"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-5.png",
+        "src": "assets/images/İstanbul/istanbul-5.avif",
         "alt": "Istanbul — vedere asupra orașului 5"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-6.png",
+        "src": "assets/images/İstanbul/istanbul-6.avif",
         "alt": "Istanbul — vedere asupra orașului 6"
       }
     ],

@@ -3,6 +3,17 @@
 (function () {
   var s = (typeof i18n !== 'undefined') ? i18n.site() : (typeof siteSettings !== 'undefined' ? siteSettings : null);
   if (!s) return;
+
+  // Hash linklerini her sayfada çalışır hale getirir:
+  // - alt sayfada "#anchor"          -> "index.html#anchor"
+  // - ana sayfada "index.html#anchor" -> "#anchor"
+  function resolveHref(href) {
+    if (!href) return href;
+    var onIndex = /index\.html$/i.test(location.pathname) || /\/$/.test(location.pathname);
+    if (onIndex && /^index\.html#/i.test(href)) return href.replace(/^index\.html/i, '');
+    if (!onIndex && href.charAt(0) === '#') return 'index.html' + href;
+    return href;
+  }
   var instagramSvg = '<svg viewBox="0 0 24 24">' +
     '<path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.24-1.97.4-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.6 1.8c.46-.16 1.26-.35 2.43-.4C9.3 1.34 9.68 1.33 12 1.33m0 1.8c-3.15 0-3.5.01-4.73.07-.96.04-1.48.2-1.83.34-.46.18-.79.39-1.13.73a3.05 3.05 0 0 0-.73 1.13c-.14.35-.3.87-.34 1.83-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.96.2 1.48.34 1.83.18.46.39.79.73 1.13.34.34.67.55 1.13.73.35.14.87.3 1.83.34 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.96-.04 1.48-.2 1.83-.34.46-.18.79-.39 1.13-.73.34-.34.55-.67.73-1.13.14-.35.3-.87.34-1.83.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.96-.2-1.48-.34-1.83a3.05 3.05 0 0 0-.73-1.13 3.05 3.05 0 0 0-1.13-.73c-.35-.14-.87-.3-1.83-.34-1.23-.06-1.58-.07-4.73-.07M12 6.86A5.14 5.14 0 1 1 6.86 12 5.14 5.14 0 0 1 12 6.86m0 1.8A3.34 3.34 0 1 0 15.34 12 3.34 3.34 0 0 0 12 8.66m5.34-2.04a1.2 1.2 0 1 1-1.2-1.2 1.2 1.2 0 0 1 1.2 1.2" />' +
     '</svg>';
@@ -26,7 +37,7 @@
     var linksHost = document.querySelector('.nav-links');
     if (linksHost) {
       linksHost.innerHTML = s.navMenu.map(function (m) {
-        return '<a href="' + m.href + '">' + m.label + '</a>';
+        return '<a href="' + resolveHref(m.href) + '">' + m.label + '</a>';
       }).join('');
     }
 
@@ -34,7 +45,7 @@
     var mobileHost = document.querySelector('.mobile-nav');
     if (mobileHost) {
       var html = s.navMenu.map(function (m) {
-        return '<a href="' + m.href + '">' + m.label + '</a>';
+        return '<a href="' + resolveHref(m.href) + '">' + m.label + '</a>';
       }).join('');
       var cta = document.querySelector('.mobile-nav .mobile-cta');
       if (cta) html += cta.outerHTML;
@@ -54,7 +65,7 @@
 
     var cols = (s.footerMenu || []).map(function (col) {
       var links = (col.links || []).map(function (l) {
-        var href = l.href;
+        var href = resolveHref(l.href);
         var label = l.label;
         if (l.dynamic === 'phoneDisplay') { href = 'tel:' + s.phone; label = s.phoneDisplay || label; }
         else if (l.dynamic === 'email') { href = 'mailto:' + s.email; label = s.email || label; }

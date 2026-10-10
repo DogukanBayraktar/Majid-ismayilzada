@@ -302,107 +302,109 @@ makeSlider('certTrack', 'certPrev', 'certNext', '.cert-card');
 // Fareyle üzerine gelindiğinde durur, noktalara tıklayarak manuel
 // geçiş de yapılabilir.
 // ---------------------------------------------------------------
-(function initHospitalSlider() {
+let hospitalSliderState = null;
+window.initHospitalSlider = function () {
     const wrap = document.getElementById('hospitalSliderWrap');
     const slider = document.getElementById('hospitalSlider');
     const dotsWrap = document.getElementById('hospitalDots');
-    const prev = document.getElementById('hospitalPrev');
-    const next = document.getElementById('hospitalNext');
     if (!wrap || !slider || !dotsWrap) return;
+    if (hospitalSliderState && hospitalSliderState.timer) clearInterval(hospitalSliderState.timer);
     const slides = Array.from(slider.querySelectorAll('.hospital-slide'));
     const dots = Array.from(dotsWrap.querySelectorAll('.hospital-dot'));
-    if (slides.length < 2) return;
-    let index = 0;
-    let timer = null;
-
-    function show(i) {
-        index = (i + slides.length) % slides.length;
-        slides.forEach((s, n) => s.classList.toggle('is-active', n === index));
-        dots.forEach((d, n) => d.classList.toggle('is-active', n === index));
-    }
-
-    function start() {
-        stop();
-        timer = setInterval(() => show(index + 1), 4500);
-    }
-
-    function stop() {
-        if (timer) clearInterval(timer);
-        timer = null;
-    }
-
+    const state = { slides: slides, dots: dots, index: 0, timer: null };
+    state.show = function (i) {
+        if (!slides.length) return;
+        state.index = ((i % slides.length) + slides.length) % slides.length;
+        slides.forEach((s, n) => s.classList.toggle('is-active', n === state.index));
+        dots.forEach((d, n) => d.classList.toggle('is-active', n === state.index));
+    };
+    state.start = function () {
+        state.stop();
+        if (slides.length < 2) return;
+        state.timer = setInterval(() => state.show(state.index + 1), 4500);
+    };
+    state.stop = function () {
+        if (state.timer) clearInterval(state.timer);
+        state.timer = null;
+    };
+    hospitalSliderState = state;
     dots.forEach(dot => dot.addEventListener('click', () => {
-        show(Number(dot.dataset.index));
-        start();
+        state.show(Number(dot.dataset.index));
+        state.start();
     }));
-    prev?.addEventListener('click', () => {
-        show(index - 1);
-        start();
-    });
-    next?.addEventListener('click', () => {
-        show(index + 1);
-        start();
-    });
-    wrap.addEventListener('mouseenter', stop);
-    wrap.addEventListener('mouseleave', start);
-
-    start();
-})();
+    if (!wrap.__sliderBound) {
+        wrap.__sliderBound = true;
+        document.getElementById('hospitalPrev')?.addEventListener('click', () => {
+            if (hospitalSliderState) { hospitalSliderState.show(hospitalSliderState.index - 1); hospitalSliderState.start(); }
+        });
+        document.getElementById('hospitalNext')?.addEventListener('click', () => {
+            if (hospitalSliderState) { hospitalSliderState.show(hospitalSliderState.index + 1); hospitalSliderState.start(); }
+        });
+        wrap.addEventListener('mouseenter', () => { if (hospitalSliderState) hospitalSliderState.stop(); });
+        wrap.addEventListener('mouseleave', () => { if (hospitalSliderState) hospitalSliderState.start(); });
+    }
+    state.show(0);
+    state.start();
+};
+window.initHospitalSlider();
 
 // ---------------------------------------------------------------
 // İSTANBUL: tam genişlik görsel slider — ok butonları, nokta
 // göstergeleri ve kaydırma ile senkronize çalışır.
 // ---------------------------------------------------------------
-(function initIstanbulSlider() {
+let istanbulSliderState = null;
+window.initIstanbulSlider = function () {
     const wrap = document.getElementById('istanbulSliderWrap');
     const slider = document.getElementById('istanbulSlider');
-    const prev = document.getElementById('istanbulPrev');
-    const next = document.getElementById('istanbulNext');
     const dotsWrap = document.getElementById('istanbulDots');
     if (!slider || !dotsWrap) return;
-    const slideCount = slider.querySelectorAll('.istanbul-slide').length;
+    if (istanbulSliderState && istanbulSliderState.timer) clearInterval(istanbulSliderState.timer);
+    const slides = Array.from(slider.querySelectorAll('.istanbul-slide'));
     const dots = Array.from(dotsWrap.querySelectorAll('.istanbul-dot'));
-    let timer = null;
-
-    function currentIndex() {
-        return Math.round(slider.scrollLeft / slider.clientWidth);
-    }
-
-    function setActiveDot(index) {
+    const state = { slides: slides, dots: dots, timer: null };
+    state.currentIndex = function () {
+        return slider.clientWidth ? Math.round(slider.scrollLeft / slider.clientWidth) : 0;
+    };
+    state.setActiveDot = function (index) {
         dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
-    }
-
-    function goTo(index) {
-        const wrapped = (index + slideCount) % slideCount;
+    };
+    state.goTo = function (index) {
+        if (!slides.length) return;
+        const wrapped = ((index % slides.length) + slides.length) % slides.length;
         slider.scrollTo({ left: wrapped * slider.clientWidth, behavior: 'smooth' });
+    };
+    state.start = function () {
+        state.stop();
+        if (slides.length < 2) return;
+        state.timer = setInterval(() => state.goTo(state.currentIndex() + 1), 4500);
+    };
+    state.stop = function () {
+        if (state.timer) clearInterval(state.timer);
+        state.timer = null;
+    };
+    istanbulSliderState = state;
+    slider.scrollLeft = 0;
+    dots.forEach(dot => dot.addEventListener('click', () => { state.goTo(Number(dot.dataset.index)); state.start(); }));
+    if (!slider.__sliderBound) {
+        slider.__sliderBound = true;
+        document.getElementById('istanbulPrev')?.addEventListener('click', () => {
+            if (istanbulSliderState) { istanbulSliderState.goTo(istanbulSliderState.currentIndex() - 1); istanbulSliderState.start(); }
+        });
+        document.getElementById('istanbulNext')?.addEventListener('click', () => {
+            if (istanbulSliderState) { istanbulSliderState.goTo(istanbulSliderState.currentIndex() + 1); istanbulSliderState.start(); }
+        });
+        let scrollTimer;
+        slider.addEventListener('scroll', () => {
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => { if (istanbulSliderState) istanbulSliderState.setActiveDot(istanbulSliderState.currentIndex()); }, 80);
+        });
+        wrap?.addEventListener('mouseenter', () => { if (istanbulSliderState) istanbulSliderState.stop(); });
+        wrap?.addEventListener('mouseleave', () => { if (istanbulSliderState) istanbulSliderState.start(); });
     }
-
-    function start() {
-        stop();
-        if (slideCount < 2) return;
-        timer = setInterval(() => goTo(currentIndex() + 1), 4500);
-    }
-
-    function stop() {
-        if (timer) clearInterval(timer);
-        timer = null;
-    }
-
-    prev?.addEventListener('click', () => { goTo(currentIndex() - 1); start(); });
-    next?.addEventListener('click', () => { goTo(currentIndex() + 1); start(); });
-    dots.forEach(dot => dot.addEventListener('click', () => { goTo(Number(dot.dataset.index)); start(); }));
-
-    let scrollTimer;
-    slider.addEventListener('scroll', () => {
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(() => setActiveDot(currentIndex()), 80);
-    });
-
-    wrap?.addEventListener('mouseenter', stop);
-    wrap?.addEventListener('mouseleave', start);
-
-    start();
-})();
+    state.setActiveDot(0);
+    state.start();
+};
+window.initIstanbulSlider();
 // Scroll reveal animations
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

@@ -4,7 +4,7 @@ var servicesEn = [
     "title": "Breast Lift and Augmentation (Augmentation Mastopexy)",
     "excerpt": "Breast lift and augmentation surgery (augmentation mastopexy) is a combined aesthetic surgical procedure that restores shape, an upright appearance, and fullness to breasts that have both sagged and lost volume in a single session.",
     "category": "Aesthetic Surgery",
-    "cardImage": "assets/images/Uzmanlıklar/Breast.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Breast.avif",
     "link": "services-detay.html?id=meme-diklestirme-ve-buyutme",
     "duration": "2-3 hours",
     "recovery": "6-8 weeks (final result 3-6 months)",
@@ -83,7 +83,7 @@ var servicesEn = [
     "title": "Brazilian Butt Lift (BBL)",
     "excerpt": "Aesthetic surgery in which the hips and waist are shaped using the fat transfer method.",
     "category": "Aesthetic Surgery",
-    "cardImage": "assets/images/Uzmanlıklar/BBL.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/BBL.avif",
     "duration": "3-5 hours",
     "recovery": "6-8 weeks (final result 2-3 months)",
     "videos": [
@@ -375,7 +375,7 @@ var servicesEn = [
     "title": "Liposuction (Fat Removal)",
     "excerpt": "Aesthetic surgery that removes stubborn regional fat deposits that cannot be eliminated by diet and exercise, reshaping the body.",
     "category": "Body Surgery",
-    "cardImage": "assets/images/Uzmanlıklar/Liposuction.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Liposuction.avif",
     "duration": "1-3 hours",
     "recovery": "4-6 weeks",
     "videos": [
@@ -390,13 +390,13 @@ var servicesEn = [
     ],
     "results": [
       {
-        "image": "assets/images/Liposuction/Liposuction-1.png"
+        "image": "assets/images/Liposuction/Liposuction-1.avif"
       },
       {
-        "image": "assets/images/Liposuction/Liposuction-2.png"
+        "image": "assets/images/Liposuction/Liposuction-2.avif"
       },
       {
-        "image": "assets/images/Liposuction/Liposuction-3.png"
+        "image": "assets/images/Liposuction/Liposuction-3.avif"
       }
     ],
     "content": [
@@ -665,7 +665,7 @@ var servicesEn = [
     "title": "Mommy Makeover",
     "excerpt": "A holistic aesthetic approach that addresses the body changes that occur after childbirth and breastfeeding in a single surgical program.",
     "category": "Body Surgery",
-    "cardImage": "assets/images/Uzmanlıklar/Mommy-Makeover.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Mommy-Makeover.avif",
     "duration": "4-6 hours",
     "recovery": "6-8 weeks",
     "videos": [
@@ -676,13 +676,13 @@ var servicesEn = [
     ],
     "results": [
       {
-        "image": "assets/images/Mommy-Makeover/mommy-1.png"
+        "image": "assets/images/Mommy-Makeover/mommy-1.avif"
       },
       {
-        "image": "assets/images/Mommy-Makeover/mommy-2.png"
+        "image": "assets/images/Mommy-Makeover/mommy-2.avif"
       },
       {
-        "image": "assets/images/Mommy-Makeover/mommy-3.png"
+        "image": "assets/images/Mommy-Makeover/mommy-3.avif"
       }
     ],
     "content": [
@@ -891,7 +891,7 @@ var servicesEn = [
     "title": "Rhinoplasty (Nose Job)",
     "excerpt": "Aesthetic surgery that corrects the hump on the nasal dorsum, drooping tip, or axis deviation and, when necessary, also improves the breathing function, planned specifically for facial balance.",
     "category": "Aesthetic Surgery",
-    "cardImage": "assets/images/Uzmanlıklar/Rhinoplasty.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Rhinoplasty.avif",
     "duration": "2-3 hours",
     "recovery": "10-14 days (final result 12 months)",
     "videos": [
@@ -1155,7 +1155,7 @@ var servicesEn = [
     "title": "Tummy Tuck (Abdominoplasty)",
     "excerpt": "A comprehensive aesthetic surgery method that reshapes the abdominal area, which has become loose due to childbirth, weight changes, or aging, by removing excess skin and fat tissue and tightening the separated muscles.",
     "category": "Aesthetic Surgery",
-    "cardImage": "assets/images/Uzmanlıklar/Abdominoplasty.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Abdominoplasty.avif",
     "duration": "Full or Mini Technique",
     "recovery": "6-8 weeks (final result 3-6 months)",
     "videos": [
@@ -1457,7 +1457,7 @@ var servicesEn = [
     "title": "Arm Lift (Brachioplasty)",
     "excerpt": "Arm lift surgery (brachioplasty) is an aesthetic operation that surgically corrects the skin sagging and excess fat that occur in the upper arm after aging or extreme weight loss.",
     "category": "Aesthetic Surgery",
-    "cardImage": "assets/images/Uzmanlıklar/Arm-Lift.jpeg",
+    "cardImage": "assets/images/Uzmanlıklar/Arm-Lift.avif",
     "link": "services-detay.html?id=kol-germe-ameliyati",
     "duration": "1.5-2.5 hours",
     "recovery": "6-8 weeks (scars fade in 12-18 months)",
@@ -1473,13 +1473,13 @@ var servicesEn = [
     ],
     "results": [
       {
-        "image": "assets/images/Armlift/Armlift.png"
+        "image": "assets/images/Armlift/Armlift.avif"
       },
       {
-        "image": "assets/images/Armlift/ArmLift-Before-After-2.jpg.jpeg"
+        "image": "assets/images/Armlift/ArmLift-Before-After-2.avif"
       },
       {
-        "image": "assets/images/Armlift/ArmLift-Before-After-3.jpg.jpeg"
+        "image": "assets/images/Armlift/ArmLift-Before-After-3.avif"
       }
     ],
     "contentHtml": "<p>Arm lift surgery (brachioplasty) is an aesthetic operation that surgically corrects the skin sagging and excess fat that occur in the upper arm after aging or extreme weight loss. As skin elasticity decreases over time, the sagging in the arm area cannot be eliminated by sports, diet, or exercise. Brachioplasty is a reliable surgical method that provides a permanent and aesthetic improvement in this area.</p><h3>Arm Lift Surgery in Istanbul</h3><p>The arm lift surgery applied at Assoc. Prof. Dr. Majid Ismayilzada's clinic in Istanbul aims to give people who have experienced extreme weight loss, undergone bariatric surgery, or have age-related skin sagging a firm, young, and aesthetic appearance in the arm. Freedom in clothing choices, being able to move with open arms, and being freed from aesthetic concerns are among the main motivations of patients who choose this surgery.</p><h3>Who Is Arm Lift Surgery Suitable For?</h3><p>Brachioplasty offers a suitable solution for people who experience one or more of the following situations:</p><p>• Significant excess skin on the inner arm due to sudden or extreme weight loss (including after bariatric surgery)</p><p>• Loss of elasticity and sagging in the upper arm due to aging</p><p>• Stubborn arm sagging that does not improve with sports or diet</p><p>• Discomfort with arms that affect clothing choices and break self-confidence</p><p>• Skin sagging together with excess fat in the arm area</p><p>Candidate assessment is carried out in a personal examination with Assoc. Prof. Dr. Ismayilzada. The amount of excess skin on the arm, skin elasticity, fat tissue distribution, and general health condition are examined in detail by the surgeon to create the most suitable surgical plan.</p><h3>How Is Arm Lift Surgery Performed?</h3><p>Arm lift surgery is performed under general anesthesia and lasts an average of 1.5–2.5 hours. The surgical technique applied is determined according to the degree of arm sagging and the presence of fat tissue.</p><p>While in minimal sagging cases a small incision hidden in the armpit may be sufficient; in moderate or advanced sagging cases the incision extends from the armpit toward the elbow. This length is directly related to the amount of excess skin that needs to be removed. During the surgery, liposuction is also frequently added to shape the contour of the arm at the same time: first the excess fat tissue is removed, then the loosened skin is tightened and the excess is removed. Thus, both slimming and tightening are achieved in a single session.</p><p>At the end of the surgery, the stitches are closed, a compression bandage is applied, and the patient's recovery process begins.</p><h3>The Difference Between Arm Lift and Liposuction</h3><p>Although these two methods are often confused with each other, their purposes and indications are different. Liposuction removes only the excess fat tissue; it cannot gather sagging skin or skin that has lost its elasticity. Arm lift surgery, on the other hand, surgically removes both the excess skin and the fat tissue, providing a true reshaping and tightening of the arm.</p><p>If there is only fat accumulation in the arm and the skin elasticity is good, liposuction alone may be sufficient. If skin sagging is also involved, brachioplasty is necessary; in many cases the two methods are applied in combination. Which method will be applied alone or together is decided during the examination.</p><h3>Preoperative Preparation Process</h3><p>Preoperative preparation affects the recovery process as directly as surgical planning. Correct preparation both reduces the risk of complications and speeds up healing.</p><p>• If you smoke, smoking must be stopped at least 4 weeks before the surgery. Smoking disrupts tissue blood flow, delays wound healing, and increases the risk of the incision opening.</p><p>• Blood-thinning medications, aspirin, and herbal supplements must be discontinued in advance on the doctor's advice.</p><p>• Accompanying chronic diseases (diabetes, hypertension, etc.) must be under control.</p><p>• An escort should be planned for the day of surgery, and support should be arranged for the first few days after the operation.</p><p>• The body should be supported to be ready for healing by paying attention to adequate protein and fluid intake.</p><h3>Recovery Process After Arm Lift Surgery</h3><p>Mild pain, edema, and bruising in the arm in the early postoperative period are an expected and temporary process. Patients can mostly return to their daily activities at a light pace within a few days. The use of a compression bandage or garment during the recovery period is mandatory; this application contributes to the rapid resolution of edema and the healthier progression of tissue adaptation.</p>",
@@ -1533,7 +1533,7 @@ var servicesEn = [
     "title": "Face and Neck Lift (SMAS Facelift)",
     "excerpt": "Facelift surgery is one of the most comprehensive procedures of today's aesthetic surgery, surgically eliminating the sagging, lines, and volume loss that aging leaves on the face and neck area and offering the most permanent results.",
     "category": "Aesthetic Surgery",
-    "cardImage": "assets/images/Uzmanlıklar/Facelift.jpeg",
+    "cardImage": "assets/images/Uzmanlıklar/Facelift.avif",
     "duration": "3-5 hours",
     "recovery": "3-6 weeks (final result 3-6 months)",
     "videos": [
@@ -1548,16 +1548,16 @@ var servicesEn = [
     ],
     "results": [
       {
-        "image": "assets/images/FaceLift/Facelift-1.png"
+        "image": "assets/images/FaceLift/Facelift-1.avif"
       },
       {
-        "image": "assets/images/FaceLift/Facelift-2.png"
+        "image": "assets/images/FaceLift/Facelift-2.avif"
       },
       {
-        "image": "assets/images/FaceLift/Facelift-3.png"
+        "image": "assets/images/FaceLift/Facelift-3.avif"
       },
       {
-        "image": "assets/images/FaceLift/Facelift-4.jpeg"
+        "image": "assets/images/FaceLift/Facelift-4.avif"
       }
     ],
     "content": [

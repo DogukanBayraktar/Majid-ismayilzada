@@ -4,7 +4,7 @@ var servicesIt = [
     "title": "Mastopessi e Aumento del Seno",
     "excerpt": "L'intervento di mastopessi e aumento del seno (mastopessi di aumento) è un procedimento chirurgico estetico combinato che ridà forma, aspetto rialzato e volume ai seni nella stessa seduta, sia che siano caduti che abbiano perso volume.",
     "category": "Chirurgia Estetica",
-    "cardImage": "assets/images/Uzmanlıklar/Breast.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Breast.avif",
     "link": "services-detay.html?id=meme-diklestirme-ve-buyutme",
     "duration": "2-3 ore",
     "recovery": "6-8 settimane (risultato definitivo 3-6 mesi)",
@@ -83,7 +83,7 @@ var servicesIt = [
     "title": "Estetica dei Glutei (BBL)",
     "excerpt": "Chirurgia estetica che modella le zone della vita e dei fianchi mediante il metodo di trasferimento di grasso.",
     "category": "Chirurgia Estetica",
-    "cardImage": "assets/images/Uzmanlıklar/BBL.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/BBL.avif",
     "duration": "3-5 ore",
     "recovery": "6-8 settimane (risultato definitivo 2-3 mesi)",
     "videos": [
@@ -375,7 +375,7 @@ var servicesIt = [
     "title": "Liposuzione (Rimozione del Grasso)",
     "excerpt": "Chirurgia estetica che rimuove i depositi di grasso localizzato ribelli che non cedono con dieta ed esercizio fisico, e che rimodella il corpo.",
     "category": "Estetica del Corpo",
-    "cardImage": "assets/images/Uzmanlıklar/Liposuction.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Liposuction.avif",
     "duration": "1-3 ore",
     "recovery": "4-6 settimane",
     "videos": [
@@ -390,13 +390,13 @@ var servicesIt = [
     ],
     "results": [
       {
-        "image": "assets/images/Liposuction/Liposuction-1.png"
+        "image": "assets/images/Liposuction/Liposuction-1.avif"
       },
       {
-        "image": "assets/images/Liposuction/Liposuction-2.png"
+        "image": "assets/images/Liposuction/Liposuction-2.avif"
       },
       {
-        "image": "assets/images/Liposuction/Liposuction-3.png"
+        "image": "assets/images/Liposuction/Liposuction-3.avif"
       }
     ],
     "content": [
@@ -665,7 +665,7 @@ var servicesIt = [
     "title": "Estetica della Maternità (Mommy Makeover)",
     "excerpt": "Approccio estetico integrato che affronta in un unico programma chirurgico i cambiamenti corporei prodotti dopo il parto e l'allattamento.",
     "category": "Estetica del Corpo",
-    "cardImage": "assets/images/Uzmanlıklar/Mommy-Makeover.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Mommy-Makeover.avif",
     "duration": "4-6 ore",
     "recovery": "6-8 settimane",
     "videos": [
@@ -676,13 +676,13 @@ var servicesIt = [
     ],
     "results": [
       {
-        "image": "assets/images/Mommy-Makeover/mommy-1.png"
+        "image": "assets/images/Mommy-Makeover/mommy-1.avif"
       },
       {
-        "image": "assets/images/Mommy-Makeover/mommy-2.png"
+        "image": "assets/images/Mommy-Makeover/mommy-2.avif"
       },
       {
-        "image": "assets/images/Mommy-Makeover/mommy-3.png"
+        "image": "assets/images/Mommy-Makeover/mommy-3.avif"
       }
     ],
     "content": [
@@ -891,7 +891,7 @@ var servicesIt = [
     "title": "Estetica Nasale (Rinoplastica)",
     "excerpt": "Chirurgia estetica pianificata in base all'equilibrio del viso che corregge la gobba del dorso, la caduta della punta o la deviazione dell'asse nasale e, quando necessario, migliora anche la funzione respiratoria.",
     "category": "Chirurgia Estetica",
-    "cardImage": "assets/images/Uzmanlıklar/Rhinoplasty.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Rhinoplasty.avif",
     "duration": "2-3 ore",
     "recovery": "10-14 giorni (risultato definitivo 12 mesi)",
     "videos": [
@@ -1155,7 +1155,7 @@ var servicesIt = [
     "title": "Addominoplastia",
     "excerpt": "Metodo integrato di chirurgia estetica che rimodella l'addome rilassato da parto, variazioni di peso o invecchiamento mediante la rimozione dell'eccesso di pelle e grasso e il rinforzo dei muscoli separati.",
     "category": "Chirurgia Estetica",
-    "cardImage": "assets/images/Uzmanlıklar/Abdominoplasty.jpg",
+    "cardImage": "assets/images/Uzmanlıklar/Abdominoplasty.avif",
     "duration": "Tecnica completa o mini",
     "recovery": "6-8 settimane (risultato definitivo 3-6 mesi)",
     "videos": [
@@ -1457,7 +1457,7 @@ var servicesIt = [
     "title": "Brachioplastia (Lifting delle Braccia)",
     "excerpt": "L'intervento di chirurgia estetica delle braccia (brachioplastia) corregge chirurgicamente la lassità della pelle e l'eccesso di grasso del braccio superiore dopo invecchiamento o perdita di peso eccessiva.",
     "category": "Chirurgia Estetica",
-    "cardImage": "assets/images/Uzmanlıklar/Arm-Lift.jpeg",
+    "cardImage": "assets/images/Uzmanlıklar/Arm-Lift.avif",
     "link": "services-detay.html?id=kol-germe-ameliyati",
     "duration": "1,5-2,5 ore",
     "recovery": "6-8 settimane (le cicatrici schiariscono in 12-18 mesi)",
@@ -1473,13 +1473,13 @@ var servicesIt = [
     ],
     "results": [
       {
-        "image": "assets/images/Armlift/Armlift.png"
+        "image": "assets/images/Armlift/Armlift.avif"
       },
       {
-        "image": "assets/images/Armlift/ArmLift-Before-After-2.jpg.jpeg"
+        "image": "assets/images/Armlift/ArmLift-Before-After-2.avif"
       },
       {
-        "image": "assets/images/Armlift/ArmLift-Before-After-3.jpg.jpeg"
+        "image": "assets/images/Armlift/ArmLift-Before-After-3.avif"
       }
     ],
     "contentHtml": "<p>La brachioplastia (lifting delle braccia) è un intervento estetico che corregge chirurgicamente la lassità della pelle e l'eccesso di grasso del braccio superiore dopo invecchiamento o perdita di peso eccessiva. La diminuzione dell'elasticità della pelle nel tempo fa sì che le lassità della zona del braccio non possano essere eliminate con sport, dieta o esercizio. La brachioplastia è un metodo chirurgico affidabile che ottiene in questa zona un miglioramento duraturo ed estetico.</p><h3>Brachioplastia a Istanbul</h3><p>La brachioplastia eseguita nella clinica del Dr. Majid İsmayilzada a Şişli mira a donare alle braccia un aspetto fermo, giovane ed estetico in persone che hanno perso una quantità eccessiva di peso, che hanno subito chirurgia bariatrica o che presentano lassità della pelle per l'età. La libertà nella scelta dei vestiti, potersi muovere con le braccia aperte e liberarsi dalle preoccupazioni estetiche figurano tra le motivazioni principali dei pazienti che scelgono questo intervento.</p><h3>Per chi è adatta la brachioplastia?</h3><p>La brachioplastia offre una soluzione adeguata a persone che vivono una o più di queste situazioni:</p><p>• Eccesso di pelle evidente sulla faccia interna del braccio a causa di una perdita di peso repentina o eccessiva (inclusa la chirurgia bariatrica)</p><p>• Perdita di elasticità e lassità del braccio superiore per l'invecchiamento</p><p>• Lassità persistente del braccio che non migliora con esercizio o dieta</p><p>• Fastidio per braccia che condizionano la scelta dei vestiti e minano la fiducia</p><p>• Lassità della pelle accompagnata da eccesso di grasso nella zona del braccio</p><p>La valutazione di idoneità viene effettuata nella visita personale con il Dr. Majid İsmayilzada. La quantità di eccesso di pelle del braccio, l'elasticità della pelle, la distribuzione del tessuto adiposo e lo stato generale di salute vengono esaminati nel dettaglio dal chirurgo per elaborare il piano chirurgico più adatto.</p><h3>Come si esegue la brachioplastia?</h3><p>La brachioplastia viene eseguita in anestesia generale e dura in media 1,5–2,5 ore. La tecnica chirurgica applicata viene determinata secondo il grado di lassità del braccio e la presenza di tessuto adiposo.</p><p>Nelle lassità minime può bastare una piccola incisione nascosta nell'ascella; nelle lassità di grado medio o avanzato l'incisione inizia nell'ascella e si prolunga verso il gomito. Questa lunghezza è direttamente legata alla quantità di pelle che deve essere rimossa. Durante l'intervento viene spesso aggiunta la liposuzione per dare forma al contorno del braccio nella stessa sessione: prima viene rimosso l'eccesso di tessuto adiposo, poi viene tensionata la pelle rilassata e rimosso l'eccesso. Così si ottiene allo stesso tempo dimagrimento e tensione in un'unica sessione.</p><p>Al termine dell'intervento vengono chiuse le suture, viene applicata la benda compressiva e inizia il processo di guarigione del paziente.</p><h3>La differenza tra lifting delle braccia e liposuzione</h3><p>Questi due metodi vengono spesso confusi tra loro, ma i loro obiettivi e le loro indicazioni sono diversi. La liposuzione rimuove solo l'eccesso di tessuto adiposo; non può rassodare la pelle flaccida o che ha perso l'elasticità. Il lifting delle braccia, invece, rimuove chirurgicamente sia l'eccesso di pelle sia il tessuto adiposo, ottenendo una vera e propria modellazione e tensione del braccio.</p><p>Se c'è solo accumulo di grasso nel braccio e l'elasticità della pelle è buona, la liposuzione da sola può essere sufficiente. Se è presente anche lassità della pelle è necessaria la brachioplastia; in molti casi i due metodi vengono applicati in modo combinato. All'esame si decide se applicare uno solo o entrambi.</p><h3>Processo di preparazione prima dell'intervento</h3><p>La preparazione preoperatoria influenza direttamente il processo di guarigione quanto la pianificazione chirurgica. Una preparazione adeguata riduce il rischio di complicazioni e accelera la guarigione.</p><p>• Se fuma, è necessario smettere almeno 4 settimane prima dell'intervento. Il fumo altera la vascolarizzazione del tessuto, ritarda la guarigione della ferita e aumenta il rischio di deiscenza dell'incisione.</p><p>• I farmaci anticoagulanti, l'aspirina e gli integratori a base di erbe devono essere sospesi in anticipo su indicazione medica.</p><p>• Le malattie croniche associate (diabete, ipertensione, ecc.) devono rimanere sotto controllo.</p><p>• Deve essere programmato un accompagnatore per il giorno dell'intervento e organizzato sostegno per i primi giorni dopo l'operazione.</p><p>• Prestare attenzione a un'assunzione sufficiente di proteine e liquidi per sostenere che il corpo sia pronto per la guarigione.</p><h3>Processo di guarigione dopo il lifting delle braccia</h3><p>Nel periodo precoce postoperatorio è atteso e transitorio che compaiano dolore lieve, edema e lividi nel braccio. La maggior parte dei pazienti può tornare alle attività quotidiane con un ritmo allegro in pochi giorni. Durante il periodo di guarigione l'uso della benda compressiva o del corsetto è obbligatorio; questa pratica contribuisce a una risoluzione rapida dell'edema e a che l'adattamento del tessuto proceda in modo più sano.</p>",
@@ -1533,7 +1533,7 @@ var servicesIt = [
     "title": "Lifting del Viso e del Collo (SMAS Facelift)",
     "excerpt": "L'intervento di lifting del viso rimuove chirurgicamente la lassità, le rughe e le perdite di volume che l'invecchiamento lascia nella zona del viso e del collo, ed è uno degli interventi più completi e dai risultati più duraturi della chirurgia estetica attuale.",
     "category": "Chirurgia Estetica",
-    "cardImage": "assets/images/Uzmanlıklar/Facelift.jpeg",
+    "cardImage": "assets/images/Uzmanlıklar/Facelift.avif",
     "duration": "3-5 ore",
     "recovery": "3-6 settimane (risultato definitivo 3-6 mesi)",
     "videos": [
@@ -1548,16 +1548,16 @@ var servicesIt = [
     ],
     "results": [
       {
-        "image": "assets/images/FaceLift/Facelift-1.png"
+        "image": "assets/images/FaceLift/Facelift-1.avif"
       },
       {
-        "image": "assets/images/FaceLift/Facelift-2.png"
+        "image": "assets/images/FaceLift/Facelift-2.avif"
       },
       {
-        "image": "assets/images/FaceLift/Facelift-3.png"
+        "image": "assets/images/FaceLift/Facelift-3.avif"
       },
       {
-        "image": "assets/images/FaceLift/Facelift-4.jpeg"
+        "image": "assets/images/FaceLift/Facelift-4.avif"
       }
     ],
     "content": [

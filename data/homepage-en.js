@@ -17,7 +17,7 @@ var homepageSettingsEn = {
       "With a science-driven approach and extensive experience, reach your aesthetic goals with confidence."
     ],
     "bio": "He graduated from Ankara University Faculty of Medicine in 2015 and completed his specialization in Plastic, Reconstructive and Aesthetic Surgery at Necmettin Erbakan University. He received first-place awards at congresses in 2018 and 2022, and was honored with the Plastic Surgery Science & Art Award in 2024. In 2024, he completed a fellowship in breast reconstruction in Belgium, earned the title of Associate Professor in 2025, and continues his doctoral studies.",
-    "photo": "assets/images/hoca.jpeg",
+    "photo": "assets/images/hoca.avif",
     "credentials": [
       {
         "icon": "ri-graduation-cap-line",
@@ -52,35 +52,35 @@ var homepageSettingsEn = {
     "description": "Explore our real patient cases and evaluate the outcomes up close.",
     "images": [
       {
-        "src": "assets/images/oncesi-sonrasi-rhinoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-rhinoplasty.avif",
         "alt": "Before and After"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-breast.jpeg",
+        "src": "assets/images/oncesi-sonrasi-breast.avif",
         "alt": "Before and After"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-liposuction.png",
+        "src": "assets/images/oncesi-sonrasi-liposuction.avif",
         "alt": "Before and After"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-bbl.png",
+        "src": "assets/images/oncesi-sonrasi-bbl.avif",
         "alt": "Before and After"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-mommy.png",
+        "src": "assets/images/oncesi-sonrasi-mommy.avif",
         "alt": "Before and After"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-abdominoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-abdominoplasty.avif",
         "alt": "Before and After"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-facelift.png",
+        "src": "assets/images/oncesi-sonrasi-facelift.avif",
         "alt": "Before and After"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-armlift.png",
+        "src": "assets/images/oncesi-sonrasi-armlift.avif",
         "alt": "Before and After"
       }
     ]
@@ -208,7 +208,7 @@ var homepageSettingsEn = {
     "label": "Safety & Transparency",
     "title": "Safety matters as much as beauty.",
     "description": "Aesthetic surgery is a medical procedure; potential risks are discussed transparently with you during the consultation process.",
-    "photo": "assets/images/guven.jpeg",
+    "photo": "assets/images/guven.avif",
     "cards": [
       {
         "title": "Informed Consent",
@@ -340,27 +340,27 @@ var homepageSettingsEn = {
     "description": "Bridging two continents, Istanbul offers easy access, comfortable accommodation, and a serene atmosphere for your recovery.",
     "slides": [
       {
-        "src": "assets/images/İstanbul/istanbul-1.png",
+        "src": "assets/images/İstanbul/istanbul-1.avif",
         "alt": "Istanbul - City view 1"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-2.png",
+        "src": "assets/images/İstanbul/istanbul-2.avif",
         "alt": "Istanbul - City view 2"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-3.png",
+        "src": "assets/images/İstanbul/istanbul-3.avif",
         "alt": "Istanbul - City view 3"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-4.png",
+        "src": "assets/images/İstanbul/istanbul-4.avif",
         "alt": "Istanbul - City view 4"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-5.png",
+        "src": "assets/images/İstanbul/istanbul-5.avif",
         "alt": "Istanbul - City view 5"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-6.png",
+        "src": "assets/images/İstanbul/istanbul-6.avif",
         "alt": "Istanbul - City view 6"
       }
     ],

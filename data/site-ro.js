@@ -22,11 +22,11 @@ var siteSettingsRo = {
   "navMenu": [
     {
       "label": "Despre mine",
-      "href": "#about"
+      "href": "#aboutSection"
     },
     {
       "label": "Specializări",
-      "href": "#services"
+      "href": "uzmanliklar.html"
     },
     {
       "label": "Blog",
@@ -45,7 +45,7 @@ var siteSettingsRo = {
       "links": [
         {
           "label": "Despre mine",
-          "href": "#about"
+          "href": "#aboutSection"
         },
         {
           "label": "Specializări",

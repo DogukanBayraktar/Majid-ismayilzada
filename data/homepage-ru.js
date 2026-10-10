@@ -17,7 +17,7 @@ var homepageSettingsRu = {
       "Смело достигайте своих эстетических целей благодаря моему научному подходу и опыту."
     ],
     "bio": "В 2015 году окончил медицинский факультет Анкарского университета; завершил специализацию по пластической, реконструктивной и эстетической хирургии в университете Нежметтина Ербакана. В 2018 и 2022 годах получил первые премии конгрессов, в 2024 году — премию «Наука и искусство пластической хирургии». В 2024 году прошёл стажировку (fellowship) в Бельгии по реконструкции груди, в 2025 году получил звание доцента и продолжает обучение в докторантуре.",
-    "photo": "assets/images/hoca.jpeg",
+    "photo": "assets/images/hoca.avif",
     "credentials": [
       {
         "icon": "ri-graduation-cap-line",
@@ -52,35 +52,35 @@ var homepageSettingsRu = {
     "description": "Изучите наши реальные случаи и внимательно оцените достигнутые результаты.",
     "images": [
       {
-        "src": "assets/images/oncesi-sonrasi-rhinoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-rhinoplasty.avif",
         "alt": "До / После"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-breast.jpeg",
+        "src": "assets/images/oncesi-sonrasi-breast.avif",
         "alt": "До / После"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-liposuction.png",
+        "src": "assets/images/oncesi-sonrasi-liposuction.avif",
         "alt": "До / После"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-bbl.png",
+        "src": "assets/images/oncesi-sonrasi-bbl.avif",
         "alt": "До / После"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-mommy.png",
+        "src": "assets/images/oncesi-sonrasi-mommy.avif",
         "alt": "До / После"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-abdominoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-abdominoplasty.avif",
         "alt": "До / После"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-facelift.png",
+        "src": "assets/images/oncesi-sonrasi-facelift.avif",
         "alt": "До / После"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-armlift.png",
+        "src": "assets/images/oncesi-sonrasi-armlift.avif",
         "alt": "До / После"
       }
     ]
@@ -208,7 +208,7 @@ var homepageSettingsRu = {
     "label": "Безопасность и прозрачность",
     "title": "Безопасность так же важна, как и красота.",
     "description": "Эстетическая хирургия — это тоже медицинское вмешательство; возможные риски мы прозрачно обсуждаем с вами на консультации.",
-    "photo": "assets/images/guven.jpeg",
+    "photo": "assets/images/guven.avif",
     "cards": [
       {
         "title": "Информированное согласие",
@@ -340,27 +340,27 @@ var homepageSettingsRu = {
     "description": "Стамбул, соединяющий два континента, предлагает удобные перелёты, комфортное проживание и атмосферу, в которой можно спокойно восстанавливаться.",
     "slides": [
       {
-        "src": "assets/images/İstanbul/istanbul-1.png",
+        "src": "assets/images/İstanbul/istanbul-1.avif",
         "alt": "Стамбул — вид на город 1"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-2.png",
+        "src": "assets/images/İstanbul/istanbul-2.avif",
         "alt": "Стамбул — вид на город 2"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-3.png",
+        "src": "assets/images/İstanbul/istanbul-3.avif",
         "alt": "Стамбул — вид на город 3"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-4.png",
+        "src": "assets/images/İstanbul/istanbul-4.avif",
         "alt": "Стамбул — вид на город 4"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-5.png",
+        "src": "assets/images/İstanbul/istanbul-5.avif",
         "alt": "Стамбул — вид на город 5"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-6.png",
+        "src": "assets/images/İstanbul/istanbul-6.avif",
         "alt": "Стамбул — вид на город 6"
       }
     ],

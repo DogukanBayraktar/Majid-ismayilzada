@@ -22,11 +22,11 @@ var siteSettings = {
   "navMenu": [
     {
       "label": "Hakkımda",
-      "href": "#about"
+      "href": "#aboutSection"
     },
     {
       "label": "Uzmanlık",
-      "href": "#services"
+      "href": "uzmanliklar.html"
     },
     {
       "label": "Blog",
@@ -45,7 +45,7 @@ var siteSettings = {
       "links": [
         {
           "label": "Hakkımda",
-          "href": "#about"
+          "href": "#aboutSection"
         },
         {
           "label": "Uzmanlık",

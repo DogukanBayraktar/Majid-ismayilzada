@@ -17,7 +17,7 @@ var homepageSettings = {
       "Bilimsel yaklaşım ve tecrübemle estetik hedeflerinize güvenle ulaşın."
     ],
     "bio": "2015'te Ankara Üniversitesi Tıp Fakültesi'nden mezun oldu; Necmettin Erbakan Üniversitesi'nde Plastik Rekonstrüktif ve Estetik Cerrahi ihtisasını tamamladı. 2018 ve 2022'de kurultay birincilik ödülleri, 2024'te Plastik Cerrahi Bilim Sanat Ödülü kazandı. 2024'te Belçika'da meme rekonstrüksiyonu alanında fellowship yaptı, 2025'te Doçentlik unvanını aldı ve halen doktora eğitimine devam etmektedir.",
-    "photo": "assets/images/hoca.jpeg",
+    "photo": "assets/images/hoca.avif",
     "credentials": [
       {
         "icon": "ri-graduation-cap-line",
@@ -52,35 +52,35 @@ var homepageSettings = {
     "description": "Gerçek hasta vakalarımızı inceleyin; ulaşılan sonuçları yakından değerlendirin.",
     "images": [
       {
-        "src": "assets/images/oncesi-sonrasi-rhinoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-rhinoplasty.avif",
         "alt": "Öncesi Sonrası"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-breast.jpeg",
+        "src": "assets/images/oncesi-sonrasi-breast.avif",
         "alt": "Öncesi Sonrası"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-liposuction.png",
+        "src": "assets/images/oncesi-sonrasi-liposuction.avif",
         "alt": "Öncesi Sonrası"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-bbl.png",
+        "src": "assets/images/oncesi-sonrasi-bbl.avif",
         "alt": "Öncesi Sonrası"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-mommy.png",
+        "src": "assets/images/oncesi-sonrasi-mommy.avif",
         "alt": "Öncesi Sonrası"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-abdominoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-abdominoplasty.avif",
         "alt": "Öncesi Sonrası"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-facelift.png",
+        "src": "assets/images/oncesi-sonrasi-facelift.avif",
         "alt": "Öncesi Sonrası"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-armlift.png",
+        "src": "assets/images/oncesi-sonrasi-armlift.avif",
         "alt": "Öncesi Sonrası"
       }
     ]
@@ -212,7 +212,7 @@ var homepageSettings = {
     "label": "Güvenlik & Şeffaflık",
     "title": "Güzellik kadar güvenlik de önceliğimiz.",
     "description": "Estetik cerrahi de tıbbi bir müdahaledir; olası riskler, konsültasyon sürecinde şeffaf biçimde sizinle paylaşılır.",
-    "photo": "assets/images/guven.jpeg",
+    "photo": "assets/images/guven.avif",
     "cards": [
       {
         "title": "Aydınlatılmış Onam",
@@ -344,27 +344,27 @@ var homepageSettings = {
     "description": "İki kıtayı birleştiren İstanbul; kolay ulaşım, konforlu konaklama ve iyileşme sürecinde huzur bulacağınız bir atmosfer sunar.",
     "slides": [
       {
-        "src": "assets/images/İstanbul/istanbul-1.png",
+        "src": "assets/images/İstanbul/istanbul-1.avif",
         "alt": "İstanbul - Şehir görseli 1"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-2.png",
+        "src": "assets/images/İstanbul/istanbul-2.avif",
         "alt": "İstanbul - Şehir görseli 2"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-3.png",
+        "src": "assets/images/İstanbul/istanbul-3.avif",
         "alt": "İstanbul - Şehir görseli 3"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-4.png",
+        "src": "assets/images/İstanbul/istanbul-4.avif",
         "alt": "İstanbul - Şehir görseli 4"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-5.png",
+        "src": "assets/images/İstanbul/istanbul-5.avif",
         "alt": "İstanbul - Şehir görseli 5"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-6.png",
+        "src": "assets/images/İstanbul/istanbul-6.avif",
         "alt": "İstanbul - Şehir görseli 6"
       }
     ],

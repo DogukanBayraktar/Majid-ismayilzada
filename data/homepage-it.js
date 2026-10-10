@@ -17,7 +17,7 @@ var homepageSettingsIt = {
       "Con un approccio scientifico e grande esperienza, raggiungi i tuoi obiettivi estetici con piena fiducia."
     ],
     "bio": "Si è laureato alla Facoltà di Medicina dell'Università di Ankara nel 2015 e ha completato la specializzazione in Chirurgia Plastica, Riconstruttiva ed Estetica all'Università Necmettin Erbakan. Ha vinto i primi premi ai congressi nel 2018 e nel 2022 e nel 2024 ha ricevuto il Premio Scienza/Arte di Chirurgia Plastica. Nel 2024 ha svolto un fellowship in ricostruzione mammaria in Belgio, nel 2025 ha ottenuto il titolo di Professore Associato e prosegue gli studi per il dottorato.",
-    "photo": "assets/images/hoca.jpeg",
+    "photo": "assets/images/hoca.avif",
     "credentials": [
       {
         "icon": "ri-graduation-cap-line",
@@ -52,35 +52,35 @@ var homepageSettingsIt = {
     "description": "Scopri i casi reali dei nostri pazienti e valuta da vicino i risultati ottenuti.",
     "images": [
       {
-        "src": "assets/images/oncesi-sonrasi-rhinoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-rhinoplasty.avif",
         "alt": "Prima e dopo"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-breast.jpeg",
+        "src": "assets/images/oncesi-sonrasi-breast.avif",
         "alt": "Prima e dopo"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-liposuction.png",
+        "src": "assets/images/oncesi-sonrasi-liposuction.avif",
         "alt": "Prima e dopo"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-bbl.png",
+        "src": "assets/images/oncesi-sonrasi-bbl.avif",
         "alt": "Prima e dopo"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-mommy.png",
+        "src": "assets/images/oncesi-sonrasi-mommy.avif",
         "alt": "Prima e dopo"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-abdominoplasty.png",
+        "src": "assets/images/oncesi-sonrasi-abdominoplasty.avif",
         "alt": "Prima e dopo"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-facelift.png",
+        "src": "assets/images/oncesi-sonrasi-facelift.avif",
         "alt": "Prima e dopo"
       },
       {
-        "src": "assets/images/oncesi-sonrasi-armlift.png",
+        "src": "assets/images/oncesi-sonrasi-armlift.avif",
         "alt": "Prima e dopo"
       }
     ]
@@ -208,7 +208,7 @@ var homepageSettingsIt = {
     "label": "Sicurezza e trasparenza",
     "title": "La sicurezza è una priorità quanto la bellezza.",
     "description": "Anche la chirurgia estetica è un atto medico: i possibili rischi vengono condivisi in modo trasparente durante il percorso di consulenza.",
-    "photo": "assets/images/guven.jpeg",
+    "photo": "assets/images/guven.avif",
     "cards": [
       {
         "title": "Consenso informato",
@@ -340,27 +340,27 @@ var homepageSettingsIt = {
     "description": "Istanbul, che unisce due continenti, offre facile accesso, alloggi confortevoli e un'atmosfera serena per la tua convalescenza.",
     "slides": [
       {
-        "src": "assets/images/İstanbul/istanbul-1.png",
+        "src": "assets/images/İstanbul/istanbul-1.avif",
         "alt": "Istanbul - Vista della città 1"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-2.png",
+        "src": "assets/images/İstanbul/istanbul-2.avif",
         "alt": "Istanbul - Vista della città 2"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-3.png",
+        "src": "assets/images/İstanbul/istanbul-3.avif",
         "alt": "Istanbul - Vista della città 3"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-4.png",
+        "src": "assets/images/İstanbul/istanbul-4.avif",
         "alt": "Istanbul - Vista della città 4"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-5.png",
+        "src": "assets/images/İstanbul/istanbul-5.avif",
         "alt": "Istanbul - Vista della città 5"
       },
       {
-        "src": "assets/images/İstanbul/istanbul-6.png",
+        "src": "assets/images/İstanbul/istanbul-6.avif",
         "alt": "Istanbul - Vista della città 6"
       }
     ],
