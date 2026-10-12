@@ -10,12 +10,8 @@ var services = [
     "recovery": "6-8 hafta (nihai sonuç 3-6 ay)",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/breast-aesthetic.mp4",
+        "image": "assets/video/breast-aesthetic.jpg"
       }
     ],
     "results": [
@@ -89,12 +85,8 @@ var services = [
     "recovery": "6-8 hafta (nihai sonuç 2-3 ay)",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/bbl.mp4",
+        "image": "assets/video/bbl.jpg"
       }
     ],
     "results": [
@@ -171,12 +163,8 @@ var services = [
     "recovery": "4-6 hafta",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/liposuction.mp4",
+        "image": "assets/video/liposuction.jpg"
       }
     ],
     "results": [
@@ -247,8 +235,8 @@ var services = [
     "recovery": "6-8 hafta",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/mommy-makeover.mp4",
+        "image": "assets/video/mommy-makeover.jpg"
       }
     ],
     "results": [
@@ -319,12 +307,8 @@ var services = [
     "recovery": "10-14 gün (nihai sonuç 12 ay)",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/rhinoplasty.mp4",
+        "image": "assets/video/rhinoplasty.jpg"
       }
     ],
     "results": [
@@ -405,12 +389,12 @@ var services = [
     "recovery": "6-8 hafta (nihai sonuç 3-6 ay)",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/tummy.mp4",
+        "image": "assets/video/tummy.jpg"
       },
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/abdominoplasty.mp4",
+        "image": "assets/video/abdominoplasty.jpg"
       }
     ],
     "results": [
@@ -479,16 +463,7 @@ var services = [
     "link": "services-detay.html?id=kol-germe-ameliyati",
     "duration": "1,5-2,5 saat",
     "recovery": "6-8 hafta (iz izleri 12-18 ayda solar)",
-    "videos": [
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
-      }
-    ],
+    "videos": [],
     "results": [
       {
         "image": "assets/images/Armlift/Armlift.avif"
@@ -555,16 +530,7 @@ var services = [
     "link": "services-detay.html?id=yuz-ve-boyun-germe-smas-facelift",
     "duration": "3-5 saat",
     "recovery": "3-6 hafta (nihai sonuç 3-6 ay)",
-    "videos": [
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
-      }
-    ],
+    "videos": [],
     "results": [
       {
         "image": "assets/images/FaceLift/Facelift-1.avif"

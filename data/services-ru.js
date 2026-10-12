@@ -10,12 +10,8 @@ var servicesRu = [
     "recovery": "6–8 недель (окончательный результат 3–6 месяцев)",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/breast-aesthetic.mp4",
+        "image": "assets/video/breast-aesthetic.jpg"
       }
     ],
     "results": [
@@ -88,12 +84,8 @@ var servicesRu = [
     "recovery": "6–8 недель (окончательный результат 2–3 месяца)",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/bbl.mp4",
+        "image": "assets/video/bbl.jpg"
       }
     ],
     "results": [
@@ -380,12 +372,8 @@ var servicesRu = [
     "recovery": "4–6 недель",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/8853182/pexels-photo-8853182.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/7108330/pexels-photo-7108330.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/liposuction.mp4",
+        "image": "assets/video/liposuction.jpg"
       }
     ],
     "results": [
@@ -670,8 +658,8 @@ var servicesRu = [
     "recovery": "6–8 недель",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/mommy-makeover.mp4",
+        "image": "assets/video/mommy-makeover.jpg"
       }
     ],
     "results": [
@@ -896,12 +884,8 @@ var servicesRu = [
     "recovery": "10–14 дней (окончательный результат — 12 месяцев)",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/rhinoplasty.mp4",
+        "image": "assets/video/rhinoplasty.jpg"
       }
     ],
     "results": [
@@ -1160,12 +1144,12 @@ var servicesRu = [
     "recovery": "6–8 недель (окончательный результат — 3–6 месяцев)",
     "videos": [
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/tummy.mp4",
+        "image": "assets/video/tummy.jpg"
       },
       {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
+        "videoId": "assets/video/abdominoplasty.mp4",
+        "image": "assets/video/abdominoplasty.jpg"
       }
     ],
     "results": [
@@ -1461,16 +1445,7 @@ var servicesRu = [
     "link": "services-detay.html?id=kol-germe-ameliyati",
     "duration": "1,5–2,5 часа",
     "recovery": "6–8 недель (швы светлеют за 12–18 месяцев)",
-    "videos": [
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
-      }
-    ],
+    "videos": [],
     "results": [
       {
         "image": "assets/images/Armlift/Armlift.avif"
@@ -1536,16 +1511,7 @@ var servicesRu = [
     "cardImage": "assets/images/Uzmanlıklar/Facelift.avif",
     "duration": "3–5 часов",
     "recovery": "3–6 недель (окончательный результат — 3–6 месяцев)",
-    "videos": [
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5240610/pexels-photo-5240610.jpeg?auto=compress&cs=tinysrgb&w=800"
-      },
-      {
-        "videoId": "VIDEO_ID_BURAYA",
-        "image": "https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=800"
-      }
-    ],
+    "videos": [],
     "results": [
       {
         "image": "assets/images/FaceLift/Facelift-1.avif"
