@@ -34,6 +34,18 @@
   // Open Graph dili (og:locale) — dil kodundan locale'e çeviri.
   var OG_LOCALE = { tr: 'tr_TR', en: 'en_US', es: 'es_ES', it: 'it_IT', ru: 'ru_RU', ro: 'ro_RO' };
 
+  // Dile göre form telefon alan kodu varsayılanı (bayrak ülke kodu + alan kodu).
+  // Örn. site İngilizce açıldıysa alan kodu Birleşik Krallık (+44) olur.
+  // Yeni dil/eşleme eklemek için sadece bu tabloyu düzenleyin.
+  var LANG_PHONE = {
+    tr: { code: '+90', country: 'tr' },
+    en: { code: '+44', country: 'gb' },
+    es: { code: '+34', country: 'es' },
+    it: { code: '+39', country: 'it' },
+    ru: { code: '+7', country: 'ru' },
+    ro: { code: '+40', country: 'ro' }
+  };
+
   function detectLanguage() {
     var params = new URLSearchParams(window.location.search);
     var urlLang = params.get('lang');
@@ -51,15 +63,75 @@
   var currentLang = detectLanguage();
   localStorage.setItem('site-lang', currentLang);
 
-  function setLanguage(lang) {
+  function setLanguage(lang, manual) {
     if (CODES.indexOf(lang) === -1) return;
     currentLang = lang;
     localStorage.setItem('site-lang', lang);
+    if (manual) { try { localStorage.setItem('site-lang-manual', '1'); } catch (e) {} }
     var url = new URL(window.location.href);
     url.searchParams.set('lang', lang);
     url.hash = '';
     window.location.href = url.toString();
   }
+
+  // Ülke (IP) -> site dili eşlemesi. Burada olmayan bir ülkeden gelen
+  // ziyaretçiler için uluslararası varsayılan olarak İngilizce (en) kullanılır.
+  // Yeni ülke eklemek/düzeltmek için sadece bu listeyi düzenleyin.
+  var CC2LANG = {
+    TR: 'tr', AZ: 'tr',
+    RO: 'ro', MD: 'ro',
+    RU: 'ru', BY: 'ru', KZ: 'ru', KG: 'ru', TJ: 'ru', UZ: 'ru', TM: 'ru', AM: 'ru',
+    IT: 'it', SM: 'it', VA: 'it',
+    ES: 'es', MX: 'es', AR: 'es', CO: 'es', CL: 'es', PE: 'es', VE: 'es', EC: 'es',
+    GT: 'es', CU: 'es', BO: 'es', DO: 'es', HN: 'es', PY: 'es', SV: 'es', NI: 'es',
+    CR: 'es', PA: 'es', UY: 'es', PR: 'es', GQ: 'es'
+  };
+
+  // Ziyaretçinin ülkesini ücretsiz bir IP API'sinden bulur ve dile çevirir.
+  // Anahtar gerekmez; başarısız/çevrimdışı olursa sessizce null döner ve
+  // tarayıcı dili / varsayılan dil devreye girer.
+  function detectCountryLanguage(cb) {
+    if (typeof fetch !== 'function') { cb(null); return; }
+    var settled = false;
+    var timer = setTimeout(function () { finish(null); }, 3000);
+    var urls = ['https://ipwho.is/', 'https://ipapi.co/json/'];
+    function finish(code) {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      cb(code);
+    }
+    function tryNext(i) {
+      if (settled) return;
+      if (i >= urls.length) { finish(null); return; }
+      fetch(urls[i], { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (d) {
+        if (settled) return;
+        var c = (d && (d.country_code || d.countryCode)) ? String(d.country_code || d.countryCode).toUpperCase() : '';
+        if (d && d.success === false) c = '';
+        if (!c) { tryNext(i + 1); return; }
+        finish(CC2LANG[c] || 'en');
+      }).catch(function () { tryNext(i + 1); });
+    }
+    tryNext(0);
+  }
+
+  // Ülkeye göre otomatik dil. Yalnızca şu durumlarda çalışır:
+  //  (a) URL'de açık ?lang= yoksa,
+  //  (b) kullanıcı dil seçiciyle kendi tercihini yapmadıysa,
+  //  (c) bu tarayıcı oturumunda daha önce denenmediyse.
+  function maybeGeoDetect() {
+    if (new URLSearchParams(window.location.search).get('lang')) return;
+    try {
+      if (localStorage.getItem('site-lang-manual') === '1') return;
+      if (sessionStorage.getItem('site-lang-geo') === '1') return;
+      sessionStorage.setItem('site-lang-geo', '1');
+    } catch (e) { return; }
+    detectCountryLanguage(function (code) {
+      if (code && CODES.indexOf(code) !== -1 && code !== currentLang) setLanguage(code);
+    });
+  }
+
+  maybeGeoDetect();
 
   function getLanguage() { return currentLang; }
 
@@ -87,7 +159,8 @@
     blog: function () { return pickData('blog'); },
     isEn: function () { return currentLang === 'en'; },
     isTr: function () { return currentLang === LANGS[0].code; },
-    ogLocale: function () { return OG_LOCALE[currentLang] || OG_LOCALE[LANGS[0].code]; }
+    ogLocale: function () { return OG_LOCALE[currentLang] || OG_LOCALE[LANGS[0].code]; },
+    phoneCode: function () { return LANG_PHONE[currentLang] || LANG_PHONE[LANGS[0].code]; }
   };
 
   document.documentElement.lang = currentLang;
@@ -136,7 +209,7 @@
       var btn = e.target.closest('[data-lang]');
       if (!btn) return;
       e.stopPropagation();
-      setLanguage(btn.getAttribute('data-lang'));
+      setLanguage(btn.getAttribute('data-lang'), true);
     });
 
     document.addEventListener('click', function (e) {

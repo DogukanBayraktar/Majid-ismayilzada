@@ -20,6 +20,23 @@ if (heroForm) {
     const phoneCodeFlag = document.getElementById('phoneCodeFlag');
     const phoneCodeText = document.getElementById('phoneCodeText');
 
+    // Aktif dile göre varsayılan telefon alan kodunu uygular
+    // (örn. site İngilizce açıldıysa +44 / Birleşik Krallık).
+    function applyPhoneDefault() {
+        const def = (typeof i18n !== 'undefined' && i18n.phoneCode) ? i18n.phoneCode() : { code: '+90', country: 'tr' };
+        const li = phoneCodeList.querySelector(`li[data-code="${def.code}"]`) || phoneCodeList.querySelector('li[data-code="+90"]');
+        if (!li) return;
+        phoneCodeList.querySelector('li.active')?.classList.remove('active');
+        li.classList.add('active');
+        const code = li.dataset.code;
+        const country = li.dataset.country;
+        alanKoduSelect.value = code;
+        phoneCodeFlag.src = `https://flagcdn.com/w20/${country}.png`;
+        phoneCodeText.textContent = code;
+        telefonInput.placeholder = code === '+90' ? _tf('phonePlaceholderTR') : _tf('phonePlaceholderInt');
+    }
+    applyPhoneDefault();
+
     const closePhoneCodeList = () => {
         phoneCodeList.hidden = true;
         phoneCodeDropdown.classList.remove('open');
@@ -199,9 +216,7 @@ if (heroForm) {
         islemText.textContent = _tf('heroFormProcedure');
         islemText.classList.add('custom-select-placeholder');
         islemList.querySelector('li.active')?.classList.remove('active');
-        phoneCodeFlag.src = 'https://flagcdn.com/w20/tr.png';
-        phoneCodeText.textContent = '+90';
-        alanKoduSelect.value = '+90';
+        applyPhoneDefault();
         formSuccess.classList.remove('visible');
         formFields.classList.remove('hidden');
     });
@@ -231,9 +246,7 @@ if (heroForm) {
             islemText.textContent = _tf('heroFormProcedure');
             islemText.classList.add('custom-select-placeholder');
             islemList.querySelector('li.active')?.classList.remove('active');
-            phoneCodeFlag.src = 'https://flagcdn.com/w20/tr.png';
-            phoneCodeText.textContent = '+90';
-            alanKoduSelect.value = '+90';
+            applyPhoneDefault();
             formFields.classList.add('hidden');
             formSuccess.classList.add('visible');
             submitBtn.disabled = false;

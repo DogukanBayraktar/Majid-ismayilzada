@@ -129,6 +129,9 @@ function heroHtml(service) {
                       <li role="option" data-code="+90" data-country="tr" class="active">
                         <img src="https://flagcdn.com/w20/tr.png" alt=""><span>Türkiye</span><b>+90</b>
                       </li>
+                      <li role="option" data-code="+40" data-country="ro">
+                        <img src="https://flagcdn.com/w20/ro.png" alt=""><span>Romanya</span><b>+40</b>
+                      </li>
                       <li role="option" data-code="+49" data-country="de">
                         <img src="https://flagcdn.com/w20/de.png" alt=""><span>Almanya</span><b>+49</b>
                       </li>
@@ -223,6 +226,23 @@ function initHeroForm(root) {
   const phoneCodeList = root.querySelector('#svcPhoneCodeList');
   const phoneCodeFlag = root.querySelector('#svcPhoneCodeFlag');
   const phoneCodeText = root.querySelector('#svcPhoneCodeText');
+
+  // Aktif dile göre varsayılan telefon alan kodunu uygular
+  // (örn. site İngilizce açıldıysa +44 / Birleşik Krallık).
+  function applyPhoneDefault() {
+    var def = (typeof i18n !== 'undefined' && i18n.phoneCode) ? i18n.phoneCode() : { code: '+90', country: 'tr' };
+    var li = phoneCodeList.querySelector('li[data-code="' + def.code + '"]') || phoneCodeList.querySelector('li[data-code="+90"]');
+    if (!li) return;
+    phoneCodeList.querySelector('li.active')?.classList.remove('active');
+    li.classList.add('active');
+    var code = li.dataset.code;
+    var country = li.dataset.country;
+    alanKoduSelect.value = code;
+    phoneCodeFlag.src = 'https://flagcdn.com/w20/' + country + '.png';
+    phoneCodeText.textContent = code;
+    telefonInput.placeholder = code === '+90' ? _t('phonePlaceholderTR') : _t('phonePlaceholderInt');
+  }
+  applyPhoneDefault();
 
   const closePhoneCodeList = () => {
     phoneCodeList.hidden = true;
@@ -400,9 +420,7 @@ function initHeroForm(root) {
       islemText.classList.add('custom-select-placeholder');
       islemList.querySelector('li.active')?.classList.remove('active');
     }
-    phoneCodeFlag.src = 'https://flagcdn.com/w20/tr.png';
-    phoneCodeText.textContent = '+90';
-    alanKoduSelect.value = '+90';
+    applyPhoneDefault();
     formSuccess.classList.remove('visible');
     formFields.classList.remove('hidden');
   });
@@ -438,9 +456,7 @@ function initHeroForm(root) {
         islemText.classList.add('custom-select-placeholder');
         islemList.querySelector('li.active')?.classList.remove('active');
       }
-      phoneCodeFlag.src = 'https://flagcdn.com/w20/tr.png';
-      phoneCodeText.textContent = '+90';
-      alanKoduSelect.value = '+90';
+      applyPhoneDefault();
       formFields.classList.add('hidden');
       formSuccess.classList.add('visible');
       submitBtn.disabled = false;
