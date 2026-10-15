@@ -40,12 +40,22 @@ app.use(express.json());
 
 app.use('/admin-assets', express.static(path.join(__dirname, 'admin-assets'), { index: false }));
 
+// nginx/Passenger gibi bir proxy arkasında çalışırken doğru istemci IP'si ve
+// HTTPS bilgisi (X-Forwarded-Proto) için gerekli. secure:'auto' ile çerez
+// HTTPS'te Secure olur, yerel HTTP'de olmaz — böylece her iki ortamda da giriş çalışır.
+app.set('trust proxy', 1);
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'degistir-beni-cok-uzun-rastgele-bir-cumle-yazin',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 4 } // 4 saat
+    proxy: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 4, // 4 saat
+      sameSite: 'lax',
+      secure: 'auto'
+    }
   })
 );
 
